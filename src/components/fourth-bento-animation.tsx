@@ -44,10 +44,6 @@ export function FourthBentoAnimation({
   const [translateXValues, setTranslateXValues] = useState<number[]>([]);
 
   const mouseX = useMotionValue(0);
-  const smoothX = useSpring(mouseX, {
-    damping: 50,
-    stiffness: 400,
-  });
 
   useEffect(() => {
     if (containerRef.current) {
