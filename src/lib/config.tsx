@@ -2,6 +2,13 @@ import { FirstBentoAnimation } from "@/components/first-bento-animation";
 import { FourthBentoAnimation } from "@/components/fourth-bento-animation";
 import { SecondBentoAnimation } from "@/components/second-bento-animation";
 import { ThirdBentoAnimation } from "@/components/third-bento-animation";
+import { FifthBentoAnimation } from "@/components/fifth-bento-animation";
+import { SixthBentoAnimation  } from "@/components/sixth-bento-animation";
+import { SeventhBentoAnimation  } from "@/components/seventh-bento-animation";
+
+
+
+
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Globe } from "@/components/ui/globe";
 import { cn } from "@/lib/utils";
@@ -48,8 +55,8 @@ export const siteConfig = {
   },
   nav: {
     links: [
-      { id: 1, name: "Home", href: "#hero" },
-      { id: 2, name: "Services", href: "#bento" },
+      { id: 1, name: "Home", href: "/" },
+      { id: 2, name: "Services", href: "/services" },
       { id: 3, name: "Why Us?", href: "#testimonials" },
       { id: 4, name: "More", href: "#more" },
     ],
@@ -334,21 +341,21 @@ export const siteConfig = {
         content: <FourthBentoAnimation once={false} />,
         title: "SEO That Ranks",
         description:
-          "Improve visibility and drive traffic with search engine optimization strategies tailored for your business.",
+          "Desnine helps you improve visibility and drive consistent traffic with proven SEO strategies. Rank higher and reach the audience that matters most.",
       },
       {
         id: 2,
         content: <SecondBentoAnimation />,
         title: "Website Design & Development",
         description:
-          "We build fast, stunning, and conversion-ready websites designed to showcase your brand and engage your audience.",
+          "Desnine builds fast, responsive, and conversion-optimized websites tailored to your brand. Impress visitors and grow your online presence effortlessly.",
       },
       {
         id: 3,
         content: <FirstBentoAnimation />,
         title: "AI Automation & Bots",
         description:
-          "Automate repetitive tasks and add intelligent AI bots to your site to boost efficiency and support.",
+          "Automate repetitive tasks and workflows with Desnine’s custom AI integrations. From smart bots to backend logic, we streamline operations for scale.",
       },
       {
         id: 4,
@@ -362,9 +369,52 @@ export const siteConfig = {
         ),
         title: "Smart Analytics",
         description:
-          "Track performance and uncover growth opportunities with real-time, AI-powered reporting and insights.",
+          "Track, measure, and optimize your business with Desnine’s real-time, AI-powered analytics. Gain clear insights and make data-driven decisions faster.",
+      },
+      {
+        id: 5,
+        content: <FifthBentoAnimation />,
+        title: "Branding & Identity",
+        description:
+          "Desnine crafts logos, brand identities, and guidelines that define your unique voice. We also handle complete rebranding to help you evolve.",
+      },
+      {
+        id: 6,
+        content: <SixthBentoAnimation />,
+        title: "Print & Packaging Design",
+        description:
+          "From business cards to product packaging, Desnine designs impactful print materials that speak for your brand. Professional, consistent, and made to convert.",
+      },
+      {
+        id: 7,
+        content: <SeventhBentoAnimation />,
+        title: "Digital Design",
+        description:
+          "Desnine creates digital assets like newsletters, presentations, social content, and UI/UX that engage users. Every design is optimized for clarity and conversion.",
+      },
+      {
+        id: 8,
+        content: <SecondBentoAnimation />,
+        title: "Advertising Design",
+        description:
+          "Stand out with Desnine’s ad design services, including campaign identity, banners, and promo packaging. We make your ads feel as good as they perform.",
+      },
+      {
+        id: 9,
+        content: <SecondBentoAnimation />,
+        title: "Content Creation & Visual Support",
+        description:
+          "Desnine enhances your content with illustrations, iconography, photo retouching, and mockups. We turn raw ideas into polished visuals that connect.",
+      },
+      {
+        id: 10,
+        content: <SecondBentoAnimation />,
+        title: "Industry-Specific Design",
+        description:
+          "Desnine delivers tailored design for ecommerce, events, podcasts, and more. Whatever your niche, we help you look professional and trustworthy.",
       },
     ],
+
   },
   benefits: [
     {
