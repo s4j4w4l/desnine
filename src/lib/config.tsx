@@ -5,6 +5,9 @@ import { ThirdBentoAnimation } from "@/components/third-bento-animation";
 import { FifthBentoAnimation } from "@/components/fifth-bento-animation";
 import { SixthBentoAnimation  } from "@/components/sixth-bento-animation";
 import { SeventhBentoAnimation  } from "@/components/seventh-bento-animation";
+import { EighthBentoAnimation  } from "@/components/eighth-bento-animation";
+import { NinthBentoAnimation  } from "@/components/ninth-bento-animtaion";
+import { TenthBentoAnimation  } from "@/components/tenth-bento-animation";
 
 
 
@@ -57,7 +60,7 @@ export const siteConfig = {
     links: [
       { id: 1, name: "Home", href: "/" },
       { id: 2, name: "Services", href: "/services" },
-      { id: 3, name: "Why Us?", href: "#testimonials" },
+      { id: 3, name: "Why Us?", href: "/testimonial" },
       { id: 4, name: "More", href: "#more" },
     ],
   },
@@ -394,21 +397,21 @@ export const siteConfig = {
       },
       {
         id: 8,
-        content: <SecondBentoAnimation />,
+        content: <EighthBentoAnimation />,
         title: "Advertising Design",
         description:
           "Stand out with Desnine’s ad design services, including campaign identity, banners, and promo packaging. We make your ads feel as good as they perform.",
       },
       {
         id: 9,
-        content: <SecondBentoAnimation />,
+        content: <NinthBentoAnimation />,
         title: "Content Creation & Visual Support",
         description:
           "Desnine enhances your content with illustrations, iconography, photo retouching, and mockups. We turn raw ideas into polished visuals that connect.",
       },
       {
         id: 10,
-        content: <SecondBentoAnimation />,
+        content: <TenthBentoAnimation />,
         title: "Industry-Specific Design",
         description:
           "Desnine delivers tailored design for ecommerce, events, podcasts, and more. Whatever your niche, we help you look professional and trustworthy.",
@@ -1062,7 +1065,7 @@ export const siteConfig = {
     backgroundImage: "/agent-cta-background.png",
     button: {
       text: "Contact Us",
-      href: "#",
+      href: "/contact",
     },
     subtext: "From SEO that works, Designs that convert and Workflow automation",
   },

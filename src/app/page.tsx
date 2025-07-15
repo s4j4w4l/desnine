@@ -16,7 +16,7 @@ export default function Home() {
       {/* <FeatureSection /> */}
       <GrowthSection />
       {/* <PricingSection /> */}
-      <TestimonialSection />
+      {/* <TestimonialSection /> */}
       {/* <FAQSection /> */}
       <CTASection />
       {/* <ContactSection /> */}

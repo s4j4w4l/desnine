@@ -1,6 +1,8 @@
 import { SectionHeader } from "@/components/section-header";
 import { SocialProofTestimonials } from "@/components/testimonial-scroll";
 import { siteConfig } from "@/lib/config";
+import Link from "next/link";
+
 
 export function TestimonialSection() {
   const { testimonials } = siteConfig;
@@ -15,7 +17,7 @@ export function TestimonialSection() {
           Digital Marketing Done Right
         </h2>
         <p className="text-muted-foreground text-center text-balance font-medium">
-           When quality matters, businesses trust us for their complete online growth strategy.
+          When quality matters, businesses trust us for their complete online growth strategy.
         </p>
       </SectionHeader>
       <SocialProofTestimonials testimonials={testimonials} />

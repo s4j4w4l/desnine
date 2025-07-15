@@ -22,6 +22,7 @@
     "color-bits": "^1.1.0",
     "framer-motion": "^12.23.5",
     "lucide-react": "^0.479.0",
+    "magic-ui": "^0.1.0",
     "marked": "^15.0.7",
     "motion": "^12.5.0",
     "next": "15.2.2",
