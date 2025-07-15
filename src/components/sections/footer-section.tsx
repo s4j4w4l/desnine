@@ -31,8 +31,8 @@ export function FooterSection() {
             <Icons.gdprDark className="size-12" />
           </div>
         </div>
-        <div className="pt-5 md:w-1/2">
-          <div className="flex flex-col items-start justify-start md:flex-row md:items-center md:justify-between gap-y-5 lg:pl-10">
+        {/* <div className="pt-5 md:w-1/2">
+          <div className="flex flex-col items-end justify-start md:flex-row md:items-center md:justify-between gap-y-5 lg:pl-10">
             {siteConfig.footerLinks.map((column, columnIndex) => (
               <ul key={columnIndex} className="flex flex-col gap-y-2">
                 <li className="mb-2 text-sm font-semibold text-primary">
@@ -52,7 +52,7 @@ export function FooterSection() {
               </ul>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="w-full h-48 md:h-64 relative mt-24 z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-background z-10 from-40%" />
