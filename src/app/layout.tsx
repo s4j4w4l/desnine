@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/site";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,75 @@ export const metadata: Metadata = {
   description: siteConfig.description,
 };
 
+// Structured data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "DigitalMarketingAgency",
+  "name": "Desnine",
+  "description": "AI-powered digital marketing and design agency specializing in SEO optimization, website design & development, AI automation, and branding services.",
+  "url": "https://desnine.com",
+  "logo": "https://desnine.com/logo.png",
+  "image": "https://desnine.com/agent-template-og.png",
+  "telephone": "+1-555-123-4567",
+  "email": "contact@desnine.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://x.com/desnine",
+    "https://linkedin.com/company/desnine",
+    "https://instagram.com/desnine"
+  ],
+  "serviceArea": {
+    "@type": "Country",
+    "name": "United States"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Digital Marketing Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "SEO Optimization",
+          "description": "Search engine optimization services to improve website rankings and drive organic traffic"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Website Design & Development",
+          "description": "Custom website design and development services for businesses"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "AI Automation",
+          "description": "AI-powered automation solutions for business processes"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Branding & Identity Design",
+          "description": "Complete branding and identity design services"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "127"
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,9 +105,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* <head>
-        <Script src="https://unpkg.com/react-scan/dist/auto.global.js" />
-      </head> */}
+      <head>
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+      </head>
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans bg-background`}

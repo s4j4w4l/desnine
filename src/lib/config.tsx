@@ -61,7 +61,6 @@ export const siteConfig = {
       { id: 1, name: "Home", href: "/" },
       { id: 2, name: "Services", href: "/services" },
       { id: 3, name: "Why Us?", href: "/testimonial" },
-      { id: 4, name: "More", href: "#more" },
     ],
   },
   hero: {
@@ -86,12 +85,9 @@ export const siteConfig = {
     cta: {
       primary: {
         text: "Get Started",
-        href: "#",
+        href: "/contact",
       },
-      secondary: {
-        text: "Our Work",
-        href: "#",
-      },
+      secondary: null,
     },
   },
   companyShowcase: {
@@ -817,201 +813,196 @@ export const siteConfig = {
   testimonials: [
     {
       id: "1",
-      name: "Alex Rivera",
-      role: "CTO at InnovateTech",
-      img: "https://randomuser.me/api/portraits/men/91.jpg",
+      name: "Sarah Johnson",
+      role: "Marketing Director",
+      img: "https://randomuser.me/api/portraits/women/32.jpg",
       description: (
         <p>
-          The AI-driven analytics from #QuantumInsights have revolutionized our
-          product development cycle.
+          Desnine&apos;s SEO strategies transformed our online presence completely.
           <Highlight>
-            Insights are now more accurate and faster than ever.
+            We went from page 3 to top 3 in just 6 months, with a 300% increase in organic traffic.
           </Highlight>{" "}
-          A game-changer for tech companies.
+          Their data-driven approach and constant optimization made all the difference.
         </p>
       ),
     },
     {
       id: "2",
-      name: "Samantha Lee",
-      role: "Marketing Director at NextGen Solutions",
-      img: "https://randomuser.me/api/portraits/women/12.jpg",
+      name: "Marcus Rodriguez",
+      role: "Founder & CEO",
+      img: "https://randomuser.me/api/portraits/men/67.jpg",
       description: (
         <p>
-          Implementing #AIStream&apos;s customer prediction model has
-          drastically improved our targeting strategy.
-          <Highlight>Seeing a 50% increase in conversion rates!</Highlight>{" "}
-          Highly recommend their solutions.
+          Desnine didn&apos;t just design our website - they built a conversion machine.
+          <Highlight>
+            Our e-commerce sales increased by 150% within the first quarter after launch.
+          </Highlight>{" "}
+          The user experience is seamless, and the design perfectly captures our brand essence.
         </p>
       ),
     },
     {
       id: "3",
-      name: "Raj Patel",
-      role: "Founder & CEO at StartUp Grid",
-      img: "https://randomuser.me/api/portraits/men/45.jpg",
+      name: "Jennifer Park",
+      role: "Operations Manager",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
       description: (
         <p>
-          As a startup, we need to move fast and stay ahead. #CodeAI&apos;s
-          automated coding assistant helps us do just that.
-          <Highlight>Our development speed has doubled.</Highlight> Essential
-          tool for any startup.
+          The AI automation Desnine implemented for our appointment scheduling has been a game-changer.
+          <Highlight>
+            We&apos;ve reduced no-shows by 40% and our staff can focus on patient care instead of admin tasks.
+          </Highlight>{" "}
+          The integration was smooth and the results were immediate.
         </p>
       ),
     },
     {
       id: "4",
-      name: "Emily Chen",
-      role: "Product Manager at Digital Wave",
-      img: "https://randomuser.me/api/portraits/women/83.jpg",
+      name: "David Chen",
+      role: "CTO",
+      img: "https://randomuser.me/api/portraits/men/23.jpg",
       description: (
         <p>
-          #VoiceGen&apos;s AI-driven voice synthesis has made creating global
-          products a breeze.
-          <Highlight>Localization is now seamless and efficient.</Highlight> A
-          must-have for global product teams.
+          Desnine&apos;s smart analytics dashboard gives us insights we never had before.
+          <Highlight>
+            We can now make data-driven decisions in real-time, leading to 25% better resource allocation.
+          </Highlight>{" "}
+          The AI-powered recommendations are spot-on and have become integral to our strategy.
         </p>
       ),
     },
     {
       id: "5",
-      name: "Michael Brown",
-      role: "Data Scientist at FinTech Innovations",
-      img: "https://randomuser.me/api/portraits/men/1.jpg",
+      name: "Amanda Thompson",
+      role: "Brand Manager",
+      img: "https://randomuser.me/api/portraits/women/28.jpg",
       description: (
         <p>
-          Leveraging #DataCrunch&apos;s AI for our financial models has given us
-          an edge in predictive accuracy.
+          Our rebranding with Desnine was transformative. They didn&apos;t just create a logo - they crafted our entire brand identity.
           <Highlight>
-            Our investment strategies are now powered by real-time data
-            analytics.
+            Customer recognition increased by 200% and our social media engagement tripled.
           </Highlight>{" "}
-          Transformative for the finance industry.
+          The packaging design is so beautiful, customers are sharing it on social media.
         </p>
       ),
     },
     {
       id: "6",
-      name: "Linda Wu",
-      role: "VP of Operations at LogiChain Solutions",
-      img: "https://randomuser.me/api/portraits/women/5.jpg",
+      name: "Robert Kim",
+      role: "Digital Marketing Lead",
+      img: "https://randomuser.me/api/portraits/men/89.jpg",
       description: (
         <p>
-          #LogiTech&apos;s supply chain optimization tools have drastically
-          reduced our operational costs.
+          Desnine&apos;s advertising design services helped us stand out in a crowded market.
           <Highlight>
-            Efficiency and accuracy in logistics have never been better.
+            Our ad conversion rates improved by 180% and cost per acquisition dropped by 35%.
           </Highlight>{" "}
+          Their creative team understands what drives engagement and conversions.
         </p>
       ),
     },
     {
       id: "7",
-      name: "Carlos Gomez",
-      role: "Head of R&D at EcoInnovate",
-      img: "https://randomuser.me/api/portraits/men/14.jpg",
+      name: "Lisa Wang",
+      role: "Content Director",
+      img: "https://randomuser.me/api/portraits/women/56.jpg",
       description: (
         <p>
-          By integrating #GreenTech&apos;s sustainable energy solutions,
-          we&apos;ve seen a significant reduction in carbon footprint.
+          The content creation and visual support from Desnine elevated our educational materials to a new level.
           <Highlight>
-            Leading the way in eco-friendly business practices.
+            Student engagement increased by 60% and our course completion rates went up by 45%.
           </Highlight>{" "}
-          Pioneering change in the industry.
+          Their illustrations and graphics make complex topics accessible and engaging.
         </p>
       ),
     },
     {
       id: "8",
-      name: "Aisha Khan",
-      role: "Chief Marketing Officer at Fashion Forward",
-      img: "https://randomuser.me/api/portraits/women/56.jpg",
+      name: "Michael O&apos;Connor",
+      role: "VP of Marketing",
+      img: "https://randomuser.me/api/portraits/men/45.jpg",
       description: (
         <p>
-          #TrendSetter&apos;s market analysis AI has transformed how we approach
-          fashion trends.
+          Desnine&apos;s industry-specific design for real estate has given us a competitive edge.
           <Highlight>
-            Our campaigns are now data-driven with higher customer engagement.
+            Our property listings now convert 3x better and our brand is recognized as the most professional in the market.
           </Highlight>{" "}
-          Revolutionizing fashion marketing.
+          They understand the unique needs of our industry perfectly.
         </p>
       ),
     },
     {
       id: "9",
-      name: "Tom Chen",
-      role: "Director of IT at HealthTech Solutions",
-      img: "https://randomuser.me/api/portraits/men/18.jpg",
+      name: "Sophia Martinez",
+      role: "E-commerce Manager",
+      img: "https://randomuser.me/api/portraits/women/71.jpg",
       description: (
         <p>
-          Implementing #MediCareAI in our patient care systems has improved
-          patient outcomes significantly.
+          The digital design work Desnine did for our fashion brand is absolutely stunning.
           <Highlight>
-            Technology and healthcare working hand in hand for better health.
+            Our email campaigns now have a 25% open rate and our social media content drives 4x more engagement.
           </Highlight>{" "}
-          A milestone in medical technology.
+          Every design element feels cohesive and on-brand.
         </p>
       ),
     },
     {
       id: "10",
-      name: "Sofia Patel",
-      role: "CEO at EduTech Innovations",
-      img: "https://randomuser.me/api/portraits/women/73.jpg",
+      name: "James Wilson",
+      role: "CEO",
+      img: "https://randomuser.me/api/portraits/men/12.jpg",
       description: (
         <p>
-          #LearnSmart&apos;s AI-driven personalized learning plans have doubled
-          student performance metrics.
+          As a startup, we needed everything - website, branding, SEO, and automation. Desnine delivered it all.
           <Highlight>
-            Education tailored to every learner&apos;s needs.
+            We went from 0 to 10,000 monthly visitors in 8 months and secured our Series A funding.
           </Highlight>{" "}
-          Transforming the educational landscape.
+          They&apos;re not just a service provider - they&apos;re a growth partner.
         </p>
       ),
     },
     {
       id: "11",
-      name: "Jake Morrison",
-      role: "CTO at SecureNet Tech",
-      img: "https://randomuser.me/api/portraits/men/25.jpg",
+      name: "Rachel Green",
+      role: "Marketing Manager",
+      img: "https://randomuser.me/api/portraits/women/38.jpg",
       description: (
         <p>
-          With #CyberShield&apos;s AI-powered security systems, our data
-          protection levels are unmatched.
+          Desnine&apos;s print and packaging design for our wellness products exceeded all expectations.
           <Highlight>
-            Ensuring safety and trust in digital spaces.
+            Our products now have 40% better shelf presence and customer feedback about packaging is overwhelmingly positive.
           </Highlight>{" "}
-          Redefining cybersecurity standards.
+          The designs are both beautiful and functional.
         </p>
       ),
     },
     {
       id: "12",
-      name: "Nadia Ali",
-      role: "Product Manager at Creative Solutions",
-      img: "https://randomuser.me/api/portraits/women/78.jpg",
+      name: "Alex Turner",
+      role: "Product Manager",
+      img: "https://randomuser.me/api/portraits/men/91.jpg",
       description: (
         <p>
-          #DesignPro&apos;s AI has streamlined our creative process, enhancing
-          productivity and innovation.
-          <Highlight>Bringing creativity and technology together.</Highlight> A
-          game-changer for creative industries.
+          The AI automation bots Desnine built for our customer service have revolutionized our operations.
+          <Highlight>
+            We handle 5x more customer inquiries with 90% faster response times and 95% customer satisfaction.
+          </Highlight>{" "}
+          The bots are so intelligent, customers often don&apos;t realize they&apos;re talking to AI.
         </p>
       ),
     },
     {
       id: "13",
-      name: "Omar Farooq",
-      role: "Founder at Startup Hub",
-      img: "https://randomuser.me/api/portraits/men/54.jpg",
+      name: "Nina Patel",
+      role: "Founder",
+      img: "https://randomuser.me/api/portraits/women/63.jpg",
       description: (
         <p>
-          #VentureAI&apos;s insights into startup ecosystems have been
-          invaluable for our growth and funding strategies.
+          Desnine helped us establish our creative agency&apos;s brand identity from the ground up.
           <Highlight>
-            Empowering startups with data-driven decisions.
+            Within 6 months, we&apos;ve attracted 15 new high-value clients and our portfolio is getting featured in design publications.
           </Highlight>{" "}
-          A catalyst for startup success.
+          Their strategic approach to branding is unmatched in the industry.
         </p>
       ),
     },
@@ -1019,43 +1010,55 @@ export const siteConfig = {
   faqSection: {
     title: "Frequently Asked Questions",
     description:
-      "Answers to common questions about Desnine and its features. If you have any other questions, please don't hesitate to contact us.",
+      "Answers to common questions about our digital marketing and design services. If you have any other questions, please don't hesitate to contact us.",
     faQitems: [
       {
         id: 1,
-        question: "What is an AI Agent?",
+        question: "What services does Desnine offer?",
         answer:
-          "An AI Agent is an intelligent software program that can perform tasks autonomously, learn from interactions, and make decisions to help achieve specific goals. It combines artificial intelligence and machine learning to provide personalized assistance and automation.",
+          "Desnine offers comprehensive digital marketing and design services including SEO optimization, website design & development, AI automation, branding & identity design, print & packaging design, digital design, advertising design, content creation, and industry-specific design solutions. We're your one-stop shop for all digital marketing needs.",
       },
       {
         id: 2,
-        question: "How does Desnine work?",
+        question: "How long does it take to see SEO results?",
         answer:
-          "Desnine works by analyzing your requirements, leveraging advanced AI algorithms to understand context, and executing tasks based on your instructions. It can integrate with your workflow, learn from feedback, and continuously improve its performance.",
+          "SEO is a long-term strategy that typically shows initial results within 3-6 months. However, the timeline varies based on your industry competition, website age, and current optimization level. We provide regular reports and analytics to track progress and make data-driven adjustments to accelerate your rankings.",
       },
       {
         id: 3,
-        question: "How secure is my data?",
+        question: "Do you work with small businesses?",
         answer:
-          "We implement enterprise-grade security measures including end-to-end encryption, secure data centers, and regular security audits. Your data is protected according to industry best practices and compliance standards.",
+          "Absolutely! We work with businesses of all sizes, from startups to enterprise companies. We tailor our services and pricing to meet your specific needs and budget. Our flexible approach ensures that every business can access professional digital marketing services that drive real results.",
       },
       {
         id: 4,
-        question: "Can I integrate my existing tools?",
+        question: "Can you redesign my existing website?",
         answer:
-          "Yes, Desnine is designed to be highly compatible with popular tools and platforms. We offer APIs and pre-built integrations for seamless connection with your existing workflow tools and systems.",
+          "Yes, we specialize in website redesigns that improve both aesthetics and performance. We'll analyze your current site, identify areas for improvement, and create a modern, fast, and conversion-optimized website that better represents your brand and drives more business.",
       },
       {
         id: 5,
-        question: "Is there a free trial available?",
+        question: "What makes your AI automation different?",
         answer:
-          "Yes, we offer a 14-day free trial that gives you full access to all features. No credit card is required to start your trial, and you can upgrade or cancel at any time.",
+          "Our AI automation solutions are custom-built for your specific business needs. We don't use generic templates - we analyze your workflows, identify automation opportunities, and create intelligent bots and integrations that save you time and money while improving customer experience.",
       },
       {
         id: 6,
-        question: "How does Desnine save me time?",
+        question: "Do you provide ongoing support and maintenance?",
         answer:
-          "Desnine automates repetitive tasks, streamlines workflows, and provides quick solutions to common challenges. This automation and efficiency can save hours of manual work, allowing you to focus on more strategic activities.",
+          "Yes, we offer ongoing support packages that include website maintenance, SEO monitoring, content updates, and performance optimization. We believe in building long-term partnerships and ensuring your digital presence continues to grow and evolve with your business.",
+      },
+      {
+        id: 7,
+        question: "How do you measure success and ROI?",
+        answer:
+          "We use advanced analytics and tracking tools to measure key performance indicators like website traffic, conversion rates, search rankings, and revenue growth. We provide detailed monthly reports showing your progress and ROI, so you can see exactly how our services are impacting your bottom line.",
+      },
+      {
+        id: 8,
+        question: "What industries do you specialize in?",
+        answer:
+          "We have experience across various industries including ecommerce, healthcare, technology, real estate, education, and professional services. Our team adapts our strategies to your specific industry challenges and opportunities, ensuring maximum effectiveness for your business.",
       },
     ],
   },
