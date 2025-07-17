@@ -40,8 +40,8 @@ export default async function Image() {
               textAlign: 'center',
               marginBottom: '20px',
               lineHeight: 1.2,
-            }}
-          >
+          }}
+        >
             Desnine
           </h1>
           <p

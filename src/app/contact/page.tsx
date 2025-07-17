@@ -16,6 +16,32 @@ export default function ContactPage() {
     phone: "",
   });
 
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target as HTMLFormElement);
+
+    formData.append("access_key", "a3e22b83-6e31-445a-acd0-336cbe81c329");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      (event.target as HTMLFormElement).reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
+  };
+
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission here
@@ -63,7 +89,7 @@ export default function ContactPage() {
       <section className="w-full py-4 px-6">
         <div className="max-w-2xl mx-auto">
           <div className="bg-card border border-border rounded-xl p-8 shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={onSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="companyName">Company Name *</Label>
@@ -155,6 +181,11 @@ export default function ContactPage() {
                 >
                   Send Message
                 </Button>
+                {result && (
+                  <p className="mt-4 text-center text-sm">
+                    {result}
+                  </p>
+                )}
               </div>
             </form>
           </div>
