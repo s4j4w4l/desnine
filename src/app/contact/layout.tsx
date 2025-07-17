@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "web designer contact",
     "marketing agency consultation",
   ],
+  
   openGraph: {
     title: "Contact Desnine - Free Digital Marketing Consultation",
     description: "Get your free consultation on SEO, website design, AI automation & branding. Transform your business with Desnine's expert digital marketing services.",
