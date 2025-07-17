@@ -30,19 +30,6 @@ export function BentoSection({ count }: BentoSectionProps) {
           <p className="text-muted-foreground text-center text-balance font-medium">
             {description}
           </p>
-          {/* CTA button if count is set */}
-        {count && (
-          <div className="w-full flex justify-center mt-10">
-            <Link
-              href="/services"
-              className="group text-base md:text-lg font-semibold text-muted-foreground hover:text-primary transition-colors"
-            >
-              <span className="inline-block group-hover:translate-x-1 transition-transform">
-                See all services →
-              </span>
-            </Link>
-          </div>
-        )}
         </SectionHeader>
 
         {/* Items */}
@@ -65,7 +52,19 @@ export function BentoSection({ count }: BentoSectionProps) {
           ))}
         </div>
 
-        
+        {/* CTA button if count is set */}
+        {count && (
+          <div className="w-full flex justify-center mt-10 pb-10">
+            <Link
+              href="/services"
+              className="group text-base md:text-lg font-semibold text-secondary hover:text-secondary/80 transition-colors"
+            >
+              <span className="inline-block group-hover:translate-x-1 transition-transform">
+                See all services →
+              </span>
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

@@ -41,13 +41,13 @@ const GLOBE_CONFIG: COBEOptions = {
 const COLORS = {
   light: {
     base: [1, 1, 1] as [number, number, number],
-    glow: [1, 1, 1] as [number, number, number],
-    marker: [251 / 255, 100 / 255, 21 / 255] as [number, number, number],
+    glow: [255/255, 100/255, 100/255] as [number, number, number], // Soft light red glow
+    marker: [218/255, 27/255, 17/255] as [number, number, number], // Red markers #da1b11
   },
   dark: {
     base: [0.4, 0.4, 0.4] as [number, number, number],
-    glow: [0.24, 0.24, 0.27] as [number, number, number],
-    marker: [251 / 255, 100 / 255, 21 / 255] as [number, number, number],
+    glow: [255/255, 80/255, 80/255] as [number, number, number], // Soft red glow
+    marker: [218/255, 27/255, 17/255] as [number, number, number], // Red markers #da1b11
   },
 };
 

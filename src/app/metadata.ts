@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     default: "Desnine - AI-Powered Digital Marketing & Design Agency | SEO, Web Design, Branding",
     template: "%s | Desnine Digital Marketing Agency"
   },
-  description: "Transform your business with Desnine's AI-powered digital marketing services. Expert SEO optimization, website design & development, AI automation, branding & identity design. Get 300% more traffic and 150% higher conversions. Free consultation available.",
+  description: "Transform your business with Desnine's AI-powered digital marketing services. Expert SEO optimization, website design & development, AI automation, branding & identity design.",
   keywords: [
     // Primary Keywords
     "digital marketing agency",
