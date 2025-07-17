@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Metadata } from "next";
 
 // Page-specific metadata for SEO
+
 export const metadata: Metadata = {
   title: "Contact Desnine - Get Your Free Digital Marketing Consultation",
   description: "Ready to transform your business? Contact Desnine for a free consultation on SEO optimization, website design, AI automation, and branding services. Get started with your digital marketing strategy today.",
