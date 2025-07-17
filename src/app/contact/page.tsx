@@ -60,7 +60,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="w-full py-16 px-6">
+      <section className="w-full py-4 px-6">
         <div className="max-w-2xl mx-auto">
           <div className="bg-card border border-border rounded-xl p-8 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-6">
