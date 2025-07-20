@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     title: "Desnine - AI-Powered Digital Marketing & Design Agency | Transform Your Business",
-    description: "Transform your business with Desnine's AI-powered digital marketing services. Expert SEO optimization, website design & development, AI automation, branding & identity design. Get 300% more traffic and 150% higher conversions.",
+    description: "Transform your business with Desnine's AI-powered digital marketing services. Expert SEO optimization, website design & development, AI automation, branding & identity design.",
     siteName: "Desnine Digital Marketing Agency",
     images: [
       {
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Desnine - AI-Powered Digital Marketing & Design Agency",
-    description: "Transform your business with AI-powered digital marketing services. Expert SEO, web design, AI automation & branding. Get 300% more traffic & 150% higher conversions.",
+    description: "Transform your business with AI-powered digital marketing services. Expert SEO, web design, AI automation & branding.",
     creator: "@desnine",
     site: "@desnine",
     images: ["/agent-template-og.png"],
