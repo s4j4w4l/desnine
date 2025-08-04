@@ -3,9 +3,10 @@
 import { Icons } from "@/components/icons";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/site";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+
 export function FooterSection() {
   const tablet = useMediaQuery("(max-width: 1024px)");
 
@@ -18,7 +19,7 @@ export function FooterSection() {
             <p className="text-xl font-semibold text-primary">Desnine</p>
           </Link>
           <p className="tracking-tight text-muted-foreground font-medium">
-            {siteConfig.hero.description}
+            {siteConfig.description}
           </p>
           <div className="flex items-center gap-2 dark:hidden">
             <Icons.soc2 className="size-12" />
@@ -31,28 +32,66 @@ export function FooterSection() {
             <Icons.gdprDark className="size-12" />
           </div>
         </div>
-        {/* <div className="pt-5 md:w-1/2">
-          <div className="flex flex-col items-end justify-start md:flex-row md:items-center md:justify-between gap-y-5 lg:pl-10">
-            {siteConfig.footerLinks.map((column, columnIndex) => (
-              <ul key={columnIndex} className="flex flex-col gap-y-2">
-                <li className="mb-2 text-sm font-semibold text-primary">
-                  {column.title}
-                </li>
-                {column.links.map((link) => (
-                  <li
-                    key={link.id}
-                    className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground"
-                  >
-                    <Link href={link.url}>{link.title}</Link>
-                    <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
-                      <ChevronRightIcon className="h-4 w-4 " />
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            ))}
+        
+        {/* Navigation Menu */}
+        <div className="pt-5 md:w-1/2">
+          <div className="flex flex-row items-start justify-between md:flex-row md:items-center md:justify-between gap-y-5 lg:pl-10">
+            <ul className="flex flex-col gap-y-2">
+              <li className="mb-2 text-sm font-semibold text-primary">
+                Navigation
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href="/services">Services</Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href="/testimonial">Why Us?</Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href="/contact">Contact Us</Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+            </ul>
+            
+            {/* Social Media Links */}
+            <ul className="flex flex-col gap-y-2">
+              <li className="mb-2 text-sm font-semibold text-primary">
+                Follow Us
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer">
+                  Twitter
+                </Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer">
+                  Instagram
+                </Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer">
+                  LinkedIn
+                </Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+            </ul>
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="w-full h-48 md:h-64 relative mt-24 z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-background z-10 from-40%" />

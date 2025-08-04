@@ -57,7 +57,7 @@ export function BentoSection({ count }: BentoSectionProps) {
           <div className="w-full flex justify-center mt-10 pb-10">
             <Link
               href="/services"
-              className="group text-base md:text-lg font-semibold text-secondary hover:text-secondary/80 transition-colors"
+              className="group bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-full font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-secondary/20 hover:border-secondary/40"
             >
               <span className="inline-block group-hover:translate-x-1 transition-transform">
                 See all services →

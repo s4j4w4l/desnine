@@ -82,13 +82,6 @@ export const siteConfig = {
     title: "Crafting Digital Experiences",
     description:
       "We create stunning websites, manage social media, design user experiences, and offer AI automation and SEO to drive results.",
-    cta: {
-      primary: {
-        text: "Get Started",
-        href: "/contact",
-      },
-      secondary: null,
-    },
   },
   companyShowcase: {
     companyLogos: [
@@ -354,7 +347,7 @@ export const siteConfig = {
         content: <FirstBentoAnimation />,
         title: "AI Automation & Bots",
         description:
-          "Automate repetitive tasks and workflows with Desnine’s custom AI integrations. From smart bots to backend logic, we streamline operations for scale.",
+          "Automate repetitive tasks and workflows with Desnine's custom AI integrations. From smart bots to backend logic, we streamline operations for scale.",
       },
       {
         id: 4,
@@ -368,7 +361,7 @@ export const siteConfig = {
         ),
         title: "Smart Analytics",
         description:
-          "Track, measure, and optimize your business with Desnine’s real-time, AI-powered analytics. Gain clear insights and make data-driven decisions faster.",
+          "Track, measure, and optimize your business with Desnine's real-time, AI-powered analytics. Gain clear insights and make data-driven decisions faster.",
       },
       {
         id: 5,
@@ -396,7 +389,7 @@ export const siteConfig = {
         content: <EighthBentoAnimation />,
         title: "Advertising Design",
         description:
-          "Stand out with Desnine’s ad design services, including campaign identity, banners, and promo packaging. We make your ads feel as good as they perform.",
+          "Stand out with Desnine's ad design services, including campaign identity, banners, and promo packaging. We make your ads feel as good as they perform.",
       },
       {
         id: 9,
@@ -1100,7 +1093,7 @@ export const siteConfig = {
       text: "Contact Us",
       href: "/contact",
     },
-    subtext: "From SEO that works, Designs that convert and Workflow automation",
+    subtext: "",
   },
   footerLinks: [
     {
