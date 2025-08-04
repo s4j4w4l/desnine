@@ -6,6 +6,7 @@ export const siteConfig = {
     twitter: "https://x.com/desninestudio",
     linkedin: "https://linkedin.com/company/desninestudio",
     instagram: "https://instagram.com/desninestudio",
+    pinterest: "https://pinterest.com/desninestudio",
   },
 };
 

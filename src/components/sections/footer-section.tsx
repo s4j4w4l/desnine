@@ -89,6 +89,14 @@ export function FooterSection() {
                   <ChevronRightIcon className="h-4 w-4 " />
                 </div>
               </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href={siteConfig.links.pinterest} target="_blank" rel="noopener noreferrer">
+                  Pinterest
+                </Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
             </ul>
           </div>
         </div>
