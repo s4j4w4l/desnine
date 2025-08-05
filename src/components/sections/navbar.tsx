@@ -182,7 +182,7 @@ export function Navbar() {
                 </div>
 
                 <motion.ul
-                  className="flex flex-col text-sm mb-4 border border-border rounded-md"
+                  className="flex flex-col text-sm mb-2 border border-border rounded-md"
                   variants={drawerMenuContainerVariants}
                 >
                   <AnimatePresence>
@@ -192,16 +192,9 @@ export function Navbar() {
                         className="p-2.5 border-b border-border last:border-b-0"
                         variants={drawerMenuVariants}
                       >
-                        <a
+                        <Link
                           href={item.href}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            const element = document.getElementById(
-                              item.href.substring(1),
-                            );
-                            element?.scrollIntoView({ behavior: "smooth" });
-                            setIsDrawerOpen(false);
-                          }}
+                          onClick={() => setIsDrawerOpen(false)}
                           className={`underline-offset-4 hover:text-primary/80 transition-colors ${
                             activeSection === item.href.substring(1)
                               ? "text-primary font-medium"
@@ -209,11 +202,25 @@ export function Navbar() {
                           }`}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       </motion.li>
                     ))}
                   </AnimatePresence>
                 </motion.ul>
+
+                {/* Contact Us Button for Mobile */}
+                <motion.div
+                  className="w-full"
+                  variants={drawerMenuVariants}
+                >
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsDrawerOpen(false)}
+                    className="w-full bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-secondary/20 hover:border-secondary/40 flex items-center justify-center"
+                  >
+                    Contact Us
+                  </Link>
+                </motion.div>
 
 
               </div>

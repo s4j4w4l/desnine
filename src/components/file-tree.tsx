@@ -13,8 +13,8 @@ const elements: TreeViewElement[] = [
         children: [
           {
             id: "3",
-            name: "components",
-            children: [
+        name: "components",
+        children: [
               { id: "4", name: "button.tsx" },
               { id: "5", name: "header.tsx" },
             ],
