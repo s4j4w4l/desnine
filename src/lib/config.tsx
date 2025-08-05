@@ -337,20 +337,34 @@ export const siteConfig = {
       },
       {
         id: 2,
-        content: <SecondBentoAnimation />,
-        title: "Website Design & Development",
+        content: <FifthBentoAnimation />,
+        title: "Branding & Identity",
         description:
-          "Desnine builds fast, responsive, and conversion-optimized websites tailored to your brand. Impress visitors and grow your online presence effortlessly.",
+          "Desnine crafts logos, brand identities, and guidelines that define your unique voice. We also handle complete rebranding to help you evolve.",
       },
       {
         id: 3,
+        content: <SixthBentoAnimation />,
+        title: "Print & Packaging Design",
+        description:
+          "From business cards to product packaging, Desnine designs impactful print materials that speak for your brand. Professional, consistent, and made to convert.",
+      },
+      {
+        id: 4,
         content: <FirstBentoAnimation />,
         title: "AI Automation & Bots",
         description:
           "Automate repetitive tasks and workflows with Desnine's custom AI integrations. From smart bots to backend logic, we streamline operations for scale.",
       },
       {
-        id: 4,
+        id: 5,
+        content: <SecondBentoAnimation />,
+        title: "Website Design & Development",
+        description:
+          "Desnine builds fast, responsive, and conversion-optimized websites tailored to your brand. Impress visitors and grow your online presence effortlessly.",
+      },
+      {
+        id: 6,
         content: (
           <ThirdBentoAnimation
             data={[20, 30, 25, 45, 40, 55, 75]}
@@ -362,20 +376,6 @@ export const siteConfig = {
         title: "Smart Analytics",
         description:
           "Track, measure, and optimize your business with Desnine's real-time, AI-powered analytics. Gain clear insights and make data-driven decisions faster.",
-      },
-      {
-        id: 5,
-        content: <FifthBentoAnimation />,
-        title: "Branding & Identity",
-        description:
-          "Desnine crafts logos, brand identities, and guidelines that define your unique voice. We also handle complete rebranding to help you evolve.",
-      },
-      {
-        id: 6,
-        content: <SixthBentoAnimation />,
-        title: "Print & Packaging Design",
-        description:
-          "From business cards to product packaging, Desnine designs impactful print materials that speak for your brand. Professional, consistent, and made to convert.",
       },
       {
         id: 7,
@@ -406,7 +406,6 @@ export const siteConfig = {
           "Desnine delivers tailored design for ecommerce, events, podcasts, and more. Whatever your niche, we help you look professional and trustworthy.",
       },
     ],
-
   },
   benefits: [
     {
