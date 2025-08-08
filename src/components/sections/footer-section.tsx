@@ -47,6 +47,12 @@ export function FooterSection() {
                 </div>
               </li>
               <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href="/work">Our Work</Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
                 <Link href="/testimonial">Why Us?</Link>
                 <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
                   <ChevronRightIcon className="h-4 w-4 " />
@@ -54,6 +60,18 @@ export function FooterSection() {
               </li>
               <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
                 <Link href="/contact">Contact Us</Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href="/terms">Terms & Conditions</Link>
+                <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                  <ChevronRightIcon className="h-4 w-4 " />
+                </div>
+              </li>
+              <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
+                <Link href="/privacy">Privacy Policy</Link>
                 <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
                   <ChevronRightIcon className="h-4 w-4 " />
                 </div>
@@ -82,8 +100,8 @@ export function FooterSection() {
                 </div>
               </li>
               <li className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug text-muted-foreground">
-                <Link href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer">
-                  LinkedIn
+                <Link href={siteConfig.links.behance} target="_blank" rel="noopener noreferrer">
+                  Behance
                 </Link>
                 <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
                   <ChevronRightIcon className="h-4 w-4 " />

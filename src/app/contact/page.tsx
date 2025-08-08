@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { ContactFromCRM } from "@/components/contactfrom-crm";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -78,14 +79,13 @@ export default function ContactPage() {
                 Let's Build Something Amazing Together
               </h1>
               <p className="text-base md:text-lg text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
-                Ready to transform your business? Tell us about your project and we'll get back to you within 24 hours.
+                Got a bold idea, a creative challenge, or just want to say hi? We're all ears. Wheater you're looking to biolf a brand from scratch or support with ongoing design work, we're here to help.
               </p>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Contact Form Section */}
+{/* 
       <section className="w-full py-4 px-6">
         <div className="max-w-2xl mx-auto">
           <div className="bg-card border border-border rounded-xl p-8 shadow-sm">
@@ -159,6 +159,8 @@ export default function ContactPage() {
                 </div>
               </div>
 
+             
+
               <div className="space-y-2">
                 <Label htmlFor="projectDetails">Tell Us About Your Project *</Label>
                 <Textarea
@@ -190,7 +192,9 @@ export default function ContactPage() {
             </form>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <ContactFromCRM />
 
       <FooterSection />
     </main>

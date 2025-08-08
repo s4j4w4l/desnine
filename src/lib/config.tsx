@@ -60,7 +60,8 @@ export const siteConfig = {
     links: [
       { id: 1, name: "Home", href: "/" },
       { id: 2, name: "Services", href: "/services" },
-      { id: 3, name: "Why Us?", href: "/testimonial" },
+      { id: 3, name: "Our Work", href: "/work" },
+      { id: 4, name: "Why Us?", href: "/testimonial" },
     ],
   },
   hero: {
@@ -79,9 +80,9 @@ export const siteConfig = {
       </svg>
     ),
     badge: "Digital Excellence",
-    title: "Crafting Digital Experiences",
+    title: "Stratrgy, Design, Performance",
     description:
-      "We create stunning websites, manage social media, design user experiences, and offer AI automation and SEO to drive results.",
+      "We are a crative studio for modern brands, that helps buisniesses.",
   },
   companyShowcase: {
     companyLogos: [
@@ -324,47 +325,54 @@ export const siteConfig = {
     ],
   },
   bentoSection: {
-    title: "Boost Your Business with Desnine",
+    title: "",
     description:
-      "Desnine helps you rank higher, build better websites, and automate smarter all with AI-driven insights.",
+      "Desnine is a multidisciplinary studio helping brands stand out through strong creative direction, clean aesthetics, and emotionally resonant visuals. Based in Canada, we work globally.",
     items: [
       {
         id: 1,
-        content: <FourthBentoAnimation once={false} />,
-        title: "SEO That Ranks",
-        description:
-          "Desnine helps you improve visibility and drive consistent traffic with proven SEO strategies. Rank higher and reach the audience that matters most.",
-      },
-      {
-        id: 2,
         content: <FifthBentoAnimation />,
         title: "Branding & Identity",
         description:
           "Desnine crafts logos, brand identities, and guidelines that define your unique voice. We also handle complete rebranding to help you evolve.",
       },
       {
-        id: 3,
+        id: 2,
         content: <SixthBentoAnimation />,
         title: "Print & Packaging Design",
         description:
           "From business cards to product packaging, Desnine designs impactful print materials that speak for your brand. Professional, consistent, and made to convert.",
       },
       {
+        id: 3,
+        content: <EighthBentoAnimation />,
+        title: "Advertising Design",
+        description:
+          "Stand out with Desnine's ad design services, including campaign identity, banners, and promo packaging. We make your ads feel as good as they perform.",
+      },
+      {
         id: 4,
+        content: <FourthBentoAnimation once={false} />,
+        title: "SEO That Ranks",
+        description:
+          "Desnine helps you improve visibility and drive consistent traffic with proven SEO strategies. Rank higher and reach the audience that matters most.",
+      },
+      {
+        id: 5,
         content: <FirstBentoAnimation />,
         title: "AI Automation & Bots",
         description:
           "Automate repetitive tasks and workflows with Desnine's custom AI integrations. From smart bots to backend logic, we streamline operations for scale.",
       },
       {
-        id: 5,
+        id: 6,
         content: <SecondBentoAnimation />,
         title: "Website Design & Development",
         description:
           "Desnine builds fast, responsive, and conversion-optimized websites tailored to your brand. Impress visitors and grow your online presence effortlessly.",
       },
       {
-        id: 6,
+        id: 7,
         content: (
           <ThirdBentoAnimation
             data={[20, 30, 25, 45, 40, 55, 75]}
@@ -378,18 +386,11 @@ export const siteConfig = {
           "Track, measure, and optimize your business with Desnine's real-time, AI-powered analytics. Gain clear insights and make data-driven decisions faster.",
       },
       {
-        id: 7,
+        id: 8,
         content: <SeventhBentoAnimation />,
         title: "Digital Design",
         description:
           "Desnine creates digital assets like newsletters, presentations, social content, and UI/UX that engage users. Every design is optimized for clarity and conversion.",
-      },
-      {
-        id: 8,
-        content: <EighthBentoAnimation />,
-        title: "Advertising Design",
-        description:
-          "Stand out with Desnine's ad design services, including campaign identity, banners, and promo packaging. We make your ads feel as good as they perform.",
       },
       {
         id: 9,
