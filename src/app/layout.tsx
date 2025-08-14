@@ -38,8 +38,8 @@ const structuredData = {
   "url": "https://desnine.com",
   "logo": "https://desnine.com/logo.png",
   "image": "https://desnine.com/agent-template-og.png",
-  "telephone": "+1-555-123-4567",
-  "email": "contact@desnine.com",
+  "telephone": "",
+  "email": "info@desnine.com",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "US"

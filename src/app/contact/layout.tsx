@@ -1,23 +1,29 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Desnine - Get Your Free Digital Marketing Consultation",
-  description: "Ready to transform your business? Contact Desnine for a free consultation on SEO optimization, website design, AI automation, and branding services. Get started with your digital marketing strategy today.",
+  title: "Contact Desnine - Creative Direction for Modern Brands",
+  description: "Looking to elevate your brand? Get in touch with Desnine Studio for a free consultation on branding, modern web design, AI automation, and strategic creative solutions. Let’s bring your vision to life.",
   keywords: [
-    "contact digital marketing agency",
-    "free SEO consultation",
-    "website design quote",
-    "AI automation consultation",
-    "branding services contact",
-    "digital marketing consultation",
-    "SEO expert contact",
-    "web designer contact",
-    "marketing agency consultation",
+    "creative direction for modern brands",
+    "branding and design studio",
+    "digital branding agency",
+    "modern web design services",
+    "creative design agency Canada",
+    "brand identity design experts",
+    "logo design for startups",
+    "packaging design agency",
+    "custom packaging and branding",
+    "Webflow website design agency",
+    "AI automation for marketing",
+    "custom website and branding solutions",
+    "visual branding for modern businesses",
+    "graphic design studio Montreal",
+    "branding and packaging design experts",
   ],
   
   openGraph: {
-    title: "Contact Desnine - Free Digital Marketing Consultation",
-    description: "Get your free consultation on SEO, website design, AI automation & branding. Transform your business with Desnine's expert digital marketing services.",
+    title: "Contact Desnine - Creative Direction for Modern Brands",
+    description: "Book your free consultation with Desnine Studio. Specializing in branding, design, automation & digital strategy for modern, forward-thinking brands.",
   },
 };
 

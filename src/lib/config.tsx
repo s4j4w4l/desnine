@@ -84,6 +84,7 @@ export const siteConfig = {
     description:
       "We are a crative studio for modern brands, that helps buisniesses.",
   },
+
   companyShowcase: {
     companyLogos: [
       {
@@ -334,42 +335,42 @@ export const siteConfig = {
         content: <FifthBentoAnimation />,
         title: "Branding & Identity",
         description:
-          "Desnine crafts logos, brand identities, and guidelines that define your unique voice. We also handle complete rebranding to help you evolve.",
+          "From strategy to visuals, we craft identities that reflect who you are and resonate with who you want to reach. Logo, type, color, tone delivered as a ready-to-use system.",
       },
       {
         id: 2,
         content: <SixthBentoAnimation />,
         title: "Print & Packaging Design",
         description:
-          "From business cards to product packaging, Desnine designs impactful print materials that speak for your brand. Professional, consistent, and made to convert.",
+          "We create packaging and print assets that turn heads and tell stories. From label design and structural packaging to flyers, menus, business cards, and event signage we make your brand tangible.",
       },
       {
         id: 3,
         content: <EighthBentoAnimation />,
         title: "Advertising Design",
         description:
-          "Stand out with Desnine's ad design services, including campaign identity, banners, and promo packaging. We make your ads feel as good as they perform.",
+          "Whether print or digital, we create ad creatives that catch the eye, communicate clearly, and drive action. From static to motion, one-off campaigns to long-term strategies, we’ve got you covered.",
       },
       {
         id: 4,
         content: <FourthBentoAnimation once={false} />,
-        title: "SEO That Ranks",
+        title: "SEO Optimization",
         description:
-          "Desnine helps you improve visibility and drive consistent traffic with proven SEO strategies. Rank higher and reach the audience that matters most.",
+          "We boost your search visibility with smart SEO strategies that align with your brand and business goals. From keyword research to on-page fixes, technical audits to content optimization we help you climb the ranks and stay there.",
       },
       {
         id: 5,
         content: <FirstBentoAnimation />,
         title: "AI Automation & Bots",
         description:
-          "Automate repetitive tasks and workflows with Desnine's custom AI integrations. From smart bots to backend logic, we streamline operations for scale.",
+          "Harness the power of AI to automate repetitive tasks, streamline operations, and provide smarter customer service with chatbots and custom automations. Designed to save you time, money, and energy. From smart bots to backend logic, we streamline operations for scale.",
       },
       {
         id: 6,
         content: <SecondBentoAnimation />,
         title: "Website Design & Development",
         description:
-          "Desnine builds fast, responsive, and conversion-optimized websites tailored to your brand. Impress visitors and grow your online presence effortlessly.",
+          "We design and build high performing websites with seamless user experience, clean interfaces, and solid backend development using Webflow, WordPress, Shopify or custom stacks. Fast. Responsive. Made to grow with you.",
       },
       {
         id: 7,
@@ -383,14 +384,14 @@ export const siteConfig = {
         ),
         title: "Smart Analytics",
         description:
-          "Track, measure, and optimize your business with Desnine's real-time, AI-powered analytics. Gain clear insights and make data-driven decisions faster.",
+          "We help you set up and make sense of your analytics whether it’s user behavior, campaign performance, or conversion paths. Get dashboards, insights, and reporting tools that make your data work for you.",
       },
       {
         id: 8,
         content: <SeventhBentoAnimation />,
         title: "Digital Design",
         description:
-          "Desnine creates digital assets like newsletters, presentations, social content, and UI/UX that engage users. Every design is optimized for clarity and conversion.",
+          "We craft stunning digital assets like newsletters, presentations, web banners, app graphics, social content, email templates, UI elements and more that feel consistent, responsive, and ready for any screen.",
       },
       {
         id: 9,
@@ -404,7 +405,7 @@ export const siteConfig = {
         content: <TenthBentoAnimation />,
         title: "Industry-Specific Design",
         description:
-          "Desnine delivers tailored design for ecommerce, events, podcasts, and more. Whatever your niche, we help you look professional and trustworthy.",
+          "Whether you're in F&B, tech, fashion, health, or real estate our industry-specific design services help you stand. Whatever your niche, we help you look professional and trustworthy.",
       },
     ],
   },
