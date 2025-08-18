@@ -3,8 +3,7 @@
 
 import { Play, XIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
-
+import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 
 type AnimationStyle =
@@ -19,6 +18,7 @@ type AnimationStyle =
 
 interface HeroVideoProps {
   animationStyle?: AnimationStyle;
+  /** Can be any YouTube URL: watch, youtu.be, or /embed */
   videoSrc: string;
   thumbnailSrc?: string;
   thumbnailAlt?: string;
@@ -26,47 +26,56 @@ interface HeroVideoProps {
 }
 
 const animationVariants = {
-  "from-bottom": {
-    initial: { y: "100%", opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: "100%", opacity: 0 },
-  },
-  "from-center": {
-    initial: { scale: 0.5, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.5, opacity: 0 },
-  },
-  "from-top": {
-    initial: { y: "-100%", opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: "-100%", opacity: 0 },
-  },
-  "from-left": {
-    initial: { x: "-100%", opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: "-100%", opacity: 0 },
-  },
-  "from-right": {
-    initial: { x: "100%", opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: "100%", opacity: 0 },
-  },
-  fade: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-  },
-  "top-in-bottom-out": {
-    initial: { y: "-100%", opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: "100%", opacity: 0 },
-  },
-  "left-in-right-out": {
-    initial: { x: "-100%", opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: "100%", opacity: 0 },
-  },
+  "from-bottom": { initial: { y: "100%", opacity: 0 }, animate: { y: 0, opacity: 1 }, exit: { y: "100%", opacity: 0 } },
+  "from-center": { initial: { scale: 0.5, opacity: 0 }, animate: { scale: 1, opacity: 1 }, exit: { scale: 0.5, opacity: 0 } },
+  "from-top": { initial: { y: "-100%", opacity: 0 }, animate: { y: 0, opacity: 1 }, exit: { y: "-100%", opacity: 0 } },
+  "from-left": { initial: { x: "-100%", opacity: 0 }, animate: { x: 0, opacity: 1 }, exit: { x: "-100%", opacity: 0 } },
+  "from-right": { initial: { x: "100%", opacity: 0 }, animate: { x: 0, opacity: 1 }, exit: { x: "100%", opacity: 0 } },
+  fade: { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } },
+  "top-in-bottom-out": { initial: { y: "-100%", opacity: 0 }, animate: { y: 0, opacity: 1 }, exit: { y: "100%", opacity: 0 } },
+  "left-in-right-out": { initial: { x: "-100%", opacity: 0 }, animate: { x: 0, opacity: 1 }, exit: { x: "100%", opacity: 0 } },
 };
+
+// --- helper: normalize any YouTube URL into an embed URL that loops ---
+function toLoopingYouTubeEmbed(url: string) {
+  try {
+    const u = new URL(url);
+    let id = "";
+
+    // cases we handle: /watch?v=ID, youtu.be/ID, /embed/ID
+    if (u.hostname.includes("youtu.be")) {
+      id = u.pathname.replace("/", "");
+    } else if (u.pathname.includes("/watch")) {
+      id = u.searchParams.get("v") || "";
+    } else if (u.pathname.includes("/embed/")) {
+      id = u.pathname.split("/").pop() || "";
+    } else if (u.searchParams.get("v")) {
+      id = u.searchParams.get("v") || "";
+    }
+
+    if (!id) {
+      // fallback: assume original is already an embed with params
+      return url;
+    }
+
+    const embed = new URL(`https://www.youtube.com/embed/${id}`);
+    // required for loop on single video
+    embed.searchParams.set("loop", "1");
+    embed.searchParams.set("playlist", id);
+    // smooth autoplay across browsers/mobile
+    embed.searchParams.set("autoplay", "1");
+    embed.searchParams.set("mute", "1");
+    embed.searchParams.set("playsinline", "1");
+    // optional niceties (can remove if you want default UI)
+    embed.searchParams.set("rel", "0");
+    embed.searchParams.set("modestbranding", "1");
+    embed.searchParams.set("controls", "0");
+
+    return embed.toString();
+  } catch {
+    return url;
+  }
+}
 
 export function HeroVideoDialog({
   animationStyle = "from-center",
@@ -78,39 +87,35 @@ export function HeroVideoDialog({
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
 
+  // ensure looping/autoplay URL every time
+  const embedSrc = useMemo(() => toLoopingYouTubeEmbed(videoSrc), [videoSrc]);
+
   return (
     <div className={cn("relative", className)}>
-      <div
-        className="group relative cursor-pointer"
-        onClick={() => setIsVideoOpen(true)}
-      >
+      <div className="group relative cursor-pointer" onClick={() => setIsVideoOpen(true)}>
         {thumbnailSrc ? (
           <img
             src={thumbnailSrc}
             alt={thumbnailAlt}
             width={1920}
             height={1080}
-            className="w-full transition-all duration-200 ease-out group-hover:brightness-[0.8] isolate"
+            className="w-full transition-all duration-200 ease-out group-hover:brightness-[0.8] isolate rounded-2xl"
           />
         ) : (
           <div className="w-full aspect-video bg-background rounded-2xl" />
         )}
-        <div className="absolute isolate inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
+        <div className="absolute inset-0 flex items-center justify-center">
           <div className="flex size-28 items-center justify-center rounded-full bg-gradient-to-t from-secondary/20 to-[#ACC3F7/15] backdrop-blur-md">
-            <div
-              className={`relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-t from-secondary to-white/10 shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]`}
-            >
+            <div className="relative flex size-20 items-center justify-center rounded-full bg-gradient-to-t from-secondary to-white/10 shadow-md transition-all duration-200 ease-out group-hover:scale-[1.05]">
               <Play
-                className="size-8 scale-100 fill-white text-white transition-transform duration-200 ease-out group-hover:scale-105"
-                style={{
-                  filter:
-                    "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))",
-                }}
+                className="size-8 fill-white text-white"
+                style={{ filter: "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))" }}
               />
             </div>
           </div>
         </div>
       </div>
+
       <AnimatePresence>
         {isVideoOpen && (
           <motion.div
@@ -124,20 +129,26 @@ export function HeroVideoDialog({
               {...selectedAnimation}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="relative mx-4 aspect-video w-full max-w-4xl md:mx-0"
+              onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
             >
               <motion.button
-                className="absolute cursor-pointer hover:scale-[98%] transition-all duration-200 ease-out -top-16 right-0 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black"
+                className="absolute -top-16 right-0 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black hover:scale-95 transition"
                 onClick={() => setIsVideoOpen(false)}
+                aria-label="Close video"
               >
                 <XIcon className="size-5" />
               </motion.button>
+
               <div className="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white">
                 <iframe
-                  src={videoSrc}
+                  title="Hero video"
+                  src={embedSrc}
                   className="size-full"
-                  allowFullScreen
+                  loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                ></iframe>
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
               </div>
             </motion.div>
           </motion.div>

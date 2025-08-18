@@ -1,5 +1,7 @@
 import { BentoSection } from "@/components/sections/bento-section";
 import { FooterSection } from "@/components/sections/footer-section";
+import { HeroSection } from "@/components/sections/hero-section";
+import { ServiceHeroSection } from "@/components/sections/service-hero-section";
 import { Metadata } from "next";
 
 // Page-specific metadata for SEO
@@ -35,6 +37,7 @@ export const metadata: Metadata = {
 export default function ServicePage() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
+      <ServiceHeroSection />
       <BentoSection />
       <FooterSection />
 

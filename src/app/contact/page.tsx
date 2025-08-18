@@ -85,6 +85,13 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <ContactFromCRM />
+
+      <FooterSection />
+    </main>
+  );
+}      
 {/* 
       <section className="w-full py-4 px-6">
         <div className="max-w-2xl mx-auto">
@@ -192,11 +199,11 @@ export default function ContactPage() {
             </form>
           </div>
         </div>
-      </section> */}
+      </section> }
 
       <ContactFromCRM />
 
       <FooterSection />
     </main>
   );
-}
+*/}

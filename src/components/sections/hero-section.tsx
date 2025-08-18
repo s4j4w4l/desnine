@@ -1,12 +1,15 @@
-import { HeroVideoSection } from "@/components/sections/hero-video-section";
+
+
+// import { HeroVideoSection } from "@/components/sections/HeroVideoSection";
 import { siteConfig } from "@/lib/config";
 import Link from "next/link";
+import { HeroVideoSection } from "./hero-video-section";
 
 export function HeroSection() {
   const { hero } = siteConfig;
 
   return (
-    <section id="hero" className="w-full relative">
+    <section id={"hero"} className="w-full relative">
       <div className="relative flex flex-col items-center w-full px-6">
         <div className="absolute inset-0">
           <div className="absolute inset-0 -z-10 h-[600px] md:h-[800px] w-full [background:radial-gradient(125%_125%_at_50%_10%,var(--background)_40%,var(--secondary)_100%)] rounded-b-xl"></div>
@@ -30,3 +33,4 @@ export function HeroSection() {
     </section>
   );
 }
+

@@ -1,11 +1,10 @@
 import { BentoSection } from "@/components/sections/bento-section";
-import { CompanyShowcase } from "@/components/sections/company-showcase";
-import { CTASection } from "@/components/sections/cta-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import { HeroSection } from "@/components/sections/hero-section";
-import { TestimonialSection } from "@/components/sections/testimonial-section";
-import { FAQSection } from "@/components/sections/faq-section";
-import { ScrollTextAnimation } from "@/components/scroll-text-animation";
+import { TextReveal } from "@/components/magicui/text-reveal";
+import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
+
+
 
 export default function Home() {
   return (
@@ -22,6 +21,11 @@ export default function Home() {
       {/* <CTASection /> */}
       {/* <ContactSection /> */}
       {/* <ScrollTextAnimation /> */}
+      {/* Top filler for scrolling */}
+       <TextReveal>Are you ready to stand out?</TextReveal>
+       
+
+
       <FooterSection />
     </main>
   );
