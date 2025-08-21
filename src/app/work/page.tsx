@@ -3,6 +3,7 @@ import { TestimonialSection } from "@/components/sections/testimonial-section";
 import { GrowthSection } from "@/components/sections/growth-section";
 import { ProcessSection } from "@/components/sections/process-section";
 import { WorkBentoSection } from "@/components/sections/work-bento-section";
+import { ContactUsSection } from "@/components/sections/contact-us-section";
 
 
 export default function WorkPage() {
@@ -27,9 +28,10 @@ export default function WorkPage() {
        
         </div>
       </section>
-
       <WorkBentoSection count={2} />
+      <ContactUsSection />
 
+      <FooterSection />
       <FooterSection />
     </main>
   );

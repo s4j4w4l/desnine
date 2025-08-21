@@ -443,18 +443,40 @@ export const siteConfig = {
       items: [
       {
         id: 1,
-        content: <FifthBentoAnimation />,
-        title: "Kynex Inc (Smart Solutions)",
+        content: (
+        <div className="relative w-full h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/kynex image.png"   // make sure this is inside /public/work/kynex/
+            alt="Kynex Inc (Smart Solutions)"
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            sizes="100vw"
+            loading="eager"
+          />
+        </div>
+        ),
+        title: "Kynex Inc",
         description: "Branding & Identity",
         href: "https://kynex.com",
 
       },
       {
         id: 2,
-        content: <SixthBentoAnimation />,
+        content: (
+        <div className="relative w-full h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/bolt.png"   // make sure this is inside /public/work/kynex/
+            alt="Bolt"
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            sizes="100vw"
+            loading="eager"
+          />
+        </div>
+        ),
         title: "Bolt",
         description: "Branding & Identity",
-        href: "https://bolt.com",
+        href: "https://bolt1.com",
       },    
       
     ],
