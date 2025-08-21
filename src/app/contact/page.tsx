@@ -6,21 +6,52 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
-import { ContactFromCRM } from "@/components/contactfrom-crm";
 
 export default function ContactPage() {
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState<string | null>(null);
+  // ---- SETTINGS ----
+  const DESTINATION_URL = "https://api.web3forms.com/submit";
+  const ACCESS_KEY = "a3e22b83-6e31-445a-acd0-336cbe81c329"; // your key
+  const REDIRECT_AFTER = "/thank-you"; // set your thank-you route
 
-  async function handleMiniBrief(e: React.FormEvent<HTMLFormElement>) {
+  const [sending, setSending] = useState(false);
+  const [result, setResult] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (sending) return;
     setSending(true);
-    // Fake post; replace with your endpoint if you want this mini-brief active.
-    setTimeout(() => {
-      setSent("Thanks! We’ll get back to you shortly.");
+    setResult("Sending...");
+
+    try {
+      const form = e.currentTarget;
+      const fd = new FormData(form);
+
+      // Web3Forms required key
+      fd.append("access_key", ACCESS_KEY);
+
+      // Nice-to-have email meta
+      if (!fd.get("subject")) fd.append("subject", "New Contact Submission from Desnine");
+      if (!fd.get("from_name")) fd.append("from_name", "Desnine Contact Page");
+
+      // Optional: server-side redirect via Web3Forms
+      fd.append("redirect", REDIRECT_AFTER);
+
+      const res = await fetch(DESTINATION_URL, { method: "POST", body: fd });
+      const data = await res.json();
+
+      if (data.success) {
+        setResult("Form Submitted Successfully");
+        form.reset();
+        // client-side redirect as fallback (in case redirect key is ignored)
+        window.location.href = REDIRECT_AFTER;
+      } else {
+        setResult(data.message ?? "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setResult("Network error. Please try again.");
+    } finally {
       setSending(false);
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+    }
   }
 
   return (
@@ -54,7 +85,7 @@ export default function ContactPage() {
                   Call Us
                 </Button>
               </a>
-              <a href="#crm-form">
+              <a href="#contact-form">
                 <Button className="rounded-full hover:bg-white hover:text-primary">
                   Start Your Project
                 </Button>
@@ -88,53 +119,123 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* MINI BRIEF (optional) */}
-      <section className="px-6 pb-4">
+      {/* FULL CONTACT FORM (captures ALL CRM fields; no embed visible) */}
+      <section id="contact-form" className="w-full px-6 pb-4">
         <div className="mx-auto max-w-3xl">
           <div className="rounded-2xl border border-border bg-card/50 p-6">
             <div className="mb-5 text-center">
               <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-primary">
-                Tell us about your project (optional)
+                Tell us about your project
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Prefer a quick start? Share a few details — or skip to the full form below.
+                Fill in the details below — we’ll follow up right away.
               </p>
             </div>
-            <form onSubmit={handleMiniBrief} className="grid grid-cols-1 gap-4 md:grid-cols-2">
+
+            <form onSubmit={onSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Company Name */}
+                <div className="space-y-2">
+                  <Label htmlFor="companyName">Company Name *</Label>
+                  <Input
+                    id="companyName"
+                    name="companyName"
+                    type="text"
+                    placeholder="Enter your company name"
+                    required
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address *</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Phone */}
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone Number</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+1 (555) 123-4567"
+                  />
+                </div>
+
+                {/* Service Needed */}
+                <div className="space-y-2">
+                  <Label htmlFor="serviceNeeded">Service Needed *</Label>
+                  <select
+                    id="serviceNeeded"
+                    name="serviceNeeded"
+                    required
+                    className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:ring-[3px]"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="seo-optimization">SEO Optimization</option>
+                    <option value="website-design-development">Website Design & Development</option>
+                    <option value="ai-automation-bots">AI Automation & Bots</option>
+                    <option value="smart-analytics">Smart Analytics</option>
+                    <option value="branding-identity">Branding & Identity</option>
+                    <option value="print-packaging-design">Print & Packaging Design</option>
+                    <option value="digital-design">Digital Design</option>
+                    <option value="advertising-design">Advertising Design</option>
+                    <option value="content-creation">Content Creation & Visual Support</option>
+                    <option value="industry-specific-design">Industry-Specific Design</option>
+                    <option value="social-media-management">Social Media Management</option>
+                    <option value="multiple-services">Multiple Services</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Project Details */}
               <div className="space-y-2">
-                <Label htmlFor="mini-company">Company</Label>
-                <Input id="mini-company" name="company" placeholder="Acme Inc." />
+                <Label htmlFor="projectDetails">Tell Us About Your Project *</Label>
+                <Textarea
+                  id="projectDetails"
+                  name="projectDetails"
+                  placeholder="Describe your goals, requirements, timeline, and any specific features you need..."
+                  rows={6}
+                  required
+                  className="min-h-[120px]"
+                />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="mini-email">Email *</Label>
-                <Input id="mini-email" name="email" type="email" placeholder="you@company.com" required />
-              </div>
-              <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="mini-goal">What do you need?</Label>
-                <Textarea id="mini-goal" name="goal" rows={4} placeholder="Brand, website, campaign… brief us here." />
-              </div>
-              <div className="md:col-span-2 flex items-center justify-between gap-3">
-                <p className="text-xs text-muted-foreground">
-                  By submitting, you agree to be contacted about your inquiry.
-                </p>
-                <Button type="submit" disabled={sending} className="rounded-full">
-                  {sending ? "Sending…" : "Send quick brief"}
+
+              {/* Hidden extras for Web3Forms */}
+              <input type="hidden" name="subject" value="New Contact Submission from Desnine" />
+              <input type="hidden" name="from_name" value="Desnine Contact Page" />
+              {/* redirect is also appended in code, but adding here is fine too */}
+              <input type="hidden" name="redirect" value={REDIRECT_AFTER} />
+
+              <div className="pt-2">
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={sending}
+                  className="w-full rounded-full hover:bg-white hover:text-primary border border-white/10"
+                >
+                  {sending ? "Sending..." : "Send Message"}
                 </Button>
+                {result && (
+                  <p className="mt-4 text-center text-sm">{result}</p>
+                )}
               </div>
             </form>
-            {sent && <p className="mt-3 text-center text-sm text-primary">{sent}</p>}
           </div>
         </div>
       </section>
 
-      {/* FULL CRM FORM (your component) */}
-      <section id="crm-form" className="px-6 py-8">
-        <div className="mx-auto max-w-5xl">
-          <ContactFromCRM />
-        </div>
-      </section>
-
-      {/* FAQ (CSS-only; no extra libs) */}
+      {/* FAQ */}
       <section className="px-6 pb-12">
         <div className="mx-auto max-w-3xl">
           <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-primary text-center">
@@ -147,8 +248,7 @@ export default function ContactPage() {
                 <span className="ml-4 transition-transform duration-300 group-open:rotate-45">+</span>
               </summary>
               <p className="mt-3 text-sm text-muted-foreground">
-                Branding & identity, web design & development, design systems, packaging,
-                and ongoing creative support. We also partner on content and production.
+                Branding & identity, web design & development, design systems, packaging, and ongoing creative support.
               </p>
             </details>
             <details className="group p-5">
@@ -157,8 +257,7 @@ export default function ContactPage() {
                 <span className="ml-4 transition-transform duration-300 group-open:rotate-45">+</span>
               </summary>
               <p className="mt-3 text-sm text-muted-foreground">
-                Small engagements can be 2–4 weeks. Brand + site builds are commonly 6–12 weeks,
-                depending on scope and content readiness.
+                Small engagements can be 2–4 weeks. Brand + site builds are commonly 6–12 weeks, depending on scope and content readiness.
               </p>
             </details>
             <details className="group p-5">
@@ -187,9 +286,9 @@ export default function ContactPage() {
             Share your goals — we’ll propose the sharpest path from idea to launch.
           </p>
           <div className="mt-6 flex justify-center">
-            <a href="/contact">
+            <a href="#contact-form" className="inline-block">
               <Button className="rounded-full px-8 py-3 hover:bg-white hover:text-primary">
-                Talk to the team
+                Send Message
               </Button>
             </a>
           </div>
