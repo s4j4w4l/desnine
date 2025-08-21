@@ -432,6 +432,36 @@ export const siteConfig = {
       },
     ],
   },
+
+
+  workbentoSection: {
+    title: "",
+    description:
+      /*"Design that feels RIGHT, WORKS HARD, and STANDS OUT."*/
+      /*"It's not just words. It's the results that speak. Services we offer are designed to elevate your brand, streamline your operations, and enhance your digital presence. From branding to web development, we’ve got you covered."*/
+      "",
+      items: [
+      {
+        id: 1,
+        content: <FifthBentoAnimation />,
+        title: "Kynex Inc (Smart Solutions)",
+        description: "Branding & Identity",
+        href: "https://kynex.com",
+
+      },
+      {
+        id: 2,
+        content: <SixthBentoAnimation />,
+        title: "Bolt",
+        description: "Branding & Identity",
+        href: "https://bolt.com",
+      },    
+      
+    ],
+  },
+
+
+
   benefits: [
     {
       id: 1,

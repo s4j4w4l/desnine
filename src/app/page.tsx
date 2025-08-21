@@ -22,7 +22,7 @@ export default function Home() {
       {/* <ContactSection /> */}
       {/* <ScrollTextAnimation /> */}
       {/* Top filler for scrolling */}
-       <TextReveal>Are you ready to stand out?</TextReveal>
+       <TextReveal>So, are you ready to stand out?</TextReveal>
        
 
 
