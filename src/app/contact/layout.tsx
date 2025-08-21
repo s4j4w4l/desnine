@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     "branding and packaging design experts",
   ],
   
+  
   openGraph: {
     title: "Contact Desnine - Creative Direction for Modern Brands",
     description: "Book your free consultation with Desnine Studio. Specializing in branding, design, automation & digital strategy for modern, forward-thinking brands.",
