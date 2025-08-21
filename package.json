@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel-build": "npm install --ignore-scripts && npm run build"
   },
   "dependencies": {
     "@number-flow/react": "^0.5.7",
@@ -48,8 +49,5 @@
     "tailwindcss": "^4",
     "tw-animate-css": "^1.2.4",
     "typescript": "^5"
-  },
-  "overrides": {
-    "odbc": "0.0.0"
   }
 }
