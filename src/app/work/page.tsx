@@ -32,7 +32,6 @@ export default function WorkPage() {
       <ContactUsSection />
 
       <FooterSection />
-      <FooterSection />
     </main>
   );
 }
