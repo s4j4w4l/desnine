@@ -1,4 +1,5 @@
 import { BentoSection } from "@/components/sections/bento-section";
+import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import { HeroSection } from "@/components/sections/hero-section";
 import { ServiceHeroSection } from "@/components/sections/service-hero-section";
@@ -39,6 +40,8 @@ export default function ServicePage() {
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
       <ServiceHeroSection />
       <BentoSection />
+      <ContactUsSection />
+      
       <FooterSection />
 
     </main>
