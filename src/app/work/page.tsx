@@ -28,7 +28,7 @@ export default function WorkPage() {
        
         </div>
       </section>
-      <WorkBentoSection count={4} />
+      <WorkBentoSection count={2} />
       <ContactUsSection />
 
       <FooterSection />
