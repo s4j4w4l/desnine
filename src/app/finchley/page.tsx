@@ -150,7 +150,7 @@ export default function ServicePage() {
 
       <section className="w-full space-y-8 px-6 md:px-12 mb-12">
         <Banner src="/Finchley/Frame 89.png" alt="" />
-        <Banner src="/Finchley/Frame 86.png" alt="" />
+        <Banner src="/Finchley/Frame 79.png" alt="" />
         <Banner src="/Finchley/Frame 75.png" alt="" />
         <Banner src="/Finchley/Frame 74.png" alt="" />
         <Banner src="/Finchley/Frame 86.png" alt="" />
