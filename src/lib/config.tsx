@@ -350,7 +350,7 @@ export const siteConfig = {
     title: "",
     description:
       /*"Design that feels RIGHT, WORKS HARD, and STANDS OUT."*/
-      "It's not just words. It's the results that speak. Services we offer are designed to elevate your brand, streamline your operations, and enhance your digital presence. From branding to web development, we’ve got you covered.",
+      "We elevate your brand, streamline your business, and enhance your digital presence, all in one place.",
     items: [
       {
         id: 1,

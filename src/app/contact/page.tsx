@@ -171,7 +171,7 @@ export default function ContactPage() {
       </section>
 
       {/* TRUST / USPs */}
-      <section className="px-6 py-10">
+      {/* <section className="px-6 py-10">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
           <div className="rounded-xl border border-border bg-card/40 p-5">
             <h3 className="text-sm font-semibold tracking-tight">Design that performs</h3>
@@ -192,7 +192,7 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CONTACT FORM */}
       <section id="contact-form" className="w-full px-6 pb-4">
@@ -289,7 +289,7 @@ export default function ContactPage() {
                     className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border bg-background px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] md:text-sm focus-visible:ring-[3px]"
                   >
                     <option value="">Select a range</option>
-                    <option value="$2k–$5k">$2k–$5k</option>
+                    <option value="$3k–$5k">$3k–$5k</option>
                     <option value="$5k–$10k">$5k–$10k</option>
                     <option value="$10k+">$10k+</option>
                   </select>
