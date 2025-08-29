@@ -20,7 +20,7 @@ export default function WorkPage() {
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
             <span className="font-bold">Creative that connects. Design that delivers.</span>
             <br />
-            We don’t just design — we build visual stories that move people and grow brands.
+            We don’t just design, we build visual stories that move people and grow brands.
             Each project below reflects our commitment to clarity, impact, and craft.
           </p>
         </div>
