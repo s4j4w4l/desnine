@@ -31,8 +31,8 @@ export default function PrivacyPolicyPage() {
               provide us with information about yourself, you trust us to act in a responsible manner with that information.
             </p>
 
-            {/* Badges: always one row */}
-            <div className="mt-2 mb-6 flex flex-nowrap gap-2 overflow-x-auto">
+            {/* Badges: single-row, no visible scrollbar */}
+            <div className="mt-2 mb-6 flex flex-nowrap gap-2 overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <span className="shrink-0 whitespace-nowrap inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5">
                 GDPR-Friendly
               </span>
