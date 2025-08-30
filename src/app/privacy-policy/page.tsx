@@ -26,21 +26,20 @@ export default function PrivacyPolicyPage() {
             </h1>
 
             <p className="text-base md:text-lg text-muted-foreground mb-6">
-              This website is operated by  <span className="font-medium">Desnine Studio</span> (“we”, “us”, “our”). We collects, uses, and
-              protects your information when you use our website, products, or
-              services (the “Service”). We respect the privacy of users of our website and recognise that when you choose to
-              provide us with information about yourself, you trust us to act in a responsible
-              manner with that information.
+              This website is operated by <span className="font-medium">Desnine Studio</span> (“we”, “us”, “our”). We collects, uses, and
+              protects your information when you use our website, products, or services (the “Service”). We respect the privacy of users of our website and recognise that when you choose to
+              provide us with information about yourself, you trust us to act in a responsible manner with that information.
             </p>
 
-            <div className="mt-2 flex flex-wrap gap-2 mb-6">
-              <span className="inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5">
+            {/* Badges: always one row */}
+            <div className="mt-2 mb-6 flex flex-nowrap gap-2 overflow-x-auto">
+              <span className="shrink-0 whitespace-nowrap inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5">
                 GDPR-Friendly
               </span>
-              <span className="inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5">
+              <span className="shrink-0 whitespace-nowrap inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5">
                 CCPA-Aware
               </span>
-              <span className="inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5">
+              <span className="shrink-0 whitespace-nowrap inline-flex items-center gap-1 text-xs md:text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5">
                 Cookie Controls
               </span>
             </div>
@@ -56,8 +55,6 @@ export default function PrivacyPolicyPage() {
       <div className="px-6 md:px-12 pb-20">
         <div className="max-w-4xl mx-auto">
           <article className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl shadow-lg p-6 md:p-10 prose prose-invert max-w-none">
-            
-
             {/* Disclaimer inside this block */}
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
               By using the Service, you agree to this Privacy Policy. If you do not agree, please
@@ -325,14 +322,15 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl md:text-3xl font-semibold mt-10 mb-4">
               13. Contact Us
             </h2>
-              <p className="text-muted-foreground mb-6">
-              If you wish to exercise any of your rights in relation to your personal information or 
-              if you have any queries about how we use your personal information, please let us know 
-              by contacting us at the following address: <a className="underline" href="mailto:info@desnine.com">
-                  info@desnine.com
-                </a>{" "}
+            <p className="text-muted-foreground mb-6">
+              If you wish to exercise any of your rights in relation to your personal information or
+              if you have any queries about how we use your personal information, please let us know
+              by contacting us at the following address:{" "}
+              <a className="underline" href="mailto:info@desnine.com">
+                info@desnine.com
+              </a>
+              .
             </p>
-              
           </article>
         </div>
       </div>
