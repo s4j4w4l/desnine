@@ -37,6 +37,7 @@ function AccordionItem({
         <span className="text-sm font-medium">{question}</span>
         <span
           className={`ml-4 transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+          aria-hidden="true"
         >
           +
         </span>
@@ -101,43 +102,38 @@ export default function ContactPage() {
   // FAQ data + single-open state
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const faqs = [
-    {
-      q: "What services do you offer?",
-      a: "Our Studio offers branding & identity, web design & development, design systems, packaging, and ongoing creative support. We also partner on content and production.",
-    },
-    {
-      q: "How does your branding process work?",
-      a: "We start with a discovery phase to understand your business and audience, followed by research, concept development, design refinement, and final asset delivery.",
-    },
-    {
-      q: "What is the typical project timeline?",
-      a: "Timelines vary by project scope, but a full branding engagement typically takes 4–6 weeks from kickoff to final deliverables.",
-    },
-    {
-      q: "How much does branding cost?",
-      a: "Our pricing is customized based on project scope and deliverables. Brand packages start at $3,000. Contact us for a detailed quote tailored to your needs.",
-    },
-    {
-      q: "Do you offer logo design only?",
-      a: "Yes, we can create a standalone logo, but we recommend a comprehensive visual identity system for consistent application across all touchpoints.",
-    },
-    {
-      q: "Will I receive brand guidelines?",
-      a: "Every project includes a detailed brand guidelines document covering logo usage, typography, color palette, and tone of voice.",
-    },
-    {
-      q: "How do you measure the success of branding?",
-      a: "We track metrics like brand awareness, website traffic, social engagement, and customer perception to evaluate the impact of our branding efforts.",
-    },
+    { q: "What services do you offer?", a: "Our Studio offers branding & identity, web design & development, design systems, packaging, and ongoing creative support. We also partner on content and production." },
+    { q: "How does your branding process work?", a: "We start with a discovery phase to understand your business and audience, followed by research, concept development, design refinement, and final asset delivery." },
+    { q: "What is the typical project timeline?", a: "Timelines vary by project scope, but a full branding engagement typically takes 4–6 weeks from kickoff to final deliverables." },
+    { q: "How much does branding cost?", a: "Our pricing is customized based on project scope and deliverables. Brand packages start at $3,000. Contact us for a detailed quote tailored to your needs." },
+    { q: "Do you offer logo design only?", a: "Yes, we can create a standalone logo, but we recommend a comprehensive visual identity system for consistent application across touchpoints." },
+    { q: "Will I receive brand guidelines?", a: "Every project includes a detailed brand guidelines document covering logo usage, typography, color palette, and tone of voice." },
+    { q: "How do you measure the success of branding?", a: "We track metrics like brand awareness, website traffic, social engagement, and customer perception to evaluate the impact of our branding efforts." },
   ];
 
   return (
-    <main className="flex flex-col min-h-screen w-full">
+    <main
+      className={`
+        relative isolate flex flex-col min-h-screen w-full
+
+        /* Background lives on <main>, covers the very top, and moves with scroll */
+        bg-[radial-gradient(1200px_800px_at_50%_-160px,rgba(255,255,255,0.09),transparent_70%),linear-gradient(to_bottom,var(--secondary)_0%,var(--background)_40%)]
+        bg-top bg-no-repeat bg-repeat-y
+
+        /* If your navbar is fixed, pull the background behind it and offset content */
+        -mt-16 pt-16 md:-mt-20 md:pt-20
+
+        /* Remove any accidental spacing that could create a gap */
+        m-0
+      `}
+    >
+      {/* 1px shim to defeat subpixel AA seams under some GPUs */}
+      <div aria-hidden className="-mt-px h-px w-full bg-transparent" />
+
       {/* HERO */}
       <section className="relative w-full">
-        <div className="absolute inset-0 -z-10 h-[420px] w-full rounded-b-2xl [background:radial-gradient(120%_120%_at_50%_0%,var(--background)_35%,var(--secondary)_100%)]" />
         <div className="px-6">
-          <div className="mx-auto max-w-4xl pt-28 pb-16 text-center">
+          <div className="mx-auto max-w-4xl pt-10 md:pt-14 pb-16 text-center">
             <span className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-border bg-accent/40 px-3 py-1 text-xs font-medium">
               <span className="inline-block size-1.5 rounded-full bg-primary" />
               Get in touch
@@ -170,30 +166,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* TRUST / USPs */}
-      {/* <section className="px-6 py-10">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
-          <div className="rounded-xl border border-border bg-card/40 p-5">
-            <h3 className="text-sm font-semibold tracking-tight">Design that performs</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Clear creative systems that drive brand recognition and measurable results.
-            </p>
-          </div>
-          <div className="rounded-xl border border-border bg-card/40 p-5">
-            <h3 className="text-sm font-semibold tracking-tight">Web that converts</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              User-focused websites crafted for seamless speed, visual clarity, and measurable results.
-            </p>
-          </div>
-          <div className="rounded-xl border border-border bg-card/40 p-5">
-            <h3 className="text-sm font-semibold tracking-tight">Partnership, not handoffs</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Our partnership extends from planning and execution to long-term success.
-            </p>
-          </div>
-        </div>
-      </section> */}
-
       {/* CONTACT FORM */}
       <section id="contact-form" className="w-full px-6 pb-4">
         <div className="mx-auto max-w-3xl">
@@ -212,36 +184,19 @@ export default function ContactPage() {
                 {/* Full Name */}
                 <div className="space-y-2">
                   <Label htmlFor="fullName">Full Name *</Label>
-                  <Input
-                    id="fullName"
-                    name="fullName"
-                    type="text"
-                    placeholder="Enter your full name"
-                    required
-                  />
+                  <Input id="fullName" name="fullName" type="text" placeholder="Enter your full name" required />
                 </div>
 
                 {/* Company Name */}
                 <div className="space-y-2">
                   <Label htmlFor="companyName">Company Name</Label>
-                  <Input
-                    id="companyName"
-                    name="companyName"
-                    type="text"
-                    placeholder="Enter your company name"
-                  />
+                  <Input id="companyName" name="companyName" type="text" placeholder="Enter your company name" />
                 </div>
 
                 {/* Email */}
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address *</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    required
-                  />
+                  <Input id="email" name="email" type="email" placeholder="your@email.com" required />
                 </div>
               </div>
 
@@ -334,13 +289,12 @@ export default function ContactPage() {
                   {sending ? "Sending..." : "Send Message"}
                 </Button>
 
-                {result && (
-                  <p className="mt-4 text-center text-sm">{result}</p>
-                )}
+                {result && <p className="mt-4 text-center text-sm">{result}</p>}
 
                 {/* Disclaimer with small space */}
                 <p className="mt-2 text-xs text-center text-muted-foreground leading-relaxed">
-                  By submitting this form, you consent to Desnine storing your information to respond to your inquiry.
+                  By submitting this form, you consent to Desnine storing your information to respond to
+                  your inquiry.
                 </p>
               </div>
             </form>
