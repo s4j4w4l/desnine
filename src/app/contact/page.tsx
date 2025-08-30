@@ -142,7 +142,7 @@ export default function ContactPage() {
             <h1 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tighter text-primary">
               Let’s Build Something Remarkable
             </h1>
-            <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed tracking-tight text-balance">
+            <p className="mt-4 text-base md:text-lg leading-relaxed tracking-tight text-balance">
               Have a bold idea or need ongoing creative support? Desnine is a creative studio
               crafting brands, websites, and visual systems that connect and convert.
             </p>
