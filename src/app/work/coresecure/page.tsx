@@ -133,15 +133,9 @@ export default function ServicePage() {
               The Project Summary :
             </h2>
             <p className="text-base leading-relaxed text-justify">
-              Quixel’s corporate identity was designed to encapsulate the essence of innovation and realism that defines its approach to 3D assets. 
-              The identity integrates three core elements: a stylized globe, the letter Q, and a digital mesh motif. 
-              Together, these elements symbolize the brand’s commitment to blending creativity with cutting-edge technology, offering creators high-quality solutions.
+              Core Secure is dedicated to leading the integration of Web3 infrastructure into corporate operations, with a vision built on collaboration, security, transparency, and simplicity. Its visual identity embraces a youthful, tech-savvy, and minimal design inspired by the structured nature of blockchain. The geometric symbol reflects reliability and innovation, while Aeonik’s geometric typeface conveys forward thinking stability. A bold blue palette reinforces trust and professionalism, positioning Core Secure as a distinctive and trustworthy presence in the Web3 landscape.
             </p>
-            <p className="text-base leading-relaxed text-justify">
-              The system was built on a modular grid, enhancing depth, precision, and sophistication. A vibrant orange palette conveys energy, creativity, 
-              and forward-thinking, while Helvetica Now provides a modern, cohesive typographic foundation. This identity not only reflects Quixel’s mission 
-              to empower artists but also strengthens its global presence in the 3D design landscape.
-            </p>
+            
           </div>
 
           <div className="flex flex-col gap-10">
@@ -156,7 +150,7 @@ export default function ServicePage() {
                 Category
               </h3>
               <p className="text-base leading-relaxed">
-                Technology &amp; Empowerment
+                Technology &amp; Security, Innovation, Reliability, Collaboration, Transparency, Professionalism &amp; Trust
               </p>
             </div>
           </div>
