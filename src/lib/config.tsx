@@ -505,17 +505,17 @@ export const siteConfig = {
         <div className="relative w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/Finchley/Frame 92.png"   // make sure this is inside /public/work/kynex/
-            alt="Finchley"
+            src="/Mavo/5620db213698209.6757693cba376.jpg"   // make sure this is inside /public/work/kynex/
+            alt="Mavo"
             style={{ objectFit: "cover", width: "100%", height: "100%" }}
             sizes="100vw"
             loading="eager"
           />
         </div>
         ),
-        title: "Finchley",
+        title: "Mavo",
         description: "Branding & Identity",
-        href: "/work/finchley",
+        href: "/work/mavo",
 
       },
       
