@@ -142,17 +142,30 @@ export function FooterSection() {
 function NewsletterMini() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
+  const [err, setErr] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
+    setMsg(null);
+    setErr(null);
+
     try {
-      await fetch("/api/newsletter", {
+      const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.ok) throw new Error(data.error || "Failed to subscribe");
+
+      setMsg("✅ Thanks! You’re on the list.");
       setEmail("");
+    } catch (error: any) {
+      setErr("❌ " + error.message);
     } finally {
       setLoading(false);
     }

@@ -43,11 +43,9 @@ function AccordionItem({
         </span>
       </button>
 
-      {/* Animated container: 0fr -> 1fr for height, with fade/slide */}
       <div
-        className={`grid transition-all duration-300 ease-out ${
-          open ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0 mt-0"
-        }`}
+        className={`grid transition-all duration-300 ease-out ${open ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0 mt-0"
+          }`}
       >
         <div className="overflow-hidden">
           <p className="text-sm text-muted-foreground">{answer}</p>
@@ -58,10 +56,6 @@ function AccordionItem({
 }
 
 export default function ContactPage() {
-  // ---- SETTINGS ----
-  const DESTINATION_URL = "https://api.web3forms.com/submit";
-  const ACCESS_KEY = "a3e22b83-6e31-445a-acd0-336cbe81c329"; // your key
-  const REDIRECT_AFTER = "/thank-you";
 
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<string | null>(null);
@@ -69,35 +63,52 @@ export default function ContactPage() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (sending) return;
-    setSending(true);
-    setResult("Sending...");
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    const payload = {
+      fullName: String(fd.get("fullName") || ""),
+      companyName: String(fd.get("companyName") || ""),
+      email: String(fd.get("email") || ""),
+      phone: String(fd.get("phone") || ""),
+      serviceNeeded: String(fd.get("serviceNeeded") || ""),
+      budget: String(fd.get("budget") || ""),
+      projectDetails: String(fd.get("projectDetails") || ""),
+      timeline: String(fd.get("timeline") || ""),
+    };
+
+    if (!payload.fullName || !payload.email || !payload.serviceNeeded || !payload.projectDetails) {
+      setResult("Please fill all required fields.");
+      return;
+    }
 
     try {
-      const form = e.currentTarget;
-      const fd = new FormData(form);
+      setSending(true);
+      setResult("Sending...");
 
-      // Web3Forms required & meta
-      fd.append("access_key", ACCESS_KEY);
-      if (!fd.get("subject")) fd.append("subject", "New Contact Submission from Desnine");
-      if (!fd.get("from_name")) fd.append("from_name", "Desnine Contact Page");
-      fd.append("redirect", REDIRECT_AFTER);
+      const res = await fetch("/api/clients", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-      const res = await fetch(DESTINATION_URL, { method: "POST", body: fd });
       const data = await res.json();
 
-      if (data.success) {
-        setResult("Form Submitted Successfully");
-        form.reset();
-        window.location.href = REDIRECT_AFTER;
-      } else {
-        setResult(data.message ?? "Something went wrong. Please try again.");
+      if (!res.ok || !data?.ok) {
+        setResult(data?.message ?? "Something went wrong. Please try again.");
+        return;
       }
+
+      setResult("Form submitted successfully!");
+      form.reset(); // clears the inputs
     } catch {
       setResult("Network error. Please try again.");
     } finally {
       setSending(false);
     }
   }
+
 
   // FAQ data + single-open state
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -206,19 +217,19 @@ export default function ContactPage() {
                     className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border bg-background px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:ring-[3px]"
                   >
                     <option value="">Select a service</option>
-                    <option value="seo-optimization">SEO Optimization</option>
-                    <option value="website-design-development">Website Design & Development</option>
-                    <option value="ai-automation-bots">AI Automation & Bots</option>
-                    <option value="smart-analytics">Smart Analytics</option>
-                    <option value="branding-identity">Branding & Identity</option>
-                    <option value="print-packaging-design">Print & Packaging Design</option>
-                    <option value="digital-design">Digital Design</option>
-                    <option value="advertising-design">Advertising Design</option>
-                    <option value="content-creation">Content Creation & Visual Support</option>
-                    <option value="industry-specific-design">Industry-Specific Design</option>
-                    <option value="social-media-management">Social Media Management</option>
-                    <option value="multiple-services">Multiple Services</option>
-                    <option value="other">Other</option>
+                    <option value="SEO Optimization">SEO Optimization</option>
+                    <option value="Website Design & Development">Website Design & Development</option>
+                    <option value="AI Automation & Bots">AI Automation & Bots</option>
+                    <option value="Smart Analytics">Smart Analytics</option>
+                    <option value="Branding & Identity">Branding & Identity</option>
+                    <option value="Print & Packaging Design">Print & Packaging Design</option>
+                    <option value="Digital Design">Digital Design</option>
+                    <option value="Advertising Design">Advertising Design</option>
+                    <option value="Content Creation & Visual Support">Content Creation & Visual Support</option>
+                    <option value="Industry-Specific Design">Industry-Specific Design</option>
+                    <option value="Social Media Management">Social Media Management</option>
+                    <option value="Multiple Services">Multiple Services</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
               </div>
@@ -280,7 +291,6 @@ export default function ContactPage() {
 
                 {result && <p className="mt-4 text-center text-sm">{result}</p>}
 
-                {/* Disclaimer with small space */}
                 <p className="mt-2 text-xs text-center text-muted-foreground leading-relaxed">
                   By submitting this form, you consent to Desnine storing your information to respond to
                   your inquiry.
