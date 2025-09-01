@@ -446,6 +446,25 @@ export const siteConfig = {
         <div className="relative w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            src="/Quixel/66ca32212225893.6757693b01009.png"  
+            alt="Quixel"
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            sizes="100vw"
+            loading="eager"
+          />
+        </div>
+        ),
+        title: "Quixel",
+        description: "Branding & Identity",
+        href: "/work/quixel",
+
+      },
+        {
+        id: 2,
+        content: (
+        <div className="relative w-full h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/Finchley/Frame 92.png"   // make sure this is inside /public/work/kynex/
             alt="Finchley"
             style={{ objectFit: "cover", width: "100%", height: "100%" }}
@@ -456,11 +475,11 @@ export const siteConfig = {
         ),
         title: "Finchley",
         description: "Branding & Identity",
-        href: "https://www.desnine.com/finchley",
+        href: "/work/finchley",
 
       },
       {
-        id: 2,
+        id: 3,
         content: (
         <div className="relative w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -478,44 +497,25 @@ export const siteConfig = {
         href: "https://kynex.com",
 
       },
-      //   {
-      //   id: 3,
-      //   content: (
-      //   <div className="relative w-full h-full">
-      //     {/* eslint-disable-next-line @next/next/no-img-element */}
-      //     <img
-      //       src="/kynex image.png"   // make sure this is inside /public/work/kynex/
-      //       alt="Kynex Inc (Smart Solutions)"
-      //       style={{ objectFit: "cover", width: "100%", height: "100%" }}
-      //       sizes="100vw"
-      //       loading="eager"
-      //     />
-      //   </div>
-      //   ),
-      //   title: "Kynex Inc",
-      //   description: "Branding & Identity",
-      //   href: "https://kynex.com",
+        {
+        id: 4,
+        content: (
+        <div className="relative w-full h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/kynex image.png"   // make sure this is inside /public/work/kynex/
+            alt="Kynex Inc (Smart Solutions)"
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            sizes="100vw"
+            loading="eager"
+          />
+        </div>
+        ),
+        title: "Kynex Inc",
+        description: "Branding & Identity",
+        href: "https://kynex.com",
 
-      // },
-      // {
-      //   id: 4,
-      //   content: (
-      //   <div className="relative w-full h-full">
-      //     {/* eslint-disable-next-line @next/next/no-img-element */}
-      //     <img
-      //       src="/bolt.png"   // make sure this is inside /public/work/kynex/
-      //       alt="Bolt"
-      //       style={{ objectFit: "cover", width: "100%", height: "100%" }}
-      //       sizes="100vw"
-      //       loading="eager"
-      //     />
-      //   </div>
-      //   ),
-      //   title: "Bolt",
-      //   description: "Branding & Identity",
-      //   href: "https://bolt1.com",
-      // },    
-      
+      },
     ],
   },
 

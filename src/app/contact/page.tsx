@@ -114,22 +114,11 @@ export default function ContactPage() {
   return (
     <main
       className={`
-        relative isolate flex flex-col min-h-screen w-full
-
-        /* Background lives on <main>, covers the very top, and moves with scroll */
-        bg-[radial-gradient(1200px_800px_at_50%_-160px,rgba(255,255,255,0.09),transparent_70%),linear-gradient(to_bottom,var(--secondary)_0%,var(--background)_40%)]
-        bg-top bg-no-repeat bg-repeat-y
-
-        /* If your navbar is fixed, pull the background behind it and offset content */
-        -mt-16 pt-16 md:-mt-20 md:pt-20
-
-        /* Remove any accidental spacing that could create a gap */
-        m-0
+        relative flex flex-col min-h-screen w-full m-0
+        bg-background
+        pt-16 md:pt-20
       `}
     >
-      {/* 1px shim to defeat subpixel AA seams under some GPUs */}
-      <div aria-hidden className="-mt-px h-px w-full bg-transparent" />
-
       {/* HERO */}
       <section className="relative w-full">
         <div className="px-6">
