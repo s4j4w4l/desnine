@@ -440,8 +440,28 @@ export const siteConfig = {
       /*"It's not just words. It's the results that speak. Services we offer are designed to elevate your brand, streamline your operations, and enhance your digital presence. From branding to web development, we’ve got you covered."*/
       "",
       items: [
+
       {
         id: 1,
+        content: (
+        <div className="relative w-full h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/Coresecure/c84778211607369.67576a9fb7366.png"  
+            alt="coresecure"
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            sizes="100vw"
+            loading="eager"
+          />
+        </div>
+        ),
+        title: "Core Secure",
+        description: "Branding & Identity",
+        href: "/work/coresecure",
+
+      },
+      {
+        id: 2,
         content: (
         <div className="relative w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -460,7 +480,7 @@ export const siteConfig = {
 
       },
         {
-        id: 2,
+        id: 3,
         content: (
         <div className="relative w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -479,25 +499,6 @@ export const siteConfig = {
 
       },
       {
-        id: 3,
-        content: (
-        <div className="relative w-full h-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/kynex image.png"   // make sure this is inside /public/work/kynex/
-            alt="Kynex Inc (Smart Solutions)"
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            sizes="100vw"
-            loading="eager"
-          />
-        </div>
-        ),
-        title: "Kynex Inc",
-        description: "Branding & Identity",
-        href: "https://kynex.com",
-
-      },
-        {
         id: 4,
         content: (
         <div className="relative w-full h-full">
@@ -516,6 +517,7 @@ export const siteConfig = {
         href: "https://kynex.com",
 
       },
+        
     ],
   },
 
