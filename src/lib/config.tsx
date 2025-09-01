@@ -440,9 +440,28 @@ export const siteConfig = {
       /*"It's not just words. It's the results that speak. Services we offer are designed to elevate your brand, streamline your operations, and enhance your digital presence. From branding to web development, we’ve got you covered."*/
       "",
       items: [
-
       {
         id: 1,
+        content: (
+        <div className="relative w-full h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/Greenly/5fc68c214303945.67576a30c7901.png"  
+            alt="Greenly"
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            sizes="100vw"
+            loading="eager"
+          />
+        </div>
+        ),
+        title: "Greenly",
+        description: "Branding & Identity",
+        href: "/work/greenly",
+
+      },
+
+      {
+        id: 2,
         content: (
         <div className="relative w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -461,7 +480,7 @@ export const siteConfig = {
 
       },
       {
-        id: 2,
+        id: 3,
         content: (
         <div className="relative w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -479,8 +498,9 @@ export const siteConfig = {
         href: "/work/quixel",
 
       },
+
         {
-        id: 3,
+        id: 4,
         content: (
         <div className="relative w-full h-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -498,25 +518,7 @@ export const siteConfig = {
         href: "/work/finchley",
 
       },
-      {
-        id: 4,
-        content: (
-        <div className="relative w-full h-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/kynex image.png"   // make sure this is inside /public/work/kynex/
-            alt="Kynex Inc (Smart Solutions)"
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            sizes="100vw"
-            loading="eager"
-          />
-        </div>
-        ),
-        title: "Kynex Inc",
-        description: "Branding & Identity",
-        href: "https://kynex.com",
-
-      },
+      
         
     ],
   },
