@@ -49,7 +49,8 @@ export const siteConfig = {
     "Time Management",
   ],
   links: {
-    email: "support@calai.app",
+    email: "info@desnine.com",
+    linkedin: "https://www.linkedin.com/company/calaiapp",
     twitter: "https://twitter.com/calaiapp",
     discord: "https://discord.gg/calaiapp",
     github: "https://github.com/calaiapp",
