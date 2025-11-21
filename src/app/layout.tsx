@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 // Structured data for SEO
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "DigitalMarketingAgency",
+  "@type": "GraphicDesignAgency",
   "name": "Desnine",
   "description": "AI-powered digital marketing and design agency specializing in SEO optimization, website design & development, AI automation, and branding services.",
   "url": "https://desnine.com",

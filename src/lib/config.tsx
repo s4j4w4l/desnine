@@ -61,7 +61,6 @@ export const siteConfig = {
       { id: 1, name: "Home", href: "/" },
       { id: 2, name: "Services", href: "/services" },
       { id: 3, name: "Our Work", href: "/work" },
-      { id: 4, name: "Why Us?", href: "/testimonial" },
     ],
   },
   hero: {

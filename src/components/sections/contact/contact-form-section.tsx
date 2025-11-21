@@ -23,9 +23,9 @@ export function ContactFormSection() {
       email: String(fd.get("email") || ""),
       phone: String(fd.get("phone") || ""),
       serviceNeeded: String(fd.get("serviceNeeded") || ""),
-      budget: String(fd.get("budget") || ""),
-      projectDetails: String(fd.get("projectDetails") || ""),
+      budget: String(fd.get("budget") || ""), // <-- STILL INCLUDED
       timeline: String(fd.get("timeline") || ""),
+      projectDetails: String(fd.get("projectDetails") || ""),
     };
 
     if (!payload.fullName || !payload.email || !payload.serviceNeeded || !payload.projectDetails) {
@@ -76,7 +76,7 @@ export function ContactFormSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="fullName">Full Name *</Label>
-                <Input id="fullName" name="fullName" type="text" placeholder="Enter your full name" required />
+                <Input id="fullName" name="fullName" type="text" required placeholder="Enter your full name" />
               </div>
 
               <div className="space-y-2">
@@ -86,7 +86,7 @@ export function ContactFormSection() {
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address *</Label>
-                <Input id="email" name="email" type="email" placeholder="your@email.com" required />
+                <Input id="email" name="email" type="email" required placeholder="your@email.com" />
               </div>
             </div>
 
@@ -102,7 +102,7 @@ export function ContactFormSection() {
                   id="serviceNeeded"
                   name="serviceNeeded"
                   required
-                  className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border bg-background px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:ring-[3px]"
+                  className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 flex h-9 w-full rounded-md border bg-background px-3 py-1 text-base shadow-xs md:text-sm"
                 >
                   <option value="">Select a service</option>
                   <option value="SEO Optimization">SEO Optimization</option>
@@ -122,35 +122,34 @@ export function ContactFormSection() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label htmlFor="budget">Estimated Budget (optional)</Label>
-                <select
-                  id="budget"
-                  name="budget"
-                  className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border bg-background px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] md:text-sm focus-visible:ring-[3px]"
-                >
-                  <option value="">Select a range</option>
-                  <option value="$3k–$5k">$3k–$5k</option>
-                  <option value="$5k–$10k">$5k–$10k</option>
-                  <option value="$10k+">$10k+</option>
-                </select>
-              </div>
+            {/* 🔥 Hidden Budget Field (still works, still submits) */}
+            <div className="hidden" aria-hidden="true">
+              <Label htmlFor="budget">Estimated Budget (optional)</Label>
+              <select
+                id="budget"
+                name="budget"
+                className="border-input flex h-9 w-full rounded-md border bg-background px-3 py-1 text-base shadow-xs md:text-sm"
+              >
+                <option value="">Select a range</option>
+                <option value="$3k–$5k">$3k–$5k</option>
+                <option value="$5k–$10k">$5k–$10k</option>
+                <option value="$10k+">$10k+</option>
+              </select>
+            </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="timeline">Ideal Timeline (optional)</Label>
-                <select
-                  id="timeline"
-                  name="timeline"
-                  className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border bg-background px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] md:text-sm focus-visible:ring-[3px]"
-                >
-                  <option value="">Select a window</option>
-                  <option value="ASAP">ASAP</option>
-                  <option value="2–4 weeks">2–4 weeks</option>
-                  <option value="4–8 weeks">4–8 weeks</option>
-                  <option value="Flexible">Flexible</option>
-                </select>
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="timeline">Ideal Timeline (optional)</Label>
+              <select
+                id="timeline"
+                name="timeline"
+                className="border-input flex h-9 w-full rounded-md border bg-background px-3 py-1 text-base shadow-xs md:text-sm"
+              >
+                <option value="">Select a window</option>
+                <option value="ASAP">ASAP</option>
+                <option value="2–4 weeks">2–4 weeks</option>
+                <option value="4–8 weeks">4–8 weeks</option>
+                <option value="Flexible">Flexible</option>
+              </select>
             </div>
 
             <div className="space-y-2">
@@ -158,9 +157,9 @@ export function ContactFormSection() {
               <Textarea
                 id="projectDetails"
                 name="projectDetails"
-                placeholder="Describe your goals, requirements, timeline, and any specific features you need..."
                 rows={6}
                 required
+                placeholder="Describe your goals, requirements, timeline..."
                 className="min-h-[120px]"
               />
             </div>
@@ -178,8 +177,7 @@ export function ContactFormSection() {
               {result && <p className="mt-4 text-center text-sm">{result}</p>}
 
               <p className="mt-2 text-xs text-center text-muted-foreground leading-relaxed">
-                By submitting this form, you consent to Desnine storing your information to respond to
-                your inquiry.
+                By submitting this form, you consent to Desnine storing your information to respond to your inquiry.
               </p>
             </div>
           </form>
