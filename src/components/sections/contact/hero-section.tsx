@@ -18,7 +18,7 @@ export function ContactHeroSection() {
             crafting brands, websites, and visual systems that connect and convert.
           </p>
 
-          <div className="mt-8 grid grid-cols-3 gap-6 text-center max-sm:grid-cols-3">
+          {/* <div className="mt-8 grid grid-cols-3 gap-6 text-center max-sm:grid-cols-3">
             <div className="flex flex-col items-center">
               <ShieldCheck className="h-8 w-8 text-primary" />
               <p className="mt-2 text-xs md:text-sm font-medium">Trusted Quality</p>
@@ -31,7 +31,7 @@ export function ContactHeroSection() {
               <Clock className="h-8 w-8 text-primary" />
               <p className="mt-2 text-xs md:text-sm font-medium">On-Time Delivery</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
