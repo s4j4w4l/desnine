@@ -5,8 +5,8 @@ import { TextReveal } from "@/components/magicui/text-reveal";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { Hero2Section } from "@/components/sections/hero2-section";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
-import { Hero3Section } from "@/components/sections/hero3-section";
 import { HowWeWorkBentoSection } from "@/components/sections/howWeWork";
+import { Hero3Section } from "@/components/sections/hero3-section";
 
 
 
@@ -18,6 +18,7 @@ export default function Home() {
       {/* <CompanyShowcase /> */}
       <Hero2Section />
       <BentoSection count={4} /> 
+      <Hero3Section />
       <HowWeWorkBentoSection />
       {/* <BenefitsSection /> */}
       {/* <QuoteSection /> */}
