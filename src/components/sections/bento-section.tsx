@@ -9,7 +9,8 @@ interface BentoSectionProps {
 }
 
 export function BentoSection({ count }: BentoSectionProps) {
-  const { title, description, items } = siteConfig.bentoSection;
+  // const { title, description, items } = siteConfig.bentoSection;
+  const { items } = siteConfig.bentoSection;
   const displayItems = count ? items.slice(0, count) : items;
 
   return (
@@ -23,14 +24,14 @@ export function BentoSection({ count }: BentoSectionProps) {
         <div className="absolute top-0 -right-4 md:-right-14 h-full w-4 md:w-14 text-primary/5 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"></div>
 
         {/* Section header */}
-        <SectionHeader>
+        {/* <SectionHeader>
           <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">
             {title}
           </h2>
           <p className="text-muted-foreground text-center text-balance font-medium">
             {description}
           </p>
-        </SectionHeader>
+        </SectionHeader> */}
 
         {/* Items */}
         <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
@@ -42,12 +43,12 @@ export function BentoSection({ count }: BentoSectionProps) {
               <div className="relative flex size-full items-center justify-center h-full overflow-hidden">
                 {item.content}
               </div>
-              <div className="flex-1 flex-col gap-2 p-6">
+              {/* <div className="flex-1 flex-col gap-2 p-6">
                 <h3 className="text-lg tracking-tighter font-semibold">
                   {item.title}
                 </h3>
                 <p className="text-muted-foreground">{item.description}</p>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

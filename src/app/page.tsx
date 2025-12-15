@@ -5,6 +5,8 @@ import { TextReveal } from "@/components/magicui/text-reveal";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { Hero2Section } from "@/components/sections/hero2-section";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
+import { Hero3Section } from "@/components/sections/hero3-section";
+import { HowWeWorkBentoSection } from "@/components/sections/howWeWork";
 
 
 
@@ -15,8 +17,9 @@ export default function Home() {
       {/* <ScrollTextAnimation /> */}
       {/* <CompanyShowcase /> */}
       <Hero2Section />
-      <BentoSection count={4} />
-      <BenefitsSection />
+      {/* <BentoSection count={4} /> 
+      <HowWeWorkBentoSection /> */}
+      {/* <BenefitsSection /> */}
       {/* <QuoteSection /> */}
       {/* <FeatureSection /> */}
       {/* <PricingSection /> */}
@@ -26,7 +29,7 @@ export default function Home() {
       {/* <ContactSection /> */}
       {/* <ScrollTextAnimation /> */}
       {/* Top filler for scrolling */}
-       <TextReveal>So, are you ready to stand out?</TextReveal>
+      <TextReveal>So, are you ready to stand out?</TextReveal>
        
 
 

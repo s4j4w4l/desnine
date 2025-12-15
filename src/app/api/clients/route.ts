@@ -3,18 +3,17 @@ import { Client as NotionClient } from "@notionhq/client";
 
 const notion = new NotionClient({ auth: process.env.NOTION_TOKEN });
 
+const clean = (v: unknown) => (typeof v === "string" ? v.trim() : "");
+const nullIfEmpty = (v: unknown) => {
+  const s = clean(v);
+  return s.length ? s : null;
+};
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    // Basic validation (same rules as your form)
-    if (!body.fullName || !body.email || !body.serviceNeeded || !body.projectDetails) {
-      return NextResponse.json(
-        { ok: false, message: "Please fill all required fields." },
-        { status: 400 }
-      );
-    }
-
+    // Env check first
     if (!process.env.NOTION_TOKEN || !process.env.NOTION_DATABASE_ID) {
       return NextResponse.json(
         { ok: false, message: "Notion env vars are missing." },
@@ -22,48 +21,60 @@ export async function POST(req: Request) {
       );
     }
 
+    // Normalize inputs (prevents "" going into Notion)
+    const fullName = clean(body.fullName);
+    const email = clean(body.email);
+    const companyName = nullIfEmpty(body.companyName);
+    const phone = nullIfEmpty(body.phone); // ✅ null instead of ""
+    const serviceNeeded = clean(body.serviceNeeded);
+    const timeline = nullIfEmpty(body.timeline);
+    const projectDetails = clean(body.projectDetails);
+
+    // Basic validation (same rules as your form)
+    if (!fullName || !email || !serviceNeeded || !projectDetails) {
+      return NextResponse.json(
+        { ok: false, message: "Please fill all required fields." },
+        { status: 400 }
+      );
+    }
+
     await notion.pages.create({
       parent: { database_id: process.env.NOTION_DATABASE_ID },
       properties: {
-        // Title field: Name
+        // ✅ Title property
         Name: {
-          title: [{ text: { content: body.fullName } }],
+          title: [{ text: { content: fullName } }],
         },
 
-        // Text: Company Name
-        "Company Name": {
-          rich_text: [{ text: { content: body.companyName || "" } }],
-        },
+        // ✅ Rich text (send [] when empty)
+        "Company Name": companyName
+          ? { rich_text: [{ text: { content: companyName } }] }
+          : { rich_text: [] },
 
-        // Email: Email
+        // ✅ Email property
         Email: {
-          email: body.email,
+          email,
         },
 
-        // phone_number: Phone
+        // ✅ Phone property MUST be string or null
         Phone: {
-          phone_number: body.phone || "",
+          phone_number: phone, // ✅ null ok, "" NOT ok
         },
 
-        // multi_select: Service
+        // ✅ Keep multi_select ONLY if your Notion field is multi-select
         Service: {
-          multi_select: body.serviceNeeded
-            ? [{ name: body.serviceNeeded }]
-            : [],
+          multi_select: serviceNeeded ? [{ name: serviceNeeded }] : [],
         },
 
-        // multi_select: Timeline
+        // ✅ Keep multi_select ONLY if your Notion field is multi-select
         Timeline: {
-          multi_select: body.timeline
-            ? [{ name: body.timeline }]
-            : [],
+          multi_select: timeline ? [{ name: timeline }] : [],
         },
 
-        // Text: Project (project details from form)
+        // ✅ Rich text (send [] when empty)
         Project: {
-          rich_text: [{ text: { content: body.projectDetails || "" } }],
+          rich_text: [{ text: { content: projectDetails } }],
         },
-        // 👇 no Status here on purpose – you manage it manually in Notion
       },
     });
 
@@ -76,9 +87,6 @@ export async function POST(req: Request) {
       err?.message ||
       "Something went wrong while submitting the form.";
 
-    return NextResponse.json(
-      { ok: false, message },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: false, message }, { status: 500 });
   }
 }
