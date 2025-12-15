@@ -17,8 +17,8 @@ export default function Home() {
       {/* <ScrollTextAnimation /> */}
       {/* <CompanyShowcase /> */}
       <Hero2Section />
-      {/* <BentoSection count={4} /> 
-      <HowWeWorkBentoSection /> */}
+      <BentoSection count={4} /> 
+      <HowWeWorkBentoSection />
       {/* <BenefitsSection /> */}
       {/* <QuoteSection /> */}
       {/* <FeatureSection /> */}

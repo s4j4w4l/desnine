@@ -43,12 +43,12 @@ export function BentoSection({ count }: BentoSectionProps) {
               <div className="relative flex size-full items-center justify-center h-full overflow-hidden">
                 {item.content}
               </div>
-              {/* <div className="flex-1 flex-col gap-2 p-6">
+              <div className="flex-1 flex-col gap-2 p-6">
                 <h3 className="text-lg tracking-tighter font-semibold">
                   {item.title}
                 </h3>
                 <p className="text-muted-foreground">{item.description}</p>
-              </div> */}
+              </div>
             </div>
           ))}
         </div>
