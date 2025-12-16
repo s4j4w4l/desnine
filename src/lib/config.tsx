@@ -15,6 +15,15 @@ import { TenthBentoAnimation  } from "@/components/tenth-bento-animation";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Globe } from "@/components/ui/globe";
 import { cn } from "@/lib/utils";
+import Loader from "@/components/loader";
+import RippleLogoLoader from "@/components/RippleLogoLoader";
+import TerminalLoader from "@/components/TerminalLoader";
+import SpeederLoader from "@/components/SpeederLoader";
+import IsometricBoxesLoader from "@/components/IsometricBoxesLoader";
+import TowerLoader from "@/components/TowerLoader";
+import SquarePathLoader from "@/components/SquarePathLoader";
+import RadarLoader from "@/components/RadarLoader";
+import RocketLoader from "@/components/RocketLoader";
 
 export const Highlight = ({
   children,
@@ -243,24 +252,30 @@ howWeWork: {
   items: [
     {
       id: "01",
+      // content: <Loader size={120}/>,
+         content: <RadarLoader size={240} duration="4s" />,
       title: "Discovery Phase",
       description:
         "Understanding your brand, goals, audience, and challenges to define clear direction.",
     },
     {
       id: "02",
+      content: <SquarePathLoader color="#7A0000" square={22} offset={26} duration="2.4s" />,
       title: "Project Kickoff",
       description:
         "Aligning on scope, timelines, and milestones before focused execution begins.",
     },
     {
-      id: "03",      
+      id: "03",  
+      content: <RippleLogoLoader size={220} />,    
       title: "Design & Refine",
       description:
         "Creating, testing, and refining through intentional iterations and feedback.",
     },
     {
       id: "04",
+      // content: <SpeederLoader scale={1.5}/>,
+      content: <RocketLoader scale={0.9} />,
       title: "Launch & Grow",
       description:
         "Launching with confidence and supporting long-term growth and optimization.",
@@ -544,37 +559,37 @@ howWeWork: {
   featureSection: {
     title: "Simple. Seamless. Smart.",
     description:
-      "Discover how Desnine transforms your commands into action in four easy steps",
+      "Why choose us for your design and development needs?",
     items: [
       {
         id: 1,
-        title: "Ask Your AI Agent Directly",
+        title: "Experience",
         content:
-          "Speak or type your command—let Desnine capture your intent. Your request instantly sets the process in motion.",
+          "We’ve worked with brands at different stages, from early ideas to growing businesses. This experience helps us understand what actually works, not just what looks good.",
         image:
           "https://images.unsplash.com/photo-1720371300677-ba4838fa0678?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         id: 2,
-        title: "Let Desnine Process It",
+        title: "Expertise",
         content:
-          "We prioritize the needs and preferences of our users in our design process.",
+          "Design and technology move fast, and we stay ahead. We use modern tools, proven design systems, and smart development practices to create solutions that are both creative and effective.",
         image:
           "https://images.unsplash.com/photo-1686170287433-c95faf6d3608?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8fA%3D%3D",
       },
       {
         id: 3,
-        title: "Receive Instant, Actionable Results",
+        title: "Dedication",
         content:
-          "Our features seamlessly integrate with your existing systems for a smooth experience.",
+          "Every project gets our full attention. We take the time to understand your goals, your audience, and your vision, so the final result feels thoughtful, intentional, and truly yours.",
         image:
           "https://images.unsplash.com/photo-1720378042271-60aff1e1c538?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         id: 4,
-        title: "Continuous Improvement",
+        title: "Results Driven",
         content:
-          "We are constantly updating and improving our features to provide the best experience.",
+          "At Desnine Studio, design isn’t just visual,it’s strategic. We focus on clarity, usability, and performance to help your brand grow, connect, and stand out with confidence.",
         image:
           "https://images.unsplash.com/photo-1666882990322-e7f3b8df4f75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",
       },

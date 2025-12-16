@@ -7,6 +7,9 @@ import { Hero2Section } from "@/components/sections/hero2-section";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { HowWeWorkBentoSection } from "@/components/sections/howWeWork";
 import { Hero3Section } from "@/components/sections/hero3-section";
+import { Highlighter } from "@/components/magicui/Highlighter";
+import { TestimonialSection } from "@/components/sections/testimonial-section";
+import { FeatureSection } from "@/components/sections/feature-section";
 
 
 
@@ -20,9 +23,20 @@ export default function Home() {
       <BentoSection count={4} /> 
       <Hero3Section />
       <HowWeWorkBentoSection />
+      {/* <p>
+        The{" "}
+        <Highlighter action="underline" color="#FF9800">
+          Magic UI Highlighter
+        </Highlighter>{" "}
+        makes important{" "}
+        <Highlighter action="highlight" color="#87CEFA">
+          text stand out
+        </Highlighter>{" "}
+        effortlessly.
+      </p> */}
       {/* <BenefitsSection /> */}
       {/* <QuoteSection /> */}
-      {/* <FeatureSection /> */}
+      <FeatureSection />
       {/* <PricingSection /> */}
       {/* <TestimonialSection /> */}
       {/* <FAQSection /> */}
