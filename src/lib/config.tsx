@@ -275,7 +275,7 @@ howWeWork: {
     {
       id: "04",
       // content: <SpeederLoader scale={1.5}/>,
-      content: <RocketLoader scale={0.9} />,
+      content: <RocketLoader scale={0.9 } />,
       title: "Launch & Grow",
       description:
         "Launching with confidence and supporting long-term growth and optimization.",
@@ -1137,6 +1137,41 @@ howWeWork: {
       image: "https://randomuser.me/api/portraits/men/91.jpg",
     },
   },
+
+
+  clientFeedback: {
+  quote:
+    "Working with Desnine Studio transformed our brand. Their creative and strategic approach delivered a stunning website that drives real results.",
+  author: {
+    name: "Alex Morgan",
+    role: "CEO of BrightWave Tech",
+    image: "/images/avatar.jpg",
+  },
+  stats: [
+    {
+      value: "120+",
+      label: "Projects Delivered",
+      note: "We’ve brought 120 digital visions to life.",
+    },
+    {
+      value: "98%",
+      label: "Client Satisfaction Rate",
+      note: "Built on trust and long-term relationships.",
+    },
+    {
+      value: "4.9/5",
+      label: "Average Rating",
+      note: "Across Google, Clutch, and referrals.",
+    },
+    {
+      value: "75+",
+      label: "Happy Clients Worldwide",
+      note: "From startups to global brands.",
+    },
+  ],
+},
+
+
   pricing: {
     title: "Pricing that scales with you",
     description:

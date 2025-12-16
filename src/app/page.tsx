@@ -10,6 +10,9 @@ import { Hero3Section } from "@/components/sections/hero3-section";
 import { Highlighter } from "@/components/magicui/Highlighter";
 import { TestimonialSection } from "@/components/sections/testimonial-section";
 import { FeatureSection } from "@/components/sections/feature-section";
+import { PricingSection } from "@/components/sections/pricing-section";
+import { QuoteSection } from "@/components/sections/quote-section";
+import { ClientFeedback } from "@/components/ClientFeedback.tsx";
 
 
 
@@ -21,8 +24,9 @@ export default function Home() {
       {/* <CompanyShowcase /> */}
       <Hero2Section />
       <BentoSection count={4} /> 
-      <Hero3Section />
-      <HowWeWorkBentoSection />
+      {/* <Hero3Section />
+      <HowWeWorkBentoSection /> */}
+      
       {/* <p>
         The{" "}
         <Highlighter action="underline" color="#FF9800">
@@ -34,8 +38,10 @@ export default function Home() {
         </Highlighter>{" "}
         effortlessly.
       </p> */}
+
       {/* <BenefitsSection /> */}
       {/* <QuoteSection /> */}
+      <ClientFeedback />
       <FeatureSection />
       {/* <PricingSection /> */}
       {/* <TestimonialSection /> */}
