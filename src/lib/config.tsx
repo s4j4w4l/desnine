@@ -1140,22 +1140,36 @@ howWeWork: {
 
 
   clientFeedback: {
-  quote:
-    "Working with Desnine Studio transformed our brand. Their creative and strategic approach delivered a stunning website that drives real results.",
-  author: {
-    name: "Alex Morgan",
-    role: "CEO of BrightWave Tech",
-    image: "/images/avatar.jpg",
-  },
-  stats: [
+  title: "What Our Clients Says About Us!",
+  reviews: [
     {
-      value: "120+",
-      label: "Projects Delivered",
-      note: "We’ve brought 120 digital visions to life.",
+      quote:
+        "Working with Desnine Studio transformed our brand. Their creative and strategic approach delivered a stunning website.",
+      author: {
+        name: "Alex Morgan",
+        role: "CEO of BrightWave Tech",
+        image: "/pp.png",
+      },
     },
     {
-      value: "98%",
-      label: "Client Satisfaction Rate",
+      quote:
+        "Desnine understood our vision instantly and turned it into a product we’re proud of.",
+      author: {
+        name: "Sarah Lee",
+        role: "Founder, Nova Labs",
+        image: "/pp.png",
+      },
+    },
+  ],
+  stats: [
+    {
+      value: "50+",
+      label: "Projects Delivered",
+      note: "We’ve brought 50 digital visions to life.",
+    },
+    {
+      value: "100%",
+      label: "Satisfaction Rate",
       note: "Built on trust and long-term relationships.",
     },
     {
@@ -1164,12 +1178,52 @@ howWeWork: {
       note: "Across Google, Clutch, and referrals.",
     },
     {
-      value: "75+",
+      value: "30+",
       label: "Happy Clients Worldwide",
       note: "From startups to global brands.",
     },
   ],
 },
+
+blogSection: {
+  badge: "",
+  title: "Desnine Insights & Stories",
+  titleLine2: "Insights & Stories",
+  description:
+    "Explore industry trends, expert perspectives, and creative journeys that bring ideas to life.",
+  cta: "View All",
+  ctaHref: "/blog",
+  posts: [
+    {
+    title: "Design that converts: how we build websites that perform",
+    excerpt: "A simple breakdown of our process clarity, systems, execution.",
+    image: "/blog/b1.png",
+    href: "/blog/design-that-converts",
+    tag: "Web & Growth",
+    date: "Dec 2025",
+    readTime: "5 min read",
+    },
+    {
+      title: "Brand systems: why consistency makes you look premium",
+      excerpt: "How typography, spacing, and rules make brands feel expensive.",
+      image: "/blog/b2.png",
+      href: "/blog/brand-systems",
+      tag: "Branding",
+      date: "Dec 2025",
+      readTime: "4 min read",
+    },
+    {
+      title: "SEO basics for modern websites (without boring stuff)",
+      excerpt: "Clean structure, fast pages, and the content that ranks.",
+      image: "/blog/b3.png",
+      href: "/blog/seo-basics",
+      tag: "SEO",
+      date: "Dec 2025",
+      readTime: "6 min read",
+    },
+  ],
+},
+
 
 
   pricing: {

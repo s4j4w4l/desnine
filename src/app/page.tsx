@@ -13,6 +13,7 @@ import { FeatureSection } from "@/components/sections/feature-section";
 import { PricingSection } from "@/components/sections/pricing-section";
 import { QuoteSection } from "@/components/sections/quote-section";
 import { ClientFeedback } from "@/components/ClientFeedback.tsx";
+import { BlogSection } from "@/components/BlogSection";
 
 
 
@@ -43,6 +44,7 @@ export default function Home() {
       {/* <QuoteSection /> */}
       <ClientFeedback />
       <FeatureSection />
+      <BlogSection />
       {/* <PricingSection /> */}
       {/* <TestimonialSection /> */}
       {/* <FAQSection /> */}

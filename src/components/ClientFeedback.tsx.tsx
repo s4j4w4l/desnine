@@ -1,67 +1,306 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useMemo, useRef, useState } from "react";
 import { siteConfig } from "@/lib/config";
 
+const AUTO_DELAY = 4000;
+const DESNINE_RED = "#7A0000";
+
+/** ---- Count Up Helpers ---- */
+function useInViewOnce<T extends HTMLElement>(options?: IntersectionObserverInit) {
+  const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
+          setInView(true);
+          obs.disconnect(); // run once
+        }
+      },
+      { threshold: 0.35, ...options }
+    );
+
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [options]);
+
+  return { ref, inView };
+}
+
+function parseStatValue(raw: string) {
+  const s = String(raw).trim();
+
+  // Capture first number (int/float)
+  const numMatch = s.match(/-?\d+(\.\d+)?/);
+  const target = numMatch ? Number(numMatch[0]) : 0;
+
+  const startIdx = numMatch ? numMatch.index ?? 0 : 0;
+  const endIdx = numMatch ? startIdx + numMatch[0].length : 0;
+
+  const prefix = numMatch ? s.slice(0, startIdx) : "";
+  const suffix = numMatch ? s.slice(endIdx) : s;
+
+  const decimals = numMatch?.[0]?.includes(".") ? (numMatch[0].split(".")[1]?.length ?? 0) : 0;
+
+  return { target, prefix, suffix, decimals };
+}
+
+function CountUpText({
+  value,
+  duration = 1100,
+  className = "",
+  style,
+}: {
+  value: string;
+  duration?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const { ref, inView } = useInViewOnce<HTMLDivElement>();
+  const { target, prefix, suffix, decimals } = useMemo(() => parseStatValue(value), [value]);
+  const [display, setDisplay] = useState(() => 0);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    let raf = 0;
+    const start = performance.now();
+    const from = 0;
+    const to = target;
+
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - t, 3);
+      const next = from + (to - from) * eased;
+
+      setDisplay(next);
+
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, target, duration]);
+
+  const formatted = useMemo(() => {
+    const n = decimals > 0 ? display.toFixed(decimals) : Math.round(display).toString();
+    return `${prefix}${n}${suffix}`;
+  }, [display, decimals, prefix, suffix]);
+
+  return (
+    <div ref={ref} className={className} style={style}>
+      {inView ? formatted : `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`}
+    </div>
+  );
+}
+
+/** ---- Main Component ---- */
 export function ClientFeedback() {
   const { clientFeedback } = siteConfig;
 
+  const reviews = useMemo(() => clientFeedback.reviews ?? [], [clientFeedback.reviews]);
+  const stats = useMemo(() => clientFeedback.stats ?? [], [clientFeedback.stats]);
+
+  const [active, setActive] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const total = reviews.length;
+  const current = total ? reviews[active] : null;
+
+  const clearTimer = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
+  const startTimer = () => {
+    if (total <= 1) return;
+    clearTimer();
+    timerRef.current = setInterval(() => {
+      setActive((i) => (i + 1) % total);
+    }, AUTO_DELAY);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return clearTimer;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total]);
+
   return (
-    <section
-      id="client-feedback"
-      className="w-full bg-background py-20"
-    >
-      {/* Outer padding container (matches Bento spacing) */}
-      <div className="flex justify-center w-full px-5 md:px-11">
-        <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <section id="client-feedback" className="w-full bg-background py-10">
+      {/* Bento-like outer padding */}
+      <div className="w-full px-10 md:px-10">
+        <div className="mx-auto w-full max-w-6xl space-y-10">
+          {/* Header */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-primary">
+              {clientFeedback.title ?? "What our clients say"}
+            </h2>
+          </div>
 
-          {/* Quote Box */}
-          <div className="rounded-2xl bg-card p-8 md:p-10 flex flex-col justify-between">
-            <p className="text-xl md:text-2xl text-primary leading-relaxed tracking-tighter font-medium">
-              {clientFeedback.quote}
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Review Card */}
+            <div
+              className="
+                rounded-2xl bg-card
+                p-6 sm:p-7 md:p-10
+                flex flex-col
+                min-h-[260px] sm:min-h-[300px] md:min-h-[340px]
+                relative
+                overflow-hidden
+              "
+              style={{
+                boxShadow: `0 0 0 1px ${DESNINE_RED}15`,
+              }}
+            >
+              {/* Quote */}
+              <div className="flex gap-3">
+                <span
+                  className="text-3xl leading-none font-bold shrink-0"
+                  style={{ color: DESNINE_RED }}
+                >
+                  “
+                </span>
 
-            <div className="flex gap-4 items-center mt-8">
-              <div className="size-10 rounded-full bg-primary overflow-hidden">
-                <img
-                  src={clientFeedback.author.image}
-                  alt={clientFeedback.author.name}
-                  className="size-full object-cover rounded-full"
-                />
-              </div>
-
-              <div>
-                <cite className="text-lg font-medium text-primary not-italic">
-                  {clientFeedback.author.name}
-                </cite>
-                <p className="text-sm text-muted-foreground">
-                  {clientFeedback.author.role}
+                <p className="text-base sm:text-lg md:text-xl text-primary leading-relaxed tracking-tight font-medium">
+                  {current?.quote}
                 </p>
               </div>
+
+              {/* Bottom pinned */}
+              <div className="mt-auto pt-8">
+                <div className="flex items-center justify-between gap-4">
+                  {/* Author */}
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div
+                      className="size-10 rounded-full overflow-hidden shrink-0 grid place-items-center"
+                      style={{ backgroundColor: DESNINE_RED }}
+                    >
+                      {current?.author?.image ? (
+                        <img
+                          src={current.author.image}
+                          alt={current.author.name}
+                          className="size-full object-cover rounded-full"
+                        />
+                      ) : (
+                        <div className="size-full rounded-full bg-white/10" />
+                      )}
+                    </div>
+
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-primary truncate">
+                        {current?.author?.name}
+                      </p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {current?.author?.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Arrows (pinned) */}
+                  <div className="flex gap-3 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setActive((i) => (i - 1 + total) % total);
+                        startTimer();
+                      }}
+                      aria-label="Previous review"
+                      className="size-10 rounded-full transition-colors"
+                      style={{
+                        border: `1px solid ${DESNINE_RED}55`,
+                        color: DESNINE_RED,
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.backgroundColor = `${DESNINE_RED}10`)
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.backgroundColor = "transparent")
+                      }
+                    >
+                      ←
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setActive((i) => (i + 1) % total);
+                        startTimer();
+                      }}
+                      aria-label="Next review"
+                      className="size-10 rounded-full transition-colors"
+                      style={{
+                        border: `1px solid ${DESNINE_RED}55`,
+                        color: DESNINE_RED,
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.backgroundColor = `${DESNINE_RED}10`)
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.backgroundColor = "transparent")
+                      }
+                    >
+                      →
+                    </button>
+                  </div>
+                </div>
+
+                {/* Dots */}
+                {total > 1 && (
+                  <div className="mt-6 flex gap-2">
+                    {reviews.map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => {
+                          setActive(i);
+                          startTimer();
+                        }}
+                        aria-label={`Go to review ${i + 1}`}
+                        className="h-1.5 rounded-full transition-all"
+                        style={{
+                          width: i === active ? 32 : 12,
+                          backgroundColor: i === active ? DESNINE_RED : `${DESNINE_RED}30`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Stats (2 columns on mobile) */}
+            <div className="grid grid-cols-2 gap-5">
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-2xl bg-card p-6 md:p-7 flex flex-col justify-between min-h-[150px] md:min-h-[160px]"
+                >
+                  <CountUpText
+                    value={stat.value}
+                    duration={5000} 
+                    className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight"
+                    style={{ color: DESNINE_RED }}
+                  />
+
+                  <div className="mt-4">
+                    <p className="text-sm font-semibold text-primary">{stat.label}</p>
+                    <p className="mt-2 text-sm text-muted-foreground">{stat.note}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {clientFeedback.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl bg-card p-7"
-              >
-                <div className="text-4xl md:text-5xl font-medium tracking-tighter text-primary">
-                  {stat.value}
-                </div>
-
-                <div className="mt-4">
-                  <p className="text-sm font-semibold text-primary">
-                    {stat.label}
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {stat.note}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
         </div>
       </div>
     </section>
