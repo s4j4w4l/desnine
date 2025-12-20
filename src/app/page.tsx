@@ -44,7 +44,7 @@ export default function Home() {
       {/* <QuoteSection /> */}
       <ClientFeedback />
       {/* <FeatureSection /> */}
-      <BlogSection />
+      {/* <BlogSection /> */}
       {/* <PricingSection /> */}
       {/* <TestimonialSection /> */}
       {/* <FAQSection /> */}
