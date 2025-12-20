@@ -43,7 +43,7 @@ export default function Home() {
       {/* <BenefitsSection /> */}
       {/* <QuoteSection /> */}
       <ClientFeedback />
-      <FeatureSection />
+      {/* <FeatureSection /> */}
       <BlogSection />
       {/* <PricingSection /> */}
       {/* <TestimonialSection /> */}

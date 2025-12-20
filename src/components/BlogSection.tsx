@@ -12,9 +12,8 @@ export function BlogSection() {
 
   const posts = useMemo(() => blogSection?.posts ?? [], [blogSection?.posts]);
 
-  // Show 2 blog cards at a time
-  const perPage = 2;
-
+  // 1 on mobile, 2 on md+
+  const [perPage, setPerPage] = useState(2);
   const [page, setPage] = useState(0);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -37,6 +36,25 @@ export function BlogSection() {
     }, AUTO_DELAY);
   };
 
+  // responsive perPage
+  useEffect(() => {
+    const update = () => {
+      const isMdUp = window.matchMedia("(min-width: 768px)").matches;
+      setPerPage(isMdUp ? 2 : 1);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // keep page valid when pageCount changes
+  useEffect(() => {
+    setPage((p) => (p >= pageCount ? 0 : p));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageCount]);
+
+  // autoplay
   useEffect(() => {
     startTimer();
     return clearTimer;
@@ -59,22 +77,19 @@ export function BlogSection() {
     if (!total) return [];
     const startIndex = page * perPage;
 
-    // Wrap-safe: always returns 2 items if possible
-    const a = posts[startIndex % total];
-    const b = posts[(startIndex + 1) % total];
-    return [a, b].filter(Boolean);
+    const items = Array.from({ length: Math.min(perPage, total) }, (_, i) => {
+      return posts[(startIndex + i) % total];
+    });
+
+    return items.filter(Boolean);
   }, [posts, page, perPage, total]);
 
   return (
     <section id="blog" className="relative w-full bg-background py-12 md:py-16">
       <div className="relative mx-auto w-full max-w-6xl px-6 md:px-10">
         <div className="space-y-8">
-          {/* Centered Header */}
+          {/* Header */}
           <div className="flex flex-col items-center text-center gap-2">
-            {/* <p className="text-xs font-medium tracking-widest text-muted-foreground">
-              <span style={{ color: DESNINE_RED }}>•</span> Blog
-            </p> */}
-
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-primary leading-tight max-w-3xl">
               {blogSection?.title ?? "Desnine Insights & Stories"}
               <span style={{ color: DESNINE_RED }}>.</span>
@@ -90,61 +105,52 @@ export function BlogSection() {
                 href={blogSection.cta}
                 className="mt-4 text-sm font-semibold text-primary hover:opacity-80 transition inline-flex items-center gap-2"
               >
-                {blogSection.cta ?? "View All"}
+                {blogSection.ctaLabel ?? "View All"}
                 <span style={{ color: DESNINE_RED }}>↗</span>
               </a>
             ) : null}
           </div>
 
-          {/* Slider Wrapper (side padding for arrows + content) */}
-          <div className="relative px-6 md:px-10">
-            {/* Smaller Left Arrow (inside padding) */}
+          {/* Slider */}
+          <div className="relative">
+            {/* Minimal arrows (no circles) */}
             {pageCount > 1 && (
               <button
                 type="button"
                 aria-label="Previous posts"
                 onClick={goPrev}
-                className="absolute left-0 md:left-2 top-1/2 -translate-y-1/2 z-20 size-8 rounded-full transition"
-                style={{
-                  border: `1px solid ${DESNINE_RED}55`,
-                  color: DESNINE_RED,
-                  background: "rgba(255,255,255,0.85)",
-                  backdropFilter: "blur(10px)",
-                }}
+                className="absolute left-[-22px] md:left-[-30px] top-1/2 -translate-y-1/2 z-20
+                           text-3xl md:text-4xl font-light opacity-40 hover:opacity-100 transition"
+                style={{ color: DESNINE_RED }}
               >
-                ←
+                ‹
               </button>
             )}
 
-            {/* Smaller Right Arrow (inside padding) */}
             {pageCount > 1 && (
               <button
                 type="button"
                 aria-label="Next posts"
                 onClick={goNext}
-                className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 z-20 size-8 rounded-full transition"
-                style={{
-                  border: `1px solid ${DESNINE_RED}55`,
-                  color: DESNINE_RED,
-                  background: "rgba(255,255,255,0.85)",
-                  backdropFilter: "blur(10px)",
-                }}
+                className="absolute right-[-22px] md:right-[-30px] top-1/2 -translate-y-1/2 z-20
+                           text-3xl md:text-4xl font-light opacity-40 hover:opacity-100 transition"
+                style={{ color: DESNINE_RED }}
               >
-                →
+                ›
               </button>
             )}
 
-            {/* Cards */}
+            {/* Cards container */}
             <div className="rounded-2xl bg-card p-5 sm:p-6 md:p-8">
-              <div className="grid grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
                 {visible.map((post, idx) => (
                   <article
                     key={`${post?.href ?? post?.title ?? "post"}-${idx}`}
                     className="rounded-2xl bg-background overflow-hidden"
                     style={{ boxShadow: `0 0 0 1px ${DESNINE_RED}10` }}
                   >
-                    {/* Image (always fits) */}
-                    <div className="relative w-full overflow-hidden bg-muted h-[160px] sm:h-[190px] md:h-[220px]">
+                    {/* Image */}
+                    <div className="relative w-full overflow-hidden bg-muted h-[170px] sm:h-[200px] md:h-[230px]">
                       {post?.image ? (
                         <img
                           src={post.image}
@@ -199,7 +205,7 @@ export function BlogSection() {
             </div>
           </div>
 
-          {/* Bottom Scrollbar (outside cards) */}
+          {/* Bottom dots */}
           {pageCount > 1 && (
             <div className="flex justify-center pt-2">
               <div className="flex gap-2">
@@ -215,8 +221,7 @@ export function BlogSection() {
                     className="h-1.5 rounded-full transition-all"
                     style={{
                       width: i === page ? 40 : 14,
-                      backgroundColor:
-                        i === page ? DESNINE_RED : `${DESNINE_RED}30`,
+                      backgroundColor: i === page ? DESNINE_RED : `${DESNINE_RED}30`,
                     }}
                   />
                 ))}
@@ -224,7 +229,7 @@ export function BlogSection() {
             </div>
           )}
 
-          {/* If no posts */}
+          {/* Empty state */}
           {!total && (
             <div className="rounded-2xl bg-card p-6 text-sm text-muted-foreground">
               Add posts in <code>siteConfig.blogSection.posts</code>.
