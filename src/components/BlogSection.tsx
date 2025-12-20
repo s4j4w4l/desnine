@@ -105,7 +105,7 @@ export function BlogSection() {
                 href={blogSection.cta}
                 className="mt-4 text-sm font-semibold text-primary hover:opacity-80 transition inline-flex items-center gap-2"
               >
-                {blogSection.ctaLabel ?? "View All"}
+                {blogSection.cta ?? "View All"}
                 <span style={{ color: DESNINE_RED }}>↗</span>
               </a>
             ) : null}
