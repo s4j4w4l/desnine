@@ -150,10 +150,7 @@ export function ClientFeedback() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Review Card */}
-            <div
-                className="rounded-2xl p-6 sm:p-7 md:p-10 flex flex-col min-h-[260px] sm:min-h-[300px] md:min-h-[340px] relative overflow-hidden border"
-                style={{ borderColor: `${DESNINE_RED}20` }}
-              >
+            <div className="rounded-2xl p-6 sm:p-7 md:p-10 flex flex-col min-h-[260px] sm:min-h-[300px] md:min-h-[340px] relative overflow-hidden border border-zinc-300 dark:border-zinc-700">
 
               {/* Quote */}
               <div className="flex gap-3">
@@ -275,16 +272,19 @@ export function ClientFeedback() {
             <div className="grid grid-cols-2 gap-5">
               {stats.map((stat) => (
                 <div
-                  key={stat.label}
-                  className="rounded-2xl p-6 md:p-7 flex flex-col justify-between min-h-[150px] md:min-h-[160px] border"
-                  style={{ borderColor: `${DESNINE_RED}20` }}
-                >
+  key={stat.label}
+  className="rounded-2xl p-6 md:p-7 flex flex-col justify-between min-h-[150px] md:min-h-[160px] border border-zinc-300 dark:border-zinc-700"
+>
+
                   <CountUpText
-                    value={stat.value}
-                    duration={5000} 
-                    className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight"
-                    style={{ color: DESNINE_RED }}
-                  />
+                      value={stat.value}
+                      duration={5000}
+                      className="stat-outline text-5xl sm:text-6xl md:text-7xl font-extrabold leading-none"
+                      style={{
+                        WebkitTextStroke: "1.5px #7A0000",
+                        color: "transparent",
+                      }}
+                    />
 
                   <div className="mt-4">
                     <p className="text-sm font-semibold text-primary">{stat.label}</p>

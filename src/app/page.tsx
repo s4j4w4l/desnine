@@ -12,8 +12,8 @@ import { TestimonialSection } from "@/components/sections/testimonial-section";
 import { FeatureSection } from "@/components/sections/feature-section";
 import { PricingSection } from "@/components/sections/pricing-section";
 import { QuoteSection } from "@/components/sections/quote-section";
-import { ClientFeedback } from "@/components/ClientFeedback.tsx";
 import { BlogSection } from "@/components/BlogSection";
+import { ClientFeedback } from "@/components/ClientFeedback";
 
 
 
