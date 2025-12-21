@@ -47,9 +47,7 @@ function parseStatValue(raw: string) {
   const prefix = numMatch ? s.slice(0, startIdx) : "";
   const suffix = numMatch ? s.slice(endIdx) : s;
 
-  const decimals = numMatch?.[0]?.includes(".")
-    ? numMatch[0].split(".")[1]?.length ?? 0
-    : 0;
+  const decimals = numMatch?.[0]?.includes(".") ? (numMatch[0].split(".")[1]?.length ?? 0) : 0;
 
   return { target, prefix, suffix, decimals };
 }
@@ -140,67 +138,6 @@ export function ClientFeedback() {
 
   return (
     <section id="client-feedback" className="w-full bg-background py-10">
-      {/* Animated shadow styles */}
-      <style jsx>{`
-        @keyframes shadowPulse {
-          0% {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 0 0 rgba(122, 0, 0, 0);
-            transform: translateY(0);
-          }
-          50% {
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12), 0 0 28px rgba(122, 0, 0, 0.18);
-            transform: translateY(-2px);
-          }
-          100% {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 0 0 rgba(122, 0, 0, 0);
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes redGlowSweep {
-          0% {
-            opacity: 0.25;
-            transform: translateX(-40%) translateY(-30%) rotate(12deg);
-          }
-          50% {
-            opacity: 0.55;
-            transform: translateX(40%) translateY(10%) rotate(12deg);
-          }
-          100% {
-            opacity: 0.25;
-            transform: translateX(-40%) translateY(-30%) rotate(12deg);
-          }
-        }
-
-        .shadow-anim {
-          animation: shadowPulse 3.6s ease-in-out infinite;
-          will-change: box-shadow, transform;
-        }
-
-        .glow-overlay {
-          pointer-events: none;
-          position: absolute;
-          inset: -40px;
-          background: radial-gradient(
-              420px 260px at 30% 30%,
-              rgba(122, 0, 0, 0.18),
-              transparent 60%
-            ),
-            radial-gradient(520px 320px at 70% 70%, rgba(122, 0, 0, 0.12), transparent 55%);
-          filter: blur(14px);
-          mix-blend-mode: normal;
-          animation: redGlowSweep 5.2s ease-in-out infinite;
-        }
-
-        /* Respect reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-          .shadow-anim,
-          .glow-overlay {
-            animation: none !important;
-          }
-        }
-      `}</style>
-
       {/* Bento-like outer padding */}
       <div className="w-full px-10 md:px-10">
         <div className="mx-auto w-full max-w-6xl space-y-10">
@@ -214,14 +151,12 @@ export function ClientFeedback() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Review Card */}
             <div
-              className="shadow-anim rounded-2xl p-6 sm:p-7 md:p-10 flex flex-col min-h-[260px] sm:min-h-[300px] md:min-h-[340px] relative overflow-hidden border"
-              style={{ borderColor: `${DESNINE_RED}20` }}
-            >
-              {/* Soft animated glow overlay */}
-              <div className="glow-overlay" />
+                className="rounded-2xl p-6 sm:p-7 md:p-10 flex flex-col min-h-[260px] sm:min-h-[300px] md:min-h-[340px] relative overflow-hidden border"
+                style={{ borderColor: `${DESNINE_RED}20` }}
+              >
 
               {/* Quote */}
-              <div className="flex gap-3 relative">
+              <div className="flex gap-3">
                 <span
                   className="text-3xl leading-none font-bold shrink-0"
                   style={{ color: DESNINE_RED }}
@@ -235,7 +170,7 @@ export function ClientFeedback() {
               </div>
 
               {/* Bottom pinned */}
-              <div className="mt-auto pt-8 relative">
+              <div className="mt-auto pt-8">
                 <div className="flex items-center justify-between gap-4">
                   {/* Author */}
                   <div className="flex items-center gap-4 min-w-0">
@@ -341,20 +276,17 @@ export function ClientFeedback() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="shadow-anim rounded-2xl p-6 md:p-7 flex flex-col justify-between min-h-[150px] md:min-h-[160px] border relative overflow-hidden"
+                  className="rounded-2xl p-6 md:p-7 flex flex-col justify-between min-h-[150px] md:min-h-[160px] border"
                   style={{ borderColor: `${DESNINE_RED}20` }}
                 >
-                  {/* subtle glow overlay for stat cards too */}
-                  <div className="glow-overlay" />
-
                   <CountUpText
                     value={stat.value}
-                    duration={5000}
-                    className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight relative"
+                    duration={5000} 
+                    className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight"
                     style={{ color: DESNINE_RED }}
                   />
 
-                  <div className="mt-4 relative">
+                  <div className="mt-4">
                     <p className="text-sm font-semibold text-primary">{stat.label}</p>
                     <p className="mt-2 text-sm text-muted-foreground">{stat.note}</p>
                   </div>
