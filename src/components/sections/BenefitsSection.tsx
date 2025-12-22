@@ -184,15 +184,15 @@ export function BenefitsSection() {
           <div className="mt-10 grid gap-4 grid-cols-2 md:grid-cols-4">
             {BENEFITS.map((item, i) => (
               <motion.article
-                key={item.id}
-                className="flex h-full flex-col rounded-3xl border border-border bg-transparent p-4 sm:p-6 text-sm"
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.45,
-                  ease: "easeOut",
-                  delay: i * 0.1,
-                }}
+                // key={item.id}
+                // className="flex h-full flex-col rounded-3xl border border-border bg-transparent p-4 sm:p-6 text-sm"
+                // initial={{ opacity: 0, y: 25 }}
+                // whileInView={{ opacity: 1, y: 0 }}
+                // transition={{
+                //   duration: 0.45,
+                //   ease: "easeOut",
+                //   delay: i * 0.1,
+                // }}
                 viewport={{ once: true, amount: 0.2 }}
                 whileHover={{ y: -4 }}
               >
