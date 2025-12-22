@@ -24,6 +24,9 @@ import TowerLoader from "@/components/TowerLoader";
 import SquarePathLoader from "@/components/SquarePathLoader";
 import RadarLoader from "@/components/RadarLoader";
 import RocketLoader from "@/components/RocketLoader";
+import { DesnineTrustBadge } from "@/components/sections/DesnineTrustBadge";
+
+const DESNINE_RED = "#7A0000"
 
 export const Highlight = ({
   children,
@@ -196,7 +199,8 @@ export const siteConfig = {
     title: "Stratrgy, Design, Performance",
     description:
       /*"We are a crative studio for modern brands, that helps buisniesses."*/
-      "We are a creative studio for modern brands, helping businesses stand out with strategy, design, and storytelling.",
+      /*"We are a creative studio for modern brands, helping businesses stand out with strategy, design, and storytelling.",*/
+      <DesnineTrustBadge />,
   },
 
   hero2: {
@@ -1163,7 +1167,9 @@ howWeWork: {
 
 
   clientFeedback: {
-  title: "What Our Clients Says About Us!",
+  title: <h3 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-primary text-balance">
+                    Stories in Motion<span style={{ color: DESNINE_RED }}>.</span>
+                  </h3>,
   reviews: [
     {
       quote:

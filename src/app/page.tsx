@@ -13,24 +13,26 @@ import { FeatureSection } from "@/components/sections/feature-section";
 import { PricingSection } from "@/components/sections/pricing-section";
 import { QuoteSection } from "@/components/sections/quote-section";
 import { BlogSection } from "@/components/BlogSection";
-import { ClientFeedback } from "@/components/ClientFeedback";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CTASection } from "@/components/sections/cta-section";
-
+import { ClientFeedback } from "@/components/ClientFeedback";
 
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
       
+
       <HeroSection />
       {/* <ScrollTextAnimation /> */}
       {/* <CompanyShowcase /> */}
 
+      <ClientFeedback />
+
       <Hero2Section />
       <BentoSection count={4} /> 
 
-      <ClientFeedback />
+
       {/* <Hero3Section />
       <HowWeWorkBentoSection /> */}
       
