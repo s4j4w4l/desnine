@@ -1,13 +1,14 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/config";
 
 const AUTO_DELAY = 4000;
 const DESNINE_RED = "#7A0000";
 
-/** ---- Count Up Helpers ---- */
+/** ---- In-View (run once) ---- */
 function useInViewOnce<T extends HTMLElement>(options?: IntersectionObserverInit) {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
@@ -37,7 +38,6 @@ function useInViewOnce<T extends HTMLElement>(options?: IntersectionObserverInit
 function parseStatValue(raw: string) {
   const s = String(raw).trim();
 
-  // Capture first number (int/float)
   const numMatch = s.match(/-?\d+(\.\d+)?/);
   const target = numMatch ? Number(numMatch[0]) : 0;
 
@@ -47,7 +47,9 @@ function parseStatValue(raw: string) {
   const prefix = numMatch ? s.slice(0, startIdx) : "";
   const suffix = numMatch ? s.slice(endIdx) : s;
 
-  const decimals = numMatch?.[0]?.includes(".") ? (numMatch[0].split(".")[1]?.length ?? 0) : 0;
+  const decimals = numMatch?.[0]?.includes(".")
+    ? numMatch[0].split(".")[1]?.length ?? 0
+    : 0;
 
   return { target, prefix, suffix, decimals };
 }
@@ -61,10 +63,13 @@ function CountUpText({
   value: string;
   duration?: number;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }) {
   const { ref, inView } = useInViewOnce<HTMLDivElement>();
-  const { target, prefix, suffix, decimals } = useMemo(() => parseStatValue(value), [value]);
+  const { target, prefix, suffix, decimals } = useMemo(
+    () => parseStatValue(value),
+    [value]
+  );
   const [display, setDisplay] = useState(() => 0);
 
   useEffect(() => {
@@ -97,7 +102,9 @@ function CountUpText({
 
   return (
     <div ref={ref} className={className} style={style}>
-      {inView ? formatted : `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`}
+      {inView
+        ? formatted
+        : `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`}
     </div>
   );
 }
@@ -138,20 +145,32 @@ export function ClientFeedback() {
 
   return (
     <section id="client-feedback" className="w-full bg-background py-10">
-      {/* Bento-like outer padding */}
+      {/* Bento-like outer padding (kept same) */}
       <div className="w-full px-10 md:px-10">
         <div className="mx-auto w-full max-w-6xl space-y-10">
-          {/* Header */}
-          <div className="text-center">
+          {/* Header (added same reveal animation style) */}
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.4 }}
+          >
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-primary">
               {clientFeedback.title ?? "What our clients say"}
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Review Card */}
-            <div className="rounded-2xl p-6 sm:p-7 md:p-10 flex flex-col min-h-[260px] sm:min-h-[300px] md:min-h-[340px] relative overflow-hidden border border-zinc-300 dark:border-zinc-700">
-
+            {/* Review Card (added in-view + hover lift) */}
+            <motion.div
+              className="rounded-2xl p-6 sm:p-7 md:p-10 flex flex-col min-h-[260px] sm:min-h-[300px] md:min-h-[340px] relative overflow-hidden border border-zinc-300 dark:border-zinc-700"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.2 }}
+              whileHover={{ y: -4 }}
+            >
               {/* Quote */}
               <div className="flex gap-3">
                 <span
@@ -266,31 +285,39 @@ export function ClientFeedback() {
                   </div>
                 )}
               </div>
-            </div>
+            </motion.div>
 
-            {/* Stats (2 columns on mobile) */}
+            {/* Stats (added same staggered reveal + hover lift on each card) */}
             <div className="grid grid-cols-2 gap-5">
-              {stats.map((stat) => (
-                <div
-  key={stat.label}
-  className="rounded-2xl p-6 md:p-7 flex flex-col justify-between min-h-[150px] md:min-h-[160px] border border-zinc-300 dark:border-zinc-700"
->
-
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  className="rounded-2xl p-6 md:p-7 flex flex-col justify-between min-h-[150px] md:min-h-[160px] border border-zinc-300 dark:border-zinc-700"
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.45,
+                    ease: "easeOut",
+                    delay: i * 0.1,
+                  }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  whileHover={{ y: -4 }}
+                >
                   <CountUpText
-                      value={stat.value}
-                      duration={5000}
-                      className="stat-outline text-5xl sm:text-6xl md:text-7xl font-extrabold leading-none"
-                      style={{
-                        WebkitTextStroke: "1.5px #7A0000",
-                        color: "transparent",
-                      }}
-                    />
+                    value={stat.value}
+                    duration={4000}
+                    className="stat-outline text-4xl sm:text-6xl md:text-7xl font-extrabold leading-none"
+                    style={{
+                      WebkitTextStroke: "1.2px #7A0000",
+                      color: "transparent",
+                    }}
+                  />
 
                   <div className="mt-4">
                     <p className="text-sm font-semibold text-primary">{stat.label}</p>
                     <p className="mt-2 text-sm text-muted-foreground">{stat.note}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

@@ -20,11 +20,15 @@ import { ClientFeedback } from "@/components/ClientFeedback";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
+      
       <HeroSection />
       {/* <ScrollTextAnimation /> */}
       {/* <CompanyShowcase /> */}
+      <ClientFeedback />
       <Hero2Section />
+
       <BentoSection count={4} /> 
+
       {/* <Hero3Section />
       <HowWeWorkBentoSection /> */}
       
@@ -40,9 +44,9 @@ export default function Home() {
         effortlessly.
       </p> */}
 
-      {/* <BenefitsSection /> */}
+      <BenefitsSection />
       {/* <QuoteSection /> */}
-      <ClientFeedback />
+
       {/* <FeatureSection /> */}
       {/* <BlogSection /> */}
       {/* <PricingSection /> */}
