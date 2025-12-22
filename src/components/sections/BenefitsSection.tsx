@@ -185,19 +185,19 @@ export function BenefitsSection() {
             {BENEFITS.map((item, i) => (
               <motion.article
                 // key={item.id}
-                // className="flex h-full flex-col rounded-3xl border border-border bg-transparent p-4 sm:p-6 text-sm"
-                // initial={{ opacity: 0, y: 25 }}
-                // whileInView={{ opacity: 1, y: 0 }}
-                // transition={{
-                //   duration: 0.45,
-                //   ease: "easeOut",
-                //   delay: i * 0.1,
-                // }}
+                className="flex h-full flex-col rounded-3xl border border-border bg-transparent p-4 sm:p-6 text-sm"
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.45,
+                  ease: "easeOut",
+                  delay: i * 0.1,
+                }}
                 viewport={{ once: true, amount: 0.2 }}
                 whileHover={{ y: -4 }}
               >
-                {/* ID
-                <div className="mb-3 text-[10px] sm:text-[11px] font-medium tracking-[0.25em] text-destructive">
+                {/* ID */}
+                {/* <div className="mb-3 text-[10px] sm:text-[11px] font-medium tracking-[0.25em] text-destructive">
                   / {item.id}
                 </div> */}
 
