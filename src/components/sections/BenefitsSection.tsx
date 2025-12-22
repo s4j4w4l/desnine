@@ -132,7 +132,7 @@ const BENEFITS = [
   {
     title: "Real Time Collaboration",
     description:
-      "Daily check-ins and rapid iterations keep projects moving. You're always in the loop with feedback cycles that eliminate delays.",
+      "Daily checkins and rapid iterations keep projects moving. You're always in the loop with feedback cycles that eliminate delays.",
     icon: "/Benefits/clock%20(1).png",
   },
   {

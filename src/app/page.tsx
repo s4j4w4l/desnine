@@ -14,6 +14,8 @@ import { PricingSection } from "@/components/sections/pricing-section";
 import { QuoteSection } from "@/components/sections/quote-section";
 import { BlogSection } from "@/components/BlogSection";
 import { ClientFeedback } from "@/components/ClientFeedback";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { CTASection } from "@/components/sections/cta-section";
 
 
 
@@ -44,7 +46,13 @@ export default function Home() {
         effortlessly.
       </p> */}
 
+
+
+
+
       <BenefitsSection />
+
+
       {/* <QuoteSection /> */}
 
       {/* <FeatureSection /> */}
@@ -52,8 +60,7 @@ export default function Home() {
       {/* <PricingSection /> */}
       {/* <TestimonialSection /> */}
       {/* <FAQSection /> */}
-      {/* <CTASection /> */}
-      {/* <ContactSection /> */}
+
       {/* <ScrollTextAnimation /> */}
       {/* Top filler for scrolling */}
       <TextReveal>So, are you ready to stand out?</TextReveal>
