@@ -118,29 +118,25 @@ import Link from "next/link";
 
 const BENEFITS = [
   {
-    // id: "01",
     title: "Convert Focused",
     description:
       "Speed means nothing without conversions. Our integrated design, development, and copy work together to drive revenue, not just win design awards.",
     icon: "/Benefits/signal-status%20(2).png",
   },
   {
-    // id: "02",
     title: "Quick Launch",
     description:
       "Scale up for major launches or down for maintenance. Whether it's a quick landing page or complete rebrand, we adapt to your business needs.",
     icon: "/Benefits/click.png",
   },
   {
-    // id: "03",
     title: "Real Time Collaboration",
     description:
       "Daily check-ins and rapid iterations keep projects moving. You're always in the loop with feedback cycles that eliminate delays.",
     icon: "/Benefits/clock%20(1).png",
   },
   {
-    // id: "04",
-    title: "Creative Solution",
+    title: "Complete Creative Solution",
     description:
       "While others just do design, we handle copy too. Your entire funnel works together with cohesive messaging that actually converts.",
     icon: "/Benefits/lightbulb.png",
@@ -151,8 +147,11 @@ export function BenefitsSection() {
   const { b2 } = siteConfig;
 
   return (
-    <section id="benefits" className="relative w-full overflow-hidden border-t border-border bg-background">
-      {/* Hero2 Background */}
+    <section
+      id="benefits"
+      className="relative w-full overflow-hidden border-t border-border bg-background"
+    >
+      {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div
           className="h-[600px] md:h-[800px] w-full rounded-b-xl
@@ -160,10 +159,10 @@ export function BenefitsSection() {
         />
       </div>
 
-      {/* SAME SIDE PADDINGS AS ClientFeedback */}
+      {/* Same side padding as ClientFeedback */}
       <div className="relative z-10 w-full px-10 md:px-10">
         <div className="mx-auto w-full max-w-6xl py-16 lg:py-24">
-          {/* Hero2 Content (replaces BENEFITS heading) */}
+          {/* Hero text */}
           <motion.div
             className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -181,12 +180,12 @@ export function BenefitsSection() {
           </motion.div>
 
           {/* Benefits Grid */}
-          <div className="mt-10 grid gap-4 grid-cols-2 md:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
             {BENEFITS.map((item, i) => (
               <motion.article
-                // key={item.id}
+                key={item.title}
                 className="flex h-full flex-col rounded-3xl border border-border bg-transparent p-4 sm:p-6 text-sm"
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 0.45,
@@ -196,11 +195,6 @@ export function BenefitsSection() {
                 viewport={{ once: true, amount: 0.2 }}
                 whileHover={{ y: -4 }}
               >
-                {/* ID */}
-                {/* <div className="mb-3 text-[10px] sm:text-[11px] font-medium tracking-[0.25em] text-destructive">
-                  / {item.id}
-                </div> */}
-
                 {/* Icon */}
                 <div className="mb-4 inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-2xl border border-border">
                   <Image

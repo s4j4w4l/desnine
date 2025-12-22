@@ -24,11 +24,11 @@ export default function Home() {
       <HeroSection />
       {/* <ScrollTextAnimation /> */}
       {/* <CompanyShowcase /> */}
-      <ClientFeedback />
-      <Hero2Section />
 
+      <Hero2Section />
       <BentoSection count={4} /> 
 
+      <ClientFeedback />
       {/* <Hero3Section />
       <HowWeWorkBentoSection /> */}
       
