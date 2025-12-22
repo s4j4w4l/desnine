@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const DESNINE_RED = "#7A0000";
+const DESNINE_RED = "#B42B25";
 
 export function DesnineTrustBadge() {
   return (

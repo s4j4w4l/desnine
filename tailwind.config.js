@@ -20,6 +20,9 @@ module.exports = {
           '100%': {
             transform: 'rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))',
           },
+          colors: {
+            desnine: "#B42B25",
+          },
         },
       },
     },
