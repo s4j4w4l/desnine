@@ -16,6 +16,8 @@ import { BlogSection } from "@/components/BlogSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CTASection } from "@/components/sections/cta-section";
 import { ClientFeedback } from "@/components/ClientFeedback";
+import { FAQSection } from "@/components/FAQ";
+
 
 
 export default function Home() {
@@ -51,7 +53,7 @@ export default function Home() {
 
 
 
-
+      <FAQSection />
       <BenefitsSection />
 
 

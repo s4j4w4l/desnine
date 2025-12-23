@@ -332,10 +332,11 @@
 
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import React, { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/config";
 
+const AUTO_DELAY = 4000;
 const DESNINE_RED = "#B42B25";
 
 /** ---- In-View (run once) ---- */
@@ -434,6 +435,7 @@ function CountUpText({
 /** ---- Main Component ---- */
 export function ClientFeedback() {
   const { clientFeedback } = siteConfig;
+
   const stats = useMemo(() => clientFeedback.stats ?? [], [clientFeedback.stats]);
 
   return (
@@ -454,8 +456,7 @@ export function ClientFeedback() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* LEFT CARD: keep everything (border/padding/shape), remove review + image + arrows.
-                Keep ONLY the quote mark + new content inside. */}
+            {/* LEFT CARD: quote mark + Stories content (no reviews/arrows/images) */}
             <motion.div
               className="rounded-2xl p-6 sm:p-7 md:p-10 flex flex-col min-h-[260px] sm:min-h-[300px] md:min-h-[340px] relative overflow-hidden border border-zinc-300 dark:border-zinc-700"
               initial={{ opacity: 0, y: 25 }}
@@ -464,22 +465,19 @@ export function ClientFeedback() {
               viewport={{ once: true, amount: 0.2 }}
               whileHover={{ y: -4 }}
             >
-              {/* Quote mark + Stories content */}
-            <div className="flex gap-2 items-start">
-              <div className="h-10 w-6 flex items-start justify-center">
-                <span
-                  className="text-2xl font-bold leading-none"
-                  style={{ color: DESNINE_RED }}
-                >
-                  “
-                </span>
-              </div>
+              <div className="flex gap-2 items-start">
+                {/* Quote mark (kept) */}
+                <div className="h-10 w-6 flex items-start justify-center">
+                  <span
+                    className="text-2xl font-bold leading-none block"
+                    style={{ color: DESNINE_RED }}
+                  >
+                    “
+                  </span>
+                </div>
 
+                {/* Content inside the quote area */}
                 <div className="flex flex-col gap-5">
-                  {/* <h3 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-primary text-balance">
-                    Stories in Motion<span style={{ color: DESNINE_RED }}>.</span>
-                  </h3> */}
-
                   <p className="text-base sm:text-lg text-muted-foreground leading-relaxed tracking-tight text-balance">
                     Desnine Studio is a creative agency specializing in visual storytelling and
                     innovative campaigns. We offer web and graphic design, branding, content support,
@@ -489,11 +487,11 @@ export function ClientFeedback() {
                 </div>
               </div>
 
-              {/* Keep the bottom spacing so the card height stays the same (no dots/arrows/avatar) */}
+              {/* Spacer to keep the card height consistent */}
               <div className="mt-auto pt-10" />
             </motion.div>
 
-            {/* RIGHT: Stats kept as-is */}
+            {/* RIGHT: Stats (FILLED numbers now) */}
             <div className="grid grid-cols-2 gap-5">
               {stats.map((stat, i) => (
                 <motion.div
@@ -512,10 +510,10 @@ export function ClientFeedback() {
                   <CountUpText
                     value={stat.value}
                     duration={4000}
-                    className="stat-outline text-4xl sm:text-6xl md:text-7xl font-extrabold leading-none"
+                    className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-none"
                     style={{
-                      WebkitTextStroke: "1.2px #7A0000",
-                      color: "transparent",
+                      color: DESNINE_RED,
+                      textShadow: "0 10px 28px rgba(180,43,37,0.18)",
                     }}
                   />
 
