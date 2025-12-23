@@ -17,7 +17,8 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { CTASection } from "@/components/sections/cta-section";
 import { ClientFeedback } from "@/components/ClientFeedback";
 import { FAQSection } from "@/components/FAQ";
-
+import { DesnineAdvantageSection } from "@/components/ADVANTAGES";
+import { ProcessSection } from "@/components/PROCESS";
 
 
 export default function Home() {
@@ -31,10 +32,11 @@ export default function Home() {
 
       <ClientFeedback />
 
+
       <Hero2Section />
       <BentoSection count={4} /> 
 
-
+      <QuoteSection />
       {/* <Hero3Section />
       <HowWeWorkBentoSection /> */}
       
@@ -50,14 +52,14 @@ export default function Home() {
         effortlessly.
       </p> */}
 
+      <ProcessSection />
 
-
-
-      <FAQSection />
       <BenefitsSection />
+      <FAQSection />
 
 
-      {/* <QuoteSection /> */}
+
+      {/* <DesnineAdvantageSection /> */}
 
       {/* <FeatureSection /> */}
       {/* <BlogSection /> */}

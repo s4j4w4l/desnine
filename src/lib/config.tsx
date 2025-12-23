@@ -1157,11 +1157,11 @@ howWeWork: {
   },
   quoteSection: {
     quote:
-      "Desnine has transformed our daily operations. Tasks that once consumed hours now complete in moments, freeing our team to focus on creativity and strategic growth.",
+      "We saw a 42% increase in inquiries after Desnine redesigned our website. The process was smooth, clear, and well organized from start to finish.",
     author: {
-      name: "Alex Johnson",
-      role: "CTO, Innovatech",
-      image: "https://randomuser.me/api/portraits/men/91.jpg",
+      name: "Ayesha Khan",
+      role: "Founder, AKT",
+      image: "/pp.png",
     },
   },
 
