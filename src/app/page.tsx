@@ -16,10 +16,10 @@ import { BlogSection } from "@/components/BlogSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CTASection } from "@/components/sections/cta-section";
 import { ClientFeedback } from "@/components/ClientFeedback";
-import { FAQSection } from "@/components/FAQ";
 import { DesnineAdvantageSection } from "@/components/ADVANTAGES";
 import { ProcessSection } from "@/components/PROCESS";
-
+import { FAQSection } from "@/components/FAQ";
+import Desnine3DRotatingBG from "@/components/ Desnine3DRotatingBGProps ";
 
 export default function Home() {
   return (
@@ -27,6 +27,10 @@ export default function Home() {
       
 
       <HeroSection />
+      {/* <Desnine3DRotatingBG logoSrc="/D.png" /> */}
+      
+
+
       {/* <ScrollTextAnimation /> */}
       {/* <CompanyShowcase /> */}
 
@@ -36,7 +40,7 @@ export default function Home() {
       <Hero2Section />
       <BentoSection count={4} /> 
 
-      <QuoteSection />
+
       {/* <Hero3Section />
       <HowWeWorkBentoSection /> */}
       
@@ -51,6 +55,7 @@ export default function Home() {
         </Highlighter>{" "}
         effortlessly.
       </p> */}
+      
 
       <ProcessSection />
 
