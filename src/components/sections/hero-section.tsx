@@ -4,6 +4,7 @@
 import { siteConfig } from "@/lib/config";
 import Link from "next/link";
 import { HeroVideoSection } from "./hero-video-section";
+import { ShaderGradient } from "@shadergradient/react";
 
 export function HeroSection() {
   const { hero } = siteConfig;
@@ -32,7 +33,11 @@ export function HeroSection() {
         </div>
       </div>
       <HeroVideoSection />
+
+
     </section>
   );
 }
+
+
 
