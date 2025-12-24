@@ -32,9 +32,9 @@ export function HeroSection() {
               {hero.description}
             </p>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-primary">
+            {/* <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-primary">
               {hero.title}
-            </h1>
+            </h1> */}
           </div>
         </div>
       </div>
