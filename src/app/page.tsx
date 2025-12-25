@@ -57,7 +57,7 @@ export default function Home() {
       </p> */}
       
 
-      {/* <ProcessSection /> */}
+      <ProcessSection />
 
       <BenefitsSection />
       <FAQSection />
