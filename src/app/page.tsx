@@ -25,6 +25,24 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
       
+      {/* 🔒 Lock page to 2D – stops ANY 3D camera / tilt / perspective movement */}
+        <style jsx global>{`
+          html,
+          body {
+            perspective: none !important;
+            transform-style: flat !important;
+          }
+
+          body * {
+            transform-style: flat !important;
+          }
+
+          /* Kill ONLY 3D transforms, keep 2D animations */
+          body * {
+            backface-visibility: hidden;
+          }
+        `}</style>
+
 
       <HeroSection />
       {/* <Desnine3DRotatingBG logoSrc="/D.png" /> */}
