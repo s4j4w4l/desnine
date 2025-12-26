@@ -20,13 +20,19 @@ import { DesnineAdvantageSection } from "@/components/ADVANTAGES";
 import { ProcessSection } from "@/components/PROCESS";
 import { FAQSection } from "@/components/FAQ";
 import Desnine3DRotatingBG from "@/components/ Desnine3DRotatingBGProps ";
-
+import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
+import HeroScrollTransition from "@/components/ui/HeroScrollTransition";
+import { ShaderGradient } from "@shadergradient/react";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
       
+      <HeroScrollTransition>
+        <HeroSection />
+      </HeroScrollTransition>
 
-      <HeroSection />
+
+
       {/* <Desnine3DRotatingBG logoSrc="/D.png" /> */}
       
 
@@ -35,6 +41,7 @@ export default function Home() {
       {/* <CompanyShowcase /> */}
 
       <ClientFeedback />
+
 
 
       <Hero2Section />
@@ -59,7 +66,11 @@ export default function Home() {
 
       <ProcessSection />
 
+
+
       <BenefitsSection />
+
+
       <FAQSection />
 
 
