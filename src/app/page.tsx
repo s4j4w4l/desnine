@@ -27,11 +27,11 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
       
-      <HeroScrollTransition>
+      {/* <HeroScrollTransition>
         <HeroSection />
-      </HeroScrollTransition>
+      </HeroScrollTransition> */}
 
-
+      <HeroSection />
 
       {/* <Desnine3DRotatingBG logoSrc="/D.png" /> */}
       

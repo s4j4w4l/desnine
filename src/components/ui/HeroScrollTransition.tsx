@@ -2,6 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { AnimatedGridPattern } from "../magicui/AnimatedGridPatternProps";
+import { DotPattern } from "./DotPatternProps";
 
 const DESNINE_RED = "#B42B25";
 
@@ -49,6 +51,7 @@ export default function HeroScrollTransition({
         className="sticky top-0 h-screen w-full overflow-hidden"
       >
         {/* Background */}
+        
         {/* <div className="absolute inset-0 bg-gradient-to-b from-[#f2f2f2] to-[#e9e9e9] dark:from-[#0b0b12] dark:to-[#06060e]" /> */}
         {/* <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" /> */}
 

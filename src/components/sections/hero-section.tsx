@@ -9,6 +9,7 @@ import Desnine3DRotatingBG from "../ Desnine3DRotatingBGProps ";
 import DesnineBackground from "../DesnineBackground";
 import DesnineLogo3D from "../DesnineBackground";
 import Desnine3DRotatingLogo from "../DesnineBackground";
+import { DotPattern } from "../ui/DotPatternProps";
 
 export function HeroSection() {
   const { hero } = siteConfig;
@@ -16,6 +17,7 @@ export function HeroSection() {
   return (
     
     <section id={"hero"} className="w-full relative">
+      
       <div className="relative flex flex-col items-center w-full px-6">
 
         <div className="absolute inset-0">
@@ -31,7 +33,7 @@ export function HeroSection() {
             <p className="text-base md:text-lg text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
               {hero.description}
             </p>
-
+            
             {/* <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-primary">
               {hero.title}
             </h1> */}
