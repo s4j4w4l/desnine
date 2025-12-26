@@ -157,8 +157,7 @@ function ProcessRow({
     offset: ["start 85%", "end 55%"],
   });
 
-  // Keep it subtle to avoid any chance of overflow feeling on small screens
-  const x = useTransform(scrollYProgress, [0, 1], [28, 0]);
+  const x = useTransform(scrollYProgress, [0, 1], [24, 0]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
@@ -167,7 +166,7 @@ function ProcessRow({
       style={{ x, opacity }}
       className="group rounded-2xl border border-border bg-transparent p-6 md:p-7"
     >
-      <div className="flex items-start justify-between gap-6">
+      <div className="flex items-start justify-between gap-10">
         <div className="flex-1">
           <div className="flex items-center gap-3">
             <span
@@ -201,11 +200,14 @@ export function ProcessSection() {
   return (
     <section
       id="process"
-      className="w-full bg-transparent overflow-x-hidden relative"
-      style={{ contain: "paint" }} // extra safety: prevents scroll/paint bleed
+      className="w-full bg-transparent overflow-x-hidden"
     >
-      {/* IMPORTANT: clip overflow at the container that wraps the animated rows */}
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10 py-16 lg:py-24 overflow-x-hidden">
+      {/* ⬅️➡️ LEFT / RIGHT PADDING LIVES HERE */}
+      <div className="
+        mx-auto w-full max-w-10xl
+        px-12 sm:px-12 md:px-12 lg:px-12
+        py-12 lg:py-12
+      ">
         {/* Header */}
         <div className="pb-10">
           <div className="max-w-3xl">
@@ -234,7 +236,12 @@ export function ProcessSection() {
         {/* Rows */}
         <div className="space-y-4">
           {PROCESS.map((item, i) => (
-            <ProcessRow key={item.title} i={i} title={item.title} desc={item.desc} />
+            <ProcessRow
+              key={item.title}
+              i={i}
+              title={item.title}
+              desc={item.desc}
+            />
           ))}
         </div>
       </div>
