@@ -1,14 +1,10 @@
-"use client";
+import DesnineImage from "@/components/DesnineImage";
 
-import Image from "next/image";
-
-export default function DesnineImage() {
+export default function Home() {
   return (
-    <div className="w-full flex justify-center items-center">
-      <Image
-        src="/images/Desnine Studio.svg" // change path
-        alt="Desnine Studio"
-      />
-    </div>
+    <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
+      
+      <DesnineImage />
+    </main>
   );
 }
