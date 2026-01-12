@@ -67,8 +67,8 @@ export default function Home() {
       <ProcessSection />
 
 
-
-      <BenefitsSection />
+{/* 
+      <BenefitsSection /> */}
 
 
       <FAQSection />
