@@ -36,15 +36,19 @@ export function HeroSection() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-primary">
               {hero.title}
             </h1>
-            <DesnineTrustBadge />
+            
 
             <p className="text-base md:text-lg text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
               {hero.description}
             </p>
-                        
           </div>
         </div>
+        <div className="mt-6">
+          <DesnineTrustBadge />
+        </div>
       </div>
+      
+
       <HeroVideoSection />
 
 

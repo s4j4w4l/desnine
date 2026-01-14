@@ -7,7 +7,7 @@ const DESNINE_RED = "#B42B25";
 
 export function DesnineTrustBadge() {
   return (
-    <div className="flex items-center justify-between gap-45 w-full max-w-md">
+    <div className="flex items-center gap-65">
       
       {/* Left: Desnine logo (vertical spin) */}
       <motion.div
