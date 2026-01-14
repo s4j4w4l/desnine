@@ -18,7 +18,7 @@ export const TextReveal: FC<TextRevealProps> = ({
   children,
   className,
   showButton = true,
-  buttonLabel = "Lets Talk",
+  buttonLabel = "Request a Free Quote",
   onButtonClick,
   buttonClassName,
   ...rest

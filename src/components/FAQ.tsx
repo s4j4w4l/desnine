@@ -43,7 +43,7 @@ export function FAQSection() {
 
   return (
     <section ref={sectionRef} className="w-full py-12">
-      <div className="mx-auto max-w-4xl px-10 space-y-6">
+      <div className="mx-auto max-w-4xl px-4 md:px-8 lg:px-0 space-y-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}

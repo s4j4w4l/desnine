@@ -10,6 +10,7 @@ import DesnineBackground from "../DesnineBackground";
 import DesnineLogo3D from "../DesnineBackground";
 import Desnine3DRotatingLogo from "../DesnineBackground";
 import { DotPattern } from "../ui/DotPatternProps";
+import { DesnineTrustBadge } from "./DesnineTrustBadge";
 
 export function HeroSection() {
   const { hero } = siteConfig;
@@ -30,13 +31,17 @@ export function HeroSection() {
           </p>
           <div className="flex flex-col items-center justify-center gap-5">
             
+
+            
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-primary">
+              {hero.title}
+            </h1>
+            <DesnineTrustBadge />
+
             <p className="text-base md:text-lg text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">
               {hero.description}
             </p>
-            
-            {/* <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-primary">
-              {hero.title}
-            </h1> */}
+                        
           </div>
         </div>
       </div>

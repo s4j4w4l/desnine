@@ -115,6 +115,7 @@
 
 "use client";
 
+
 import { TerminalDemo } from "@/components/terminal";
 import { FileTreeDemo } from "@/components/file-tree";
 import { DiscoveryAnimation } from "@/components/discovery-animation";

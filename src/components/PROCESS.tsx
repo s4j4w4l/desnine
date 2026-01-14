@@ -131,7 +131,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const DESNINE_RED = "#B42B25";
+const DESNINE_RED = "#7A0000";
 
 const PROCESS = [
   { title: "DISCOVERY + DIRECTION", desc: "We learn your goals, your audience, and what success looks like." },
