@@ -65,50 +65,63 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const DESNINE_RED = "#B42B25";
 
 export function DesnineTrustBadge() {
-  return (
-    <div className="flex items-center gap-25">
-      
-      {/* CTA LINK (correct & future-proof) */}
-      <Link href="/contact" className="inline-block">
-        <motion.div
-          className="inline-flex cursor-pointer items-center rounded-full border px-4 py-2 text-xs font-medium select-none"
-          style={{
-            color: DESNINE_RED,
-            borderColor: DESNINE_RED,
-          }}
-          animate={{
-            borderColor: [
-              "rgba(180,43,37,0.4)",
-              "rgba(180,43,37,1)",
-              "rgba(180,43,37,0.4)",
-            ],
-            boxShadow: [
-              "0 0 0px rgba(180,43,37,0)",
-              "0 0 10px rgba(180,43,37,0.6)",
-              "0 0 0px rgba(180,43,37,0)",
-            ],
-          }}
-          transition={{
-            duration: 1.2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          whileHover={{
-            scale: 1.08,
-            boxShadow: "0 0 18px rgba(180,43,37,0.9)",
-          }}
-          whileTap={{ scale: 0.96 }}
-        >
-          Get your free quote
-        </motion.div>
-      </Link>
+  const router = useRouter();
 
-      {/* Right: animated stars + label */}
+  const goContact = () => {
+    // App Router navigation
+    router.push("/contact");
+
+    // Fallback in case something blocks the router (overlay/form/etc.)
+    setTimeout(() => {
+      if (window.location.pathname !== "/contact") {
+        window.location.href = "/contact";
+      }
+    }, 120);
+  };
+
+  return (
+    <div className="relative z-10 flex items-center gap-25">
+      {/* CTA BUTTON */}
+      <motion.button
+        type="button"
+        onClick={goContact}
+        className="relative z-50 inline-flex items-center rounded-full border px-4 py-2 text-xs font-medium select-none cursor-pointer pointer-events-auto"
+        style={{
+          color: DESNINE_RED,
+          borderColor: DESNINE_RED,
+        }}
+        animate={{
+          borderColor: [
+            "rgba(180,43,37,0.4)",
+            "rgba(180,43,37,1)",
+            "rgba(180,43,37,0.4)",
+          ],
+          boxShadow: [
+            "0 0 0px rgba(180,43,37,0)",
+            "0 0 10px rgba(180,43,37,0.6)",
+            "0 0 0px rgba(180,43,37,0)",
+          ],
+        }}
+        // transition={{
+        //   duration: 1.2,
+        //   repeat: Infinity,
+        //   ease: "easeInOut",
+        // }}
+        whileHover={{
+          scale: 1.08,
+          boxShadow: "0 0 18px rgba(180,43,37,0.9)",
+        }}
+        whileTap={{ scale: 0.96 }}
+      >
+        Get Your Free Quote
+      </motion.button>
+
+      {/* Stars + Label */}
       <div className="flex flex-col items-end gap-1">
         <div className="flex gap-1">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -119,6 +132,7 @@ export function DesnineTrustBadge() {
               viewBox="0 0 24 24"
               fill={DESNINE_RED}
               aria-hidden="true"
+              className="pointer-events-none"
               animate={{
                 opacity: [0.6, 1, 0.6],
                 scale: [1, 1.15, 1],
@@ -135,9 +149,7 @@ export function DesnineTrustBadge() {
           ))}
         </div>
 
-        <p className="text-xs text-muted-foreground">
-          Loved by Big Brands
-        </p>
+        <p className="text-xs text-muted-foreground">Loved by Big Brands</p>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ export const TextReveal: FC<TextRevealProps> = ({
   showButton = true,
   buttonLabel = "Request a Free Quote",
   onButtonClick,
-  buttonClassName,
+  buttonClassName = "text-xs md:text-sm",
   ...rest
 }) => {
   const router = useRouter(); // ✅ router for navigation
