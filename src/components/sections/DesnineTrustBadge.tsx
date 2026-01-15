@@ -71,7 +71,7 @@ const DESNINE_RED = "#B42B25";
 
 export function DesnineTrustBadge() {
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex items-center gap-25">
       
       {/* CTA LINK (correct & future-proof) */}
       <Link href="/contact" className="inline-block">
