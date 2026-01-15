@@ -25,6 +25,7 @@ import Desnine3DRotatingBG from "@/components/ Desnine3DRotatingBGProps ";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import HeroScrollTransition from "@/components/ui/HeroScrollTransition";
 import { BadBrandingSection } from "@/components/sections/CostOfBadBranding";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
@@ -65,6 +66,7 @@ export default function Home() {
         effortlessly.
       </p> */}
       
+      {/* <TestimonialsSection /> */}
 
       <ProcessSection />
       {/* <BadBrandingSection /> */}
