@@ -73,30 +73,38 @@ export function DesnineTrustBadge() {
   return (
     <div className="flex items-center gap-6">
       
-      {/* Left: CTA */}
-      <Link href="/contact">
+      {/* CTA LINK (correct & future-proof) */}
+      <Link href="/contact" className="inline-block">
         <motion.div
-          className="group cursor-pointer rounded-full border px-4 py-2 text-xs font-medium"
+          className="inline-flex cursor-pointer items-center rounded-full border px-4 py-2 text-xs font-medium select-none"
           style={{
-            borderColor: DESNINE_RED,
             color: DESNINE_RED,
+            borderColor: DESNINE_RED,
           }}
-          initial={{ opacity: 0.9 }}
-          animate={{ opacity: [0.9, 1, 0.9] }}
+          animate={{
+            borderColor: [
+              "rgba(180,43,37,0.4)",
+              "rgba(180,43,37,1)",
+              "rgba(180,43,37,0.4)",
+            ],
+            boxShadow: [
+              "0 0 0px rgba(180,43,37,0)",
+              "0 0 10px rgba(180,43,37,0.6)",
+              "0 0 0px rgba(180,43,37,0)",
+            ],
+          }}
           transition={{
-            duration: 2,
+            duration: 1.2,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           whileHover={{
-            backgroundColor: DESNINE_RED,
-            color: "#fff",
+            scale: 1.08,
+            boxShadow: "0 0 18px rgba(180,43,37,0.9)",
           }}
+          whileTap={{ scale: 0.96 }}
         >
-          Get your free quote{" "}
-          <span className="inline-block transition-transform group-hover:translate-x-1">
-            →
-          </span>
+          Get your free quote →
         </motion.div>
       </Link>
 
@@ -111,8 +119,10 @@ export function DesnineTrustBadge() {
               viewBox="0 0 24 24"
               fill={DESNINE_RED}
               aria-hidden="true"
-              initial={{ opacity: 0.6, scale: 1 }}
-              animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.15, 1] }}
+              animate={{
+                opacity: [0.6, 1, 0.6],
+                scale: [1, 1.15, 1],
+              }}
               transition={{
                 duration: 1.6,
                 ease: "easeInOut",
