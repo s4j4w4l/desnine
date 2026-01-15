@@ -104,7 +104,7 @@ export function DesnineTrustBadge() {
           }}
           whileTap={{ scale: 0.96 }}
         >
-          Get your free quote →
+          Get your free quote
         </motion.div>
       </Link>
 
