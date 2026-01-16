@@ -26,6 +26,10 @@ import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import HeroScrollTransition from "@/components/ui/HeroScrollTransition";
 import { BadBrandingSection } from "@/components/sections/CostOfBadBranding";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { StatsBarSection } from "@/components/sections/StatsSection";
+import RelatedProjectsSection from "@/components/sections/related-projects-section";
+import HomeProjectsSection from "@/components/sections/home-work-section";
+import { TestimonialCard } from "@/components/testimonial-scroll";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
@@ -69,9 +73,10 @@ export default function Home() {
       {/* <TestimonialsSection /> */}
 
       <ProcessSection />
+
       {/* <BadBrandingSection /> */}
 
-
+      <HomeProjectsSection />
 {/* 
       <BenefitsSection /> */}
 

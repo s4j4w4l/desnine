@@ -1318,203 +1318,313 @@ blogSection: {
       },
     ],
   },
-  testimonials: [
-    {
-      id: "1",
-      name: "Sarah Johnson",
-      role: "Marketing Director",
-      img: "https://randomuser.me/api/portraits/women/32.jpg",
-      description: (
-        <p>
-          Desnine&apos;s SEO strategies transformed our online presence completely.
-          <Highlight>
-            We went from page 3 to top 3 in just 6 months, with a 300% increase in organic traffic.
-          </Highlight>{" "}
-          Their data-driven approach and constant optimization made all the difference.
-        </p>
-      ),
-    },
-    {
-      id: "2",
-      name: "Marcus Rodriguez",
-      role: "Founder & CEO",
-      img: "https://randomuser.me/api/portraits/men/67.jpg",
-      description: (
-        <p>
-          Desnine didn&apos;t just design our website - they built a conversion machine.
-          <Highlight>
-            Our e-commerce sales increased by 150% within the first quarter after launch.
-          </Highlight>{" "}
-          The user experience is seamless, and the design perfectly captures our brand essence.
-        </p>
-      ),
-    },
-    {
-      id: "3",
-      name: "Jennifer Park",
-      role: "Operations Manager",
-      img: "https://randomuser.me/api/portraits/women/44.jpg",
-      description: (
-        <p>
-          The AI automation Desnine implemented for our appointment scheduling has been a game-changer.
-          <Highlight>
-            We&apos;ve reduced no-shows by 40% and our staff can focus on patient care instead of admin tasks.
-          </Highlight>{" "}
-          The integration was smooth and the results were immediate.
-        </p>
-      ),
-    },
-    {
-      id: "4",
-      name: "David Chen",
-      role: "CTO",
-      img: "https://randomuser.me/api/portraits/men/23.jpg",
-      description: (
-        <p>
-          Desnine&apos;s smart analytics dashboard gives us insights we never had before.
-          <Highlight>
-            We can now make data-driven decisions in real-time, leading to 25% better resource allocation.
-          </Highlight>{" "}
-          The AI-powered recommendations are spot-on and have become integral to our strategy.
-        </p>
-      ),
-    },
-    {
-      id: "5",
-      name: "Amanda Thompson",
-      role: "Brand Manager",
-      img: "https://randomuser.me/api/portraits/women/28.jpg",
-      description: (
-        <p>
-          Our rebranding with Desnine was transformative. They didn&apos;t just create a logo - they crafted our entire brand identity.
-          <Highlight>
-            Customer recognition increased by 200% and our social media engagement tripled.
-          </Highlight>{" "}
-          The packaging design is so beautiful, customers are sharing it on social media.
-        </p>
-      ),
-    },
-    {
-      id: "6",
-      name: "Robert Kim",
-      role: "Digital Marketing Lead",
-      img: "https://randomuser.me/api/portraits/men/89.jpg",
-      description: (
-        <p>
-          Desnine&apos;s advertising design services helped us stand out in a crowded market.
-          <Highlight>
-            Our ad conversion rates improved by 180% and cost per acquisition dropped by 35%.
-          </Highlight>{" "}
-          Their creative team understands what drives engagement and conversions.
-        </p>
-      ),
-    },
-    {
-      id: "7",
-      name: "Lisa Wang",
-      role: "Content Director",
-      img: "https://randomuser.me/api/portraits/women/56.jpg",
-      description: (
-        <p>
-          The content creation and visual support from Desnine elevated our educational materials to a new level.
-          <Highlight>
-            Student engagement increased by 60% and our course completion rates went up by 45%.
-          </Highlight>{" "}
-          Their illustrations and graphics make complex topics accessible and engaging.
-        </p>
-      ),
-    },
-    {
-      id: "8",
-      name: "Michael O&apos;Connor",
-      role: "VP of Marketing",
-      img: "https://randomuser.me/api/portraits/men/45.jpg",
-      description: (
-        <p>
-          Desnine&apos;s industry-specific design for real estate has given us a competitive edge.
-          <Highlight>
-            Our property listings now convert 3x better and our brand is recognized as the most professional in the market.
-          </Highlight>{" "}
-          They understand the unique needs of our industry perfectly.
-        </p>
-      ),
-    },
-    {
-      id: "9",
-      name: "Sophia Martinez",
-      role: "E-commerce Manager",
-      img: "https://randomuser.me/api/portraits/women/71.jpg",
-      description: (
-        <p>
-          The digital design work Desnine did for our fashion brand is absolutely stunning.
-          <Highlight>
-            Our email campaigns now have a 25% open rate and our social media content drives 4x more engagement.
-          </Highlight>{" "}
-          Every design element feels cohesive and on-brand.
-        </p>
-      ),
-    },
-    {
-      id: "10",
-      name: "James Wilson",
-      role: "CEO",
-      img: "https://randomuser.me/api/portraits/men/12.jpg",
-      description: (
-        <p>
-          As a startup, we needed everything - website, branding, SEO, and automation. Desnine delivered it all.
-          <Highlight>
-            We went from 0 to 10,000 monthly visitors in 8 months and secured our Series A funding.
-          </Highlight>{" "}
-          They&apos;re not just a service provider - they&apos;re a growth partner.
-        </p>
-      ),
-    },
-    {
-      id: "11",
-      name: "Rachel Green",
-      role: "Marketing Manager",
-      img: "https://randomuser.me/api/portraits/women/38.jpg",
-      description: (
-        <p>
-          Desnine&apos;s print and packaging design for our wellness products exceeded all expectations.
-          <Highlight>
-            Our products now have 40% better shelf presence and customer feedback about packaging is overwhelmingly positive.
-          </Highlight>{" "}
-          The designs are both beautiful and functional.
-        </p>
-      ),
-    },
-    {
-      id: "12",
-      name: "Alex Turner",
-      role: "Product Manager",
-      img: "https://randomuser.me/api/portraits/men/91.jpg",
-      description: (
-        <p>
-          The AI automation bots Desnine built for our customer service have revolutionized our operations.
-          <Highlight>
-            We handle 5x more customer inquiries with 90% faster response times and 95% customer satisfaction.
-          </Highlight>{" "}
-          The bots are so intelligent, customers often don&apos;t realize they&apos;re talking to AI.
-        </p>
-      ),
-    },
-    {
-      id: "13",
-      name: "Nina Patel",
-      role: "Founder",
-      img: "https://randomuser.me/api/portraits/women/63.jpg",
-      description: (
-        <p>
-          Desnine helped us establish our creative agency&apos;s brand identity from the ground up.
-          <Highlight>
-            Within 6 months, we&apos;ve attracted 15 new high-value clients and our portfolio is getting featured in design publications.
-          </Highlight>{" "}
-          Their strategic approach to branding is unmatched in the industry.
-        </p>
-      ),
-    },
-  ],
+  // testimonials: [
+  //   {
+  //     id: "1",
+  //     name: "Sarah Johnson",
+  //     role: "Marketing Director",
+  //     img: "https://randomuser.me/api/portraits/women/32.jpg",
+  //     description: (
+  //       <p>
+  //         Desnine&apos;s SEO strategies transformed our online presence completely.
+  //         <Highlight>
+  //           We went from page 3 to top 3 in just 6 months, with a 300% increase in organic traffic.
+  //         </Highlight>{" "}
+  //         Their data-driven approach and constant optimization made all the difference.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "Marcus Rodriguez",
+  //     role: "Founder & CEO",
+  //     img: "https://randomuser.me/api/portraits/men/67.jpg",
+  //     description: (
+  //       <p>
+  //         Desnine didn&apos;t just design our website - they built a conversion machine.
+  //         <Highlight>
+  //           Our e-commerce sales increased by 150% within the first quarter after launch.
+  //         </Highlight>{" "}
+  //         The user experience is seamless, and the design perfectly captures our brand essence.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "3",
+  //     name: "Jennifer Park",
+  //     role: "Operations Manager",
+  //     img: "https://randomuser.me/api/portraits/women/44.jpg",
+  //     description: (
+  //       <p>
+  //         The AI automation Desnine implemented for our appointment scheduling has been a game-changer.
+  //         <Highlight>
+  //           We&apos;ve reduced no-shows by 40% and our staff can focus on patient care instead of admin tasks.
+  //         </Highlight>{" "}
+  //         The integration was smooth and the results were immediate.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "4",
+  //     name: "David Chen",
+  //     role: "CTO",
+  //     img: "https://randomuser.me/api/portraits/men/23.jpg",
+  //     description: (
+  //       <p>
+  //         Desnine&apos;s smart analytics dashboard gives us insights we never had before.
+  //         <Highlight>
+  //           We can now make data-driven decisions in real-time, leading to 25% better resource allocation.
+  //         </Highlight>{" "}
+  //         The AI-powered recommendations are spot-on and have become integral to our strategy.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "5",
+  //     name: "Amanda Thompson",
+  //     role: "Brand Manager",
+  //     img: "https://randomuser.me/api/portraits/women/28.jpg",
+  //     description: (
+  //       <p>
+  //         Our rebranding with Desnine was transformative. They didn&apos;t just create a logo - they crafted our entire brand identity.
+  //         <Highlight>
+  //           Customer recognition increased by 200% and our social media engagement tripled.
+  //         </Highlight>{" "}
+  //         The packaging design is so beautiful, customers are sharing it on social media.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "6",
+  //     name: "Robert Kim",
+  //     role: "Digital Marketing Lead",
+  //     img: "https://randomuser.me/api/portraits/men/89.jpg",
+  //     description: (
+  //       <p>
+  //         Desnine&apos;s advertising design services helped us stand out in a crowded market.
+  //         <Highlight>
+  //           Our ad conversion rates improved by 180% and cost per acquisition dropped by 35%.
+  //         </Highlight>{" "}
+  //         Their creative team understands what drives engagement and conversions.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "7",
+  //     name: "Lisa Wang",
+  //     role: "Content Director",
+  //     img: "https://randomuser.me/api/portraits/women/56.jpg",
+  //     description: (
+  //       <p>
+  //         The content creation and visual support from Desnine elevated our educational materials to a new level.
+  //         <Highlight>
+  //           Student engagement increased by 60% and our course completion rates went up by 45%.
+  //         </Highlight>{" "}
+  //         Their illustrations and graphics make complex topics accessible and engaging.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "8",
+  //     name: "Michael O&apos;Connor",
+  //     role: "VP of Marketing",
+  //     img: "https://randomuser.me/api/portraits/men/45.jpg",
+  //     description: (
+  //       <p>
+  //         Desnine&apos;s industry-specific design for real estate has given us a competitive edge.
+  //         <Highlight>
+  //           Our property listings now convert 3x better and our brand is recognized as the most professional in the market.
+  //         </Highlight>{" "}
+  //         They understand the unique needs of our industry perfectly.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "9",
+  //     name: "Sophia Martinez",
+  //     role: "E-commerce Manager",
+  //     img: "https://randomuser.me/api/portraits/women/71.jpg",
+  //     description: (
+  //       <p>
+  //         The digital design work Desnine did for our fashion brand is absolutely stunning.
+  //         <Highlight>
+  //           Our email campaigns now have a 25% open rate and our social media content drives 4x more engagement.
+  //         </Highlight>{" "}
+  //         Every design element feels cohesive and on-brand.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "10",
+  //     name: "James Wilson",
+  //     role: "CEO",
+  //     img: "https://randomuser.me/api/portraits/men/12.jpg",
+  //     description: (
+  //       <p>
+  //         As a startup, we needed everything - website, branding, SEO, and automation. Desnine delivered it all.
+  //         <Highlight>
+  //           We went from 0 to 10,000 monthly visitors in 8 months and secured our Series A funding.
+  //         </Highlight>{" "}
+  //         They&apos;re not just a service provider - they&apos;re a growth partner.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "11",
+  //     name: "Rachel Green",
+  //     role: "Marketing Manager",
+  //     img: "https://randomuser.me/api/portraits/women/38.jpg",
+  //     description: (
+  //       <p>
+  //         Desnine&apos;s print and packaging design for our wellness products exceeded all expectations.
+  //         <Highlight>
+  //           Our products now have 40% better shelf presence and customer feedback about packaging is overwhelmingly positive.
+  //         </Highlight>{" "}
+  //         The designs are both beautiful and functional.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "12",
+  //     name: "Alex Turner",
+  //     role: "Product Manager",
+  //     img: "https://randomuser.me/api/portraits/men/91.jpg",
+  //     description: (
+  //       <p>
+  //         The AI automation bots Desnine built for our customer service have revolutionized our operations.
+  //         <Highlight>
+  //           We handle 5x more customer inquiries with 90% faster response times and 95% customer satisfaction.
+  //         </Highlight>{" "}
+  //         The bots are so intelligent, customers often don&apos;t realize they&apos;re talking to AI.
+  //       </p>
+  //     ),
+  //   },
+  //   {
+  //     id: "13",
+  //     name: "Nina Patel",
+  //     role: "Founder",
+  //     img: "https://randomuser.me/api/portraits/women/63.jpg",
+  //     description: (
+  //       <p>
+  //         Desnine helped us establish our creative agency&apos;s brand identity from the ground up.
+  //         <Highlight>
+  //           Within 6 months, we&apos;ve attracted 15 new high-value clients and our portfolio is getting featured in design publications.
+  //         </Highlight>{" "}
+  //         Their strategic approach to branding is unmatched in the industry.
+  //       </p>
+  //     ),
+  //   },
+  // ],
+
+testimonials: [
+  {
+    id: "1",
+    name: "Sarah Johnson",
+    role: "Marketing Director",
+    img: "https://randomuser.me/api/portraits/women/32.jpg",
+    description:
+      "Desnine’s SEO work completely changed our online visibility. We started showing up where it actually matters, and the growth felt steady and intentional. They kept us updated, tested improvements constantly, and made decisions based on real data—not guesses.",
+  },
+  {
+    id: "2",
+    name: "Marcus Rodriguez",
+    role: "Founder & CEO",
+    img: "https://randomuser.me/api/portraits/men/67.jpg",
+    description:
+      "Desnine didn’t just make our website look good—they built it to sell. The experience is smooth, fast, and easy for customers, and the design fits our brand perfectly. After launch, we immediately saw a noticeable jump in sales and conversions.",
+  },
+  {
+    id: "3",
+    name: "Jennifer Park",
+    role: "Operations Manager",
+    img: "https://randomuser.me/api/portraits/women/44.jpg",
+    description:
+      "The appointment automation Desnine set up saved our team a lot of time. Scheduling became simpler, reminders were handled automatically, and we saw fewer no-shows. Setup was clean, and everything worked properly from day one.",
+  },
+  {
+    id: "4",
+    name: "David Chen",
+    role: "CTO",
+    img: "https://randomuser.me/api/portraits/men/23.jpg",
+    description:
+      "Desnine’s analytics dashboard gave us a clear view of what’s happening in the business. Instead of waiting for reports, we can spot trends quickly and make better decisions day-to-day. The insights are practical, and the system feels built for real teams.",
+  },
+  {
+    id: "5",
+    name: "Amanda Thompson",
+    role: "Brand Manager",
+    img: "https://randomuser.me/api/portraits/women/28.jpg",
+    description:
+      "Our rebrand with Desnine was a full transformation, not just a new logo. Everything became consistent—colors, typography, packaging, and overall feel. Customers noticed right away, and we started getting more organic shares and compliments on the presentation.",
+  },
+  {
+    id: "6",
+    name: "Robert Kim",
+    role: "Digital Marketing Lead",
+    img: "https://randomuser.me/api/portraits/men/89.jpg",
+    description:
+      "Desnine’s ad designs helped us stand out instantly. The creative looked premium, matched our message, and performed better across campaigns. We saw stronger conversions and improved efficiency without sacrificing brand quality.",
+  },
+  {
+    id: "7",
+    name: "Lisa Wang",
+    role: "Content Director",
+    img: "https://randomuser.me/api/portraits/women/56.jpg",
+    description:
+      "Desnine elevated our content visuals in a way that made everything easier to understand and more engaging. Their graphics and layout choices made our materials feel modern and polished, and our audience responded really well to the improved clarity.",
+  },
+  {
+    id: "8",
+    name: "Michael O'Connor",
+    role: "VP of Marketing",
+    img: "https://randomuser.me/api/portraits/men/45.jpg",
+    description:
+      "Desnine understands real estate branding and design better than most teams we’ve worked with. Our listings look more professional, our marketing feels consistent, and the overall brand trust improved. It gave us a real edge in a competitive market.",
+  },
+  {
+    id: "9",
+    name: "Sophia Martinez",
+    role: "E-commerce Manager",
+    img: "https://randomuser.me/api/portraits/women/71.jpg",
+    description:
+      "The digital design Desnine created for our fashion brand is clean, cohesive, and high-end. Our emails look more premium, social content performs better, and everything finally feels like it belongs to the same brand system.",
+  },
+  {
+    id: "10",
+    name: "James Wilson",
+    role: "CEO",
+    img: "https://randomuser.me/api/portraits/men/12.jpg",
+    description:
+      "We needed a full setup as a startup—website, branding, SEO, and automation—and Desnine handled it end-to-end. They were organized, fast, and thoughtful with every decision. It felt like working with a real partner, not just a vendor.",
+  },
+  {
+    id: "11",
+    name: "Rachel Green",
+    role: "Marketing Manager",
+    img: "https://randomuser.me/api/portraits/women/38.jpg",
+    description:
+      "Desnine’s packaging and print designs exceeded what we expected. The work looks premium on the shelf and feels practical for real use. We’ve also had customers mention the packaging specifically, which has been a big win for our brand.",
+  },
+  {
+    id: "12",
+    name: "Alex Turner",
+    role: "Product Manager",
+    img: "https://randomuser.me/api/portraits/men/91.jpg",
+    description:
+      "The customer service automation Desnine built changed our workflow completely. Response times improved, support became more consistent, and we were able to handle more requests without adding pressure to the team. It’s one of the most valuable upgrades we’ve made.",
+  },
+  {
+    id: "13",
+    name: "Nina Patel",
+    role: "Founder",
+    img: "https://randomuser.me/api/portraits/women/63.jpg",
+    description:
+      "Desnine helped us build a strong brand foundation from scratch. The strategy was clear, the visuals feel premium, and the entire identity is consistent across platforms. Since launching, we’ve been attracting better clients and presenting ourselves with confidence.",
+  },
+],
+
+
+
   faqSection: {
     title: "Frequently Asked Questions",
     description:
