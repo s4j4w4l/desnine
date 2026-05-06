@@ -288,48 +288,89 @@ const drawerMenuVariants = {
   visible: { opacity: 1 },
 };
 
+function GoogleTranslateLoader() {
+  useEffect(() => {
+    window.googleTranslateElementInit = () => {
+      if (!window.google?.translate?.TranslateElement) return;
+
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          autoDisplay: false,
+        },
+        "google_translate_element",
+      );
+    };
+
+    if (!document.getElementById("google-translate-script")) {
+      const script = document.createElement("script");
+      script.id = "google-translate-script";
+      script.src =
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  return (
+    <div
+      id="google_translate_element"
+      className="fixed -left-[9999px] top-0 h-0 w-0 overflow-hidden opacity-0"
+    />
+  );
+}
+
 function setGoogleTranslateLanguage(lang: "en" | "fr") {
   const value = lang === "en" ? "/en/en" : "/en/fr";
 
-  document.cookie = `googtrans=${value}; path=/`;
-  document.cookie = `googtrans=${value}; path=/; domain=${window.location.hostname}`;
+  document.cookie = `googtrans=${value}; path=/; max-age=31536000`;
 
-  window.location.reload();
+  const select = document.querySelector(
+    ".goog-te-combo",
+  ) as HTMLSelectElement | null;
+
+  if (select) {
+    select.value = lang;
+    select.dispatchEvent(new Event("change"));
+  }
+
+  setTimeout(() => {
+    window.location.reload();
+  }, 250);
 }
 
 function LanguageButton({ mobile = false }: { mobile?: boolean }) {
   return (
-    <div
-      className={cn(
-        "relative flex items-center overflow-hidden",
-        mobile ? "w-full" : "hidden md:flex",
-      )}
-    >
+    <div className={cn(mobile ? "w-full" : "hidden md:flex items-center")}>
       <div
         className={cn(
-          "group flex items-center justify-center gap-2 bg-secondary text-primary-foreground dark:text-secondary-foreground shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12]",
+          "bg-secondary text-primary-foreground dark:text-secondary-foreground border border-white/[0.12] shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] flex items-center justify-center overflow-hidden",
           mobile
-            ? "w-full rounded-md px-6 py-3 text-sm font-semibold hover:bg-secondary/90 hover:scale-105 transition-all duration-300"
-            : "h-8 rounded-full px-4 text-sm font-normal tracking-wide",
+            ? "w-full px-6 py-3 rounded-md text-sm font-semibold hover:bg-secondary/90 hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-secondary/20 hover:border-secondary/40"
+            : "h-8 px-4 rounded-full text-sm font-normal tracking-wide",
         )}
       >
-        <Languages className="size-4" />
+        <div className="flex items-center gap-2">
+          <Languages className="size-4" />
 
-        <button
-          onClick={() => setGoogleTranslateLanguage("en")}
-          className="text-current transition-opacity hover:opacity-70"
-        >
-          EN
-        </button>
+          <button
+            type="button"
+            onClick={() => setGoogleTranslateLanguage("en")}
+            className="transition-opacity hover:opacity-70"
+          >
+            EN
+          </button>
 
-        <span className="text-current/40">/</span>
+          <span className="opacity-40">/</span>
 
-        <button
-          onClick={() => setGoogleTranslateLanguage("fr")}
-          className="text-current transition-opacity hover:opacity-70"
-        >
-          FR
-        </button>
+          <button
+            type="button"
+            onClick={() => setGoogleTranslateLanguage("fr")}
+            className="transition-opacity hover:opacity-70"
+          >
+            FR
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -381,6 +422,8 @@ export function Navbar() {
 
   return (
     <>
+      <GoogleTranslateLoader />
+
       <header
         className={cn(
           "sticky z-50 mx-4 flex justify-center transition-all duration-300 md:mx-0",
