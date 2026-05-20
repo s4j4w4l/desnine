@@ -90,7 +90,7 @@ export default function Home() {
       {/* <FeatureSection /> */}
       <BlogSection />
       {/* <PricingSection /> */}
-      {/* <TestimonialSection /> */}
+      <TestimonialSection />
       {/* <FAQSection /> */}
 
       {/* <ScrollTextAnimation /> */}
