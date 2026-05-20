@@ -1,35 +1,37 @@
 import { NextResponse } from "next/server";
 import { Client } from "@notionhq/client";
 
-const clean = (v: unknown) => (typeof v === "string" ? v.trim() : "");
+const trimString = (value: unknown) =>
+  typeof value === "string" ? value.trim() : "";
 
-const nullIfEmpty = (v: unknown) => {
-  const s = clean(v);
-  return s.length ? s : null;
+const optionalString = (value: unknown) => {
+  const trimmed = trimString(value);
+  return trimmed.length ? trimmed : null;
 };
+
+const notionClient = process.env.NOTION_TOKEN
+  ? new Client({ auth: process.env.NOTION_TOKEN })
+  : null;
 
 export async function POST(req: Request) {
   try {
-    if (!process.env.NOTION_TOKEN || !process.env.NOTION_DATABASE_ID) {
+    if (!notionClient || !process.env.NOTION_DATABASE_ID) {
       return NextResponse.json(
         { ok: false, message: "Notion env vars are missing." },
         { status: 500 }
       );
     }
 
-    const notion = new Client({
-      auth: process.env.NOTION_TOKEN,
-    });
+    const body = await req.json().catch(() => ({}));
 
-    const body = await req.json();
-
-    const fullName = clean(body.fullName);
-    const email = clean(body.email);
-    const companyName = nullIfEmpty(body.companyName);
-    const phone = nullIfEmpty(body.phone);
-    const serviceNeeded = clean(body.serviceNeeded);
-    const timeline = nullIfEmpty(body.timeline);
-    const projectDetails = clean(body.projectDetails);
+    const fullName = trimString(body.fullName);
+    const email = trimString(body.email);
+    const companyName = optionalString(body.companyName);
+    const phone = optionalString(body.phone);
+    const serviceNeeded = trimString(body.serviceNeeded);
+    const budget = optionalString(body.budget);
+    const timeline = optionalString(body.timeline);
+    const projectDetails = trimString(body.projectDetails);
 
     if (!fullName || !email || !serviceNeeded || !projectDetails) {
       return NextResponse.json(
@@ -38,39 +40,50 @@ export async function POST(req: Request) {
       );
     }
 
-    await notion.pages.create({
+    const properties: Record<string, any> = {
+      "Full Name": {
+        title: [{ text: { content: fullName } }],
+      },
+      Email: {
+        email,
+      },
+      "Project Details": {
+        rich_text: [{ text: { content: projectDetails } }],
+      },
+      "Service Needed": {
+        select: { name: serviceNeeded },
+      },
+    };
+
+    if (companyName) {
+      properties["Company Name"] = {
+        rich_text: [{ text: { content: companyName } }],
+      };
+    }
+
+    if (phone) {
+      properties.Phone = {
+        phone_number: phone,
+      };
+    }
+
+    if (timeline) {
+      properties.Timeline = {
+        select: { name: timeline },
+      };
+    }
+
+    if (budget) {
+      properties.Budget = {
+        select: { name: budget },
+      };
+    }
+
+    await notionClient.pages.create({
       parent: {
         database_id: process.env.NOTION_DATABASE_ID,
       },
-      properties: {
-        "Full Name": {
-          title: [{ text: { content: fullName } }],
-        },
-
-        "Company Name": companyName
-          ? { rich_text: [{ text: { content: companyName } }] }
-          : { rich_text: [] },
-
-        Email: {
-          email,
-        },
-
-        Phone: {
-          phone_number: phone,
-        },
-
-        "Service Needed": {
-          multi_select: [{ name: serviceNeeded }],
-        },
-
-        Timeline: timeline
-          ? { multi_select: [{ name: timeline }] }
-          : { multi_select: [] },
-
-        "Project Details": {
-          rich_text: [{ text: { content: projectDetails } }],
-        },
-      },
+      properties,
     });
 
     return NextResponse.json({ ok: true }, { status: 201 });
