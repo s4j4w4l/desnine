@@ -8,7 +8,7 @@ export type Article = {
   excerpt: string;
   href: string;       // always `/article/<slug>`
   featured?: boolean;
-};
+}; 
 
 export const ARTICLES: Article[] = [
   {

@@ -89,7 +89,7 @@ export default function Home() {
 
       {/* <FeatureSection /> */}
       {/* <BlogSection /> */}
-      {/* <PricingSection /> */}
+      <PricingSection />
       {/* <TestimonialSection /> */}
       {/* <FAQSection /> */}
 
