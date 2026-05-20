@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { Client as Client } from "@hq/client";
+import { Client } from "@notionhq/client";
 
-// Initialize  client
-const  = new Client({
-  auth: process.env._TOKEN,
-});
+// Initialize Notion client
+const notionClient = process.env._TOKEN
+  ? new Client({ auth: process.env._TOKEN })
+  : null;
 
 export async function POST(req: Request) {
   try {
@@ -18,15 +18,15 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!process.env._TOKEN || !process.env._NEWSLETTER_DB_ID) {
+    if (!notionClient || !process.env._NEWSLETTER_DB_ID) {
       return NextResponse.json(
         { ok: false, error: "Server configuration missing." },
         { status: 500 }
       );
     }
 
-    // Create  row in Newsletter DB
-    await .pages.create({
+    // Create newsletter row in Newsletter DB
+    await notionClient.pages.create({
       parent: { database_id: process.env._NEWSLETTER_DB_ID },
       properties: {
         Email: {
