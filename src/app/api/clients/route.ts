@@ -29,7 +29,6 @@ export async function POST(req: Request) {
     const companyName = optionalString(body.companyName);
     const phone = optionalString(body.phone);
     const serviceNeeded = trimString(body.serviceNeeded);
-    // const budget = optionalString(body.budget);
     const timeline = optionalString(body.timeline);
     const projectDetails = trimString(body.projectDetails);
 
@@ -73,11 +72,7 @@ export async function POST(req: Request) {
       };
     }
 
-    // if (budget) {
-    //   properties.Budget = {
-    //     select: { name: budget },
-    //   };
-    // }
+
 
     await notionClient.pages.create({
       parent: {
