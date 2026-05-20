@@ -88,9 +88,9 @@ export default function Home() {
       {/* <DesnineAdvantageSection /> */}
 
       {/* <FeatureSection /> */}
-      <BlogSection />
+      {/* <BlogSection /> */}
       {/* <PricingSection /> */}
-      <TestimonialSection />
+      {/* <TestimonialSection /> */}
       {/* <FAQSection /> */}
 
       {/* <ScrollTextAnimation /> */}
