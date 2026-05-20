@@ -9,13 +9,13 @@ const optionalString = (value: unknown) => {
   return trimmed.length ? trimmed : null;
 };
 
-const notionClient = process.env.NOTION_TOKEN
-  ? new Client({ auth: process.env.NOTION_TOKEN })
-  : null;
+const notionClient = new Client({
+  auth: process.env.NOTION_TOKEN,
+});
 
 export async function POST(req: Request) {
   try {
-    if (!notionClient || !process.env.NOTION_DATABASE_ID) {
+    if (!process.env.NOTION_TOKEN || !process.env.NOTION_DATABASE_ID) {
       return NextResponse.json(
         { ok: false, message: "Notion env vars are missing." },
         { status: 500 }
