@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       parent: { database_id: process.env.NOTION_DATABASE_ID },
       properties: {
         // ✅ Title property
-        Name: {
+        "Full Name": {
           title: [{ text: { content: fullName } }],
         },
 
@@ -62,17 +62,17 @@ export async function POST(req: Request) {
         },
 
         // ✅ Keep multi_select ONLY if your Notion field is multi-select
-        Service: {
+        "Service Needed": {
           multi_select: serviceNeeded ? [{ name: serviceNeeded }] : [],
         },
 
         // ✅ Keep multi_select ONLY if your Notion field is multi-select
-        Timeline: {
+        "Timeline": {
           multi_select: timeline ? [{ name: timeline }] : [],
         },
 
         // ✅ Rich text (send [] when empty)
-        Project: {
+        "Project Details": {
           rich_text: [{ text: { content: projectDetails } }],
         },
       },
