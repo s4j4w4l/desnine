@@ -74,7 +74,7 @@ export default function Home() {
 
       <ProcessSection />
 
-      <BadBrandingSection />
+      {/* <BadBrandingSection /> */}
 
       <HomeProjectsSection />
 {/* 
