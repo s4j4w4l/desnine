@@ -7,138 +7,77 @@ const notion = new Client({
 
 export async function POST(req: Request) {
   try {
-    // CHECK ENV VARIABLES
     if (!process.env.NOTION_TOKEN) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Missing NOTION_TOKEN",
-        },
+        { ok: false, message: "Missing NOTION_TOKEN" },
         { status: 500 }
       );
     }
 
     if (!process.env.NOTION_DATABASE_ID) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Missing NOTION_DATABASE_ID",
-        },
+        { ok: false, message: "Missing NOTION_DATABASE_ID" },
         { status: 500 }
       );
     }
 
-    // GET FORM DATA
     const body = await req.json();
-
-    console.log("FORM BODY:", body);
 
     const {
       fullName,
       companyName,
       email,
       phone,
-      service,
+      serviceNeeded,
       timeline,
-      projectDescription,
+      projectDetails,
     } = body;
 
-    // REQUIRED FIELDS
-    if (!fullName || !email || !service || !projectDescription) {
+    if (!fullName || !email || !serviceNeeded || !projectDetails) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Please fill all required fields.",
-        },
+        { ok: false, message: "Please fill all required fields." },
         { status: 400 }
       );
     }
 
-    // CREATE NOTION PAGE
-    const response = await notion.pages.create({
+    await notion.pages.create({
       parent: {
         database_id: process.env.NOTION_DATABASE_ID,
       },
-
       properties: {
         "Full Name": {
-          title: [
-            {
-              text: {
-                content: fullName,
-              },
-            },
-          ],
+          title: [{ text: { content: fullName } }],
         },
-
         "Company Name": {
-          rich_text: [
-            {
-              text: {
-                content: companyName || "",
-              },
-            },
-          ],
+          rich_text: [{ text: { content: companyName || "" } }],
         },
-
         Email: {
           email: email,
         },
-
         Phone: {
-          phone_number: phone || "",
+          phone_number: phone || null,
         },
-
-        "Service Needed": service
-          ? {
-              select: {
-                name: service,
-              },
-            }
-          : {
-              select: null,
-            },
-
-        Timeline: timeline
-          ? {
-              select: {
-                name: timeline,
-              },
-            }
-          : {
-              select: null,
-            },
-
+        "Service Needed": {
+          select: { name: serviceNeeded },
+        },
+        Timeline: {
+          select: timeline ? { name: timeline } : null,
+        },
         "Project Discription": {
-          rich_text: [
-            {
-              text: {
-                content: projectDescription,
-              },
-            },
-          ],
+          rich_text: [{ text: { content: projectDetails } }],
         },
       },
     });
 
-    console.log("NOTION SUCCESS:", response);
-
     return NextResponse.json(
-      {
-        success: true,
-        message: "Form submitted successfully.",
-      },
+      { ok: true, message: "Form submitted successfully!" },
       { status: 200 }
     );
   } catch (error: any) {
-    console.error("NOTION ERROR:", error);
-
     return NextResponse.json(
       {
-        success: false,
-        error: "Notion request failed",
-        message: error.message,
-        status: error.status,
+        ok: false,
+        message: error.message || "Something went wrong.",
         code: error.code,
       },
       { status: 500 }
