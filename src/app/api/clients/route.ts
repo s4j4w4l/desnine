@@ -2,25 +2,11 @@ import { NextResponse } from "next/server";
 import { Client } from "@notionhq/client";
 
 const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
+  auth: process.env.NOTION_API_KEY,
 });
 
 export async function POST(req: Request) {
   try {
-    if (!process.env.NOTION_TOKEN) {
-      return NextResponse.json(
-        { ok: false, message: "Missing NOTION_TOKEN" },
-        { status: 500 }
-      );
-    }
-
-    if (!process.env.NOTION_DATABASE_ID) {
-      return NextResponse.json(
-        { ok: false, message: "Missing NOTION_DATABASE_ID" },
-        { status: 500 }
-      );
-    }
-
     const body = await req.json();
 
     const {
@@ -33,52 +19,85 @@ export async function POST(req: Request) {
       projectDetails,
     } = body;
 
-    if (!fullName || !email || !serviceNeeded || !projectDetails) {
-      return NextResponse.json(
-        { ok: false, message: "Please fill all required fields." },
-        { status: 400 }
-      );
-    }
+    // TEST DATABASE CONNECTION
+    await notion.databases.retrieve({
+      database_id: process.env.NOTION_DATABASE_ID!,
+    });
 
+    // CREATE PAGE
     await notion.pages.create({
       parent: {
-        database_id: process.env.NOTION_DATABASE_ID,
+        database_id: process.env.NOTION_DATABASE_ID!,
       },
+
       properties: {
         "Full Name": {
-          title: [{ text: { content: fullName } }],
+          title: [
+            {
+              text: {
+                content: fullName,
+              },
+            },
+          ],
         },
+
         "Company Name": {
-          rich_text: [{ text: { content: companyName || "" } }],
+          rich_text: [
+            {
+              text: {
+                content: companyName || "",
+              },
+            },
+          ],
         },
+
         Email: {
           email: email,
         },
+
         Phone: {
-          phone_number: phone || null,
+          phone_number: phone || "",
         },
+
         "Service Needed": {
-          select: { name: serviceNeeded },
+          select: {
+            name: serviceNeeded,
+          },
         },
-        Timeline: {
-          select: timeline ? { name: timeline } : null,
-        },
+
+        Timeline: timeline
+          ? {
+              select: {
+                name: timeline,
+              },
+            }
+          : {
+              select: null,
+            },
+
         "Project Discription": {
-          rich_text: [{ text: { content: projectDetails } }],
+          rich_text: [
+            {
+              text: {
+                content: projectDetails,
+              },
+            },
+          ],
         },
       },
     });
 
-    return NextResponse.json(
-      { ok: true, message: "Form submitted successfully!" },
-      { status: 200 }
-    );
+    return NextResponse.json({
+      ok: true,
+      message: "Form submitted successfully!",
+    });
   } catch (error: any) {
+    console.error(error);
+
     return NextResponse.json(
       {
         ok: false,
-        message: error.message || "Something went wrong.",
-        code: error.code,
+        message: error.message,
       },
       { status: 500 }
     );
