@@ -7,23 +7,31 @@ const notion = new Client({
 
 export async function POST(req: Request) {
   try {
-    const databaseId = process.env.NOTION_DATABASE_ID;
-
+    // CHECK ENV VARIABLES
     if (!process.env.NOTION_TOKEN) {
       return NextResponse.json(
-        { error: "Missing NOTION_TOKEN" },
+        {
+          success: false,
+          error: "Missing NOTION_TOKEN",
+        },
         { status: 500 }
       );
     }
 
-    if (!databaseId) {
+    if (!process.env.NOTION_DATABASE_ID) {
       return NextResponse.json(
-        { error: "Missing NOTION_DATABASE_ID" },
+        {
+          success: false,
+          error: "Missing NOTION_DATABASE_ID",
+        },
         { status: 500 }
       );
     }
 
+    // GET FORM DATA
     const body = await req.json();
+
+    console.log("FORM BODY:", body);
 
     const {
       fullName,
@@ -35,17 +43,23 @@ export async function POST(req: Request) {
       projectDescription,
     } = body;
 
+    // REQUIRED FIELDS
     if (!fullName || !email || !service || !projectDescription) {
       return NextResponse.json(
-        { error: "Please fill in all required fields." },
+        {
+          success: false,
+          error: "Please fill all required fields.",
+        },
         { status: 400 }
       );
     }
 
-    await notion.pages.create({
+    // CREATE NOTION PAGE
+    const response = await notion.pages.create({
       parent: {
-        database_id: databaseId,
+        database_id: process.env.NOTION_DATABASE_ID,
       },
+
       properties: {
         "Full Name": {
           title: [
@@ -72,14 +86,18 @@ export async function POST(req: Request) {
         },
 
         Phone: {
-          phone_number: phone || null,
+          phone_number: phone || "",
         },
 
-        "Service Needed": {
-          select: {
-            name: service,
-          },
-        },
+        "Service Needed": service
+          ? {
+              select: {
+                name: service,
+              },
+            }
+          : {
+              select: null,
+            },
 
         Timeline: timeline
           ? {
@@ -103,20 +121,25 @@ export async function POST(req: Request) {
       },
     });
 
+    console.log("NOTION SUCCESS:", response);
+
     return NextResponse.json(
       {
         success: true,
-        message: "Your message has been sent successfully.",
+        message: "Form submitted successfully.",
       },
       { status: 200 }
     );
   } catch (error: any) {
-    console.error("NOTION_ERROR:", error);
+    console.error("NOTION ERROR:", error);
 
     return NextResponse.json(
       {
-        error: "Failed to submit form.",
-        details: error.message,
+        success: false,
+        error: "Notion request failed",
+        message: error.message,
+        status: error.status,
+        code: error.code,
       },
       { status: 500 }
     );
