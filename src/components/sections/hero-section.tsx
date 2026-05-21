@@ -1,15 +1,7 @@
 
 
-// import { HeroVideoSection } from "@/components/sections/HeroVideoSection";
 import { siteConfig } from "@/lib/config";
-import Link from "next/link";
 import { HeroVideoSection } from "./hero-video-section";
-import { ShaderGradient } from "@shadergradient/react";
-import Desnine3DRotatingBG from "../ Desnine3DRotatingBGProps ";
-import DesnineBackground from "../DesnineBackground";
-import DesnineLogo3D from "../DesnineBackground";
-import Desnine3DRotatingLogo from "../DesnineBackground";
-import { DotPattern } from "../ui/DotPatternProps";
 import { DesnineTrustBadge } from "./DesnineTrustBadge";
 
 export function HeroSection() {
@@ -55,6 +47,5 @@ export function HeroSection() {
     </section>
   );
 }
-
 
 
