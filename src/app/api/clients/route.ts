@@ -1,105 +1,26 @@
 import { NextResponse } from "next/server";
 import { Client } from "@notionhq/client";
 
-const notion = new Client({
-  auth: process.env.NOTION_API_KEY,
-});
-
-export async function POST(req: Request) {
+export async function GET() {
   try {
-    const body = await req.json();
+    console.log("TOKEN:", process.env.NOTION_TOKEN);
 
-    const {
-      fullName,
-      companyName,
-      email,
-      phone,
-      serviceNeeded,
-      timeline,
-      projectDetails,
-    } = body;
-
-    // TEST DATABASE CONNECTION
-    await notion.databases.retrieve({
-      database_id: process.env.NOTION_DATABASE_ID!,
+    const notion = new Client({
+      auth: process.env.NOTION_TOKEN,
     });
 
-    // CREATE PAGE
-    await notion.pages.create({
-      parent: {
-        database_id: process.env.NOTION_DATABASE_ID!,
-      },
-
-      properties: {
-        "Full Name": {
-          title: [
-            {
-              text: {
-                content: fullName,
-              },
-            },
-          ],
-        },
-
-        "Company Name": {
-          rich_text: [
-            {
-              text: {
-                content: companyName || "",
-              },
-            },
-          ],
-        },
-
-        Email: {
-          email: email,
-        },
-
-        Phone: {
-          phone_number: phone || "",
-        },
-
-        "Service Needed": {
-          select: {
-            name: serviceNeeded,
-          },
-        },
-
-        Timeline: timeline
-          ? {
-              select: {
-                name: timeline,
-              },
-            }
-          : {
-              select: null,
-            },
-
-        "Project Discription": {
-          rich_text: [
-            {
-              text: {
-                content: projectDetails,
-              },
-            },
-          ],
-        },
-      },
-    });
+    const response = await notion.users.me();
 
     return NextResponse.json({
       ok: true,
-      message: "Form submitted successfully!",
+      response,
     });
   } catch (error: any) {
     console.error(error);
 
-    return NextResponse.json(
-      {
-        ok: false,
-        message: error.message,
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      ok: false,
+      message: error.message,
+    });
   }
 }
