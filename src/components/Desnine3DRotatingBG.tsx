@@ -12,8 +12,9 @@ type Desnine3DRotatingBGProps = {
   speedSeconds?: number;
 };
 
-const DESNINE_RED = "#7A0000";
-const DESNINE_RED_2 = "#B42B25";
+type SpinnerStyle = React.CSSProperties & {
+  "--dur": string;
+};
 
 export default function Desnine3DRotatingBG({
   logoSrc = "/images/desnine-mark.png",
@@ -33,7 +34,7 @@ export default function Desnine3DRotatingBG({
       <div className="absolute inset-0 grid place-items-center">
         <div className="stage">
           {/* Rotating "tube" / card that sells the 3D rotation */}
-          <div className="spinner" style={{ ["--dur" as any]: `${speedSeconds}s` }}>
+          <div className="spinner" style={{ "--dur": `${speedSeconds}s` } as SpinnerStyle}>
             {/* Gradient face */}
             <div className="face faceFront" />
             {/* Back face */}
