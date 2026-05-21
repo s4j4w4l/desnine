@@ -65,7 +65,7 @@ export async function POST(req: Request) {
           },
         },
 
-        Timeline: timeline
+        "Ideal Timeline": timeline
           ? {
               select: {
                 name: timeline,
