@@ -29,6 +29,9 @@ export async function POST(req: Request) {
     await notionClient.pages.create({
       parent: { database_id: process.env._NEWSLETTER_DB_ID },
       properties: {
+        number: {
+          title: [{ text: { content: email } }],
+        },
         Email: {
           email: email,
         },
