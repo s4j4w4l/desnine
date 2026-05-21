@@ -1,95 +1,124 @@
 import { NextResponse } from "next/server";
 import { Client } from "@notionhq/client";
 
-const trimString = (value: unknown) =>
-  typeof value === "string" ? value.trim() : "";
-
-const optionalString = (value: unknown) => {
-  const trimmed = trimString(value);
-  return trimmed.length ? trimmed : null;
-};
-
-const notionClient = new Client({
+const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
 export async function POST(req: Request) {
   try {
-    if (!process.env.NOTION_TOKEN || !process.env.NOTION_DATABASE_ID) {
+    const databaseId = process.env.NOTION_DATABASE_ID;
+
+    if (!process.env.NOTION_TOKEN) {
       return NextResponse.json(
-        { ok: false, message: "Notion env vars are missing." },
+        { error: "Missing NOTION_TOKEN" },
         { status: 500 }
       );
     }
 
-    const body = await req.json().catch(() => ({}));
-
-    const fullName = trimString(body.fullName);
-    const email = trimString(body.email);
-    const companyName = optionalString(body.companyName);
-    const phone = optionalString(body.phone);
-    const serviceNeeded = trimString(body.serviceNeeded);
-    const timeline = optionalString(body.timeline);
-    const projectDetails = trimString(body.projectDetails);
-
-    if (!fullName || !email || !serviceNeeded || !projectDetails) {
+    if (!databaseId) {
       return NextResponse.json(
-        { ok: false, message: "Please fill all required fields." },
+        { error: "Missing NOTION_DATABASE_ID" },
+        { status: 500 }
+      );
+    }
+
+    const body = await req.json();
+
+    const {
+      fullName,
+      companyName,
+      email,
+      phone,
+      service,
+      timeline,
+      projectDescription,
+    } = body;
+
+    if (!fullName || !email || !service || !projectDescription) {
+      return NextResponse.json(
+        { error: "Please fill in all required fields." },
         { status: 400 }
       );
     }
 
-    const properties: Record<string, any> = {
-      "Full Name": {
-        title: [{ text: { content: fullName } }],
-      },
-      Email: {
-        email,
-      },
-      "Project Details": {
-        rich_text: [{ text: { content: projectDetails } }],
-      },
-      "Service Needed": {
-        select: { name: serviceNeeded },
-      },
-    };
-
-    if (companyName) {
-      properties["Company Name"] = {
-        rich_text: [{ text: { content: companyName } }],
-      };
-    }
-
-    if (phone) {
-      properties.Phone = {
-        phone_number: phone,
-      };
-    }
-
-    if (timeline) {
-      properties.Timeline = {
-        select: { name: timeline },
-      };
-    }
-
-
-
-    await notionClient.pages.create({
+    await notion.pages.create({
       parent: {
-        database_id: process.env.NOTION_DATABASE_ID,
+        database_id: databaseId,
       },
-      properties,
+      properties: {
+        "Full Name": {
+          title: [
+            {
+              text: {
+                content: fullName,
+              },
+            },
+          ],
+        },
+
+        "Company Name": {
+          rich_text: [
+            {
+              text: {
+                content: companyName || "",
+              },
+            },
+          ],
+        },
+
+        Email: {
+          email: email,
+        },
+
+        Phone: {
+          phone_number: phone || null,
+        },
+
+        "Service Needed": {
+          select: {
+            name: service,
+          },
+        },
+
+        Timeline: timeline
+          ? {
+              select: {
+                name: timeline,
+              },
+            }
+          : {
+              select: null,
+            },
+
+        "Project Discription": {
+          rich_text: [
+            {
+              text: {
+                content: projectDescription,
+              },
+            },
+          ],
+        },
+      },
     });
 
-    return NextResponse.json({ ok: true }, { status: 201 });
-  } catch (err: any) {
-    console.error("Notion API error:", err);
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Your message has been sent successfully.",
+      },
+      { status: 200 }
+    );
+  } catch (error: any) {
+    console.error("NOTION_ERROR:", error);
 
-    const message =
-      err?.body?.message ||
-      err?.message ||
-      "Something went wrong while submitting the form.";
-
-    return NextResponse.json({ ok: false, message }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: "Failed to submit form.",
+        details: error.message,
+      },
+      { status: 500 }
+    );
   }
 }
