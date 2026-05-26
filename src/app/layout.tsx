@@ -5,6 +5,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import EmailPopup from "@/components/EmailPopup";
 
 
 const geistSans = Geist({
@@ -114,6 +115,7 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
+        <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="ybDRUOp9ndzooF6a" data-version="062024"></script>
       </head>
 
       <body
@@ -132,6 +134,8 @@ export default function RootLayout({
             {children}
           </div>
         </ThemeProvider>
+        {children}
+        <EmailPopup />
       </body>
     </html>
   );
