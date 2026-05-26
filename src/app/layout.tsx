@@ -109,6 +109,23 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <Script
+          id="google-tag-src"
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-HXKBSXX6SK"
+        />
+        <Script
+          id="google-tag"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-HXKBSXX6SK');
+            `,
+          }}
+        />
+        <Script
           id="structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{

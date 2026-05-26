@@ -78,7 +78,7 @@ export default function EmailPopup() {
 
         <div className="p-5 md:p-8">
           <div className="mb-5 flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-[0_0_25px_rgba(181,18,27,0.55)]">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/70 bg-white/55 shadow-[0_12px_32px_rgba(23,23,23,0.14),inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-md ring-1 ring-black/5">
               <Image
                 src="/favicon.ico"
                 alt="Desnine Studio"
