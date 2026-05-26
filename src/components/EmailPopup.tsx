@@ -55,17 +55,17 @@ export default function EmailPopup() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40 px-4 backdrop-blur-sm">
-      <div className="relative grid w-full max-w-[900px] overflow-hidden rounded-[28px] border border-neutral-200 bg-white shadow-2xl md:grid-cols-[0.9fr_1.1fr]">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto bg-black/45 px-4 py-5 backdrop-blur-md">
+      <div className="relative grid max-h-[calc(100vh-40px)] w-full max-w-[900px] overflow-y-auto rounded-[28px] border border-white/35 bg-white/20 shadow-[0_24px_80px_rgba(0,0,0,0.38),inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-2xl md:grid-cols-[0.9fr_1.1fr]">
         <button
           onClick={closePopup}
-          className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white/90 text-2xl text-neutral-500 transition hover:bg-white"
+          className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-white/45 bg-white/35 text-2xl text-white shadow-[0_10px_30px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.55)] backdrop-blur-xl transition hover:bg-white/50"
           aria-label="Close popup"
         >
           ×
         </button>
 
-        <div className="relative hidden min-h-[520px] md:block">
+        <div className="relative min-h-[170px] md:min-h-[520px]">
           <Image
             src="/Frame 3.jpg"
             alt="Website Launch Checklist"
@@ -73,10 +73,10 @@ export default function EmailPopup() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/15 via-black/35 to-[#b5121b]/30" />
         </div>
 
-        <div className="p-5 md:p-8">
+        <div className="bg-white/15 p-4 backdrop-blur-xl sm:p-5 md:p-8">
           <div className="mb-5 flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/70 bg-white/55 shadow-[0_12px_32px_rgba(23,23,23,0.14),inset_0_1px_0_rgba(255,255,255,0.85)] backdrop-blur-md ring-1 ring-black/5">
               <Image
@@ -89,18 +89,18 @@ export default function EmailPopup() {
             </div>
 
             <div>
-              <p className="text-base font-semibold text-[#171717]">
+              <p className="text-base font-semibold text-white drop-shadow-sm">
                 Desnine Studio
               </p>
             </div>
           </div>
 
-          <div className="rounded-[24px] border border-[#b5121b]/15 bg-neutral-50 p-5 shadow-[0_0_55px_rgba(181,18,27,0.18)] md:p-7">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#b5121b]">
+          <div className="rounded-[24px] border border-white/40 bg-white/45 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.68)] backdrop-blur-2xl sm:p-5 md:p-7">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#b5121b] drop-shadow-sm">
               Freebie
             </p>
 
-            <h1 className="max-w-[420px] text-4xl font-semibold leading-[0.95] tracking-[-0.05em] text-[#171717] md:text-5xl">
+            <h1 className="max-w-[420px] text-3xl font-semibold leading-[0.95] tracking-[-0.05em] text-[#171717] sm:text-4xl md:text-5xl">
               Website Launch Checklist
             </h1>
 
@@ -110,8 +110,8 @@ export default function EmailPopup() {
             </p>
 
             {submitted ? (
-              <div className="mt-6 flex flex-col items-center justify-center rounded-[20px] border border-[#b5121b]/15 bg-white p-8 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#b5121b]/10 text-3xl text-[#b5121b]">
+              <div className="mt-6 flex flex-col items-center justify-center rounded-[20px] border border-white/45 bg-white/40 p-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-xl">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/45 bg-[#b5121b]/10 text-3xl text-[#b5121b] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
                   ✓
                 </div>
 
@@ -125,7 +125,7 @@ export default function EmailPopup() {
               </div>
             ) : (
               <form onSubmit={submitEmail} className="mt-6 space-y-3">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <input
                     type="text"
                     required
@@ -137,7 +137,7 @@ export default function EmailPopup() {
                         firstName: e.target.value,
                       })
                     }
-                    className="min-h-[48px] rounded-full border border-neutral-300 bg-white px-4 text-sm outline-none transition placeholder:text-neutral-400 focus:border-[#b5121b]"
+                    className="min-h-[48px] rounded-full border border-white/55 bg-white/45 px-4 text-sm text-[#171717] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] outline-none backdrop-blur-xl transition placeholder:text-neutral-500 focus:border-[#b5121b]/60 focus:bg-white/65"
                   />
 
                   <input
@@ -151,7 +151,7 @@ export default function EmailPopup() {
                         lastName: e.target.value,
                       })
                     }
-                    className="min-h-[48px] rounded-full border border-neutral-300 bg-white px-4 text-sm outline-none transition placeholder:text-neutral-400 focus:border-[#b5121b]"
+                    className="min-h-[48px] rounded-full border border-white/55 bg-white/45 px-4 text-sm text-[#171717] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] outline-none backdrop-blur-xl transition placeholder:text-neutral-500 focus:border-[#b5121b]/60 focus:bg-white/65"
                   />
                 </div>
 
@@ -166,12 +166,12 @@ export default function EmailPopup() {
                       email: e.target.value,
                     })
                   }
-                  className="min-h-[48px] w-full rounded-full border border-neutral-300 bg-white px-4 text-sm outline-none transition placeholder:text-neutral-400 focus:border-[#b5121b]"
+                  className="min-h-[48px] w-full rounded-full border border-white/55 bg-white/45 px-4 text-sm text-[#171717] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] outline-none backdrop-blur-xl transition placeholder:text-neutral-500 focus:border-[#b5121b]/60 focus:bg-white/65"
                 />
 
                 <button
                   type="submit"
-                  className="min-h-[50px] w-full rounded-full bg-[#b5121b] px-7 text-sm font-semibold text-white shadow-lg shadow-red-900/20 transition hover:bg-[#931018]"
+                  className="min-h-[50px] w-full rounded-full border border-white/25 bg-[#b5121b]/90 px-7 text-sm font-semibold text-white shadow-[0_14px_38px_rgba(181,18,27,0.32),inset_0_1px_0_rgba(255,255,255,0.25)] backdrop-blur-xl transition hover:bg-[#931018]"
                 >
                   Get the Checklist
                 </button>
@@ -179,7 +179,7 @@ export default function EmailPopup() {
             )}
           </div>
 
-          <p className="mt-4 text-center text-xs text-neutral-500">
+          <p className="mt-4 text-center text-xs text-white/75 drop-shadow-sm">
             Instant access. No spam. Built for better websites.
           </p>
         </div>
