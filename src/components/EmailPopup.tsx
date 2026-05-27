@@ -65,7 +65,7 @@ export default function EmailPopup() {
           ×
         </button>
 
-        <div className="relative min-h-[170px] md:min-h-[520px]">
+        <div className="relative aspect-square md:aspect-auto md:min-h-[520px]">
           <Image
             src="/Frame 3.jpg"
             alt="Website Launch Checklist"
