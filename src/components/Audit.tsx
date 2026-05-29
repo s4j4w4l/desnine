@@ -3,9 +3,13 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const AUDIT_EMAIL = "info@desnine.com";
+const CONFIGURATION_ERROR = "Audit API configuration is missing.";
+
 export default function Audit() {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
+  const [sentByEmail, setSentByEmail] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -28,10 +32,33 @@ export default function Audit() {
     setOpen(false);
   };
 
+  const openEmailFallback = () => {
+    const cleanWebsite = normalizeWebsite(website);
+    const subject = encodeURIComponent(
+      `Free website audit request: ${cleanWebsite}`
+    );
+    const body = encodeURIComponent(
+      [
+        "Hi Desnine Studio,",
+        "",
+        "I'd like to request a free website audit.",
+        "",
+        `Website: ${cleanWebsite}`,
+        `Work email: ${email.trim()}`,
+        `Focus area: ${focus.trim()}`,
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:${AUDIT_EMAIL}?subject=${subject}&body=${body}`;
+    setSentByEmail(true);
+    setSent(true);
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError("");
+    setSentByEmail(false);
 
     try {
       const res = await fetch("/api/audit", {
@@ -51,18 +78,24 @@ export default function Audit() {
       };
 
       if (!res.ok) {
-        setError(
+        const message =
           data.message ||
-            data.error ||
-            "Something went wrong. Please try again."
-        );
+          data.error ||
+          "Something went wrong. Please try again.";
+
+        if (res.status >= 500 && message === CONFIGURATION_ERROR) {
+          openEmailFallback();
+          return;
+        }
+
+        setError(message);
         return;
       }
 
       setSent(true);
     } catch (error) {
       console.error(error);
-      setError("Something went wrong. Please try again.");
+      openEmailFallback();
     } finally {
       setLoading(false);
     }
@@ -205,7 +238,9 @@ export default function Audit() {
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-neutral-600">
-                Check your email. Your free website audit request has been sent.
+                {sentByEmail
+                  ? "Your email app is ready with the audit request. Send it to finish."
+                  : "Check your email. Your free website audit request has been sent."}
               </p>
 
               <div className="mx-auto mt-5 flex max-w-[180px] items-center justify-center gap-1.5">

@@ -18,6 +18,7 @@ type DatabaseProperty = {
 type PageProperties = NonNullable<
   Parameters<Client["pages"]["create"]>[0]["properties"]
 >;
+type PageParent = NonNullable<Parameters<Client["pages"]["create"]>[0]["parent"]>;
 
 const normalizePropertyName = (name: string) =>
   name.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -64,6 +65,39 @@ const findProperty = (
   );
 };
 
+const getAuditSchema = async (targetId: string) => {
+  const database = await notion.databases.retrieve({
+    database_id: targetId,
+  });
+
+  if ("properties" in database) {
+    return {
+      parent: { database_id: targetId } satisfies PageParent,
+      properties: database.properties as Record<string, DatabaseProperty>,
+    };
+  }
+
+  const dataSourceId =
+    "data_sources" in database ? database.data_sources?.[0]?.id : undefined;
+
+  if (!dataSourceId) {
+    throw new Error("Audit database needs a connected data source.");
+  }
+
+  const dataSource = await notion.dataSources.retrieve({
+    data_source_id: dataSourceId,
+  });
+
+  if (!("properties" in dataSource)) {
+    throw new Error("Audit data source properties are unavailable.");
+  }
+
+  return {
+    parent: { data_source_id: dataSourceId } satisfies PageParent,
+    properties: dataSource.properties as Record<string, DatabaseProperty>,
+  };
+};
+
 export async function POST(req: Request) {
   try {
     const databaseId = process.env.NOTION_AUDITBASE_ID;
@@ -103,18 +137,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const database = await notion.databases.retrieve({
-      database_id: databaseId,
-    });
-
-    if (!("properties" in database)) {
-      return NextResponse.json(
-        { ok: false, message: "Audit database properties are unavailable." },
-        { status: 500 }
-      );
-    }
-
-    const properties = database.properties as Record<string, DatabaseProperty>;
+    const { parent, properties } = await getAuditSchema(databaseId);
     const databaseProperties = Object.entries(properties);
 
     const titleProperty = findProperty(databaseProperties, "title", [
@@ -192,7 +215,7 @@ export async function POST(req: Request) {
     }
 
     await notion.pages.create({
-      parent: { database_id: databaseId },
+      parent,
       properties: pageProperties,
     });
 
