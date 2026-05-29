@@ -151,7 +151,6 @@ export default function RootLayout({
             {children}
           </div>
         </ThemeProvider>
-        {children}
         <EmailPopup />
       </body>
     </html>

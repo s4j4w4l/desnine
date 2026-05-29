@@ -7,7 +7,7 @@ import { ClientFeedback } from "@/components/ClientFeedback";
 import { ProcessSection } from "@/components/PROCESS";
 import { FAQSection } from "@/components/FAQ";
 import HomeProjectsSection from "@/components/sections/home-work-section";
-
+import Audit from "@/components/Audit";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
@@ -61,8 +61,6 @@ export default function Home() {
 
       <FAQSection />
 
-
-
       {/* <DesnineAdvantageSection /> */}
 
       {/* <FeatureSection /> */}
@@ -75,6 +73,7 @@ export default function Home() {
       {/* Top filler for scrolling */}
       <TextReveal>So, are you ready to stand out?</TextReveal>
        
+      <Audit />
 
 
       <FooterSection />

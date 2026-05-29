@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const EMAIL_POPUP_ENABLED = false;
+
 export default function EmailPopup() {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -14,6 +16,8 @@ export default function EmailPopup() {
   });
 
   useEffect(() => {
+    if (!EMAIL_POPUP_ENABLED) return;
+
     const isDev = process.env.NODE_ENV === "development";
     const seen = localStorage.getItem("desnineWebsiteChecklistPopup");
 
@@ -52,7 +56,7 @@ export default function EmailPopup() {
     }, 3500);
   };
 
-  if (!open) return null;
+  if (!EMAIL_POPUP_ENABLED || !open) return null;
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto bg-black/45 px-4 py-5 backdrop-blur-md">
