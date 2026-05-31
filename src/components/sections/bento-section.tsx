@@ -1,8 +1,8 @@
 "use client";
 
-import { SectionHeader } from "@/components/section-header";
 import { siteConfig } from "@/lib/config";
 import Link from "next/link";
+import { useState } from "react";
 
 interface BentoSectionProps {
   count?: number; // Optional: if passed, show only that many items
@@ -12,6 +12,13 @@ export function BentoSection({ count }: BentoSectionProps) {
   // const { title, description, items } = siteConfig.bentoSection;
   const { items } = siteConfig.bentoSection;
   const displayItems = count ? items.slice(0, count) : items;
+  const [openItemId, setOpenItemId] = useState<
+    (typeof displayItems)[number]["id"] | null
+  >(null);
+
+  const toggleItem = (id: (typeof displayItems)[number]["id"]) => {
+    setOpenItemId((currentId) => (currentId === id ? null : id));
+  };
 
   return (
     <section
@@ -35,22 +42,54 @@ export function BentoSection({ count }: BentoSectionProps) {
 
         {/* Items */}
         <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-          {displayItems.map((item) => (
-            <div
-              key={item.id}
-              className="flex flex-col items-start justify-end min-h-[600px] md:min-h-[500px] p-0.5 relative before:absolute before:-left-0.5 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-0.5 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-[''] group cursor-pointer max-h-[400px]"
-            >
-              <div className="relative flex size-full items-center justify-center h-full overflow-hidden">
-                {item.content}
+          {displayItems.map((item) => {
+            const isOpen = openItemId === item.id;
+
+            return (
+              <div
+                key={item.id}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isOpen}
+                onClick={() => toggleItem(item.id)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleItem(item.id);
+                  }
+                }}
+                className="flex flex-col items-start justify-end min-h-[600px] md:min-h-[500px] p-0.5 relative before:absolute before:-left-0.5 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-0.5 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-[''] group cursor-pointer max-h-[400px] outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <div className="relative flex size-full items-center justify-center h-full overflow-hidden">
+                  {item.content}
+                </div>
+                <div className="flex-1 flex-col gap-2 p-6 w-full">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-lg tracking-tighter font-semibold">
+                      {item.title}
+                    </h3>
+                    <span
+                      className="flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-secondary/20 bg-secondary text-lg leading-none text-white shadow-lg transition-all duration-300 group-hover:bg-secondary/90 group-hover:border-secondary/40 group-hover:shadow-xl"
+                      aria-hidden="true"
+                    >
+                      {isOpen ? "-" : "+"}
+                    </span>
+                  </div>
+                  <div
+                    className={`grid transition-all duration-300 ease-in-out ${
+                      isOpen
+                        ? "grid-rows-[1fr] opacity-100 mt-3"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <p className="overflow-hidden text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="flex-1 flex-col gap-2 p-6">
-                <h3 className="text-lg tracking-tighter font-semibold">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground">{item.description}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* CTA button if count is set */}
@@ -66,7 +105,6 @@ export function BentoSection({ count }: BentoSectionProps) {
             </Link>
           </div>
         )}
-
       </div>
     </section>
   );
