@@ -44,13 +44,6 @@
 //               </li>
 
 //               <li className="group inline-flex items-center gap-1 text-[13px]/snug text-muted-foreground">
-//                 <Link href="/work">Our Work</Link>
-//                 <span className="flex size-4 items-center justify-center border border-border rounded translate-x-0 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
-//                   <ChevronRightIcon className="h-4 w-4" />
-//                 </span>
-//               </li>
-
-//               <li className="group inline-flex items-center gap-1 text-[13px]/snug text-muted-foreground">
 //                 <Link href="/testimonial">Why Us?</Link>
 //                 <span className="flex size-4 items-center justify-center border border-border rounded translate-x-0 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
 //                   <ChevronRightIcon className="h-4 w-4" />
@@ -296,13 +289,6 @@ export function FooterSection() {
 
               <li className="group inline-flex items-center gap-1 text-[13px]/snug text-muted-foreground">
                 <Link href="/services">Services</Link>
-                <span className="flex size-4 items-center justify-center border border-border rounded translate-x-0 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
-                  <ChevronRightIcon className="h-4 w-4" />
-                </span>
-              </li>
-
-              <li className="group inline-flex items-center gap-1 text-[13px]/snug text-muted-foreground">
-                <Link href="/work">Our Work</Link>
                 <span className="flex size-4 items-center justify-center border border-border rounded translate-x-0 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
                   <ChevronRightIcon className="h-4 w-4" />
                 </span>

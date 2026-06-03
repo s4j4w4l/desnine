@@ -51,10 +51,10 @@ export default function WhyUsSection() {
               </Link>
 
               <Link
-                href="/work"
+                href="/contact"
                 className="inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900/70 px-5 py-2.5 text-sm font-medium text-neutral-100 transition hover:border-red-500/60 hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
               >
-                See our work
+                Start a project
               </Link>
 
               <p className="text-xs text-neutral-500 sm:pl-1">

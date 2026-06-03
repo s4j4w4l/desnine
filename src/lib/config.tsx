@@ -177,7 +177,6 @@ export const siteConfig = {
     links: [
       { id: 1, name: "Home", href: "/" },
       { id: 2, name: "Services", href: "/services" },
-      { id: 3, name: "Our Work", href: "/work" },
     ],
   },
   hero: {

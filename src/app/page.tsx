@@ -54,7 +54,7 @@ export default function Home() {
 
       {/* <BadBrandingSection /> */}
 
-      <HomeProjectsSection />
+      {/* <HomeProjectsSection /> */}
 {/* 
       <BenefitsSection /> */}
 

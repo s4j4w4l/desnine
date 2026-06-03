@@ -1,13 +1,14 @@
-import Image from "next/image"; // ✅ add this import
+import { notFound } from "next/navigation";
 
 import { FooterSection } from "@/components/sections/footer-section";
-import { TestimonialSection } from "@/components/sections/testimonial-section";
-import { GrowthSection } from "@/components/sections/growth-section";
-import { ProcessSection } from "@/components/sections/process-section";
 import { WorkBentoSection } from "@/components/sections/work-bento-section";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 
 export default function WorkPage() {
+  if (process.env.NEXT_PUBLIC_SHOW_WORK_PAGE !== "true") {
+    notFound();
+  }
+
   return (
     <main className="flex flex-col items-center justify-center min-h-screen w-full">
       {/* Work Content Section */}
