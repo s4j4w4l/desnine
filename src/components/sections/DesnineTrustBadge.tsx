@@ -158,7 +158,7 @@ export function DesnineTrustBadge() {
               className="text-[10px] font-medium leading-none sm:text-xs"
               style={{ color: DESNINE_RED }}
             >
-              4.9
+              4.9/5.0
             </span>
           </div>
 
