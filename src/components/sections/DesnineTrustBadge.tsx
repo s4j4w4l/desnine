@@ -73,10 +73,8 @@ export function DesnineTrustBadge() {
   const router = useRouter();
 
   const goContact = () => {
-    // App Router navigation
     router.push("/contact");
 
-    // Fallback in case something blocks the router (overlay/form/etc.)
     setTimeout(() => {
       if (window.location.pathname !== "/contact") {
         window.location.href = "/contact";
@@ -85,71 +83,112 @@ export function DesnineTrustBadge() {
   };
 
   return (
-    <div className="relative z-10 flex items-center gap-25">
-      {/* CTA BUTTON */}
-      <motion.button
-        type="button"
-        onClick={goContact}
-        className="relative z-50 inline-flex items-center rounded-full border px-4 py-2 text-xs font-medium select-none cursor-pointer pointer-events-auto"
-        style={{
-          color: DESNINE_RED,
-          borderColor: DESNINE_RED,
-        }}
-        animate={{
-          borderColor: [
-            "rgba(180,43,37,0.4)",
-            "rgba(180,43,37,1)",
-            "rgba(180,43,37,0.4)",
-          ],
-          boxShadow: [
-            "0 0 0px rgba(180,43,37,0)",
-            "0 0 10px rgba(180,43,37,0.6)",
-            "0 0 0px rgba(180,43,37,0)",
-          ],
-        }}
-        // transition={{
-        //   duration: 1.2,
-        //   repeat: Infinity,
-        //   ease: "easeInOut",
-        // }}
-        whileHover={{
-          scale: 1.08,
-          boxShadow: "0 0 18px rgba(180,43,37,0.9)",
-        }}
-        whileTap={{ scale: 0.96 }}
-      >
-        Get Your Free Quote
-      </motion.button>
+    <div className="relative z-10 flex items-center gap-3 sm:gap-6 md:gap-10 lg:gap-16 xl:gap-24">
+      {/* CTA Buttons */}
+      <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        {/* Primary CTA */}
+        <motion.button
+          type="button"
+          onClick={goContact}
+          className="inline-flex items-center whitespace-nowrap rounded-full px-3 py-1.5 text-[10px] font-medium text-white select-none cursor-pointer pointer-events-auto sm:px-4 sm:py-2 sm:text-xs"
+          style={{
+            backgroundColor: DESNINE_RED,
+            border: `1px solid ${DESNINE_RED}`,
+          }}
+          whileHover={{
+            scale: 1.03,
+            boxShadow: "0 0 8px rgba(180,43,37,0.25)",
+          }}
+          whileTap={{ scale: 0.96 }}
+        >
+          Get Your Free Quote
+        </motion.button>
 
-      {/* Stars + Label */}
-      <div className="flex flex-col items-end gap-1">
-        <div className="flex gap-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <motion.svg
-              key={i}
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill={DESNINE_RED}
-              aria-hidden="true"
-              className="pointer-events-none"
-              animate={{
-                opacity: [0.6, 1, 0.6],
-                scale: [1, 1.15, 1],
-              }}
-              transition={{
-                duration: 1.6,
-                ease: "easeInOut",
-                repeat: Infinity,
-                delay: i * 0.15,
-              }}
+        {/* Secondary CTA */}
+        <motion.button
+          type="button"
+          onClick={() => router.push("/work")}
+          className="inline-flex items-center whitespace-nowrap rounded-full border px-3 py-1.5 text-[10px] font-medium select-none cursor-pointer pointer-events-auto sm:px-4 sm:py-2 sm:text-xs"
+          style={{
+            color: DESNINE_RED,
+            borderColor: DESNINE_RED,
+            borderWidth: "1.5px",
+            backgroundColor: "transparent",
+          }}
+          whileHover={{
+            scale: 1.03,
+            backgroundColor: "rgba(180,43,37,0.05)",
+          }}
+          whileTap={{ scale: 0.96 }}
+        >
+          See Our Work
+        </motion.button>
+      </div>
+
+      {/* Trust Section */}
+      <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+        {/* Stars + Text */}
+        <div className="flex flex-col items-end gap-1">
+          <div className="flex items-center gap-1">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <motion.svg
+                key={i}
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill={DESNINE_RED}
+                aria-hidden="true"
+                className="pointer-events-none h-3 w-3 sm:h-3.5 sm:w-3.5"
+                animate={{
+                  opacity: [0.6, 1, 0.6],
+                  scale: [1, 1.15, 1],
+                }}
+                transition={{
+                  duration: 1.6,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  delay: i * 0.15,
+                }}
+              >
+                <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </motion.svg>
+            ))}
+
+            <span
+              className="text-[10px] font-medium leading-none sm:text-xs"
+              style={{ color: DESNINE_RED }}
             >
-              <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-            </motion.svg>
-          ))}
+              4.9
+            </span>
+          </div>
+
+          <p className="whitespace-nowrap text-[10px] text-muted-foreground sm:text-xs">
+            Loved by Founders Worldwide
+          </p>
         </div>
 
-        <p className="text-xs text-muted-foreground">Loved by Big Brands</p>
+        {/* Client Images on Right */}
+        <div className="flex items-center">
+          {[
+            "/clients/client4.jpg",
+            "/clients/client2.jpg",
+            "/clients/client3.jpg",
+            "/clients/client1.jpg",
+          ].map((src, i) => (
+            <motion.div
+              key={i}
+              className="-ml-2 first:ml-0 h-6 w-6 overflow-hidden rounded-full border border-white shadow-sm sm:h-8 sm:w-8 sm:border-2"
+              style={{ zIndex: 10 - i }}
+              whileHover={{ y: -2 }}
+            >
+              <img
+                src={src}
+                alt={`Client ${i + 1}`}
+                className="h-full w-full object-cover"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
