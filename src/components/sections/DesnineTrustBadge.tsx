@@ -83,7 +83,7 @@ export function DesnineTrustBadge() {
   };
 
   return (
-    <div className="relative z-10 flex items-center gap-3 sm:gap-6 md:gap-10 lg:gap-16 xl:gap-24">
+    <div className="relative z-10 flex origin-center scale-[0.86] transform-gpu items-center gap-3 sm:scale-100 sm:gap-6 md:gap-10 lg:gap-16 xl:gap-24">
       {/* CTA Buttons */}
       <div className="flex shrink-0 items-center gap-2 sm:gap-3">
         {/* Primary CTA */}
@@ -163,7 +163,7 @@ export function DesnineTrustBadge() {
           </div>
 
           <p className="whitespace-nowrap text-[10px] text-muted-foreground sm:text-xs">
-            Loved by Founders Worldwide
+            Loved by big Brands
           </p>
         </div>
 
