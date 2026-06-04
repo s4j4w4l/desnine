@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/lib/config";
@@ -8,9 +9,17 @@ interface WorkBentoSectionProps {
   count?: number; // Optional: if passed, show only that many items
 }
 
+type WorkBentoItem = {
+  id: number;
+  content: ReactNode;
+  title: string;
+  description: string;
+  href?: string;
+};
+
 export function WorkBentoSection({ count }: WorkBentoSectionProps) {
-  const { title, description, items } = siteConfig.workbentoSection;
-  const displayItems = count ? items.slice(0, count) : items;
+  const { title, items } = siteConfig.workbentoSection;
+  const workItems = items as WorkBentoItem[];
 
   return (
     <section
@@ -25,7 +34,7 @@ export function WorkBentoSection({ count }: WorkBentoSectionProps) {
 
         {/* Items */}
         <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-          {displayItems.map((item) => (
+          {(count ? workItems.slice(0, count) : workItems).map((item) => (
             <div
               key={item.id}
               className="group relative flex flex-col items-start justify-end min-h-[600px] md:min-h-[500px] p-0.5 before:absolute before:-left-0.5 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-0.5 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-[''] cursor-pointer max-h-[400px]"
