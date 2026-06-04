@@ -330,16 +330,18 @@
 
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import React, { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/config";
 
-const AUTO_DELAY = 4000;
 const DESNINE_RED = "#B42B25";
 
-/** ---- In-View (run once) ---- */
 function useInViewOnce<T extends HTMLElement>(options?: IntersectionObserverInit) {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
@@ -350,8 +352,7 @@ function useInViewOnce<T extends HTMLElement>(options?: IntersectionObserverInit
 
     const obs = new IntersectionObserver(
       (entries) => {
-        const entry = entries[0];
-        if (entry?.isIntersecting) {
+        if (entries[0]?.isIntersecting) {
           setInView(true);
           obs.disconnect();
         }
@@ -396,23 +397,25 @@ function CountUpText({
   style?: CSSProperties;
 }) {
   const { ref, inView } = useInViewOnce<HTMLDivElement>();
-  const { target, prefix, suffix, decimals } = useMemo(() => parseStatValue(value), [value]);
-  const [display, setDisplay] = useState(() => 0);
+  const { target, prefix, suffix, decimals } = useMemo(
+    () => parseStatValue(value),
+    [value]
+  );
+
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
     if (!inView) return;
 
     let raf = 0;
     const start = performance.now();
-    const from = 0;
-    const to = target;
 
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - t, 3);
-      const next = from + (to - from) * eased;
 
-      setDisplay(next);
+      setDisplay(target * eased);
+
       if (t < 1) raf = requestAnimationFrame(tick);
     };
 
@@ -421,82 +424,93 @@ function CountUpText({
   }, [inView, target, duration]);
 
   const formatted = useMemo(() => {
-    const n = decimals > 0 ? display.toFixed(decimals) : Math.round(display).toString();
+    const n =
+      decimals > 0 ? display.toFixed(decimals) : Math.round(display).toString();
+
     return `${prefix}${n}${suffix}`;
   }, [display, decimals, prefix, suffix]);
 
   return (
     <div ref={ref} className={className} style={style}>
-      {inView ? formatted : `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`}
+      {inView
+        ? formatted
+        : `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`}
     </div>
   );
 }
 
-/** ---- Main Component ---- */
+const glassCard =
+  "relative overflow-hidden rounded-2xl border border-white/40 bg-white/35 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.06]";
+
 export function ClientFeedback() {
   const { clientFeedback } = siteConfig;
-
   const stats = useMemo(() => clientFeedback.stats ?? [], [clientFeedback.stats]);
 
   return (
     <section id="client-feedback" className="w-full bg-background py-10">
-      <div className="w-full px-10 md:px-10">
+      <div className="w-full px-6 md:px-10">
         <div className="mx-auto w-full max-w-6xl space-y-10">
-          {/* Header kept as-is */}
           <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
+            className="py-16 text-center md:py-20"
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.4 }}
           >
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-primary">
-              {clientFeedback.title ?? "What our clients say"}
+            <h2 className="text-center text-[clamp(32px,6vw,72px)] font-bold leading-[0.95] tracking-[-0.06em]">
+              <span className="text-zinc-950 dark:text-white">Stories</span>{" "}
+              <span className="text-zinc-500 dark:text-zinc-400">in</span>{" "}
+              <span className="text-[#B91C1C] dark:text-[#EF4444]">
+                Motion
+              </span>{" "}
+              <span className="text-zinc-950 dark:text-white">!</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* LEFT CARD: quote mark + Stories content (no reviews/arrows/images) */}
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <motion.div
-              className="rounded-2xl p-6 sm:p-7 md:p-10 flex flex-col min-h-[260px] sm:min-h-[300px] md:min-h-[340px] relative overflow-hidden border border-zinc-300 dark:border-zinc-700"
+              className={`${glassCard} flex min-h-[260px] flex-col items-center justify-center p-6 sm:min-h-[300px] sm:p-7 md:min-h-[340px] md:p-10`}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.2 }}
               whileHover={{ y: -4 }}
             >
-              <div className="flex gap-2 items-start">
-                {/* Quote mark (kept) */}
-                <div className="h-10 w-6 flex items-start justify-center">
-                  <span
-                    className="text-2xl font-bold leading-none block"
-                    style={{ color: DESNINE_RED }}
-                  >
-                    “
-                  </span>
-                </div>
+              <div
+                className="pointer-events-none absolute inset-0 z-0"
+                style={{
+                  background: `
+                    radial-gradient(
+                      circle at top left,
+                      rgba(180,43,37,0.22) 0%,
+                      rgba(180,43,37,0.12) 25%,
+                      rgba(180,43,37,0.04) 45%,
+                      transparent 75%
+                    )
+                  `,
+                }}
+              />
 
-                {/* Content inside the quote area */}
-                <div className="flex flex-col gap-5">
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed tracking-tight text-balance">
-                    Desnine Studio is a creative agency specializing in visual storytelling and
-                    innovative campaigns. We offer web and graphic design, branding, content support,
-                    social media strategy, email marketing, and targeted ads, tailored to elevate your
-                    brand.
-                  </p>
-                </div>
-              </div>
+              <span
+                className="pointer-events-none absolute left-1/2 top-1/2 z-[1] -translate-x-1/2 -translate-y-1/2 select-none text-[340px] font-black leading-none opacity-[0.07] md:text-[500px]"
+                style={{ color: DESNINE_RED }}
+              >
+                “
+              </span>
 
-              {/* Spacer to keep the card height consistent */}
-              <div className="mt-auto pt-10" />
+              <p className="relative z-10 text-balance text-center text-base font-medium leading-relaxed tracking-tight text-primary sm:text-lg md:text-xl">
+                Desnine Studio is a creative agency specializing in visual
+                storytelling and innovative campaigns. We offer web and graphic
+                design, branding, content support, social media strategy, email
+                marketing, and targeted ads, tailored to elevate your brand.
+              </p>
             </motion.div>
 
-            {/* RIGHT: Stats (FILLED numbers now) */}
             <div className="grid grid-cols-2 gap-5">
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
-                  className="rounded-2xl p-6 md:p-7 flex flex-col justify-between min-h-[150px] md:min-h-[160px] border border-zinc-300 dark:border-zinc-700"
+                  className={`${glassCard} flex min-h-[150px] flex-col justify-between p-6 md:min-h-[160px] md:p-7`}
                   initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -507,19 +521,27 @@ export function ClientFeedback() {
                   viewport={{ once: true, amount: 0.2 }}
                   whileHover={{ y: -4 }}
                 >
-                  <CountUpText
-                    value={stat.value}
-                    duration={4000}
-                    className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-none"
-                    style={{
-                      color: DESNINE_RED,
-                      textShadow: "0 10px 28px rgba(180,43,37,0.18)",
-                    }}
-                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/60 via-white/20 to-transparent dark:from-white/10 dark:via-white/[0.03]" />
 
-                  <div className="mt-4">
-                    <p className="text-sm font-semibold text-primary">{stat.label}</p>
-                    <p className="mt-2 text-sm text-muted-foreground">{stat.note}</p>
+                  <div className="relative z-10">
+                    <CountUpText
+                      value={stat.value}
+                      duration={4000}
+                      className="text-4xl font-extrabold leading-none sm:text-6xl md:text-7xl"
+                      style={{
+                        color: DESNINE_RED,
+                        textShadow: "0 10px 28px rgba(180,43,37,0.18)",
+                      }}
+                    />
+
+                    <div className="mt-4">
+                      <p className="text-sm font-semibold text-primary">
+                        {stat.label}
+                      </p>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        {stat.note}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}

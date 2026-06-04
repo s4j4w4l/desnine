@@ -717,84 +717,84 @@ howWeWork: {
       /*"It's not just words. It's the results that speak. Services we offer are designed to elevate your brand, streamline your operations, and enhance your digital presence. From branding to web development, we’ve got you covered."*/
       "",
       items: [
-      {
-        id: 1,
-        content: (
-        <div className="relative w-full h-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/Greenly/5fc68c214303945.67576a30c7901.png"  
-            alt="Greenly"
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            sizes="100vw"
-            loading="eager"
-          />
-        </div>
-        ),
-        title: "Greenly",
-        description: "Branding & Identity",
-        href: "/work/greenly",
+      // {
+      //   id: 1,
+      //   content: (
+      //   <div className="relative w-full h-full">
+      //     {/* eslint-disable-next-line @next/next/no-img-element */}
+      //     <img
+      //       src="/Greenly/5fc68c214303945.67576a30c7901.png"  
+      //       alt="Greenly"
+      //       style={{ objectFit: "cover", width: "100%", height: "100%" }}
+      //       sizes="100vw"
+      //       loading="eager"
+      //     />
+      //   </div>
+      //   ),
+      //   title: "Greenly",
+      //   description: "Branding & Identity",
+      //   href: "/work/greenly",
 
-      },
+      // },
 
-      {
-        id: 2,
-        content: (
-        <div className="relative w-full h-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/Coresecure/c84778211607369.67576a9fb7366.png"  
-            alt="coresecure"
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            sizes="100vw"
-            loading="eager"
-          />
-        </div>
-        ),
-        title: "Core Secure",
-        description: "Branding & Identity",
-        href: "/work/coresecure",
+      // {
+      //   id: 2,
+      //   content: (
+      //   <div className="relative w-full h-full">
+      //     {/* eslint-disable-next-line @next/next/no-img-element */}
+      //     <img
+      //       src="/Coresecure/c84778211607369.67576a9fb7366.png"  
+      //       alt="coresecure"
+      //       style={{ objectFit: "cover", width: "100%", height: "100%" }}
+      //       sizes="100vw"
+      //       loading="eager"
+      //     />
+      //   </div>
+      //   ),
+      //   title: "Core Secure",
+      //   description: "Branding & Identity",
+      //   href: "/work/coresecure",
 
-      },
-      {
-        id: 3,
-        content: (
-        <div className="relative w-full h-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/Quixel/66ca32212225893.6757693b01009.png"  
-            alt="Quixel"
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            sizes="100vw"
-            loading="eager"
-          />
-        </div>
-        ),
-        title: "Quixel",
-        description: "Branding & Identity",
-        href: "/work/quixel",
+      // },
+      // {
+      //   id: 3,
+      //   content: (
+      //   <div className="relative w-full h-full">
+      //     {/* eslint-disable-next-line @next/next/no-img-element */}
+      //     <img
+      //       src="/Quixel/66ca32212225893.6757693b01009.png"  
+      //       alt="Quixel"
+      //       style={{ objectFit: "cover", width: "100%", height: "100%" }}
+      //       sizes="100vw"
+      //       loading="eager"
+      //     />
+      //   </div>
+      //   ),
+      //   title: "Quixel",
+      //   description: "Branding & Identity",
+      //   href: "/work/quixel",
 
-      },
+      // },
 
-        {
-        id: 4,
-        content: (
-        <div className="relative w-full h-full">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/Mavo/5620db213698209.6757693cba376.jpg"   // make sure this is inside /public/work/kynex/
-            alt="Mavo"
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            sizes="100vw"
-            loading="eager"
-          />
-        </div>
-        ),
-        title: "Mavo",
-        description: "Branding & Identity",
-        href: "/work/mavo",
+      //   {
+      //   id: 4,
+      //   content: (
+      //   <div className="relative w-full h-full">
+      //     {/* eslint-disable-next-line @next/next/no-img-element */}
+      //     <img
+      //       src="/Mavo/5620db213698209.6757693cba376.jpg"   // make sure this is inside /public/work/kynex/
+      //       alt="Mavo"
+      //       style={{ objectFit: "cover", width: "100%", height: "100%" }}
+      //       sizes="100vw"
+      //       loading="eager"
+      //     />
+      //   </div>
+      //   ),
+      //   title: "Mavo",
+      //   description: "Branding & Identity",
+      //   href: "/work/mavo",
 
-      },
+      // },
       
         
     ],
