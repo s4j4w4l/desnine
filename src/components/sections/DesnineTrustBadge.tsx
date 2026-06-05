@@ -69,6 +69,44 @@ import { useRouter } from "next/navigation";
 
 const DESNINE_RED = "#B42B25";
 
+function ArrowHoverButton({
+  children,
+  onClick,
+  variant = "filled",
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  variant?: "filled" | "outline";
+}) {
+  const isFilled = variant === "filled";
+
+  return (
+    <motion.button
+      type="button"
+      onClick={onClick}
+      className="group inline-flex cursor-pointer select-none items-center overflow-hidden whitespace-nowrap rounded-full px-3 py-1.5 text-[10px] font-medium pointer-events-auto sm:px-4 sm:py-2 sm:text-xs"
+      style={{
+        backgroundColor: isFilled ? DESNINE_RED : "transparent",
+        color: isFilled ? "#ffffff" : DESNINE_RED,
+        border: `1.5px solid ${DESNINE_RED}`,
+      }}
+      whileHover={{
+        scale: 1.03,
+        boxShadow: isFilled ? "0 0 8px rgba(180,43,37,0.25)" : "none",
+      }}
+      whileTap={{ scale: 0.96 }}
+    >
+      <span className="transition-transform duration-300 ease-out group-hover:-translate-x-1">
+        {children}
+      </span>
+
+      <span className="ml-0 max-w-0 overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:ml-2 group-hover:max-w-5 group-hover:opacity-100">
+        →
+      </span>
+    </motion.button>
+  );
+}
+
 export function DesnineTrustBadge() {
   const router = useRouter();
 
@@ -83,51 +121,18 @@ export function DesnineTrustBadge() {
   };
 
   return (
-    <div className="relative z-10 flex origin-center scale-[0.86] transform-gpu items-center gap-3 sm:scale-100 sm:gap-6 md:gap-10 lg:gap-16 xl:gap-24">
-      {/* CTA Buttons */}
-      <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-        {/* Primary CTA */}
-        <motion.button
-          type="button"
-          onClick={goContact}
-          className="inline-flex items-center whitespace-nowrap rounded-full px-3 py-1.5 text-[10px] font-medium text-white select-none cursor-pointer pointer-events-auto sm:px-4 sm:py-2 sm:text-xs"
-          style={{
-            backgroundColor: DESNINE_RED,
-            border: `1px solid ${DESNINE_RED}`,
-          }}
-          whileHover={{
-            scale: 1.03,
-            boxShadow: "0 0 8px rgba(180,43,37,0.25)",
-          }}
-          whileTap={{ scale: 0.96 }}
-        >
+    <div className="relative z-10 flex origin-center scale-[0.86] transform-gpu items-start gap-12 sm:scale-100 sm:gap-20 md:gap-28 lg:gap-36 xl:gap-44">
+      <div className="mr-24 flex shrink-0 flex-col items-start gap-3 sm:mr-32 md:mr-48 lg:mr-56">
+        <ArrowHoverButton onClick={goContact} variant="filled">
           Get Your Free Quote
-        </motion.button>
+        </ArrowHoverButton>
 
-        {/* Secondary CTA */}
-        <motion.button
-          type="button"
-          onClick={() => router.push("/work")}
-          className="inline-flex items-center whitespace-nowrap rounded-full border px-3 py-1.5 text-[10px] font-medium select-none cursor-pointer pointer-events-auto sm:px-4 sm:py-2 sm:text-xs"
-          style={{
-            color: DESNINE_RED,
-            borderColor: DESNINE_RED,
-            borderWidth: "1.5px",
-            backgroundColor: "transparent",
-          }}
-          whileHover={{
-            scale: 1.03,
-            backgroundColor: "rgba(180,43,37,0.05)",
-          }}
-          whileTap={{ scale: 0.96 }}
-        >
+        <ArrowHoverButton onClick={() => router.push("/work")} variant="outline">
           See Our Work
-        </motion.button>
+        </ArrowHoverButton>
       </div>
 
-      {/* Trust Section */}
-      <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
-        {/* Stars + Text */}
+      <div className="flex shrink-0 flex-col items-end gap-2">
         <div className="flex flex-col items-end gap-1">
           <div className="flex items-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
@@ -163,11 +168,10 @@ export function DesnineTrustBadge() {
           </div>
 
           <p className="whitespace-nowrap text-[10px] text-muted-foreground sm:text-xs">
-            Loved by big Brands
+            Loved by Big Brands
           </p>
         </div>
 
-        {/* Client Images on Right */}
         <div className="flex items-center">
           {[
             "/clients/client4.jpg",
