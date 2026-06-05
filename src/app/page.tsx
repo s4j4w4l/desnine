@@ -8,6 +8,11 @@ import { ProcessSection } from "@/components/PROCESS";
 import { FAQSection } from "@/components/FAQ";
 import HomeProjectsSection from "@/components/sections/home-work-section";
 import Audit from "@/components/Audit";
+import { CompanyShowcase } from "@/components/sections/company-showcase";
+import { PricingSection } from "@/components/sections/pricing-section";
+import { Hero3Section } from "@/components/sections/hero3-section";
+import { HowWeWorkBentoSection } from "@/components/sections/howWeWork";
+import { FeatureSection } from "@/components/sections/feature-section";
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">

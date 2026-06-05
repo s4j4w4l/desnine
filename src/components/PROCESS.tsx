@@ -176,28 +176,28 @@ function ProcessRow({ title, desc }: { title: string; desc: string }) {
     mass: 0.18,
   });
 
-  const x = useTransform(smoothProgress, [0, 1], [18, 0]);
+  const x = useTransform(smoothProgress, [0, 1], [6, 0]);
   const opacity = useTransform(smoothProgress, [0, 1], [0, 1]);
 
   return (
     <motion.div
       ref={ref}
       style={{ x, opacity }}
-      className="group rounded-2xl border border-border bg-background p-4 transition-shadow duration-300 hover:shadow-lg sm:p-5 md:p-6"
+      className="group w-full max-w-full rounded-2xl border border-border bg-background p-4 transition-shadow duration-300 hover:shadow-lg sm:p-5 md:p-6"
     >
-      <div className="flex items-start justify-between gap-4 sm:gap-6 md:gap-8">
+      <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <h3 className="text-sm font-semibold tracking-tight text-primary sm:text-base md:text-lg">
             {title}
           </h3>
 
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:mt-3 md:text-base">
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
             {desc}
           </p>
         </div>
 
         <span
-          className="mt-2 h-2 w-2 shrink-0 rounded-full opacity-60 transition-opacity duration-300 group-hover:opacity-100 sm:h-2.5 sm:w-2.5"
+          className="mt-2 h-2 w-2 shrink-0 rounded-full opacity-60 transition-opacity duration-300 group-hover:opacity-100"
           style={{ backgroundColor: DESNINE_RED }}
           aria-hidden="true"
         />
@@ -236,7 +236,7 @@ function TimelineCircle({
   return (
     <div className="relative z-10 shrink-0">
       <motion.div
-        className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border bg-background text-sm font-semibold shadow-sm sm:h-14 sm:w-14 sm:text-lg md:h-16 md:w-16"
+        className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border bg-background text-sm font-semibold shadow-sm sm:h-11 sm:w-11 md:h-12 md:w-12"
         style={{ color: textColor, borderColor }}
       >
         <motion.div
@@ -272,19 +272,19 @@ export function ProcessSection() {
   });
 
   return (
-    <section id="process" className="w-full overflow-x-hidden bg-background">
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 md:px-10">
+    <section id="process" className="w-full overflow-hidden bg-background">
+      <div className="mx-auto w-full max-w-5xl px-8 py-12 sm:px-10 md:px-12 lg:px-8">
         <div className="pb-10">
           <div className="mx-auto max-w-4xl text-center">
-             <motion.p
-                className="mb-4 text-center text-sm font-medium text-muted-foreground"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                viewport={{ once: true }}
-              >
-                (Process)
-              </motion.p>
+            <motion.p
+              className="mb-4 text-center text-sm font-medium text-muted-foreground"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              (Process)
+            </motion.p>
 
             <motion.h2
               className="mt-4 text-[clamp(32px,6vw,72px)] font-bold leading-[0.95] tracking-[-0.06em]"
@@ -293,10 +293,7 @@ export function ProcessSection() {
               viewport={{ once: true, amount: 0.5 }}
             >
               {[
-                {
-                  text: "Clear",
-                  className: "text-zinc-950 dark:text-white",
-                },
+                { text: "Clear", className: "text-zinc-950 dark:text-white" },
                 {
                   text: "Steps.",
                   className: "text-[#B91C1C] dark:text-[#EF4444]",
@@ -314,16 +311,8 @@ export function ProcessSection() {
                   key={`${word.text}-${i}`}
                   className={`inline-block ${word.className}`}
                   variants={{
-                    hidden: {
-                      opacity: 0,
-                      y: 40,
-                      filter: "blur(8px)",
-                    },
-                    show: {
-                      opacity: 1,
-                      y: 0,
-                      filter: "blur(0px)",
-                    },
+                    hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
+                    show: { opacity: 1, y: 0, filter: "blur(0px)" },
                   }}
                   transition={{
                     duration: 0.7,
@@ -341,51 +330,49 @@ export function ProcessSection() {
               className="mt-6 flex justify-center"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeOut",
-              }}
+              transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <p className="text-balance text-base font-medium leading-relaxed tracking-tight text-muted-foreground md:text-lg">
+              <p className="max-w-2xl text-balance text-center text-base font-medium leading-relaxed tracking-tight text-muted-foreground md:text-lg">
                 A simple flow that keeps everything moving, no confusion, no
                 delays.
               </p>
             </motion.div>
           </div>
 
-          <div className="mt-10 h-px w-full bg-border/60" />
+          <div className="mx-auto mt-10 h-px w-full max-w-4xl bg-border/60" />
         </div>
 
-        <div ref={timelineRef} className="relative">
-          <div
-            className="absolute left-[22px] top-0 w-px bg-border sm:left-[27px] md:left-[31px]"
-            style={{ height: "calc(100% - 2.75rem)" }}
-          />
+        <div className="w-full overflow-hidden rounded-3xl border border-border bg-background p-4 sm:p-6 md:p-8">
+          <div ref={timelineRef} className="relative w-full overflow-hidden">
+            <div
+              className="absolute left-[19px] top-0 w-px bg-border sm:left-[21.5px] md:left-[23.5px]"
+              style={{ height: "calc(100% - 2.5rem)" }}
+            />
 
-          <motion.div
-            className="absolute left-[21px] top-0 w-[3px] origin-top rounded-full sm:left-[26px] md:left-[30px]"
-            style={{
-              backgroundColor: DESNINE_RED,
-              scaleY: smoothScaleY,
-              height: "calc(100% - 2.75rem)",
-            }}
-          />
+            <motion.div
+              className="absolute left-[18px] top-0 w-[3px] origin-top rounded-full sm:left-[20.5px] md:left-[22.5px]"
+              style={{
+                backgroundColor: DESNINE_RED,
+                scaleY: smoothScaleY,
+                height: "calc(100% - 2.5rem)",
+              }}
+            />
 
-          <div className="space-y-5">
-            {PROCESS.map((item, i) => (
-              <div
-                key={item.title}
-                className="relative flex gap-4 sm:gap-6 md:gap-8"
-              >
-                <TimelineCircle i={i} progress={smoothScaleY} />
+            <div className="space-y-4 sm:space-y-5">
+              {PROCESS.map((item, i) => (
+                <div
+                  key={item.title}
+                  className="relative flex w-full min-w-0 gap-4 sm:gap-5 md:gap-6"
+                >
+                  <TimelineCircle i={i} progress={smoothScaleY} />
 
-                <div className="min-w-0 flex-1">
-                  <ProcessRow title={item.title} desc={item.desc} />
+                  <div className="min-w-0 flex-1 overflow-hidden">
+                    <ProcessRow title={item.title} desc={item.desc} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
