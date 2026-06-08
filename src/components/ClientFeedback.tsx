@@ -125,7 +125,7 @@ export function ClientFeedback() {
 
   return (
     <section id="client-feedback" className="w-full bg-background py-10">
-      <div className="w-full px-6 md:px-10">
+      <div className="w-full px-8 md:px-10">
         <div className="mx-auto w-full max-w-6xl space-y-10">
           <motion.div
             className="py-16 text-center md:py-20"
