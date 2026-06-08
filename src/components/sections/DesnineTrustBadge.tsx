@@ -66,6 +66,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useLang } from "@/contexts/LanguageContext";
 
 const DESNINE_RED = "#B42B25";
 
@@ -109,6 +110,7 @@ function ArrowHoverButton({
 
 export function DesnineTrustBadge() {
   const router = useRouter();
+  const { t } = useLang();
 
   const goContact = () => {
     router.push("/contact");
@@ -124,11 +126,11 @@ export function DesnineTrustBadge() {
     <div className="relative z-10 flex origin-center scale-[0.86] transform-gpu items-start gap-12 sm:scale-100 sm:gap-20 md:gap-28 lg:gap-36 xl:gap-44">
       <div className="mr-24 flex shrink-0 flex-col items-start gap-3 sm:mr-32 md:mr-48 lg:mr-56">
         <ArrowHoverButton onClick={goContact} variant="filled">
-          Get Your Free Quote
+          {t.trustBadge.freeQuote}
         </ArrowHoverButton>
 
         <ArrowHoverButton onClick={() => router.push("/work")} variant="outline">
-          See Our Work
+          {t.trustBadge.seeWork}
         </ArrowHoverButton>
       </div>
 
@@ -168,7 +170,7 @@ export function DesnineTrustBadge() {
           </div>
 
           <p className="whitespace-nowrap text-[10px] text-muted-foreground sm:text-xs">
-            Loved by Big Brands
+            {t.trustBadge.lovedBy}
           </p>
         </div>
 

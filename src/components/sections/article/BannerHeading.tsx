@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function BannerHeading() {
   const reduceMotion = useReducedMotion();
+  const { t } = useLang();
+
   return (
     <section className="relative isolate w-full overflow-hidden">
-      {/* Decorative layers (theme-aware) */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-x-0 bottom-0 h-48 md:h-64 bg-gradient-to-t from-red-600/70 via-red-600/10 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/0 to-background/40 dark:to-black/40" />
@@ -19,7 +21,7 @@ export default function BannerHeading() {
           transition={{ duration: 0.4 }}
           className="text-xs md:text-sm uppercase tracking-[0.2em] text-muted-foreground"
         >
-          Articles
+          {t.articles.eyebrow}
         </motion.p>
 
         <motion.h1
@@ -29,8 +31,7 @@ export default function BannerHeading() {
           className="mt-2 text-4xl md:text-6xl font-extrabold leading-[1.1] text-foreground"
         >
           <span className="relative inline-block">
-            Articles &amp; Resources
-            {/* animated underline under the H1 */}
+            {t.articles.heading}
             <motion.span
               aria-hidden
               className="absolute left-0 -bottom-2 h-[3px] w-full rounded-full bg-red-500/80"
@@ -43,7 +44,7 @@ export default function BannerHeading() {
         </motion.h1>
 
         <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-          Deep-dives and practical playbooks on branding, web, and AI.
+          {t.articles.description}
         </p>
       </div>
     </section>

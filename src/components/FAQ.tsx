@@ -13,67 +13,30 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
+import { useLang } from "@/contexts/LanguageContext";
 
 const DESNINE_RED = "#B42B25";
 
-const FAQS = [
-  {
-    q: "What does Desnine Studio specialize in?",
-    a: "Desnine Studio focuses on clean, modern design for websites and brands. We help businesses look professional, clear, and trustworthy online.",
-  },
-  {
-    q: "Can I start with a small project?",
-    a: "Yes. Many clients start small and grow over time. We’re happy to work together step by step.",
-  },
-  {
-    q: "How long does a typical project take?",
-    a: "Most projects take between 1–4 weeks, depending on what’s needed. We agree on timelines before starting.",
-  },
-  {
-    q: "Do you work with existing brands and websites?",
-    a: "Yes. We can improve or update what you already have without starting from scratch.",
-  },
-  {
-    q: "How do we work together?",
-    a: "We start by understanding your goal, then move step by step with clear communication and regular updates.",
-  },
-  {
-    q: "Is Desnine Studio a good fit for my business?",
-    a: "If you want clear design, honest communication, and a smooth process, we’ll work well together.",
-  },
-];
+type FAQItem = { q: string; a: string };
 
 type FAQItemProps = {
-  item: (typeof FAQS)[number];
+  item: FAQItem;
   i: number;
   open: number | null;
   setOpen: Dispatch<SetStateAction<number | null>>;
   scrollYProgress: MotionValue<number>;
 };
 
-function FAQItem({ item, i, open, setOpen, scrollYProgress }: FAQItemProps) {
+function FAQRow({ item, i, open, setOpen, scrollYProgress }: FAQItemProps) {
   const isOpen = open === i;
 
-  const y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [-12 + i * 4, 12 - i * 4]
-  );
-
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.15 + i * 0.05, 1],
-    [0, 1, 1]
-  );
+  const y = useTransform(scrollYProgress, [0, 1], [-12 + i * 4, 12 - i * 4]);
+  const opacity = useTransform(scrollYProgress, [0, 0.15 + i * 0.05, 1], [0, 1, 1]);
 
   return (
     <motion.div
       style={{ y, opacity }}
-      transition={{
-        type: "spring",
-        stiffness: 80,
-        damping: 20,
-      }}
+      transition={{ type: "spring", stiffness: 80, damping: 20 }}
       className="overflow-hidden rounded-xl border border-border bg-background"
     >
       <button
@@ -81,7 +44,6 @@ function FAQItem({ item, i, open, setOpen, scrollYProgress }: FAQItemProps) {
         className="flex w-full items-center justify-between p-5 text-left"
       >
         <span className="font-medium text-primary">{item.q}</span>
-
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.25 }}
@@ -96,23 +58,11 @@ function FAQItem({ item, i, open, setOpen, scrollYProgress }: FAQItemProps) {
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
-            animate={{
-              height: "auto",
-              opacity: 1,
-            }}
-            exit={{
-              height: 0,
-              opacity: 0,
-            }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{
-              height: {
-                duration: 0.35,
-                ease: "easeOut",
-              },
-              opacity: {
-                duration: 0.2,
-                delay: 0.05,
-              },
+              height: { duration: 0.35, ease: "easeOut" },
+              opacity: { duration: 0.2, delay: 0.05 },
             }}
           >
             <p className="px-5 pb-5 text-sm leading-relaxed text-muted-foreground">
@@ -126,6 +76,7 @@ function FAQItem({ item, i, open, setOpen, scrollYProgress }: FAQItemProps) {
 }
 
 export function FAQSection() {
+  const { t } = useLang();
   const [open, setOpen] = useState<number | null>(0);
   const sectionRef = useRef<HTMLElement | null>(null);
 
@@ -133,6 +84,12 @@ export function FAQSection() {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
+
+  const headingColors = [
+    "text-zinc-950 dark:text-white",
+    "text-[#B91C1C] dark:text-[#EF4444]",
+    "text-zinc-950 dark:text-white",
+  ];
 
   return (
     <section ref={sectionRef} className="w-full py-16 md:py-24">
@@ -145,7 +102,7 @@ export function FAQSection() {
             transition={{ duration: 0.45, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            (FAQs)
+            {t.faq.label}
           </motion.p>
 
           <motion.h2
@@ -154,43 +111,18 @@ export function FAQSection() {
             whileInView="show"
             viewport={{ once: true, amount: 0.5 }}
           >
-            {[
-              {
-                text: "Questions?",
-                className: "text-zinc-950 dark:text-white",
-              },
-              {
-                text: "Answered",
-                className: "text-[#B91C1C] dark:text-[#EF4444]",
-              },
-              {
-                text: ".",
-                className: "text-zinc-950 dark:text-white",
-              },
-            ].map((word, i) => (
+            {t.faq.heading.map((word, i) => (
               <motion.span
-                key={`${word.text}-${i}`}
-                className={`inline-block ${word.className}`}
+                key={`${word}-${i}`}
+                className={`inline-block ${headingColors[i]}`}
                 variants={{
-                  hidden: {
-                    opacity: 0,
-                    y: 40,
-                    filter: "blur(8px)",
-                  },
-                  show: {
-                    opacity: 1,
-                    y: 0,
-                    filter: "blur(0px)",
-                  },
+                  hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
+                  show: { opacity: 1, y: 0, filter: "blur(0px)" },
                 }}
-                transition={{
-                  duration: 0.7,
-                  delay: i * 0.12,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+                transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
               >
-                {word.text}
-                {i !== 2 && "\u00A0"}
+                {word}
+                {i !== t.faq.heading.length - 1 && " "}
               </motion.span>
             ))}
           </motion.h2>
@@ -202,14 +134,14 @@ export function FAQSection() {
             transition={{ delay: 0.35, duration: 0.8, ease: "easeOut" }}
           >
             <p className="text-balance text-center text-base font-medium leading-relaxed tracking-tight text-muted-foreground md:text-lg">
-              Helping you understand our process and offerings at Desnine Studio.
+              {t.faq.subtitle}
             </p>
           </motion.div>
         </div>
 
         <div className="space-y-3">
-          {FAQS.map((item, i) => (
-            <FAQItem
+          {t.faq.items.map((item, i) => (
+            <FAQRow
               key={item.q}
               item={item}
               i={i}

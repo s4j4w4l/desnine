@@ -5,8 +5,30 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useLang } from "@/contexts/LanguageContext";
+
+// English service option values (sent to backend — always English for consistency)
+const SERVICE_VALUES = [
+  "SEO Optimization",
+  "Website Design & Development",
+  "AI Automation & Bots",
+  "Smart Analytics",
+  "Branding & Identity",
+  "Print & Packaging Design",
+  "Digital Design",
+  "Advertising Design",
+  "Content Creation & Visual Support",
+  "Industry-Specific Design",
+  "Social Media Management",
+  "Multiple Services",
+  "Other",
+] as const;
+
+const TIMELINE_VALUES = ["ASAP", "2–4 weeks", "4–8 weeks", "Flexible"] as const;
 
 export function ContactFormSection() {
+  const { t } = useLang();
+  const cf = t.contactForm;
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<string | null>(null);
 
@@ -23,19 +45,19 @@ export function ContactFormSection() {
       email: String(fd.get("email") || ""),
       phone: String(fd.get("phone") || ""),
       serviceNeeded: String(fd.get("serviceNeeded") || ""),
-      budget: String(fd.get("budget") || ""), // <-- STILL INCLUDED
+      budget: String(fd.get("budget") || ""),
       timeline: String(fd.get("timeline") || ""),
       projectDetails: String(fd.get("projectDetails") || ""),
     };
 
     if (!payload.fullName || !payload.email || !payload.serviceNeeded || !payload.projectDetails) {
-      setResult("Please fill all required fields.");
+      setResult(cf.errorRequired);
       return;
     }
 
     try {
       setSending(true);
-      setResult("Sending...");
+      setResult(cf.sending);
 
       const res = await fetch("/api/clients", {
         method: "POST",
@@ -46,14 +68,14 @@ export function ContactFormSection() {
       const data = await res.json();
 
       if (!res.ok || !data?.ok) {
-        setResult(data?.message ?? "Something went wrong. Please try again.");
+        setResult(data?.message ?? cf.unknownError);
         return;
       }
 
-      setResult("Form submitted successfully!");
+      setResult(cf.successMsg);
       form.reset();
     } catch {
-      setResult("Network error. Please try again.");
+      setResult(cf.networkError);
     } finally {
       setSending(false);
     }
@@ -65,71 +87,56 @@ export function ContactFormSection() {
         <div className="rounded-2xl border border-border bg-card/50 p-6">
           <div className="mb-5 text-center">
             <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-primary">
-              Tell us about your project
+              {cf.heading}
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Fill in the details below, we’ll get back within 24–48 hours.
+              {cf.subtitle}
             </p>
           </div>
 
           <form onSubmit={onSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="fullName">Full Name *</Label>
-                <Input id="fullName" name="fullName" type="text" required placeholder="Enter your full name" />
+                <Label htmlFor="fullName">{cf.fullName}</Label>
+                <Input id="fullName" name="fullName" type="text" required placeholder={cf.fullNamePlaceholder} />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="companyName">Company Name</Label>
-                <Input id="companyName" name="companyName" type="text" placeholder="Enter your company name" />
+                <Label htmlFor="companyName">{cf.companyName}</Label>
+                <Input id="companyName" name="companyName" type="text" placeholder={cf.companyNamePlaceholder} />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address *</Label>
-                <Input id="email" name="email" type="email" required placeholder="your@email.com" />
+                <Label htmlFor="email">{cf.emailAddress}</Label>
+                <Input id="email" name="email" type="email" required placeholder={cf.emailPlaceholder} />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" />
+                <Label htmlFor="phone">{cf.phoneNumber}</Label>
+                <Input id="phone" name="phone" type="tel" placeholder={cf.phonePlaceholder} />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="serviceNeeded">Service Needed *</Label>
+                <Label htmlFor="serviceNeeded">{cf.serviceNeeded}</Label>
                 <select
                   id="serviceNeeded"
                   name="serviceNeeded"
                   required
                   className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 flex h-9 w-full rounded-md border bg-background px-3 py-1 text-base shadow-xs md:text-sm"
                 >
-                  <option value="">Select a service</option>
-                  <option value="SEO Optimization">SEO Optimization</option>
-                  <option value="Website Design & Development">Website Design & Development</option>
-                  <option value="AI Automation & Bots">AI Automation & Bots</option>
-                  <option value="Smart Analytics">Smart Analytics</option>
-                  <option value="Branding & Identity">Branding & Identity</option>
-                  <option value="Print & Packaging Design">Print & Packaging Design</option>
-                  <option value="Digital Design">Digital Design</option>
-                  <option value="Advertising Design">Advertising Design</option>
-                  <option value="Content Creation & Visual Support">Content Creation & Visual Support</option>
-                  <option value="Industry-Specific Design">Industry-Specific Design</option>
-                  <option value="Social Media Management">Social Media Management</option>
-                  <option value="Multiple Services">Multiple Services</option>
-                  <option value="Other">Other</option>
+                  <option value="">{cf.selectService}</option>
+                  {SERVICE_VALUES.map((val, i) => (
+                    <option key={val} value={val}>{cf.services[i]}</option>
+                  ))}
                 </select>
               </div>
             </div>
 
-            {/* 🔥 Hidden Budget Field (still works, still submits) */}
+            {/* Hidden Budget Field (still works, still submits) */}
             <div className="hidden" aria-hidden="true">
-              <Label htmlFor="budget">Estimated Budget (optional)</Label>
-              <select
-                id="budget"
-                name="budget"
-                className="border-input flex h-9 w-full rounded-md border bg-background px-3 py-1 text-base shadow-xs md:text-sm"
-              >
+              <select id="budget" name="budget" className="border-input flex h-9 w-full rounded-md border bg-background px-3 py-1 text-base shadow-xs md:text-sm">
                 <option value="">Select a range</option>
                 <option value="$3k–$5k">$3k–$5k</option>
                 <option value="$5k–$10k">$5k–$10k</option>
@@ -138,28 +145,27 @@ export function ContactFormSection() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="timeline">Ideal Timeline (optional)</Label>
+              <Label htmlFor="timeline">{cf.timeline}</Label>
               <select
                 id="timeline"
                 name="timeline"
                 className="border-input flex h-9 w-full rounded-md border bg-background px-3 py-1 text-base shadow-xs md:text-sm"
               >
-                <option value="">Select a window</option>
-                <option value="ASAP">ASAP</option>
-                <option value="2–4 weeks">2–4 weeks</option>
-                <option value="4–8 weeks">4–8 weeks</option>
-                <option value="Flexible">Flexible</option>
+                <option value="">{cf.selectWindow}</option>
+                {TIMELINE_VALUES.map((val, i) => (
+                  <option key={val} value={val}>{cf.timelineOptions[i]}</option>
+                ))}
               </select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="projectDetails">Tell Us About Your Project *</Label>
+              <Label htmlFor="projectDetails">{cf.projectDetails}</Label>
               <Textarea
                 id="projectDetails"
                 name="projectDetails"
                 rows={6}
                 required
-                placeholder="Describe your goals, requirements, timeline..."
+                placeholder={cf.projectDetailsPlaceholder}
                 className="min-h-[120px]"
               />
             </div>
@@ -171,13 +177,13 @@ export function ContactFormSection() {
                 disabled={sending}
                 className="w-full rounded-full hover:bg-white hover:text-primary border border-white/10"
               >
-                {sending ? "Sending..." : "Send Message"}
+                {sending ? cf.sending : cf.sendMessage}
               </Button>
 
               {result && <p className="mt-4 text-center text-sm">{result}</p>}
 
               <p className="mt-2 text-xs text-center text-muted-foreground leading-relaxed">
-                By submitting this form, you consent to Desnine storing your information to respond to your inquiry.
+                {cf.consent}
               </p>
             </div>
           </form>

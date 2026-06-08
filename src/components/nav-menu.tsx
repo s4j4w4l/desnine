@@ -1,20 +1,20 @@
 "use client";
 
-import { siteConfig } from "@/lib/config";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-
-interface NavItem {
-  name: string;
-  href: string;
-}
-
-const navs: NavItem[] = siteConfig.nav.links;
+import { useLang } from "@/contexts/LanguageContext";
 
 export function NavMenu() {
   const pathname = usePathname();
+  const { t } = useLang();
+
+  const navs = [
+    { name: t.nav.home, href: "/" },
+    { name: t.nav.services, href: "/services" },
+    { name: t.nav.ourWork, href: "/work" },
+  ];
   const ref = useRef<HTMLUListElement>(null);
   const [bubble, setBubble] = useState({ left: 0, width: 0 });
   const [ready, setReady] = useState(false);
@@ -32,10 +32,10 @@ export function NavMenu() {
   }, [pathname]);
 
   return (
-    <div className="w-full hidden md:block">
+    <div className="flex-1 min-w-0 hidden md:flex items-center justify-center">
       <ul
         ref={ref}
-        className="relative mx-auto flex w-fit rounded-full h-11 px-2 items-center justify-center"
+        className="relative flex w-fit rounded-full h-11 px-2 items-center justify-center"
       >
         {navs.map((item) => {
           const isActive = pathname === item.href;
@@ -43,7 +43,7 @@ export function NavMenu() {
           return (
             <li
               key={item.name}
-              className={`z-10 cursor-pointer h-full flex items-center justify-center px-4 py-2 text-sm font-medium tracking-tight transition-colors duration-200 ${
+              className={`z-10 cursor-pointer h-full flex items-center justify-center px-6 py-2 text-sm font-medium tracking-tight whitespace-nowrap transition-colors duration-200 ${
                 isActive ? "text-primary" : "text-primary/60 hover:text-primary"
               }`}
             >

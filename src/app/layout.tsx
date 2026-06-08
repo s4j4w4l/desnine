@@ -1,12 +1,12 @@
 import { Navbar } from "@/components/sections/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { siteConfig } from "@/lib/site";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import EmailPopup from "@/components/EmailPopup";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,78 +26,133 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
 };
 
-// Structured data for SEO
-const structuredData = {
+// ─── Organization schema (AEO: helps AI assistants understand Desnine) ────────
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "GraphicDesignAgency",
-  "name": "Desnine",
-  "description": "AI-powered digital marketing and design agency specializing in SEO optimization, website design & development, AI automation, and branding services.",
-  "url": "https://desnine.com",
-  "logo": "https://desnine.com/logo.png",
-  "image": "https://desnine.com/agent-template-og.png",
-  "telephone": "",
-  "email": "info@desnine.com",
-  "address": {
+  "@type": "ProfessionalService",
+  name: "Desnine Studio",
+  alternateName: "Desnine",
+  description:
+    "Boutique creative studio specializing in brand identity, web design, SEO optimization, and AI automation for modern businesses in Quebec, Canada.",
+  url: "https://desnine.com",
+  logo: "https://desnine.com/DesnineStudio.svg",
+  image: "https://desnine.com/agent-template-og.png",
+  email: "info@desnine.com",
+  address: {
     "@type": "PostalAddress",
-    "addressCountry": "US"
+    addressRegion: "QC",
+    addressCountry: "CA",
   },
-  "sameAs": [
-    "https://x.com/desnine",
-    "https://linkedin.com/company/desnine",
-    "https://instagram.com/desnine"
+  areaServed: [
+    { "@type": "Country", name: "Canada" },
+    { "@type": "Country", name: "United States" },
   ],
-  "serviceArea": {
-    "@type": "Country",
-    "name": "United States"
-  },
-  "hasOfferCatalog": {
+  sameAs: [
+    "https://www.linkedin.com/company/desnine-studio/",
+    "https://x.com/desninestudio",
+    "https://www.instagram.com/desninestudio",
+    "https://behance.net/desninestudio",
+  ],
+  hasOfferCatalog: {
     "@type": "OfferCatalog",
-    "name": "Digital Marketing Services",
-    "itemListElement": [
+    name: "Creative Studio Services",
+    itemListElement: [
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "SEO Optimization",
-          "description": "Search engine optimization services to improve website rankings and drive organic traffic"
-        }
+          name: "Brand Identity Design",
+          description:
+            "Complete brand identity packages including logo, colour system, typography, and brand guidelines.",
+        },
       },
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "Website Design & Development",
-          "description": "Custom website design and development services for businesses"
-        }
+          name: "Web Design & Development",
+          description:
+            "Custom, high-performance websites built with Next.js and Tailwind CSS.",
+        },
       },
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "AI Automation",
-          "description": "AI-powered automation solutions for business processes"
-        }
+          name: "SEO Optimization",
+          description:
+            "On-page and technical SEO strategies to improve organic search visibility.",
+        },
       },
       {
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": "Branding & Identity Design",
-          "description": "Complete branding and identity design services"
-        }
-      }
-    ]
+          name: "AI Automation",
+          description:
+            "AI-powered workflow automation and smart analytics for business growth.",
+        },
+      },
+    ],
   },
-  "aggregateRating": {
+  aggregateRating: {
     "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "127"
-  }
+    ratingValue: "4.9",
+    reviewCount: "127",
+  },
+};
+
+// ─── FAQPage schema (AEO: lets AI assistants surface direct answers) ──────────
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What does Desnine Studio specialize in?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Desnine Studio focuses on clean, modern design for websites and brands. We help businesses look professional, clear, and trustworthy online — covering brand identity, web design, SEO, and AI automation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is Desnine Studio located?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Desnine Studio is based in Quebec, Canada, and works with clients across Canada and the United States.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does a typical project take?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Most projects take between 1 and 4 weeks, depending on scope. Timelines are agreed upon before work begins.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Desnine Studio work with existing brands?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Desnine Studio can improve or update an existing brand identity or website without starting from scratch.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is Desnine Studio's design process?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The process follows five stages: Discovery & Direction, Design System, Build & Implement, Revisions & QA, and Launch & Support.",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -120,7 +175,6 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-
               gtag('config', 'G-HXKBSXX6SK');
             `,
           }}
@@ -138,13 +192,22 @@ export default function RootLayout({
           }}
         />
         <Script
-          id="structured-data"
+          id="schema-organization"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-        <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="ybDRUOp9ndzooF6a" data-version="062024"></script>
+        <Script
+          id="schema-faq"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          id="vtag-ai-js"
+          async
+          src="https://r2.leadsy.ai/tag.js"
+          data-pid="ybDRUOp9ndzooF6a"
+          data-version="062024"
+        />
       </head>
 
       <body
@@ -156,12 +219,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="max-w-7xl mx-auto border-x relative">
-            <div className="block w-px h-full border-l border-border absolute top-0 left-6 z-10"></div>
-            <div className="block w-px h-full border-r border-border absolute top-0 right-6 z-10"></div>
-            <Navbar />
-            {children}
-          </div>
+          <LanguageProvider>
+            <div className="max-w-7xl mx-auto border-x relative">
+              <div className="block w-px h-full border-l border-border absolute top-0 left-6 z-10" />
+              <div className="block w-px h-full border-r border-border absolute top-0 right-6 z-10" />
+              <Navbar />
+              {children}
+            </div>
+          </LanguageProvider>
         </ThemeProvider>
         <EmailPopup />
       </body>

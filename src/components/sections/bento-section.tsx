@@ -3,13 +3,14 @@
 import { siteConfig } from "@/lib/config";
 import Link from "next/link";
 import { useState } from "react";
+import { useLang } from "@/contexts/LanguageContext";
 
 interface BentoSectionProps {
   count?: number; // Optional: if passed, show only that many items
 }
 
 export function BentoSection({ count }: BentoSectionProps) {
-  // const { title, description, items } = siteConfig.bentoSection;
+  const { t } = useLang();
   const { items } = siteConfig.bentoSection;
   const displayItems = count ? items.slice(0, count) : items;
   const [openItemId, setOpenItemId] = useState<
@@ -42,8 +43,9 @@ export function BentoSection({ count }: BentoSectionProps) {
 
         {/* Items */}
         <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-          {displayItems.map((item) => {
+          {displayItems.map((item, i) => {
             const isOpen = openItemId === item.id;
+            const translated = t.bentoSection.items[i];
 
             return (
               <div
@@ -66,7 +68,7 @@ export function BentoSection({ count }: BentoSectionProps) {
                 <div className="flex-1 flex-col gap-2 p-6 w-full">
                   <div className="flex items-center justify-between gap-4">
                     <h3 className="text-lg tracking-tighter font-semibold">
-                      {item.title}
+                      {translated?.title ?? item.title}
                     </h3>
                     <span
                       className="flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-secondary/20 bg-secondary text-lg leading-none text-white shadow-lg transition-all duration-300 group-hover:bg-secondary/90 group-hover:border-secondary/40 group-hover:shadow-xl"
@@ -83,7 +85,7 @@ export function BentoSection({ count }: BentoSectionProps) {
                     }`}
                   >
                     <p className="overflow-hidden text-muted-foreground">
-                      {item.description}
+                      {translated?.description ?? item.description}
                     </p>
                   </div>
                 </div>
@@ -100,7 +102,7 @@ export function BentoSection({ count }: BentoSectionProps) {
               className="group bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-full font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-secondary/20 hover:border-secondary/40"
             >
               <span className="inline-block group-hover:translate-x-1 transition-transform">
-                See all services →
+                {t.bentoSection.cta}
               </span>
             </Link>
           </div>

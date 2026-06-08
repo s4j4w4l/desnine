@@ -3,100 +3,68 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    default: "Desnine - AI-Powered Digital Marketing & Design Agency | SEO, Web Design, Branding",
-    template: "%s | Desnine Digital Marketing Agency"
+    default: "Desnine Studio — Creative Branding, Web Design & SEO | Quebec, Canada",
+    template: "%s | Desnine Studio",
   },
-  description: "Transform your business with Desnine's AI-powered digital marketing services. Expert SEO optimization, website design & development, AI automation, branding & identity design.",
+  description:
+    "Desnine Studio is a boutique creative studio based in Quebec, Canada. We specialize in brand identity, web design, SEO, and AI automation for modern businesses that want to stand out.",
   keywords: [
-    // Primary Keywords
-    "digital marketing agency",
-    "SEO optimization",
-    "website design development",
-    "AI automation",
-    "branding identity design",
-    "digital marketing services",
-    
-    // Service-specific Keywords
-    "SEO services",
-    "search engine optimization",
-    "website design company",
-    "web development agency",
-    "AI automation bots",
+    "Desnine Studio",
+    "creative studio Quebec",
+    "branding agency Canada",
     "brand identity design",
-    "logo design services",
-    "print packaging design",
+    "web design Quebec",
+    "website design Montreal",
+    "SEO optimization Canada",
+    "logo design Quebec",
+    "graphic design studio",
+    "AI automation for business",
+    "premium branding studio",
+    "modern web design",
     "digital design agency",
-    "advertising design",
-    "content creation services",
-    "social media management",
-    "smart analytics",
-    
-    // Industry-specific Keywords
-    "ecommerce website design",
-    "healthcare digital marketing",
-    "technology company branding",
-    "real estate website design",
-    "education marketing services",
-    "professional services SEO",
-    
-    // Location-based Keywords (if applicable)
-    "digital marketing agency near me",
-    "SEO expert",
-    "web designer",
-    "branding consultant",
-    
-    // Long-tail Keywords
-    "AI-powered digital marketing",
-    "conversion optimization services",
-    "lead generation marketing",
-    "business growth marketing",
-    "startup digital marketing",
-    "enterprise SEO services",
-    
-    // Brand Keywords
-    "Desnine",
-    "Desnine agency",
-    "Desnine digital marketing",
+    "startup branding Canada",
+    "studio de design Quebec",
+    "agence de branding Montreal",
+    "conception web Quebec",
+    "identité visuelle",
+    "Vaudreuil-Dorion designer",
   ],
-  authors: [
-    {
-      name: "Desnine Digital Marketing Agency",
-      url: "https://desnine.com",
-    },
-  ],
-  creator: "Desnine",
-  publisher: "Desnine Digital Marketing Agency",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  authors: [{ name: "Desnine Studio", url: "https://desnine.com" }],
+  creator: "Desnine Studio",
+  publisher: "Desnine Studio",
   metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: "/",
+    languages: {
+      "en-CA": "/",
+      "fr-CA": "/",
+    },
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_CA",
+    alternateLocale: "fr_CA",
     url: siteConfig.url,
-    title: "Desnine - AI-Powered Digital Marketing & Design Agency | Transform Your Business",
-    description: "Transform your business with Desnine's AI-powered digital marketing services. Expert SEO optimization, website design & development, AI automation, branding & identity design.",
-    siteName: "Desnine Digital Marketing Agency",
+    title: "Desnine Studio — Creative Branding, Web Design & SEO",
+    description:
+      "Boutique creative studio in Quebec. Brand identity, web design, SEO, and AI automation for modern businesses.",
+    siteName: "Desnine Studio",
     images: [
       {
         url: "/agent-template-og.png",
         width: 1200,
         height: 630,
-        alt: "Desnine - AI-Powered Digital Marketing & Design Agency",
+        alt: "Desnine Studio — Creative Branding & Web Design",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Desnine - AI-Powered Digital Marketing & Design Agency",
-    description: "Transform your business with AI-powered digital marketing services. Expert SEO, web design, AI automation & branding.",
-    creator: "@desnine",
-    site: "@desnine",
+    title: "Desnine Studio — Creative Branding & Web Design",
+    description:
+      "Boutique creative studio in Quebec. Brand identity, web design, SEO, and AI automation.",
+    creator: "@desninestudio",
+    site: "@desninestudio",
     images: ["/agent-template-og.png"],
   },
   robots: {
@@ -110,16 +78,5 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
-  },
-  category: "Digital Marketing Agency",
-  classification: "Business Services",
-  other: {
-    "google-site-verification": "your-google-verification-code",
-    "msvalidate.01": "your-bing-verification-code",
-    "facebook-domain-verification": "your-facebook-verification-code",
-  },
+  category: "Creative Design Studio",
 };

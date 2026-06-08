@@ -7,6 +7,13 @@ const notion = new Client({
 
 export async function POST(req: Request) {
   try {
+    if (!process.env.NOTION_API_KEY || !process.env.NOTION_DATABASE_ID) {
+      return NextResponse.json(
+        { ok: false, message: "Form submission is not configured yet. Please contact us directly." },
+        { status: 500 }
+      );
+    }
+
     const body = await req.json();
 
     const {
@@ -21,13 +28,13 @@ export async function POST(req: Request) {
 
     // TEST DATABASE CONNECTION
     await notion.databases.retrieve({
-      database_id: process.env.NOTION_DATABASE_ID!,
+      database_id: process.env.NOTION_DATABASE_ID,
     });
 
     // CREATE PAGE
     await notion.pages.create({
       parent: {
-        database_id: process.env.NOTION_DATABASE_ID!,
+        database_id: process.env.NOTION_DATABASE_ID,
       },
 
       properties: {

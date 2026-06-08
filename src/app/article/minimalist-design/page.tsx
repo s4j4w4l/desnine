@@ -2,9 +2,13 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ARTICLES } from "@/lib/articlesData";
-import { Clock, ChevronLeft } from "lucide-react";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
+import {
+  BackToArticlesLink,
+  MinReadBadge,
+  RelatedReadsHeading,
+} from "@/components/sections/article/article-ui-strings";
 
 const SLUG = "minimalist-design";
 function formatDate(d: string) {
@@ -35,13 +39,11 @@ export default function Page() {
           <div className="absolute inset-0 bg-background/70 dark:bg-black/60" />
           <div className="absolute inset-0 flex items-end">
             <div className="w-full px-6 md:px-12 pb-8">
-              <Link href="/article" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-                <ChevronLeft className="size-4" /> Back to Articles
-              </Link>
+              <BackToArticlesLink />
               <h1 className="mt-2 text-3xl md:text-5xl font-bold">{article.title}</h1>
               <div className="mt-3 flex items-center gap-4 text-muted-foreground">
                 <span>{formatDate(article.date)}</span>
-                <span className="inline-flex items-center gap-1"><Clock className="size-4" /> {article.readMins} min read</span>
+                <MinReadBadge mins={article.readMins} />
               </div>
             </div>
           </div>
@@ -61,7 +63,7 @@ export default function Page() {
       {related.length > 0 && (
         <section className="px-6 md:px-12 py-10">
           <div className="max-w-5xl mx-auto">
-            <h3 className="text-xl font-semibold mb-6">Related reads</h3>
+            <RelatedReadsHeading />
             <div className="grid gap-6 md:grid-cols-3">
               {related.map((a) => (
                 <Link key={a.slug} href={a.href} className="group rounded-lg overflow-hidden border border-border hover:shadow-lg transition bg-card">

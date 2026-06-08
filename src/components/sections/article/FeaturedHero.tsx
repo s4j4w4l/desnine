@@ -7,9 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Clock } from "lucide-react";
 import type { Article } from "@/lib/articlesData";
 import { formatDate } from "@/lib/format";
+import { useLang } from "@/contexts/LanguageContext";
 
 export default function FeaturedHero({ article }: { article: Article }) {
   const reduceMotion = useReducedMotion();
+  const { t } = useLang();
+
   return (
     <section className="relative w-full h-[420px] md:h-[520px] overflow-hidden">
       <Image src={article.cover} alt={article.title} fill priority className="object-cover" />
@@ -22,13 +25,17 @@ export default function FeaturedHero({ article }: { article: Article }) {
         >
           {article.title}
         </motion.h2>
-        <p className="mt-2 text-gray-800 dark:text-gray-200 max-w-2xl line-clamp-3">{article.excerpt}</p>
+        <p className="mt-2 text-gray-800 dark:text-gray-200 max-w-2xl line-clamp-3">
+          {article.excerpt}
+        </p>
         <div className="mt-3 flex items-center gap-4 text-gray-700 dark:text-gray-300 text-sm">
-          <span className="inline-flex items-center gap-1"><Clock className="size-4" /> {article.readMins} min</span>
+          <span className="inline-flex items-center gap-1">
+            <Clock className="size-4" /> {article.readMins} min
+          </span>
           <span>{formatDate(article.date)}</span>
         </div>
         <Button asChild className="mt-5 bg-red-600 hover:bg-red-700 ring-red-500 w-fit">
-          <Link href={article.href}>Read Article</Link>
+          <Link href={article.href}>{t.articles.readArticle}</Link>
         </Button>
       </div>
     </section>

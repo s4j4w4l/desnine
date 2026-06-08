@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import RelatedProjectsSection from "@/components/sections/related-projects-section";
+import { useLang } from "@/contexts/LanguageContext";
 
 interface BannerProps {
   src: string;
@@ -41,6 +42,7 @@ function Banner({
 
 function TopOnlyBackButton() {
   const router = useRouter();
+  const { t } = useLang();
   return (
     <div
       className="
@@ -57,7 +59,7 @@ function TopOnlyBackButton() {
         aria-label="Go back"
       >
         <ChevronLeft className="h-4 w-4" />
-        Go back
+        {t.workCase.goBack}
       </button>
     </div>
   );
@@ -65,6 +67,8 @@ function TopOnlyBackButton() {
 
 export default function ServicePage() {
   const title = "Greenly";
+  const { t } = useLang();
+  const wc = t.workCase;
 
   // Hide global header/nav while on this page
   useEffect(() => {
@@ -130,28 +134,26 @@ export default function ServicePage() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           <div className="space-y-5">
             <h2 className="text-sm md:text-base font-semibold uppercase tracking-wide text-zinc-400">
-              The Project Summary :
+              {wc.projectSummary}
             </h2>
-            <p className="text-base leading-relaxed text-justify">
-              Greenly positions itself as an ecological alliance dedicated to advancing green innovation and safeguarding natural resources. The mission is rooted in creating a sustainable future for the planet by driving environmental protection and collective responsibility. Greenly acts as a catalyst for change, inspiring communities and individuals to contribute toward a greener tomorrow and reinforcing its role as a partner in ecological progress.
-            </p>
+            {wc.greenly.summary.map((p, i) => (
+              <p key={i} className="text-base leading-relaxed text-justify">{p}</p>
+            ))}
             
           </div>
 
           <div className="flex flex-col gap-10">
             <div className="space-y-2">
               <h3 className="text-sm md:text-base font-semibold uppercase tracking-wide text-zinc-400">
-                What We Did :
+                {wc.whatWeDid}
               </h3>
-              <p className="text-base leading-relaxed">Logo &amp; Branding</p>
+              <p className="text-base leading-relaxed">{wc.logoBranding}</p>
             </div>
             <div className="space-y-2">
               <h3 className="text-sm md:text-base font-semibold uppercase tracking-wide text-zinc-400">
-                Category
+                {wc.category}
               </h3>
-              <p className="text-base leading-relaxed">
-                Technology &amp; Security, Innovation, Reliability, Collaboration, Transparency, Professionalism &amp; Trust
-              </p>
+              <p className="text-base leading-relaxed">{wc.greenly.category}</p>
             </div>
           </div>
         </div>

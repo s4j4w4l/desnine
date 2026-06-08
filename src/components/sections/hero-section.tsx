@@ -1,9 +1,13 @@
-import { siteConfig } from "@/lib/config";
+"use client";
+
+import { useLang } from "@/contexts/LanguageContext";
 import { HeroVideoSection } from "./hero-video-section";
 import { DesnineTrustBadge } from "./DesnineTrustBadge";
+import { siteConfig } from "@/lib/config";
 
 export function HeroSection() {
-  const { hero } = siteConfig;
+  const { t } = useLang();
+  const { hero } = t;
 
   return (
     <section id="hero" className="relative w-full">
@@ -14,41 +18,29 @@ export function HeroSection() {
 
         <div className="relative z-10 mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-center gap-10 pt-32">
           <p className="flex h-8 items-center gap-2 rounded-full border border-border bg-accent px-3 text-sm">
-            {hero.badgeIcon}
+            {siteConfig.hero.badgeIcon}
             {hero.badge}
           </p>
 
           <h1 className="text-center text-[clamp(32px,6vw,72px)] font-bold leading-[0.95] tracking-[-0.06em]">
             <span className="hero-line block">
               <span style={{ animationDelay: "0.1s" }}>
-                <span className="text-zinc-950 dark:text-white">
-                  The Standard
-                </span>{" "}
-                <span className="text-zinc-500 dark:text-zinc-400">
-                  Your
-                </span>
+                <span className="text-zinc-950 dark:text-white">{hero.line1.dark}</span>{" "}
+                <span className="text-zinc-500 dark:text-zinc-400">{hero.line1.muted}</span>
               </span>
             </span>
 
             <span className="hero-line block">
               <span style={{ animationDelay: "0.25s" }}>
-                <span className="text-[#B91C1C] dark:text-[#EF4444]">
-                  Competitors
-                </span>{" "}
-                <span className="text-zinc-950 dark:text-white">
-                  Wish They
-                </span>
+                <span className="text-[#B91C1C] dark:text-[#EF4444]">{hero.line2.red}</span>{" "}
+                <span className="text-zinc-950 dark:text-white">{hero.line2.dark}</span>
               </span>
             </span>
 
             <span className="hero-line block">
               <span style={{ animationDelay: "0.4s" }}>
-                <span className="text-zinc-500 dark:text-zinc-400">
-                  Could Call
-                </span>{" "}
-                <span className="text-[#B91C1C] dark:text-[#EF4444]">
-                  Their Own.
-                </span>
+                <span className="text-zinc-500 dark:text-zinc-400">{hero.line3.muted}</span>{" "}
+                <span className="text-[#B91C1C] dark:text-[#EF4444]">{hero.line3.red}</span>
               </span>
             </span>
           </h1>
