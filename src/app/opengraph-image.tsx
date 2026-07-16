@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import { ImageResponse } from "next/og";
 
 // Configuration exports
@@ -12,12 +11,6 @@ export const contentType = "image/png";
 
 export default async function Image() {
   try {
-    // Get the host from headers
-    const headersList = await headers();
-    const host = headersList.get("host") || "";
-    const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-    const baseUrl = `${protocol}://${host}`;
-
     return new ImageResponse(
       (
         <div
