@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Desnine Studio — Independent Design Studio | Quebec, Canada",
+    default: "Desnine Studio",
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
