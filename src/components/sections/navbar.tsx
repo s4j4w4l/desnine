@@ -5,9 +5,10 @@ import { NavMenu } from "@/components/nav-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useLang } from "@/contexts/LanguageContext";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion, useScroll } from "framer-motion";
+import { ChevronLeft, Menu, X } from "lucide-react";
+import { AnimatePresence, motion, useScroll, type Variants } from "framer-motion";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/config";
 
@@ -20,7 +21,7 @@ const overlayVariants = {
   exit: { opacity: 0 },
 };
 
-const drawerVariants = {
+const drawerVariants: Variants = {
   hidden: { opacity: 0, y: 100 },
   visible: {
     opacity: 1,
@@ -67,6 +68,9 @@ function LangToggle({ mobile = false }: { mobile?: boolean }) {
 export function Navbar() {
   const { scrollY } = useScroll();
   const { t } = useLang();
+  const pathname = usePathname();
+  const router = useRouter();
+  const isMarcheCaseStudy = pathname === "/work/marche_main";
 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -105,10 +109,31 @@ export function Navbar() {
   const toggleDrawer = () => setIsDrawerOpen((prev) => !prev);
   const handleOverlayClick = () => setIsDrawerOpen(false);
 
+  if (isMarcheCaseStudy) {
+    return (
+      <header className="fixed inset-x-0 top-3 z-50 mx-4 flex justify-center md:mx-auto">
+        <div className="w-full max-w-7xl rounded-2xl border border-white/20 bg-black/25 px-4 shadow-lg backdrop-blur-xl md:px-6">
+          <div className="flex h-14 items-center">
+            <button
+              type="button"
+              onClick={() => router.back()}
+              className="inline-flex items-center gap-2 text-sm font-medium text-white transition-opacity hover:opacity-75 md:text-base"
+              aria-label={t.workCase.goBack}
+            >
+              <ChevronLeft aria-hidden="true" className="size-4" />
+              {t.workCase.goBack}
+            </button>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header
       className={cn(
-        "sticky z-50 mx-4 flex justify-center transition-all duration-300 md:mx-0",
+        "z-50 flex justify-center transition-all duration-300",
+        "sticky mx-4 md:mx-0",
         hasScrolled ? "top-6" : "top-4 mx-0",
       )}
     >
@@ -176,7 +201,7 @@ export function Navbar() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              variants={drawerVariants as any}
+              variants={drawerVariants}
             >
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between">

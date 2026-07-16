@@ -6,6 +6,8 @@ import { ClientFeedback } from "@/components/ClientFeedback";
 import { ProcessSection } from "@/components/PROCESS";
 import { FAQSection } from "@/components/FAQ";
 import TextRevealSection from "@/components/sections/text-reveal-section";
+import { WorkBentoSection } from "@/components/sections/work-bento-section";
+import { HeroWorkSection } from "@/components/sections/herowork-section";
 
 export default function Home() {
   return (
@@ -14,8 +16,15 @@ export default function Home() {
 
       <ClientFeedback />
 
+      <HeroWorkSection />
+      <WorkBentoSection carousel />
+      
       <Hero2Section />
       <BentoSection count={4} />
+
+      
+      
+
 
       <ProcessSection />
 

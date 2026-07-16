@@ -213,6 +213,7 @@ function ProjectCard({
   return (
     <Link
       href={href}
+      target="_self"
       className="block rounded-2xl overflow-hidden border border-white/10 hover:scale-[1.02] transition will-change-transform"
     >
       {/* Media area: constrain height, let your node fill */}
