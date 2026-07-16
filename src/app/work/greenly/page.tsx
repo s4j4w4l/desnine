@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
@@ -78,6 +78,8 @@ function TopOnlyBackButton() {
 }
 
 export default function ServicePage() {
+  // Not published for now; page kept in the codebase but not shown online.
+  notFound();
   const title = "Greenly";
   const { t } = useLang();
   const wc = t.workCase;
