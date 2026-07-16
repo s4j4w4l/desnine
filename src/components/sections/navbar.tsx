@@ -113,7 +113,7 @@ export function Navbar() {
     return (
       <header className="fixed inset-x-0 top-3 z-50 mx-4 flex justify-center md:mx-auto">
         <div className="w-full max-w-7xl rounded-2xl border border-white/20 bg-black/25 px-4 shadow-lg backdrop-blur-xl md:px-6">
-          <div className="flex h-14 items-center">
+          <div className="flex min-h-14 items-center justify-between gap-3 py-2">
             <button
               type="button"
               onClick={() => router.back()}
@@ -123,6 +123,16 @@ export function Navbar() {
               <ChevronLeft aria-hidden="true" className="size-4" />
               {t.workCase.goBack}
             </button>
+
+            <div className="flex shrink-0 items-center gap-2 md:gap-3">
+              <LangToggle />
+              <Link
+                className="inline-flex h-9 items-center justify-center rounded-full border border-white/[0.18] bg-white/10 px-4 text-sm font-medium text-white shadow-sm backdrop-blur-md transition-colors hover:bg-white/18"
+                href="/contact"
+              >
+                {t.nav.contact}
+              </Link>
+            </div>
           </div>
         </div>
       </header>
