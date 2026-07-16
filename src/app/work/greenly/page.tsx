@@ -23,19 +23,31 @@ function Banner({
   aspect = "aspect-[16/9]",
   rounded = true,
 }: BannerProps) {
+  const isVideo = src.endsWith(".mp4");
   return (
     <div
       className={`relative w-full ${aspect} overflow-hidden ${
         rounded ? "rounded-lg" : ""
       }`}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="100vw"
-        className={`object-cover ${rounded ? "rounded-lg" : ""}`}
-      />
+      {isVideo ? (
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`absolute inset-0 h-full w-full object-cover ${rounded ? "rounded-lg" : ""}`}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="100vw"
+          className={`object-cover ${rounded ? "rounded-lg" : ""}`}
+        />
+      )}
     </div>
   );
 }
@@ -169,12 +181,12 @@ export default function ServicePage() {
       <section className="w-full px-6 md:px-12 mt-8 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Banner
-            src="/Greenly/a1a4a9214303945.675610954d200.gif"
+            src="/Greenly/a1a4a9214303945.675610954d200.mp4"
             alt="Project image 93"
             aspect="aspect-square"
             />
             <Banner
-            src="/Greenly/fa977d214303945.675610954c9e4.gif"
+            src="/Greenly/fa977d214303945.675610954c9e4.mp4"
             alt="Project image 57"
             aspect="aspect-square"
             />
@@ -194,7 +206,7 @@ export default function ServicePage() {
             {/* Second Banner - square but matches the same height */}
             <div className="col-span-3 flex">
             <Banner
-                src="/Greenly/e8b5f8214303945.67561094b1bb0.gif"
+                src="/Greenly/e8b5f8214303945.67561094b1bb0.mp4"
                 alt="Project image 57"
             />
             </div>
@@ -208,7 +220,7 @@ export default function ServicePage() {
       <section className="w-full px-6 md:px-12 mt-8 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Banner
-            src="/Greenly/5f6d06214303945.675610960976c.gif"
+            src="/Greenly/5f6d06214303945.675610960976c.mp4"
             alt="Project image 93"
             aspect="aspect-square"
             />
@@ -226,12 +238,12 @@ export default function ServicePage() {
       <section className="w-full px-6 md:px-12 mt-8 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Banner
-            src="/Greenly/def5aa214303945.67561097a8729.gif"
+            src="/Greenly/def5aa214303945.67561097a8729.mp4"
             alt="Project image 93"
             aspect="aspect-square"
             />
             <Banner
-            src="/Greenly/116b0d214303945.67561097a8eb1.gif"
+            src="/Greenly/116b0d214303945.67561097a8eb1.mp4"
             alt="Project image 57"
             aspect="aspect-square"
             />
@@ -240,9 +252,9 @@ export default function ServicePage() {
 
         <section className="w-full space-y-8 px-6 md:px-12">
         <Banner src="/Greenly/8db5b7214303945.67576a30c81d2.png" alt="Project image 93" />
-        <Banner src="/Greenly/6fca27214303945.67576a30c441b.gif" alt="Project image 93" />
+        <Banner src="/Greenly/6fca27214303945.67576a30c441b.mp4" alt="Project image 93" />
         <Banner src="/Greenly/3294d4214303945.67576a30c3b28.png" alt="Project image 93" />
-        <Banner src="/Greenly/f0ccd2214303945.67576a30c6ae6.gif" alt="Project image 93" />
+        <Banner src="/Greenly/f0ccd2214303945.67576a30c6ae6.mp4" alt="Project image 93" />
         </section>      
 
       <RelatedProjectsSection />

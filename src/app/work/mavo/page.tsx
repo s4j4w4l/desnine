@@ -23,19 +23,31 @@ function Banner({
   aspect = "aspect-[16/9]",
   rounded = true,
 }: BannerProps) {
+  const isVideo = src.endsWith(".mp4");
   return (
     <div
       className={`relative w-full ${aspect} overflow-hidden ${
         rounded ? "rounded-lg" : ""
       }`}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="100vw"
-        className={`object-cover ${rounded ? "rounded-lg" : ""}`}
-      />
+      {isVideo ? (
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`absolute inset-0 h-full w-full object-cover ${rounded ? "rounded-lg" : ""}`}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="100vw"
+          className={`object-cover ${rounded ? "rounded-lg" : ""}`}
+        />
+      )}
     </div>
   );
 }
@@ -162,19 +174,19 @@ export default function ServicePage() {
       {/* Banners */}
       <section className="w-full space-y-8 px-6 md:px-12">
         <Banner src="/Mavo/756a3d213698209.6757693cc2a9f.jpg" alt="Project image 93" />
-        <Banner src="/Mavo/4aabf8213698209.6757693cbf3ed.gif" alt="Project image 93" />
-        <Banner src="/Mavo/85afca213698209.6757693cb5a29.gif" alt="Project image 93" />
-        <Banner src="/Mavo/938be5213698209.674af38148c1d.gif" alt="Project image 93" />
+        <Banner src="/Mavo/4aabf8213698209.6757693cbf3ed.mp4" alt="Project image 93" />
+        <Banner src="/Mavo/85afca213698209.6757693cb5a29.mp4" alt="Project image 93" />
+        <Banner src="/Mavo/938be5213698209.674af38148c1d.mp4" alt="Project image 93" />
         <Banner src="/Mavo/d456be213698209.6757693cc7e7b.jpg" alt="Project image 93" />
-        <Banner src="/Mavo/54ce47213698209.6757693cc4e93.gif" alt="Project image 93" />
+        <Banner src="/Mavo/54ce47213698209.6757693cc4e93.mp4" alt="Project image 93" />
         <Banner src="/Mavo/276228213698209.6757693cbc7fc.jpg" alt="Project image 93" />
-        <Banner src="/Mavo/cecc02213698209.6757693cc5bc2.gif" alt="Project image 93" />
+        <Banner src="/Mavo/cecc02213698209.6757693cc5bc2.mp4" alt="Project image 93" />
         <Banner src="/Mavo/a40ce8213698209.6757693cbe7a6.jpg" alt="Project image 93" />
         <Banner src="/Mavo/b632c4213698209.6757693ccbd76.jpg" alt="Project image 93" />
         <Banner src="/Mavo/dfb98e213698209.6757693cc11af.jpg" alt="Project image 93" />
         <Banner src="/Mavo/9a1f44213698209.6757693cc9bae.jpg" alt="Project image 93" />
         <Banner src="/Mavo/f2bf91213698209.6757693cb5294.jpg" alt="Project image 93" />
-        <Banner src="/Mavo/e67670213698209.6757693cb871f.gif" alt="Project image 93" />
+        <Banner src="/Mavo/e67670213698209.6757693cb871f.mp4" alt="Project image 93" />
    </section>
 
     
