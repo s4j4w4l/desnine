@@ -1,28 +1,33 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import RelatedProjectsSection from "@/components/sections/related-projects-section";
 import { useLang } from "@/contexts/LanguageContext";
-import marche001 from "../../../../public/marche_main/001.png";
-import marche003 from "../../../../public/marche_main/003.png";
-import marche004 from "../../../../public/marche_main/004.png";
-import marche005 from "../../../../public/marche_main/005.png";
-import marche006 from "../../../../public/marche_main/006.png";
-import marche007 from "../../../../public/marche_main/007.png";
-import marche008 from "../../../../public/marche_main/008.png";
-import marche009 from "../../../../public/marche_main/009.png";
-import marche010 from "../../../../public/marche_main/010.png";
-import marche011 from "../../../../public/marche_main/011.png";
-import marche014 from "../../../../public/marche_main/014.png";
-import marche019 from "../../../../public/marche_main/019.png";
-import marche020 from "../../../../public/marche_main/020.png";
-import marche021 from "../../../../public/marche_main/021.png";
-import marche022 from "../../../../public/marche_main/022.png";
-import marche0015 from "../../../../public/marche_main/0015.png";
+import marche001 from "../../../../public/marche_main/optimized/001.webp";
+import marche003 from "../../../../public/marche_main/optimized/003.webp";
+import marche004 from "../../../../public/marche_main/optimized/004.webp";
+import marche005 from "../../../../public/marche_main/optimized/005.webp";
+import marche006 from "../../../../public/marche_main/optimized/006.webp";
+import marche007 from "../../../../public/marche_main/optimized/007.webp";
+import marche008 from "../../../../public/marche_main/optimized/008.webp";
+import marche009 from "../../../../public/marche_main/optimized/009.webp";
+import marche010 from "../../../../public/marche_main/optimized/010.webp";
+import marche011 from "../../../../public/marche_main/optimized/011.webp";
+import marche014 from "../../../../public/marche_main/optimized/014.webp";
+import marche019 from "../../../../public/marche_main/optimized/019.webp";
+import marche020 from "../../../../public/marche_main/optimized/020.webp";
+import marche021 from "../../../../public/marche_main/optimized/021.webp";
+import marche022 from "../../../../public/marche_main/optimized/022.webp";
+import marche0015 from "../../../../public/marche_main/optimized/0015.webp";
+
+const fullWidthImageSizes =
+  "(max-width: 767px) calc(100vw - 4.5rem), calc(100vw - 6rem)";
+const pairedImageSizes =
+  "(max-width: 767px) calc((100vw - 5.25rem) / 2), calc((100vw - 7rem) / 2)";
 
 interface BannerProps {
   src: StaticImageData;
@@ -32,6 +37,8 @@ interface BannerProps {
   imageClassName?: string;
   rounded?: boolean;
   roundedClassName?: string;
+  quality?: number;
+  sizes?: string;
 }
 
 function Banner({
@@ -42,6 +49,8 @@ function Banner({
   imageClassName = "",
   rounded = true,
   roundedClassName = "rounded-lg",
+  quality = 82,
+  sizes = fullWidthImageSizes,
 }: BannerProps) {
   const radiusClassName = rounded ? roundedClassName : "";
 
@@ -55,8 +64,9 @@ function Banner({
           src={src}
           alt={alt}
           fill
-          unoptimized
-          sizes="100vw"
+          sizes={sizes}
+          quality={quality}
+          loading="lazy"
           className={`object-cover ${imageClassName}`}
           style={{ objectPosition }}
         />
@@ -69,10 +79,79 @@ function Banner({
       <Image
         src={src}
         alt={alt}
-        unoptimized
-        sizes="100vw"
+        sizes={sizes}
+        quality={quality}
+        loading="lazy"
         className={`block h-auto w-full max-w-full ${radiusClassName}`}
       />
+    </div>
+  );
+}
+
+interface LazyVideoProps {
+  src: string;
+  poster: string;
+  ariaLabel: string;
+  roundedClassName?: string;
+}
+
+function LazyVideo({
+  src,
+  poster,
+  ariaLabel,
+  roundedClassName = "rounded-xl md:rounded-3xl",
+}: LazyVideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    if (shouldLoad) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldLoad(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "700px 0px" },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [shouldLoad]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!shouldLoad || !video) return;
+
+    video.load();
+    void video.play().catch(() => undefined);
+  }, [shouldLoad, src]);
+
+  return (
+    <div className={`w-full max-w-full overflow-hidden ${roundedClassName}`}>
+      <video
+        ref={videoRef}
+        className="block h-auto w-full max-w-full"
+        autoPlay={shouldLoad}
+        muted
+        loop
+        playsInline
+        poster={poster}
+        preload={shouldLoad ? "metadata" : "none"}
+        aria-label={ariaLabel}
+      >
+        {shouldLoad ? <source src={src} type="video/mp4" /> : null}
+      </video>
     </div>
   );
 }
@@ -170,8 +249,8 @@ export default function ServicePage() {
             alt="Banner Image"
             fill
             priority
-            unoptimized
             sizes="100vw"
+            quality={82}
             className="object-cover opacity-85"
           />
         </motion.div>
@@ -234,19 +313,12 @@ export default function ServicePage() {
       {/* Banners */}
       <section className="w-full max-w-full space-y-4 px-9 sm:px-10 md:space-y-8 md:px-12">
         <Banner src={marche001} alt="Marché Main identity image" />
-        <div className="w-full max-w-full overflow-hidden rounded-lg">
-          <video
-            className="block h-auto w-full max-w-full"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label="Marché Main project video 026"
-          >
-            <source src="/marche_main/026.mp4" type="video/mp4" />
-          </video>
-        </div>
+        <LazyVideo
+          src="/marche_main/optimized/026.mp4"
+          poster="/marche_main/optimized/026-poster.jpg"
+          ariaLabel="Marché Main project video 026"
+          roundedClassName="rounded-lg"
+        />
       </section>
 
       <section className="w-full px-9 pb-12 pt-12 sm:px-10 md:px-12 md:pb-10 md:pt-10">
@@ -282,11 +354,13 @@ export default function ServicePage() {
           <Banner
             src={marche005}
             alt="Marché Main"
+            sizes={pairedImageSizes}
             roundedClassName="rounded-xl md:rounded-3xl"
           />
           <Banner
             src={marche006}
             alt="Marché Main"
+            sizes={pairedImageSizes}
             roundedClassName="rounded-xl md:rounded-3xl"
           />
         </div>
@@ -305,11 +379,13 @@ export default function ServicePage() {
           <Banner
             src={marche008}
             alt="Marché Main"
+            sizes={pairedImageSizes}
             roundedClassName="rounded-xl md:rounded-3xl"
           />
           <Banner
             src={marche009}
             alt="Marché Main"
+            sizes={pairedImageSizes}
             roundedClassName="rounded-xl md:rounded-3xl"
           />
         </div>
@@ -340,49 +416,25 @@ export default function ServicePage() {
           aspectRatio="1920 / 1080"
           roundedClassName="rounded-xl md:rounded-3xl"
         />
-        <div className="w-full max-w-full overflow-hidden rounded-xl md:rounded-3xl">
-          <video
-            className="block h-auto w-full max-w-full"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label="Marché Main project video 025"
-          >
-            <source src="/marche_main/025.mp4" type="video/mp4" />
-          </video>
-        </div>
+        <LazyVideo
+          src="/marche_main/optimized/025.mp4"
+          poster="/marche_main/optimized/025-poster.jpg"
+          ariaLabel="Marché Main project video 025"
+        />
       </section>
 
       <section className="w-full max-w-full px-9 py-5 sm:px-10 md:px-12 md:py-5">
         <div className="grid min-w-0 grid-cols-2 gap-3 md:gap-4">
-          <div className="w-full max-w-full overflow-hidden rounded-xl md:rounded-3xl">
-            <video
-              className="block h-auto w-full max-w-full"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Marché Main project video 024"
-            >
-              <source src="/marche_main/024.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div className="w-full max-w-full overflow-hidden rounded-xl md:rounded-3xl">
-            <video
-              className="block h-auto w-full max-w-full"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Marché Main project video 023"
-            >
-              <source src="/marche_main/023.mp4" type="video/mp4" />
-            </video>
-          </div>
+          <LazyVideo
+            src="/marche_main/optimized/024.mp4"
+            poster="/marche_main/optimized/024-poster.jpg"
+            ariaLabel="Marché Main project video 024"
+          />
+          <LazyVideo
+            src="/marche_main/optimized/023.mp4"
+            poster="/marche_main/optimized/023-poster.jpg"
+            ariaLabel="Marché Main project video 023"
+          />
         </div>
       </section>
       
@@ -392,11 +444,13 @@ export default function ServicePage() {
           <Banner
             src={marche014}
             alt="Marché Main"
+            sizes={pairedImageSizes}
             roundedClassName="rounded-xl md:rounded-3xl"
           />
           <Banner
             src={marche0015}
             alt="Marché Main"
+            sizes={pairedImageSizes}
             roundedClassName="rounded-xl md:rounded-3xl"
           />
         </div>
@@ -414,11 +468,13 @@ export default function ServicePage() {
           <Banner
             src={marche019}
             alt="Marché Main"
+            sizes={pairedImageSizes}
             roundedClassName="rounded-xl md:rounded-3xl"
           />
           <Banner
             src={marche020}
             alt="Marché Main"
+            sizes={pairedImageSizes}
             roundedClassName="rounded-xl md:rounded-3xl"
           />
         </div>
