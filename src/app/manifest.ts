@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Desnine - Digital Marketing & Design Agency',
+    name: 'Desnine - Independent Design Studio',
     short_name: 'Desnine',
-    description: 'AI-powered digital marketing and design agency specializing in SEO, web design, AI automation, and branding services.',
+    description: 'Multi-disciplinary independent design studio specializing in branding, web design, SEO, and AI automation.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

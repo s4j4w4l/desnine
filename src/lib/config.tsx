@@ -59,12 +59,13 @@ export const siteConfig = {
     "Desnine",
     "Desnine Studio",
     "Creative Direction for Modern Brands",
-    "Design Agency",
+    "Independent Design Studio",
+    "Multi-Disciplinary Design Studio",
     "Creative Studio",
-    "Branding Agency",
+    "Branding Studio",
     "Quebec Design Studio",
     "Montreal Graphic Designer",
-    "Canada Creative Agency",
+    "Canada Creative Studio",
 
     // Branding
     "Brand Identity",
@@ -107,7 +108,7 @@ export const siteConfig = {
     "Smart Analytics",
     "AI Tools for Business",
     "Creative Automation",
-    "AI-Powered Studio",
+    "AI Automation Studio",
 
     // Graphic & Digital Design
     "Graphic Design",
@@ -129,14 +130,14 @@ export const siteConfig = {
     "Modern Design Solutions",
 
     // Industry Positioning
-    "Small Business Branding",
+    "Premium Brand Identity",
     "Ecommerce Branding",
-    "Startup Branding",
-    "Website for Small Business",
+    "Competitive Brand Positioning",
+    "High-End Website Design",
     "Brand Identity for Startups",
 
     // Technical + Web keywords
-    "Next.js Design Agency",
+    "Next.js Design Studio",
     "React Developer",
     "Tailwind CSS Developer",
     "Framer Websites",

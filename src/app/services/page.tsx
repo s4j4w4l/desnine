@@ -7,10 +7,10 @@ import { Metadata } from "next";
 
 // Page-specific metadata for SEO
 export const metadata: Metadata = {
-  title: "Digital Marketing Services - SEO, Web Design, AI Automation & Branding | Desnine",
-  description: "Comprehensive digital marketing services including SEO optimization, website design & development, AI automation, branding & identity design, print & packaging design. Transform your business with proven results.",
+  title: "Design Studio Services - Branding, Web Design, SEO & AI Automation | Desnine",
+  description: "Desnine is an independent, multi-disciplinary design studio offering branding & identity design, website design & development, SEO optimization, AI automation, and print & packaging design. Clear strategy, clean execution.",
   keywords: [
-    "digital marketing services",
+    "design studio services",
     "SEO optimization services",
     "website design services",
     "web development services",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     "business growth marketing",
   ],
   openGraph: {
-    title: "Digital Marketing Services - SEO, Web Design, AI Automation & Branding",
-    description: "Transform your business with our comprehensive digital marketing services. Expert SEO, web design, AI automation, branding & more. Get proven results and grow your business.",
+    title: "Design Studio Services - Branding, Web Design, SEO & AI Automation",
+    description: "Desnine is an independent, multi-disciplinary design studio. Branding, web design, SEO, AI automation, and more, built for brands that want to stand out.",
   },
 };
 

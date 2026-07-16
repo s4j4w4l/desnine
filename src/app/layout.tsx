@@ -25,10 +25,69 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
+    default: "Desnine Studio — Independent Design Studio | Quebec, Canada",
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: [
+    "Desnine Studio",
+    "independent design studio",
+    "multi-disciplinary design studio",
+    "creative studio Quebec",
+    "brand identity design",
+    "web design Quebec",
+    "website design Montreal",
+    "SEO optimization Canada",
+    "logo design Quebec",
+    "graphic design studio",
+    "AI automation for business",
+    "premium branding studio",
+    "modern web design",
+    "studio de design Quebec",
+    "conception web Quebec",
+    "identité visuelle",
+    "Vaudreuil-Dorion designer",
+  ],
+  authors: [{ name: "Desnine Studio", url: siteConfig.url }],
+  creator: "Desnine Studio",
+  publisher: "Desnine Studio",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-CA": "/",
+      "fr-CA": "/",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_CA",
+    alternateLocale: "fr_CA",
+    url: siteConfig.url,
+    title: "Desnine Studio — Independent Design Studio",
+    description:
+      "Multi-disciplinary independent design studio in Quebec. Brand identity, web design, SEO, and AI automation for modern businesses.",
+    siteName: "Desnine Studio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Desnine Studio — Independent Design Studio",
+    description:
+      "Multi-disciplinary independent design studio in Quebec. Brand identity, web design, SEO, and AI automation.",
+    creator: "@desninestudio",
+    site: "@desninestudio",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  category: "Design Studio",
 };
 
 // ─── Organization schema (AEO: helps AI assistants understand Desnine) ────────
@@ -38,7 +97,7 @@ const organizationSchema = {
   name: "Desnine Studio",
   alternateName: "Desnine",
   description:
-    "Boutique creative studio specializing in brand identity, web design, SEO optimization, and AI automation for modern businesses in Quebec, Canada.",
+    "Independent, multi-disciplinary design studio specializing in brand identity, web design, SEO optimization, and AI automation for modern businesses in Quebec, Canada.",
   url: "https://desnine.com",
   logo: "https://desnine.com/DesnineStudio.svg",
   image: "https://desnine.com/agent-template-og.png",
@@ -117,7 +176,7 @@ const faqSchema = {
       name: "What does Desnine Studio specialize in?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Desnine Studio focuses on clean, modern design for websites and brands. We help businesses look professional, clear, and trustworthy online — covering brand identity, web design, SEO, and AI automation.",
+        text: "Desnine Studio is an independent, multi-disciplinary design studio focused on clean, modern design for websites and brands. We help businesses look professional, clear, and trustworthy online, covering brand identity, web design, SEO, and AI automation.",
       },
     },
     {

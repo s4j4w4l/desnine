@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 
 // Configuration exports
 export const runtime = "edge";
-export const alt = "Desnine - AI-Powered Digital Marketing & Design Agency | Transform Your Business with Expert SEO, Web Design, AI Automation & Branding Services";
+export const alt = "Desnine Studio - Independent, Multi-Disciplinary Design Studio | Brand Identity, Web Design, SEO & AI Automation";
 export const size = {
   width: 1200,
   height: 630,
@@ -22,7 +22,7 @@ export default async function Image() {
       (
         <div
           style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: '#050505',
             width: '100%',
             height: '100%',
             display: 'flex',
@@ -53,17 +53,17 @@ export default async function Image() {
               lineHeight: 1.4,
             }}
           >
-            AI-Powered Digital Marketing & Design Agency
+            Independent, Multi-Disciplinary Design Studio
           </p>
           <p
             style={{
               fontSize: '24px',
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: 'rgba(255, 255, 255, 0.6)',
               textAlign: 'center',
               marginTop: '20px',
             }}
           >
-            SEO • Web Design • AI Automation • Branding
+            Branding • Web Design • SEO • AI Automation
           </p>
         </div>
       ),

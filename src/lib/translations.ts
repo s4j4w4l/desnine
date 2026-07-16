@@ -31,7 +31,7 @@ export const translations = {
     clientFeedback: {
       title: { word1: "Stories", word2: "in", word3: "Motion", word4: "!" },
       description:
-        "Desnine Studio is a creative agency specializing in visual storytelling and innovative campaigns. We offer web and graphic design, branding, content support, social media strategy, email marketing, and targeted ads, tailored to elevate your brand.",
+        "Desnine Studio is an independent, multi-disciplinary design studio specializing in visual storytelling and innovative campaigns. We offer web and graphic design, branding, content support, social media strategy, email marketing, and targeted ads, tailored to elevate your brand.",
       stats: [
         { label: "Projects Delivered", note: "We've brought 50+ digital visions to life." },
         { label: "Satisfaction Rate", note: "Built on trust and long-term relationships." },
@@ -523,7 +523,7 @@ export const translations = {
     clientFeedback: {
       title: { word1: "Histoires", word2: "en", word3: "Mouvement", word4: "!" },
       description:
-        "Desnine Studio est une agence créative spécialisée dans la narration visuelle et les campagnes innovantes. Nous offrons du design web et graphique, du branding, du soutien de contenu, de la stratégie sur les réseaux sociaux, du marketing par courriel et des publicités ciblées, adaptés pour élever votre marque.",
+        "Desnine Studio est un studio de design indépendant et multidisciplinaire spécialisé dans la narration visuelle et les campagnes innovantes. Nous offrons du design web et graphique, du branding, du soutien de contenu, de la stratégie sur les réseaux sociaux, du marketing par courriel et des publicités ciblées, adaptés pour élever votre marque.",
       stats: [
         { label: "Projets Livrés", note: "Nous avons concrétisé plus de 50 visions numériques." },
         { label: "Taux de Satisfaction", note: "Fondé sur la confiance et les relations durables." },

@@ -20,7 +20,7 @@ export const ARTICLES: Article[] = [
     cover: "/images/articles/ai-branding.jpg",
     excerpt:
       "Brief faster, iterate smarter, and keep creative direction human while using AI as leverage.",
-    href: "/article/future-of-branding-ai/page.tsx",
+    href: "/article/future-of-branding-ai",
     featured: true,
   },
   {
