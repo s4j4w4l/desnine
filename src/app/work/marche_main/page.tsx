@@ -90,7 +90,7 @@ function Banner({
 
 interface LazyVideoProps {
   src: string;
-  poster: string;
+  poster?: string;
   ariaLabel: string;
   roundedClassName?: string;
 }
@@ -185,7 +185,7 @@ const marcheMainCopy = {
     projectConclusion: [
       "Marché Main turned a neighbourhood grocery run into something with a name, a voice, and a sense of humour. The brand claims its street instead of blending into it, proof that local doesn't have to mean quiet, and that the smallest shop on Main can still own the whole road.",
     ],
-    projectWork: "Branding & Identity",
+    projectWork: "Branding & Identity, Website Design & Development",
     projectCategory: "Retail / Food · 2026",
   },
   fr: {
@@ -311,8 +311,13 @@ export default function ServicePage() {
       </section>
 
       {/* Banners */}
-      <section className="w-full max-w-full space-y-4 px-9 sm:px-10 md:space-y-8 md:px-12">
+      <section className="w-full max-w-full space-y-4 px-9 sm:px-10 md:space-y-4 md:px-12">
         <Banner src={marche001} alt="Marché Main identity image" />
+        <LazyVideo
+          src="/marche_main/mmw.mp4"
+          ariaLabel="Marché Main project video"
+          roundedClassName="rounded-lg"
+        />
         <LazyVideo
           src="/marche_main/optimized/026.mp4"
           poster="/marche_main/optimized/026-poster.jpg"
