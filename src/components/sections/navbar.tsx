@@ -70,7 +70,7 @@ export function Navbar() {
   const { t } = useLang();
   const pathname = usePathname();
   const router = useRouter();
-  const isMarcheCaseStudy = pathname === "/work/marche_main";
+  const isCaseStudy = ["/work/marche_main", "/work/biotasup"].includes(pathname);
 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -109,7 +109,7 @@ export function Navbar() {
   const toggleDrawer = () => setIsDrawerOpen((prev) => !prev);
   const handleOverlayClick = () => setIsDrawerOpen(false);
 
-  if (isMarcheCaseStudy) {
+  if (isCaseStudy) {
     return (
       <header className="fixed inset-x-0 top-3 z-50 mx-4 flex justify-center md:mx-auto">
         <div className="w-full max-w-7xl rounded-2xl border border-white/20 bg-black/25 px-4 shadow-lg backdrop-blur-xl md:px-6">

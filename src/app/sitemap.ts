@@ -18,9 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/privacy-policy', changeFrequency: 'yearly', priority: 0.3 },
   ]
 
-  // Only marche_main is live for now; other project pages are kept in the
-  // codebase but intentionally not published or indexed.
-  const workSlugs = ['marche_main']
+  // Published case studies; other project pages remain intentionally unindexed.
+  const workSlugs = ['marche_main', 'biotasup']
 
   return [
     ...staticRoutes.map(({ path, changeFrequency, priority }) => ({

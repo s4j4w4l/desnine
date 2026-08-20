@@ -23,7 +23,11 @@ export function WorkBentoSection({
   carousel = false,
 }: WorkBentoSectionProps) {
   const { title, items } = siteConfig.workbentoSection;
-  const workItems = items as WorkBentoItem[];
+  // Higher IDs are newer projects. Keep the newest case studies at the front
+  // anywhere this shared work section is used.
+  const workItems = [...(items as WorkBentoItem[])].sort(
+    (a, b) => b.id - a.id,
+  );
   const visibleWorkItems =
     count === undefined ? workItems : workItems.slice(0, count);
   const desktopSlides = visibleWorkItems.map((item, index) =>
@@ -53,16 +57,9 @@ export function WorkBentoSection({
     );
   }, [visibleWorkItems.length]);
 
-  useEffect(() => {
-    if (!carousel || visibleWorkItems.length <= 1) return;
-
-    const interval = window.setInterval(nextItem, 6000);
-    return () => window.clearInterval(interval);
-  }, [carousel, nextItem, visibleWorkItems.length]);
-
   return (
     <section
-      id="bento"
+      id="work"
       aria-label={title}
       className="flex flex-col items-center justify-center w-full relative px-5 md:px-10"
     >
@@ -84,7 +81,7 @@ export function WorkBentoSection({
           }`}
         >
           <div
-            className="flex transition-transform duration-500 ease-out"
+            className="flex transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
             style={{ transform: `translateX(-${activeItem * 100}%)` }}
           >
             {visibleWorkItems.map((item) => (
@@ -123,7 +120,7 @@ export function WorkBentoSection({
           }`}
         >
           <div
-            className="flex transition-transform duration-500 ease-out"
+            className="flex transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
             style={{ transform: `translateX(-${activeItem * 100}%)` }}
           >
             {desktopSlides.map((slide, slideIndex) => (
@@ -199,15 +196,23 @@ function WorkCard({
           ? "min-h-[600px] max-h-[400px] md:min-h-[500px]"
           : mobile
             ? "h-[460px]"
-            : "min-h-[500px] max-h-[400px]"
+            : "min-h-[500px]"
       } ${fullWidth ? "md:col-span-2" : ""}`}
     >
-      <div className="relative flex size-full items-center justify-center overflow-hidden">
+      <div
+        className={`relative flex w-full items-center justify-center overflow-hidden ${
+          original
+            ? "size-full"
+            : mobile
+              ? "h-[340px] shrink-0"
+              : "aspect-[16/10] shrink-0"
+        }`}
+      >
         {item.content}
       </div>
 
       <div className="flex-1 flex-col gap-2 p-6 pr-20">
-        <h3 className="text-lg tracking-tighter font-semibold">{item.title}</h3>
+        <h2 className="text-lg tracking-tighter font-semibold">{item.title}</h2>
         <p className="text-muted-foreground">{item.description}</p>
       </div>
 

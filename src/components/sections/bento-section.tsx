@@ -23,7 +23,7 @@ export function BentoSection({ count }: BentoSectionProps) {
 
   return (
     <section
-      id="bento"
+      id="services"
       className="flex flex-col items-center justify-center w-full relative px-5 md:px-10"
     >
       <div className="border-x mx-5 md:mx-10 relative">
@@ -50,33 +50,28 @@ export function BentoSection({ count }: BentoSectionProps) {
             return (
               <div
                 key={item.id}
-                role="button"
-                tabIndex={0}
-                aria-expanded={isOpen}
-                onClick={() => toggleItem(item.id)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    toggleItem(item.id);
-                  }
-                }}
-                className="flex flex-col items-start justify-end min-h-[600px] md:min-h-[500px] p-0.5 relative before:absolute before:-left-0.5 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-0.5 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-[''] group cursor-pointer max-h-[400px] outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="flex flex-col items-start justify-end min-h-[600px] md:min-h-[500px] p-0.5 relative before:absolute before:-left-0.5 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-0.5 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-[''] group max-h-[400px]"
               >
                 <div className="relative flex size-full items-center justify-center h-full overflow-hidden">
                   {item.content}
                 </div>
                 <div className="flex-1 flex-col gap-2 p-6 w-full">
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="text-lg tracking-tighter font-semibold">
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => toggleItem(item.id)}
+                    className="flex w-full cursor-pointer items-center justify-between gap-4 rounded-sm text-left outline-none focus-visible:ring-2 focus-visible:ring-secondary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  >
+                    <span className="text-lg tracking-tighter font-semibold">
                       {translated?.title ?? item.title}
-                    </h3>
+                    </span>
                     <span
                       className="flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-secondary/20 bg-secondary text-lg leading-none text-white shadow-lg transition-all duration-300 group-hover:bg-secondary/90 group-hover:border-secondary/40 group-hover:shadow-xl"
                       aria-hidden="true"
                     >
                       {isOpen ? "-" : "+"}
                     </span>
-                  </div>
+                  </button>
                   <div
                     className={`grid transition-all duration-300 ease-in-out ${
                       isOpen
