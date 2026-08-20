@@ -7,7 +7,7 @@ import ServicesMarquee from "@/components/sections/article/ServicesMarquee";
 import FeaturedHero from "@/components/sections/article/FeaturedHero";
 import ArticleSearch from "@/components/sections/article/ArticleSearch";
 import ArticlesGrid from "@/components/sections/article/ArticlesGrid";
-import { PUBLISHED_ARTICLES } from "@/lib/articlesData";
+import { ARTICLES } from "@/lib/articlesData";
 import { useDebounced } from "@/lib/useDebounced";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
@@ -35,14 +35,8 @@ export default function ArticlesPage() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  const featured = useMemo(
-    () => PUBLISHED_ARTICLES.find((article) => article.featured) ?? PUBLISHED_ARTICLES[0],
-    [],
-  );
-  const rest = useMemo(
-    () => PUBLISHED_ARTICLES.filter((article) => article.id !== featured.id),
-    [featured.id],
-  );
+  const featured = useMemo(() => ARTICLES.find((a) => a.featured) ?? ARTICLES[0], []);
+  const rest = useMemo(() => ARTICLES.filter((a) => a.id !== featured.id), [featured.id]);
 
   const filtered = useMemo(() => {
     let arr = [...rest];

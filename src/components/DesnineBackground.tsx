@@ -87,7 +87,7 @@ export default function Desnine3DRotatingLogo({
     <div
       className={`relative grid place-items-center ${className}`}
       style={{ width: size, height: size }}
-      aria-label="Desnine Studio rotating logo"
+      aria-label="Desnine rotating logo"
     >
       {/* optional soft glow behind logo (NOT a box) */}
       <div
@@ -101,7 +101,7 @@ export default function Desnine3DRotatingLogo({
       {/* 3D stage */}
       <div className="stage">
         <div className="spinner" style={{ ["--dur" as any]: `${speedSeconds}s` }}>
-          <img src={logoSrc} alt="Desnine Studio" className="logo" />
+          <img src={logoSrc} alt="Desnine" className="logo" />
           {/* faint “thickness” ghost to sell depth */}
           <img src={logoSrc} alt="" aria-hidden="true" className="logo back" />
         </div>
@@ -166,3 +166,4 @@ export default function Desnine3DRotatingLogo({
     </div>
   );
 }
+

@@ -19,7 +19,7 @@ export const translations = {
       line2: { red: "Competitors", dark: "Wish They" },
       line3: { muted: "Could Call", red: "Their Own." },
       description:
-        "Desnine Studio is a multi-disciplinary, independent design studio in Quebec creating premium brand identities, websites, and design systems for modern businesses.",
+        "We craft premium brand identities, websites, and design systems that elevate perception, build trust, and turn businesses into unforgettable brands.",
     },
 
     hero2: {
@@ -31,7 +31,7 @@ export const translations = {
     clientFeedback: {
       title: { word1: "Stories", word2: "in", word3: "Motion", word4: "!" },
       description:
-        "Desnine Studio is a multi-disciplinary, independent design studio specializing in visual storytelling and innovative campaigns. We offer web and graphic design, branding, content support, social media strategy, email marketing, and targeted ads tailored to elevate your brand.",
+        "Desnine Studio is an independent, multi-disciplinary design studio specializing in visual storytelling and innovative campaigns. We offer web and graphic design, branding, content support, social media strategy, email marketing, and targeted ads, tailored to elevate your brand.",
       stats: [
         { label: "Projects Delivered", note: "We've brought 50+ digital visions to life." },
         { label: "Satisfaction Rate", note: "Built on trust and long-term relationships." },
@@ -106,7 +106,7 @@ export const translations = {
 
     footer: {
       description:
-        "Desnine Studio is a multi-disciplinary, independent design studio based in Quebec, serving Greater Montreal and clients worldwide through branding, web design, SEO, and AI automation.",
+        "Desnine is a creative studio helping brands grow through branding, web design, SEO optimization, AI automation, and identity. We craft clear strategies, clean visuals, and digital solutions that connect with people and drive results.",
       newsletter: "Get the latest from Desnine Studio.",
       navTitle: "Navigation",
       followTitle: "Follow Us",
@@ -141,7 +141,7 @@ export const translations = {
       badge: "Get in touch",
       words: ["Let's", "Build", "Something", "Remarkable"],
       description:
-        "Have a bold idea or need ongoing creative support? Desnine Studio works with businesses in Vaudreuil-Dorion, the West Island, Greater Montreal, and remotely across Canada.",
+        "Have a bold idea or need ongoing creative support? Desnine is a creative studio crafting brands, websites, and visual systems that connect, engage, and drive meaningful growth.",
     },
 
     // ── Contact page FAQ ──────────────────────────────────────────────────────
@@ -156,7 +156,7 @@ export const translations = {
           a: "Our Studio offers branding & identity, web design & development, design systems, packaging, and ongoing creative support. We also partner on content and production.",
         },
         {
-          q: "How does the Desnine Studio process work?",
+          q: "How does Desnine process work?",
           a: "We start with a discovery phase to understand your business and audience, followed by research, concept development, design refinement, and final asset delivery.",
         },
         {
@@ -186,7 +186,7 @@ export const translations = {
     trustBadge: {
       freeQuote: "Get Your Free Quote",
       seeWork: "See Our Work",
-      lovedBy: "Based in Quebec · Working globally",
+      lovedBy: "Loved by Big Brands",
     },
 
     // ── Why Us page ───────────────────────────────────────────────────────────
@@ -246,7 +246,7 @@ export const translations = {
         "Surface-level design",
         "Opaque pricing",
       ],
-      desnineWay: "The Desnine Studio way",
+      desnineWay: "The Desnine way",
       desnineWayItems: [
         "Outcomes > output",
         "Flexible, tailored scopes",
@@ -432,7 +432,7 @@ export const translations = {
         {
           title: "Content Creation & Visual Support",
           description:
-            "Desnine Studio enhances your content with illustrations, iconography, photo retouching, and mockups. We turn raw ideas into polished visuals that connect.",
+            "Desnine enhances your content with illustrations, iconography, photo retouching, and mockups. We turn raw ideas into polished visuals that connect.",
         },
         {
           title: "Industry-Specific Design",
@@ -483,7 +483,7 @@ export const translations = {
       networkError: "Network error. Please try again.",
       unknownError: "Something went wrong. Please try again.",
       consent:
-        "By submitting this form, you consent to Desnine Studio storing your information to respond to your inquiry.",
+        "By submitting this form, you consent to Desnine storing your information to respond to your inquiry.",
     },
 
     // ── Article page chrome ───────────────────────────────────────────────────
@@ -511,7 +511,7 @@ export const translations = {
       line2: { red: "Vos Concurrents", dark: "Voudraient" },
       line3: { muted: "Appeler", red: "La Leur." },
       description:
-        "Desnine Studio est un studio de design multidisciplinaire et indépendant au Québec, créant des identités de marque, des sites web et des systèmes visuels pour les entreprises modernes.",
+        "Nous créons des identités de marque, des sites web et des systèmes de design qui élèvent la perception, bâtissent la confiance et transforment les entreprises en marques inoubliables.",
     },
 
     hero2: {
@@ -599,7 +599,7 @@ export const translations = {
 
     footer: {
       description:
-        "Desnine Studio est un studio de design multidisciplinaire et indépendant qui aide les marques à croître grâce au branding, au design web, à l'optimisation SEO, à l'automatisation IA et à l'identité. Nous créons des stratégies claires, des visuels épurés et des solutions numériques qui créent du lien et génèrent des résultats.",
+        "Desnine est un studio créatif qui aide les marques à croître grâce au branding, au design web, à l'optimisation SEO, à l'automatisation IA et à l'identité. Nous créons des stratégies claires, des visuels épurés et des solutions numériques qui créent du lien et génèrent des résultats.",
       newsletter: "Restez informé par Desnine Studio.",
       navTitle: "Navigation",
       followTitle: "Suivez-Nous",
@@ -634,7 +634,7 @@ export const translations = {
       badge: "Entrer en contact",
       words: ["Construisons", "Quelque", "Chose", "Remarquable"],
       description:
-        "Vous avez une idée audacieuse ou besoin d'un soutien créatif continu? Desnine Studio travaille avec des entreprises de Vaudreuil-Dorion, de l'Ouest-de-l'Île, du Grand Montréal et partout au Canada.",
+        "Vous avez une idée audacieuse ou besoin d'un soutien créatif continu? Desnine est un studio créatif qui conçoit des marques, des sites web et des systèmes visuels qui connectent, engagent et génèrent une croissance significative.",
     },
 
     // ── Contact page FAQ ──────────────────────────────────────────────────────
@@ -649,7 +649,7 @@ export const translations = {
           a: "Notre studio offre du branding & identité, du design web & développement, des systèmes de design, de l'emballage et du soutien créatif continu. Nous collaborons aussi sur du contenu et de la production.",
         },
         {
-          q: "Comment fonctionne le processus de Desnine Studio?",
+          q: "Comment fonctionne le processus Desnine?",
           a: "Nous commençons par une phase de découverte pour comprendre votre entreprise et votre audience, suivie de recherches, du développement de concepts, du raffinement du design et de la livraison finale des actifs.",
         },
         {
@@ -739,7 +739,7 @@ export const translations = {
         "Design superficiel",
         "Tarification opaque",
       ],
-      desnineWay: "La méthode Desnine Studio",
+      desnineWay: "La méthode Desnine",
       desnineWayItems: [
         "Résultats > production",
         "Portées flexibles et adaptées",
@@ -925,7 +925,7 @@ export const translations = {
         {
           title: "Création de Contenu & Support Visuel",
           description:
-            "Desnine Studio enrichit votre contenu avec des illustrations, de l'iconographie, de la retouche photo et des maquettes. Nous transformons des idées brutes en visuels soignés qui créent du lien.",
+            "Desnine enrichit votre contenu avec des illustrations, de l'iconographie, de la retouche photo et des maquettes. Nous transformons des idées brutes en visuels soignés qui créent du lien.",
         },
         {
           title: "Design Sectoriel",
@@ -976,7 +976,7 @@ export const translations = {
       networkError: "Erreur réseau. Veuillez réessayer.",
       unknownError: "Une erreur s'est produite. Veuillez réessayer.",
       consent:
-        "En soumettant ce formulaire, vous consentez à ce que Desnine Studio conserve vos informations pour répondre à votre demande.",
+        "En soumettant ce formulaire, vous consentez à ce que Desnine conserve vos informations pour répondre à votre demande.",
     },
 
     // ── Article page chrome ───────────────────────────────────────────────────

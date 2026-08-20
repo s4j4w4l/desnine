@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Desnine Studio — Multi-Disciplinary Independent Design Studio',
-    short_name: 'Desnine Studio',
-    description: 'Desnine Studio is a multi-disciplinary, independent design studio specializing in branding, web design, SEO, and AI automation.',
+    name: 'Desnine - Independent Design Studio',
+    short_name: 'Desnine',
+    description: 'Multi-disciplinary independent design studio specializing in branding, web design, SEO, and AI automation.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
@@ -16,10 +16,15 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/x-icon',
       },
       {
-        src: '/icon.png',
-        sizes: '2500x2500',
+        src: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/icon-512.png',
+        sizes: '512x512',
         type: 'image/png',
       },
     ],
   }
-}
+} 

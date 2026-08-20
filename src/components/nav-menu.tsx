@@ -14,7 +14,6 @@ export function NavMenu() {
     { name: t.nav.home, href: "/" },
     { name: t.nav.services, href: "/services" },
     { name: t.nav.ourWork, href: "/work" },
-    { name: "About", href: "/about" },
   ];
   const ref = useRef<HTMLUListElement>(null);
   const [bubble, setBubble] = useState({ left: 0, width: 0 });

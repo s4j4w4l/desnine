@@ -4,37 +4,37 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const businessCards = [
   {
-    id: "identity",
-    name: "Brand Identity",
-    title: "Logo · Type · Colour",
-    company: "A connected visual system",
+    id: "creative",
+    name: "Alex Johnson",
+    title: "Creative Director",
+    company: "Design Studio",
     color: "from-slate-100 to-slate-200",
     textColor: "text-slate-700",
     icon: "★"
   },
   {
-    id: "packaging",
-    name: "Packaging Design",
-    title: "Labels · Packs · Product Lines",
-    company: "Built for real applications",
+    id: "tech",
+    name: "Sarah Chen",
+    title: "Software Engineer",
+    company: "Tech Solutions",
     color: "from-blue-50 to-blue-100",
     textColor: "text-blue-700",
     icon: "●"
   },
   {
-    id: "print",
-    name: "Print Design",
-    title: "Editorial · Signage · Collateral",
-    company: "Consistent across touchpoints",
+    id: "business",
+    name: "Michael Brown",
+    title: "Business Consultant",
+    company: "Growth Partners",
     color: "from-green-50 to-green-100",
     textColor: "text-green-700",
     icon: "◆"
   },
   {
-    id: "campaign",
-    name: "Campaign Design",
-    title: "Concept · Art Direction · Assets",
-    company: "A clear creative direction",
+    id: "marketing",
+    name: "Emma Wilson",
+    title: "Marketing Manager",
+    company: "Brand Agency",
     color: "from-rose-50 to-rose-100",
     textColor: "text-rose-700",
     icon: "▲"
@@ -76,7 +76,7 @@ export function SixthBentoAnimation() {
 
               {/* Bottom Section */}
               <div>
-                <h2 className="text-xl font-bold mb-1">{current.name}</h2>
+                <h3 className="text-xl font-bold mb-1">{current.name}</h3>
                 <p className="text-sm opacity-90 mb-1">{current.title}</p>
                 <p className="text-xs opacity-75">{current.company}</p>
               </div>

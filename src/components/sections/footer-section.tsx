@@ -65,7 +65,7 @@ export function FooterSection() {
           />
         </div>
 
-        <div className="pt-5 md:w-2/3">
+        <div className="pt-5 md:w-1/2">
           <div className="flex flex-row items-start justify-between gap-y-5 lg:pl-10">
             <ul className="flex flex-col gap-y-2">
               <li className="mb-2 text-sm font-semibold text-primary">{f.navTitle}</li>
@@ -73,8 +73,7 @@ export function FooterSection() {
               {([
                 { href: "/services", label: f.links.services },
                 { href: "/work", label: f.links.ourWork },
-                { href: "/about", label: "About" },
-                { href: "/why", label: f.links.whyUs },
+                { href: "/testimonial", label: f.links.whyUs },
                 { href: "/contact", label: f.links.contact },
                 { href: "/privacy-policy", label: f.links.privacy },
               ] as const).map(({ href, label }) => (
@@ -83,23 +82,6 @@ export function FooterSection() {
                   <span className="flex size-4 items-center justify-center border border-border rounded translate-x-0 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
                     <ChevronRightIcon className="h-4 w-4" />
                   </span>
-                </li>
-              ))}
-            </ul>
-
-            <ul className="hidden flex-col gap-y-2 sm:flex">
-              <li className="mb-2 text-sm font-semibold text-primary">Services</li>
-              {([
-                ["/services/branding", "Branding"],
-                ["/services/web-design", "Web Design"],
-                ["/services/web-development", "Web Development"],
-                ["/services/packaging-design", "Packaging Design"],
-                ["/services/graphic-design", "Graphic Design"],
-                ["/services/seo", "SEO"],
-                ["/services/ai-automation", "AI Automation"],
-              ] as const).map(([href, label]) => (
-                <li key={href} className="text-[13px]/snug text-muted-foreground">
-                  <Link href={href} className="transition hover:text-foreground">{label}</Link>
                 </li>
               ))}
             </ul>
@@ -130,7 +112,7 @@ export function FooterSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-background z-10 from-40%" />
         <div className="absolute inset-0 mx-6">
           <FlickeringGrid
-            text={tablet ? "Desnine Studio" : "Desnine Studio — Independent Design Studio"}
+            text={tablet ? "Desnine" : "Desnine Independent Studio"}
             fontSize={tablet ? 70 : 90}
             className="h-full w-full"
             squareSize={2}

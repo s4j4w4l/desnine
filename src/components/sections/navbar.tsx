@@ -70,7 +70,7 @@ export function Navbar() {
   const { t } = useLang();
   const pathname = usePathname();
   const router = useRouter();
-  const isCaseStudy = ["/work/marche-main", "/work/marche_main", "/work/biotasup"].includes(pathname);
+  const isCaseStudy = ["/work/marche_main", "/work/biotasup"].includes(pathname);
 
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -104,7 +104,6 @@ export function Navbar() {
     { id: 1, name: t.nav.home, href: "/" },
     { id: 2, name: t.nav.services, href: "/services" },
     { id: 3, name: t.nav.ourWork, href: "/work" },
-    { id: 4, name: "About", href: "/about" },
   ];
 
   const toggleDrawer = () => setIsDrawerOpen((prev) => !prev);
@@ -218,7 +217,7 @@ export function Navbar() {
                 <div className="flex items-center justify-between">
                   <Link href="/" className="flex items-center gap-3">
                     <Icons.logo className="size-7 md:size-10" />
-                    <p className="text-lg font-semibold text-primary">Desnine Studio</p>
+                    <p className="text-lg font-semibold text-primary">Desnine</p>
                   </Link>
                   <button
                     onClick={toggleDrawer}

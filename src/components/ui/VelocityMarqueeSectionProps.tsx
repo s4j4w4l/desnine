@@ -76,9 +76,9 @@ export function ScrollVelocitySection() {
                 transform: `translateX(${offset1 % 1000}px)`,
               }}
             >
-              DESNINE STUDIO • BRANDING • UI/UX • WEBSITES • AI •
+              DESNINE • BRANDING • UI/UX • WEBSITES • AI •
               <span style={{ color: DESNINE_RED }}> ● </span>
-              DESNINE STUDIO • BRANDING • UI/UX • WEBSITES • AI •
+              DESNINE • BRANDING • UI/UX • WEBSITES • AI •
             </div>
           </div>
 

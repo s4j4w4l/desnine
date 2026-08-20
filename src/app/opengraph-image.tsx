@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 // Configuration exports
 export const runtime = "edge";
-export const alt = "Desnine Studio — A Multi-Disciplinary, Independent Design Studio";
+export const alt = "Desnine Studio - Independent, Multi-Disciplinary Design Studio | Brand Identity, Web Design, SEO & AI Automation";
 export const size = {
   width: 1200,
   height: 630,
@@ -35,7 +35,7 @@ export default async function Image() {
               lineHeight: 1.2,
           }}
         >
-            Desnine Studio
+            Desnine
           </h1>
           <p
             style={{
@@ -46,7 +46,7 @@ export default async function Image() {
               lineHeight: 1.4,
             }}
           >
-            A Multi-Disciplinary, Independent Design Studio
+            Independent, Multi-Disciplinary Design Studio
           </p>
           <p
             style={{

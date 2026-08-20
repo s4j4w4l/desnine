@@ -21,9 +21,9 @@ export function CTASection() {
             priority
           />
           <div className="absolute inset-0 -top-32 md:-top-40 flex flex-col items-center justify-center">
-            <h2 className="text-white text-4xl md:text-7xl font-medium tracking-tighter max-w-xs md:max-w-xl text-center">
+            <h1 className="text-white text-4xl md:text-7xl font-medium tracking-tighter max-w-xs md:max-w-xl text-center">
               {ctaSection.title}
-            </h2>
+            </h1>
             <div className="absolute bottom-10 flex flex-col items-center justify-center gap-2">
               <Link
                 href={ctaSection.button.href}
@@ -44,13 +44,13 @@ export function CTASection() {
           <div className="flex items-center gap-3 mb-8">
             <Icons.logo className="size-12 md:size-14" />
             <h2 className="text-lg md:text-xl font-semibold text-primary">
-              Desnine Studio
+              Desnine
             </h2>
           </div>
           
           {/* Company Description */}
           <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-4xl">
-          Desnine Studio is a multi-disciplinary, independent design studio helping brands stand out through strong creative direction, clean aesthetics, and emotionally resonant visuals.
+          Desnine is a multidisciplinary studio helping brands stand out through strong creative direction, clean aesthetics, and emotionally resonant visuals. 
           Based in Canada, we work globally.
           </p>
         </div>

@@ -134,13 +134,67 @@ export function DesnineTrustBadge() {
         </ArrowHoverButton>
       </div>
 
-      <div className="hidden shrink-0 flex-col items-end gap-1 text-right sm:flex">
-        <span className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: DESNINE_RED }}>
-          Independent studio
-        </span>
-        <p className="whitespace-nowrap text-xs text-muted-foreground">
-          {t.trustBadge.lovedBy}
-        </p>
+      <div className="flex shrink-0 flex-col items-end gap-2">
+        <div className="flex flex-col items-end gap-1">
+          <div className="flex items-center gap-1">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <motion.svg
+                key={i}
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill={DESNINE_RED}
+                aria-hidden="true"
+                className="pointer-events-none h-3 w-3 sm:h-3.5 sm:w-3.5"
+                animate={{
+                  opacity: [0.6, 1, 0.6],
+                  scale: [1, 1.15, 1],
+                }}
+                transition={{
+                  duration: 1.6,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  delay: i * 0.15,
+                }}
+              >
+                <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </motion.svg>
+            ))}
+
+            <span
+              className="text-[10px] font-medium leading-none sm:text-xs"
+              style={{ color: DESNINE_RED }}
+            >
+              4.9/5.0
+            </span>
+          </div>
+
+          <p className="whitespace-nowrap text-[10px] text-muted-foreground sm:text-xs">
+            {t.trustBadge.lovedBy}
+          </p>
+        </div>
+
+        <div className="flex items-center">
+          {[
+            "/clients/client4.jpg",
+            "/clients/client2.jpg",
+            "/clients/client3.jpg",
+            "/clients/client1.jpg",
+          ].map((src, i) => (
+            <motion.div
+              key={i}
+              className="-ml-2 first:ml-0 h-6 w-6 overflow-hidden rounded-full border border-white shadow-sm sm:h-8 sm:w-8 sm:border-2"
+              style={{ zIndex: 10 - i }}
+              whileHover={{ y: -2 }}
+            >
+              <img
+                src={src}
+                alt={`Client ${i + 1}`}
+                className="h-full w-full object-cover"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

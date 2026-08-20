@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { PUBLISHED_ARTICLES } from "@/lib/articlesData";
+import { ARTICLES } from "@/lib/articlesData";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import {
@@ -17,11 +17,11 @@ function formatDate(d: string) {
 }
 
 export const metadata = (() => {
-  const article = PUBLISHED_ARTICLES.find((a) => a.slug === SLUG);
+  const article = ARTICLES.find((a) => a.slug === SLUG);
   if (!article) return {};
-  const url = `https://www.desnine.com/article/${article.slug}`;
+  const url = `https://yourdomain.com/article/${article.slug}`;
   return {
-    title: `${article.title} | Desnine Studio`,
+    title: `${article.title} — Desnine`,
     description: article.excerpt,
     openGraph: {
       title: article.title,
@@ -29,20 +29,16 @@ export const metadata = (() => {
       url,
       type: "article",
       images: [{ url: article.cover }],
-      siteName: "Desnine Studio",
-      publishedTime: article.date,
-      authors: ["Desnine Studio"],
     },
-    twitter: { card: "summary_large_image", title: article.title, description: article.excerpt, images: [article.cover] },
     alternates: { canonical: url },
   };
 })();
 
 export default function Page() {
-  const article = PUBLISHED_ARTICLES.find((a) => a.slug === SLUG);
+  const article = ARTICLES.find((a) => a.slug === SLUG);
   if (!article) notFound();
 
-  const related = PUBLISHED_ARTICLES.filter((a) => a.slug !== SLUG).slice(0, 3);
+  const related = ARTICLES.filter((a) => a.slug !== SLUG).slice(0, 3);
 
   return (
     <main className="w-full text-foreground bg-background">

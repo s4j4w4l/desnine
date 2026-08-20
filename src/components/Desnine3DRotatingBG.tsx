@@ -44,7 +44,7 @@ export default function Desnine3DRotatingBG({
 
             {/* Logo (floats in front) */}
             <div className="logoWrap">
-              <img src={logoSrc} alt="Desnine Studio" className="logoImg" />
+              <img src={logoSrc} alt="Desnine" className="logoImg" />
             </div>
           </div>
 

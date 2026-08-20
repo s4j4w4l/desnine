@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
@@ -220,7 +219,7 @@ export default function BiotasupPage() {
         <div className="absolute inset-0 bg-black/45" />
         <div className="absolute bottom-8 left-9 right-9 text-white md:bottom-6 md:left-12">
           <h1 className="animate-fade-up text-[1.75rem] font-bold leading-tight drop-shadow-lg md:text-5xl">
-            Biotasup — Wellness Branding & Packaging
+            Biotasup
           </h1>
           <p className="mt-2 max-w-[30rem] animate-fade-up text-sm font-medium leading-6 text-white/85 drop-shadow-lg md:mt-3 md:text-xl">
             {content.subtitle}
@@ -278,13 +277,6 @@ export default function BiotasupPage() {
         pairFromStart
       />
       <TextSection label={content.labels.outcome} paragraphs={content.outcome} />
-      <section className="w-full px-9 pb-12 sm:px-10 md:px-12">
-        <div className="mx-auto flex max-w-6xl flex-wrap gap-3 border-t border-border pt-8">
-          <Link href="/services/branding" className="rounded-full border border-border px-4 py-2 text-sm transition hover:bg-accent">Explore our branding services</Link>
-          <Link href="/services/packaging-design" className="rounded-full border border-border px-4 py-2 text-sm transition hover:bg-accent">Explore packaging design</Link>
-          <Link href="/contact" className="rounded-full bg-secondary px-4 py-2 text-sm text-white">Start a similar project</Link>
-        </div>
-      </section>
       <section className="w-full px-9 sm:px-10 md:px-12">
         <div className="relative aspect-[3/2] w-full overflow-hidden rounded-xl md:rounded-3xl">
           <Image

@@ -5,7 +5,7 @@ export const Icons = {
   logo: ({ className }: { className?: string }) => (
     <Image
       src="/Desnine-logo.png"
-      alt="Desnine Studio logo"
+      alt="Desnine Logo"
       width={120}
       height={40}
       className={cn("h-auto", className)}
