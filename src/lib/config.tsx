@@ -757,24 +757,6 @@ howWeWork: {
         description: "Branding & Identity, Website Design & Development",
         href: "/work/marche_main",
       },
-      {
-        id: 2,
-        content: (
-          <div className="relative h-full w-full">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/biotasups/biota-01.jpg"
-              alt="Biota Supplements"
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              loading="eager"
-            />
-          </div>
-        ),
-        title: "Biota Suppliments",
-        description:
-          "Branding & Identity, Print & Packaging Design, Website Design & Development",
-        href: "/work/biotasup",
-      },
       // {
       //   id: 2,
       //   content: (

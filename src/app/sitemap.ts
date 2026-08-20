@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Published case studies; other project pages remain intentionally unindexed.
-  const workSlugs = ['marche_main', 'biotasup']
+  const workSlugs = ['marche_main']
 
   return [
     ...staticRoutes.map(({ path, changeFrequency, priority }) => ({
