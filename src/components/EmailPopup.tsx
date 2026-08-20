@@ -104,9 +104,9 @@ export default function EmailPopup() {
               Freebie
             </p>
 
-            <h1 className="max-w-[420px] text-3xl font-semibold leading-[0.95] tracking-[-0.05em] text-[#171717] sm:text-4xl md:text-5xl">
+            <h2 className="max-w-[420px] text-3xl font-semibold leading-[0.95] tracking-[-0.05em] text-[#171717] sm:text-4xl md:text-5xl">
               Website Launch Checklist
-            </h1>
+            </h2>
 
             <p className="mt-4 max-w-[420px] text-sm leading-relaxed text-neutral-600">
               Know exactly what to expect from your web designer.

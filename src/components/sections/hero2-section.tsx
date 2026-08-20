@@ -14,7 +14,7 @@ export function Hero2Section() {
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-10 px-6 py-16 md:py-24">
-        <motion.h1
+        <motion.h2
           className="text-center text-[clamp(32px,6vw,72px)] font-bold leading-[0.95] tracking-[-0.06em]"
           initial="hidden"
           whileInView="show"
@@ -44,7 +44,7 @@ export function Hero2Section() {
               {i !== titleWords.length - 1 && " "}
             </motion.span>
           ))}
-        </motion.h1>
+        </motion.h2>
 
         <motion.div
           className="flex flex-col items-center justify-center gap-5"

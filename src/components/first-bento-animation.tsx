@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Icons } from "@/components/icons";
@@ -70,17 +69,11 @@ export function FirstBentoAnimation() {
             }}
           >
             <p className="text-sm">
-              Hey, I need help scheduling a team meeting that works well for
-              everyone. Any suggestions for finding an optimal time slot?
+              A new project inquiry arrived. Can you organize the details and
+              prepare the right next step for our team?
             </p>
           </motion.div>
-          <div className="flex items-center bg-background rounded-full w-fit border border-border flex-shrink-0">
-            <img
-              src="https://randomuser.me/api/portraits/women/79.jpg"
-              alt="User Avatar"
-              className="size-8 rounded-full flex-shrink-0"
-            />
-          </div>
+          <div aria-hidden="true" className="size-8 flex-shrink-0 rounded-full border border-border bg-secondary/20" />
         </div>
         <div className="flex items-start gap-2">
           <div className="flex items-center bg-background rounded-full size-10 flex-shrink-0 justify-center shadow-[0_0_10px_rgba(0,0,0,0.05)] border border-border">

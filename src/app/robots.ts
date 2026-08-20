@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://desnine.com/sitemap.xml',
+    sitemap: 'https://www.desnine.com/sitemap.xml',
+    host: 'https://www.desnine.com',
   }
-} 
+}

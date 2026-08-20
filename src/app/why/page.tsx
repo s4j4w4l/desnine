@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import { FooterSection } from "@/components/sections/footer-section";
-import { TestimonialSection } from "@/components/sections/testimonial-section";
-import { GrowthSection } from "@/components/sections/growth-section";
-import { ProcessSection } from "@/components/sections/process-section";
 import ProgressOnboardingSection from "@/components/sections/progressonboarding";
 
 export const metadata: Metadata = {
-  title: "Why Desnine - Our Process & Approach",
+  title: "Why Work With Us — Our Process & Approach",
   description:
-    "Why work with Desnine Studio, an independent, multi-disciplinary design studio. Our process, principles, and what makes our approach different.",
+    "Why work with Desnine Studio, a multi-disciplinary, independent design studio. Explore our process, principles, and collaborative approach.",
+  alternates: { canonical: "/why" },
+  openGraph: {
+    title: "Why Desnine Studio — Our Process & Approach",
+    description: "Learn how Desnine Studio approaches strategy, collaboration, and design for modern brands.",
+    url: "/why",
+  },
 };
 
 export default function TestimonialPage() {

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
@@ -261,7 +262,7 @@ export default function ServicePage() {
             className="text-[1.75rem] font-bold leading-tight drop-shadow-lg animate-fade-up md:text-5xl"
             style={{ animationDelay: "120ms" }}
           >
-            {title}
+            {title} — Grocery Branding & Identity
           </h1>
           <p
             className="mt-2 max-w-[30rem] text-sm font-medium leading-6 text-white/85 drop-shadow-lg animate-fade-up md:mt-3 md:text-xl md:leading-relaxed"
@@ -511,6 +512,13 @@ export default function ServicePage() {
       </section>
         
 
+      <section className="w-full px-9 py-12 sm:px-10 md:px-12">
+        <div className="mx-auto flex max-w-6xl flex-wrap gap-3 border-t border-border pt-8">
+          <Link href="/services/branding" className="rounded-full border border-border px-4 py-2 text-sm transition hover:bg-accent">Explore our branding services</Link>
+          <Link href="/services/packaging-design" className="rounded-full border border-border px-4 py-2 text-sm transition hover:bg-accent">Explore packaging design</Link>
+          <Link href="/contact" className="rounded-full bg-secondary px-4 py-2 text-sm text-white">Discuss your brand project</Link>
+        </div>
+      </section>
       <RelatedProjectsSection />
       <ContactUsSection />
       <FooterSection />

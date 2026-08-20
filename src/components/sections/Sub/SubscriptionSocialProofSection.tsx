@@ -5,7 +5,7 @@ import { useLang } from "@/contexts/LanguageContext";
 
 export function SubscriptionSocialProofSection() {
   const { t } = useLang();
-  const logos = ["DESNINE", "KYNEX", "FINCHLEY", "BOLT", "ZERANI", "AVELON", "DESNINE"];
+  const logos = ["DESNINE STUDIO", "KYNEX", "FINCHLEY", "BOLT", "ZERANI", "AVELON", "DESNINE STUDIO"];
 
   return (
     <section className="w-full overflow-hidden border-y border-white/10 bg-[#080808] text-white">

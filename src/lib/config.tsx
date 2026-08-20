@@ -50,13 +50,13 @@ export const Highlight = ({
 export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
-  name: "Desnine",
+  name: "Desnine Studio",
   description: "Creative Directions for Modern Brands.",
   cta: "Get Started",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: [
     // Core Identity
-    "Desnine",
+    "Desnine Studio",
     "Desnine Studio",
     "Creative Direction for Modern Brands",
     "Independent Design Studio",
@@ -720,7 +720,7 @@ howWeWork: {
         content: <NinthBentoAnimation />,
         title: "Content Creation & Visual Support",
         description:
-          "Desnine enhances your content with illustrations, iconography, photo retouching, and mockups. We turn raw ideas into polished visuals that connect.",
+          "Desnine Studio enhances your content with illustrations, iconography, photo retouching, and mockups. We turn raw ideas into polished visuals that connect.",
       },
       {
         id: 10,
@@ -755,25 +755,7 @@ howWeWork: {
         ),
         title: "Marché Main",
         description: "Branding & Identity, Website Design & Development",
-        href: "/work/marche_main",
-      },
-      {
-        id: 2,
-        content: (
-          <div className="relative h-full w-full">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/biotasups/biota-01.jpg"
-              alt="Biota Supplements"
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
-              loading="eager"
-            />
-          </div>
-        ),
-        title: "Biota Suppliments",
-        description:
-          "Branding & Identity, Print & Packaging Design, Website Design & Development",
-        href: "/work/biotasup",
+        href: "/work/marche-main",
       },
       // {
       //   id: 2,
@@ -1189,7 +1171,7 @@ howWeWork: {
   },
   quoteSection: {
     quote:
-      "We saw a 42% increase in inquiries after Desnine redesigned our website. The process was smooth, clear, and well organized from start to finish.",
+      "We saw a 42% increase in inquiries after Desnine Studio redesigned our website. The process was smooth, clear, and well organized from start to finish.",
     author: {
       name: "Ayesha Khan",
       role: "Founder, AKT",
@@ -1214,7 +1196,7 @@ howWeWork: {
     },
     {
       quote:
-        "Desnine understood our vision instantly and turned it into a product we’re proud of.",
+        "Desnine Studio understood our vision instantly and turned it into a product we’re proud of.",
       author: {
         name: "Sarah Lee",
         role: "Founder, Nova Labs",
@@ -1248,7 +1230,7 @@ howWeWork: {
 
 blogSection: {
   badge: "",
-  title: "Desnine Insights & Stories",
+  title: "Desnine Studio Insights & Stories",
   titleLine2: "Insights & Stories",
   description:
     "Explore industry trends, expert perspectives, and creative journeys that bring ideas to life.",
@@ -1555,7 +1537,7 @@ testimonials: [
     role: "Marketing Director",
     img: "https://randomuser.me/api/portraits/women/32.jpg",
     description:
-      "Desnine’s SEO work completely changed our online visibility. We started showing up where it actually matters, and the growth felt steady and intentional. They kept us updated, tested improvements constantly, and made decisions based on real data—not guesses.",
+      "Desnine Studio’s SEO work completely changed our online visibility. We started showing up where it actually matters, and the growth felt steady and intentional. They kept us updated, tested improvements constantly, and made decisions based on real data—not guesses.",
   },
   {
     id: "2",
@@ -1563,7 +1545,7 @@ testimonials: [
     role: "Founder & CEO",
     img: "https://randomuser.me/api/portraits/men/67.jpg",
     description:
-      "Desnine didn’t just make our website look good—they built it to sell. The experience is smooth, fast, and easy for customers, and the design fits our brand perfectly. After launch, we immediately saw a noticeable jump in sales and conversions.",
+      "Desnine Studio didn’t just make our website look good—they built it to sell. The experience is smooth, fast, and easy for customers, and the design fits our brand perfectly. After launch, we immediately saw a noticeable jump in sales and conversions.",
   },
   {
     id: "3",
@@ -1571,7 +1553,7 @@ testimonials: [
     role: "Operations Manager",
     img: "https://randomuser.me/api/portraits/women/44.jpg",
     description:
-      "The appointment automation Desnine set up saved our team a lot of time. Scheduling became simpler, reminders were handled automatically, and we saw fewer no-shows. Setup was clean, and everything worked properly from day one.",
+      "The appointment automation Desnine Studio set up saved our team a lot of time. Scheduling became simpler, reminders were handled automatically, and we saw fewer no-shows. Setup was clean, and everything worked properly from day one.",
   },
   {
     id: "4",
@@ -1579,7 +1561,7 @@ testimonials: [
     role: "CTO",
     img: "https://randomuser.me/api/portraits/men/23.jpg",
     description:
-      "Desnine’s analytics dashboard gave us a clear view of what’s happening in the business. Instead of waiting for reports, we can spot trends quickly and make better decisions day-to-day. The insights are practical, and the system feels built for real teams.",
+      "Desnine Studio’s analytics dashboard gave us a clear view of what’s happening in the business. Instead of waiting for reports, we can spot trends quickly and make better decisions day-to-day. The insights are practical, and the system feels built for real teams.",
   },
   {
     id: "5",
@@ -1587,7 +1569,7 @@ testimonials: [
     role: "Brand Manager",
     img: "https://randomuser.me/api/portraits/women/28.jpg",
     description:
-      "Our rebrand with Desnine was a full transformation, not just a new logo. Everything became consistent—colors, typography, packaging, and overall feel. Customers noticed right away, and we started getting more organic shares and compliments on the presentation.",
+      "Our rebrand with Desnine Studio was a full transformation, not just a new logo. Everything became consistent—colors, typography, packaging, and overall feel. Customers noticed right away, and we started getting more organic shares and compliments on the presentation.",
   },
   {
     id: "6",
@@ -1595,7 +1577,7 @@ testimonials: [
     role: "Digital Marketing Lead",
     img: "https://randomuser.me/api/portraits/men/89.jpg",
     description:
-      "Desnine’s ad designs helped us stand out instantly. The creative looked premium, matched our message, and performed better across campaigns. We saw stronger conversions and improved efficiency without sacrificing brand quality.",
+      "Desnine Studio’s ad designs helped us stand out instantly. The creative looked premium, matched our message, and performed better across campaigns. We saw stronger conversions and improved efficiency without sacrificing brand quality.",
   },
   {
     id: "7",
@@ -1603,7 +1585,7 @@ testimonials: [
     role: "Content Director",
     img: "https://randomuser.me/api/portraits/women/56.jpg",
     description:
-      "Desnine elevated our content visuals in a way that made everything easier to understand and more engaging. Their graphics and layout choices made our materials feel modern and polished, and our audience responded really well to the improved clarity.",
+      "Desnine Studio elevated our content visuals in a way that made everything easier to understand and more engaging. Their graphics and layout choices made our materials feel modern and polished, and our audience responded really well to the improved clarity.",
   },
   {
     id: "8",
@@ -1611,7 +1593,7 @@ testimonials: [
     role: "VP of Marketing",
     img: "https://randomuser.me/api/portraits/men/45.jpg",
     description:
-      "Desnine understands real estate branding and design better than most teams we’ve worked with. Our listings look more professional, our marketing feels consistent, and the overall brand trust improved. It gave us a real edge in a competitive market.",
+      "Desnine Studio understands real estate branding and design better than most teams we’ve worked with. Our listings look more professional, our marketing feels consistent, and the overall brand trust improved. It gave us a real edge in a competitive market.",
   },
   {
     id: "9",
@@ -1619,7 +1601,7 @@ testimonials: [
     role: "E-commerce Manager",
     img: "https://randomuser.me/api/portraits/women/71.jpg",
     description:
-      "The digital design Desnine created for our fashion brand is clean, cohesive, and high-end. Our emails look more premium, social content performs better, and everything finally feels like it belongs to the same brand system.",
+      "The digital design Desnine Studio created for our fashion brand is clean, cohesive, and high-end. Our emails look more premium, social content performs better, and everything finally feels like it belongs to the same brand system.",
   },
   {
     id: "10",
@@ -1627,7 +1609,7 @@ testimonials: [
     role: "CEO",
     img: "https://randomuser.me/api/portraits/men/12.jpg",
     description:
-      "We needed a full setup as a startup—website, branding, SEO, and automation—and Desnine handled it end-to-end. They were organized, fast, and thoughtful with every decision. It felt like working with a real partner, not just a vendor.",
+      "We needed a full setup as a startup—website, branding, SEO, and automation—and Desnine Studio handled it end-to-end. They were organized, fast, and thoughtful with every decision. It felt like working with a real partner, not just a vendor.",
   },
   {
     id: "11",
@@ -1635,7 +1617,7 @@ testimonials: [
     role: "Marketing Manager",
     img: "https://randomuser.me/api/portraits/women/38.jpg",
     description:
-      "Desnine’s packaging and print designs exceeded what we expected. The work looks premium on the shelf and feels practical for real use. We’ve also had customers mention the packaging specifically, which has been a big win for our brand.",
+      "Desnine Studio’s packaging and print designs exceeded what we expected. The work looks premium on the shelf and feels practical for real use. We’ve also had customers mention the packaging specifically, which has been a big win for our brand.",
   },
   {
     id: "12",
@@ -1643,7 +1625,7 @@ testimonials: [
     role: "Product Manager",
     img: "https://randomuser.me/api/portraits/men/91.jpg",
     description:
-      "The customer service automation Desnine built changed our workflow completely. Response times improved, support became more consistent, and we were able to handle more requests without adding pressure to the team. It’s one of the most valuable upgrades we’ve made.",
+      "The customer service automation Desnine Studio built changed our workflow completely. Response times improved, support became more consistent, and we were able to handle more requests without adding pressure to the team. It’s one of the most valuable upgrades we’ve made.",
   },
   {
     id: "13",
@@ -1651,7 +1633,7 @@ testimonials: [
     role: "Founder",
     img: "https://randomuser.me/api/portraits/women/63.jpg",
     description:
-      "Desnine helped us build a strong brand foundation from scratch. The strategy was clear, the visuals feel premium, and the entire identity is consistent across platforms. Since launching, we’ve been attracting better clients and presenting ourselves with confidence.",
+      "Desnine Studio helped us build a strong brand foundation from scratch. The strategy was clear, the visuals feel premium, and the entire identity is consistent across platforms. Since launching, we’ve been attracting better clients and presenting ourselves with confidence.",
   },
 ],
 
@@ -1664,9 +1646,9 @@ testimonials: [
     faQitems: [
       {
         id: 1,
-        question: "What services does Desnine offer?",
+        question: "What services does Desnine Studio offer?",
         answer:
-          "Desnine offers comprehensive digital marketing and design services including SEO optimization, website design & development, AI automation, branding & identity design, print & packaging design, digital design, advertising design, content creation, and industry-specific design solutions. We're your one-stop shop for all digital marketing needs.",
+          "Desnine Studio offers comprehensive design and digital services including SEO optimization, website design and development, AI automation, brand identity, print and packaging design, digital design, advertising design, content creation, and industry-specific design solutions.",
       },
       {
         id: 2,

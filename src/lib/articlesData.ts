@@ -66,6 +66,15 @@ export const ARTICLES: Article[] = [
   },
 ];
 
+const PUBLISHED_ARTICLE_SLUGS = new Set([
+  "future-of-branding-ai",
+  "minimalist-design",
+]);
+
+export const PUBLISHED_ARTICLES = ARTICLES.filter((article) =>
+  PUBLISHED_ARTICLE_SLUGS.has(article.slug),
+);
+
 export const SERVICES = [
   "Brand Strategy",
   "Visual Identity",
