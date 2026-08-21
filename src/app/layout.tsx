@@ -184,6 +184,12 @@ export default function RootLayout({
           }}
         />
         <Script
+          id="ahrefs-analytics"
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="V393YxyNANF+UhKs/20Imw"
+          strategy="afterInteractive"
+        />
+        <Script
           id="schema-organization"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationSchema) }}
@@ -207,8 +213,8 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <LanguageProvider>
