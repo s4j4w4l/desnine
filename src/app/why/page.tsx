@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     "Learn how Desnine Studio, a multi-disciplinary, independent design studio, approaches strategy, collaboration, design, development, and project delivery.",
   alternates: { canonical: "/why" },
   openGraph: {
+    type: "website",
+    siteName: "Desnine Studio",
+    locale: "en_CA",
     title: "Why Work With Desnine Studio",
     description: "Learn how Desnine Studio, a multi-disciplinary, independent design studio, approaches strategy, collaboration, design, and delivery.",
     url: "/why",

@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   description: "Read the privacy policy for Desnine Studio, a multi-disciplinary, independent design studio, including how website and form data is handled.",
   alternates: { canonical: "/privacy-policy" },
   openGraph: {
+    type: "website",
+    siteName: "Desnine Studio",
+    locale: "en_CA",
     title: "Privacy Policy | Desnine Studio",
     description: "How Desnine Studio collects, uses, protects, and retains website and form information.",
     url: "/privacy-policy",

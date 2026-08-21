@@ -6,10 +6,19 @@ export const metadata: Metadata = {
   description:
     "Marché Main brand identity and packaging by Desnine Studio, a multi-disciplinary, independent design studio creating distinctive retail experiences.",
   openGraph: {
+    type: "article",
+    siteName: "Desnine Studio",
+    locale: "en_CA",
     title: "Marché Main - Brand Identity Case Study | Desnine Studio",
     description: "Marché Main brand identity and packaging by Desnine Studio, a multi-disciplinary, independent design studio.",
     url: "/work/marche_main",
-    images: [{ url: "/marche_main/optimized/003.webp", alt: "Marché Main brand identity by Desnine Studio" }],
+    images: [{
+      url: "/marche_main/optimized/003.webp",
+      width: 2400,
+      height: 1350,
+      alt: "Marché Main brand identity by Desnine Studio",
+      type: "image/webp",
+    }],
   },
   alternates: { canonical: "/work/marche_main" },
   twitter: {

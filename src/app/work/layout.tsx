@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   description:
     "Explore branding and web design case studies from Desnine Studio, a multi-disciplinary, independent design studio creating distinctive brand experiences.",
   openGraph: {
+    type: "website",
+    siteName: "Desnine Studio",
+    locale: "en_CA",
     title: "Branding & Web Design Case Studies | Desnine Studio",
     description:
       "Explore branding and web design case studies from Desnine Studio, a multi-disciplinary, independent design studio creating distinctive brand experiences.",

@@ -26,13 +26,21 @@ export const metadata = (() => {
     title: article.title,
     description,
     openGraph: {
+      siteName: "Desnine Studio",
+      locale: "en_CA",
       title: article.title,
       description,
       url,
       type: "article",
       publishedTime: article.date,
       authors: ["Desnine Studio"],
-      images: [{ url: article.cover }],
+      images: [{
+        url: article.cover,
+        width: 1920,
+        height: 628,
+        alt: article.title,
+        type: "image/jpeg",
+      }],
     },
     alternates: { canonical: url },
     twitter: {
