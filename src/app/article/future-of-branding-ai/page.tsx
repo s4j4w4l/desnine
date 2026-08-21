@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ARTICLES } from "@/lib/articlesData";
+import { ARTICLES, PUBLISHED_ARTICLES } from "@/lib/articlesData";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import {
@@ -48,7 +48,7 @@ export default function Page() {
   const article = ARTICLES.find((a) => a.slug === SLUG);
   if (!article) notFound();
 
-  const related = ARTICLES.filter((a) => a.slug !== SLUG).slice(0, 3);
+  const related = PUBLISHED_ARTICLES.filter((a) => a.slug !== SLUG).slice(0, 3);
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",

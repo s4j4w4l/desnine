@@ -5,6 +5,26 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/testimonial",
+        destination: "/why",
+        permanent: true,
+      },
+      {
+        source: "/article/packaging-genz",
+        destination: "/article",
+        permanent: true,
+      },
+      {
+        source: "/article/seo-in-2025",
+        destination: "/article",
+        permanent: true,
+      },
+      {
+        source: "/article/automation-agency",
+        destination: "/article",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [{ type: "host", value: "desnine.com" }],
         destination: "https://www.desnine.com/:path*",

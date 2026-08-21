@@ -746,7 +746,7 @@ howWeWork: {
           <div className="relative h-full w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/marche_main/003.png"
+              src="/marche_main/optimized/003.webp"
               alt="Marché Main"
               style={{ objectFit: "cover", width: "100%", height: "100%" }}
               loading="eager"

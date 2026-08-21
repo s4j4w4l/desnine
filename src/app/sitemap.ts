@@ -1,9 +1,5 @@
 import { MetadataRoute } from 'next'
-import { ARTICLES } from '@/lib/articlesData'
-
-// Only slugs that have a real page.tsx route under src/app/article/<slug>/.
-// The rest of ARTICLES is listing-page content without a published article yet.
-const PUBLISHED_ARTICLE_SLUGS = new Set(['future-of-branding-ai', 'minimalist-design'])
+import { PUBLISHED_ARTICLES } from '@/lib/articlesData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.desnine.com'
@@ -32,13 +28,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
-    ...ARTICLES
-      .filter((article) => PUBLISHED_ARTICLE_SLUGS.has(article.slug))
-      .map((article) => ({
+    ...PUBLISHED_ARTICLES.map((article) => ({
         url: `${baseUrl}${article.href}`,
         lastModified: new Date(article.date),
         changeFrequency: 'monthly' as const,
         priority: 0.6,
-      })),
+    })),
   ]
 }

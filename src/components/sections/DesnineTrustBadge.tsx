@@ -176,10 +176,10 @@ export function DesnineTrustBadge() {
 
         <div className="flex items-center">
           {[
-            "/clients/client4.jpg",
-            "/clients/client2.jpg",
-            "/clients/client3.jpg",
-            "/clients/client1.jpg",
+            "/clients/optimized/client4.jpg",
+            "/clients/optimized/client2.jpg",
+            "/clients/optimized/client3.jpg",
+            "/clients/optimized/client1.jpg",
           ].map((src, i) => (
             <motion.div
               key={i}

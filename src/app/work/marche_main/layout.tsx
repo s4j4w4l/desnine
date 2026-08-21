@@ -9,14 +9,14 @@ export const metadata: Metadata = {
     title: "Marché Main - Brand Identity Case Study | Desnine Studio",
     description: "Marché Main brand identity and packaging by Desnine Studio, a multi-disciplinary, independent design studio.",
     url: "/work/marche_main",
-    images: [{ url: "/marche_main/003.png", alt: "Marché Main brand identity by Desnine Studio" }],
+    images: [{ url: "/marche_main/optimized/003.webp", alt: "Marché Main brand identity by Desnine Studio" }],
   },
   alternates: { canonical: "/work/marche_main" },
   twitter: {
     card: "summary_large_image",
     title: "Marché Main Brand Identity | Desnine Studio",
     description: "Marché Main brand identity and packaging by Desnine Studio, a multi-disciplinary, independent design studio.",
-    images: ["/marche_main/003.png"],
+    images: ["/marche_main/optimized/003.webp"],
   },
 };
 

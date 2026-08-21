@@ -66,6 +66,16 @@ export const ARTICLES: Article[] = [
   },
 ];
 
+// Only articles with an implemented page route should be linked publicly.
+export const PUBLISHED_ARTICLE_SLUGS = new Set([
+  "future-of-branding-ai",
+  "minimalist-design",
+]);
+
+export const PUBLISHED_ARTICLES = ARTICLES.filter((article) =>
+  PUBLISHED_ARTICLE_SLUGS.has(article.slug)
+);
+
 export const SERVICES = [
   "Brand Strategy",
   "Visual Identity",

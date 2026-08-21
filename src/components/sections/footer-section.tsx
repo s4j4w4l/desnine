@@ -73,7 +73,7 @@ export function FooterSection() {
               {([
                 { href: "/services", label: f.links.services },
                 { href: "/work", label: f.links.ourWork },
-                { href: "/testimonial", label: f.links.whyUs },
+                { href: "/why", label: f.links.whyUs },
                 { href: "/contact", label: f.links.contact },
                 { href: "/privacy-policy", label: f.links.privacy },
               ] as const).map(({ href, label }) => (
