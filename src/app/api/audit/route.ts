@@ -1,5 +1,14 @@
 import { Client } from "@notionhq/client";
 import { NextResponse } from "next/server";
+import {
+  cleanText,
+  invalidPayload,
+  isValidEmail,
+  payloadTooLarge,
+  protectPublicForm,
+  readJsonBody,
+  safeApiError,
+} from "@/lib/api-security";
 
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
@@ -29,13 +38,14 @@ const normalizeWebsite = (value: string) => {
   return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
 };
 
-const isValidEmail = (value: string) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-
 const isValidWebsite = (value: string) => {
   try {
     const url = new URL(normalizeWebsite(value));
-    return Boolean(url.hostname.includes("."));
+    return (
+      (url.protocol === "https:" || url.protocol === "http:") &&
+      url.hostname.length <= 253 &&
+      url.hostname.includes(".")
+    );
   } catch {
     return false;
   }
@@ -99,6 +109,9 @@ const getAuditSchema = async (targetId: string) => {
 };
 
 export async function POST(req: Request) {
+  const blocked = protectPublicForm(req, "audit", 4);
+  if (blocked) return blocked;
+
   try {
     const databaseId = process.env.NOTION_AUDITBASE_ID;
 
@@ -109,12 +122,22 @@ export async function POST(req: Request) {
       );
     }
 
-    const { website = "", email = "", focus = "" } =
-      (await req.json()) as AuditPayload;
+    const rawBody = await readJsonBody(req);
+    if (!rawBody || typeof rawBody !== "object" || Array.isArray(rawBody)) {
+      return invalidPayload("Invalid audit request.");
+    }
+    const body = rawBody as AuditPayload;
 
-    const cleanWebsite = normalizeWebsite(website);
-    const cleanEmail = email.trim();
-    const cleanFocus = focus.trim();
+    const cleanWebsite = normalizeWebsite(cleanText(body.website, 2048));
+    const cleanEmail = cleanText(body.email, 254).toLowerCase();
+    const cleanFocus = cleanText(body.focus, 80);
+    const allowedFocusAreas = new Set([
+      "SEO & search rankings",
+      "Page speed & performance",
+      "Design & user experience",
+      "Conversion & leads",
+      "Full website audit",
+    ]);
 
     if (!isValidWebsite(cleanWebsite)) {
       return NextResponse.json(
@@ -130,7 +153,7 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!cleanFocus) {
+    if (!allowedFocusAreas.has(cleanFocus)) {
       return NextResponse.json(
         { ok: false, message: "Select a focus area." },
         { status: 400 }
@@ -224,17 +247,13 @@ export async function POST(req: Request) {
       message: "Audit request submitted successfully.",
     });
   } catch (error: unknown) {
-    const message =
-      error instanceof Error ? error.message : "Audit submission failed.";
-
-    console.error("Audit submission error:", error);
-
-    return NextResponse.json(
-      {
-        ok: false,
-        message,
-      },
-      { status: 500 }
-    );
+    if (error instanceof SyntaxError) {
+      return invalidPayload("Invalid JSON payload.");
+    }
+    if (error instanceof Error && error.message === "PAYLOAD_TOO_LARGE") {
+      return payloadTooLarge();
+    }
+    console.error("Audit submission failed.");
+    return safeApiError("Audit submission failed. Please try again later.");
   }
 }

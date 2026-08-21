@@ -25,54 +25,30 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Desnine Studio",
+    default: "Branding & Web Design Studio in Quebec | Desnine Studio",
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "Desnine Studio",
-    "independent design studio",
-    "multi-disciplinary design studio",
-    "creative studio Quebec",
-    "brand identity design",
-    "web design Quebec",
-    "website design Montreal",
-    "SEO optimization Canada",
-    "logo design Quebec",
-    "graphic design studio",
-    "AI automation for business",
-    "premium branding studio",
-    "modern web design",
-    "studio de design Quebec",
-    "conception web Quebec",
-    "identité visuelle",
-    "Vaudreuil-Dorion designer",
-  ],
   authors: [{ name: "Desnine Studio", url: siteConfig.url }],
   creator: "Desnine Studio",
   publisher: "Desnine Studio",
   alternates: {
     canonical: "/",
-    languages: {
-      "en-CA": "/",
-      "fr-CA": "/",
-    },
   },
   openGraph: {
     type: "website",
     locale: "en_CA",
     alternateLocale: "fr_CA",
     url: siteConfig.url,
-    title: "Desnine Studio — Independent Design Studio",
-    description:
-      "Multi-disciplinary independent design studio in Quebec. Brand identity, web design, SEO, and AI automation for modern businesses.",
+    title: "Desnine Studio — Multi-Disciplinary Independent Design Studio",
+    description: siteConfig.description,
     siteName: "Desnine Studio",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Desnine Studio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Desnine Studio — Independent Design Studio",
-    description:
-      "Multi-disciplinary independent design studio in Quebec. Brand identity, web design, SEO, and AI automation.",
+    title: "Desnine Studio — Multi-Disciplinary Independent Design Studio",
+    description: siteConfig.description,
     creator: "@desninestudio",
     site: "@desninestudio",
   },
@@ -97,10 +73,10 @@ const organizationSchema = {
   name: "Desnine Studio",
   alternateName: "Desnine",
   description:
-    "Independent, multi-disciplinary design studio specializing in brand identity, web design, SEO optimization, and AI automation for modern businesses in Quebec, Canada.",
-  url: "https://desnine.com",
-  logo: "https://desnine.com/DesnineStudio.svg",
-  image: "https://desnine.com/agent-template-og.png",
+    "Desnine Studio is a multi-disciplinary, independent design studio specializing in brand identity, web design, SEO optimization, and AI automation for modern businesses in Quebec, Canada.",
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/DesnineStudio.svg`,
+  image: `${siteConfig.url}/opengraph-image`,
   email: "info@desnine.com",
   address: {
     "@type": "PostalAddress",
@@ -159,60 +135,17 @@ const organizationSchema = {
       },
     ],
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "127",
-  },
 };
 
-// ─── FAQPage schema (AEO: lets AI assistants surface direct answers) ──────────
-const faqSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What does Desnine Studio specialize in?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Desnine Studio is an independent, multi-disciplinary design studio focused on clean, modern design for websites and brands. We help businesses look professional, clear, and trustworthy online, covering brand identity, web design, SEO, and AI automation.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Where is Desnine Studio located?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Desnine Studio is based in Quebec, Canada, and works with clients across Canada and the United States.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How long does a typical project take?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Most projects take between 1 and 4 weeks, depending on scope. Timelines are agreed upon before work begins.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does Desnine Studio work with existing brands?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Desnine Studio can improve or update an existing brand identity or website without starting from scratch.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is Desnine Studio's design process?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The process follows five stages: Discovery & Direction, Design System, Build & Implement, Revisions & QA, and Launch & Support.",
-      },
-    },
-  ],
+  "@type": "WebSite",
+  name: "Desnine Studio",
+  url: siteConfig.url,
+  inLanguage: "en-CA",
 };
+
+const serializeJsonLd = (data: object) => JSON.stringify(data).replace(/</g, "\\u003c");
 
 export default function RootLayout({
   children,
@@ -253,12 +186,12 @@ export default function RootLayout({
         <Script
           id="schema-organization"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationSchema) }}
         />
         <Script
-          id="schema-faq"
+          id="schema-website"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
         />
         <script
           id="vtag-ai-js"

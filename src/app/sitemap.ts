@@ -6,7 +6,7 @@ import { ARTICLES } from '@/lib/articlesData'
 const PUBLISHED_ARTICLE_SLUGS = new Set(['future-of-branding-ai', 'minimalist-design'])
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://desnine.com'
+  const baseUrl = 'https://www.desnine.com'
 
   const staticRoutes: { path: string; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']; priority: number }[] = [
     { path: '', changeFrequency: 'weekly', priority: 1 },
@@ -24,13 +24,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes.map(({ path, changeFrequency, priority }) => ({
       url: `${baseUrl}${path}`,
-      lastModified: new Date(),
       changeFrequency,
       priority,
     })),
     ...workSlugs.map((slug) => ({
       url: `${baseUrl}/work/${slug}`,
-      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -38,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       .filter((article) => PUBLISHED_ARTICLE_SLUGS.has(article.slug))
       .map((article) => ({
         url: `${baseUrl}${article.href}`,
-        lastModified: new Date(),
+        lastModified: new Date(article.date),
         changeFrequency: 'monthly' as const,
         priority: 0.6,
       })),

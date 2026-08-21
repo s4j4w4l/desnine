@@ -98,10 +98,13 @@ function CountUpText({
   }, [display, decimals, prefix, suffix]);
 
   return (
-    <div ref={ref} className={className} style={style}>
-      {inView
-        ? formatted
-        : `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`}
+    <div ref={ref} className={className} style={style} aria-label={value}>
+      <span aria-hidden="true">
+        {inView
+          ? formatted
+          : `${prefix}${decimals > 0 ? (0).toFixed(decimals) : "0"}${suffix}`}
+      </span>
+      <span className="sr-only">{value}</span>
     </div>
   );
 }

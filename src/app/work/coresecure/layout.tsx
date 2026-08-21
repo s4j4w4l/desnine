@@ -3,11 +3,21 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Core Secure - Brand Identity Case Study",
   description:
-    "Brand identity for Core Secure, a leader in Web3 infrastructure for corporate operations. A case study by Desnine Studio.",
+    "Core Secure brand identity by Desnine Studio, a multi-disciplinary, independent design studio creating strategic identities for modern businesses.",
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/work/coresecure" },
   openGraph: {
     title: "Core Secure - Brand Identity Case Study | Desnine Studio",
     description:
-      "Brand identity for Core Secure, a leader in Web3 infrastructure for corporate operations.",
+      "Core Secure brand identity by Desnine Studio, a multi-disciplinary, independent design studio.",
+    url: "/work/coresecure",
+    images: [{ url: "/opengraph-image", alt: "Core Secure brand identity by Desnine Studio" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Core Secure Brand Identity | Desnine Studio",
+    description: "Core Secure brand identity by Desnine Studio, a multi-disciplinary, independent design studio.",
+    images: ["/opengraph-image"],
   },
 };
 

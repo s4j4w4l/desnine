@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Logo",
+  title: "Desnine Studio Logo",
+  description: "Logo asset for Desnine Studio, a multi-disciplinary, independent design studio.",
+  alternates: { canonical: "/logo" },
   robots: { index: false, follow: false },
 };
 

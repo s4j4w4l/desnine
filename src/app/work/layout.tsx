@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Work - Brand & Web Design Case Studies",
+  title: "Branding & Web Design Case Studies",
   description:
-    "Case studies from Desnine Studio, an independent, multi-disciplinary design studio. Branding, web design, and digital work for modern, competitive brands.",
+    "Explore branding and web design case studies from Desnine Studio, a multi-disciplinary, independent design studio creating distinctive brand experiences.",
   openGraph: {
-    title: "Our Work - Desnine Studio",
+    title: "Branding & Web Design Case Studies | Desnine Studio",
     description:
-      "Branding and web design case studies from Desnine Studio, an independent, multi-disciplinary design studio.",
+      "Explore branding and web design case studies from Desnine Studio, a multi-disciplinary, independent design studio creating distinctive brand experiences.",
+    url: "/work",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Desnine Studio case studies" }],
+  },
+  alternates: { canonical: "/work" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Branding & Web Design Case Studies | Desnine Studio",
+    description: "Explore selected work by Desnine Studio, a multi-disciplinary, independent design studio.",
+    images: ["/opengraph-image"],
   },
 };
 

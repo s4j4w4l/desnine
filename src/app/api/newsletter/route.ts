@@ -1,5 +1,14 @@
 import { NextResponse } from "next/server";
 import { Client } from "@notionhq/client";
+import {
+  cleanText,
+  invalidPayload,
+  isValidEmail,
+  payloadTooLarge,
+  protectPublicForm,
+  readJsonBody,
+  safeApiError,
+} from "@/lib/api-security";
 
 // Initialize Notion client
 const notionClient = process.env._TOKEN
@@ -7,11 +16,18 @@ const notionClient = process.env._TOKEN
   : null;
 
 export async function POST(req: Request) {
+  const blocked = protectPublicForm(req, "newsletter", 5);
+  if (blocked) return blocked;
+
   try {
-    const { email } = await req.json();
+    const rawBody = await readJsonBody(req);
+    if (!rawBody || typeof rawBody !== "object" || Array.isArray(rawBody)) {
+      return invalidPayload("Invalid newsletter request.");
+    }
+    const email = cleanText((rawBody as Record<string, unknown>).email, 254).toLowerCase();
 
     // Validate email
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { ok: false, error: "Invalid email address." },
         { status: 400 }
@@ -39,17 +55,14 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ ok: true });
-  } catch (err: any) {
-    console.error("Newsletter  error:", err);
-
-    const message =
-      err?.body?.message ||
-      err?.message ||
-      "Newsletter submission failed.";
-
-    return NextResponse.json(
-      { ok: false, error: message },
-      { status: 500 }
-    );
+  } catch (err: unknown) {
+    if (err instanceof SyntaxError) {
+      return invalidPayload("Invalid JSON payload.");
+    }
+    if (err instanceof Error && err.message === "PAYLOAD_TOO_LARGE") {
+      return payloadTooLarge();
+    }
+    console.error("Newsletter submission failed.");
+    return safeApiError("Newsletter submission failed. Please try again later.");
   }
 }

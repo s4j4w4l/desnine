@@ -9,6 +9,7 @@ import {
   MinReadBadge,
   RelatedReadsHeading,
 } from "@/components/sections/article/article-ui-strings";
+import { siteConfig } from "@/lib/site";
 
 const SLUG = "minimalist-design";
 function formatDate(d: string) {
@@ -17,12 +18,27 @@ function formatDate(d: string) {
 export const metadata = (() => {
   const article = ARTICLES.find((a) => a.slug === SLUG);
   if (!article) return {};
-  const url = `https://yourdomain.com/article/${article.slug}`;
+  const url = `${siteConfig.url}/article/${article.slug}`;
+  const description = `${article.excerpt} By Desnine Studio, a multi-disciplinary, independent design studio.`;
   return {
-    title: `${article.title} — Desnine`,
-    description: article.excerpt,
-    openGraph: { title: article.title, description: article.excerpt, url, type: "article", images: [{ url: article.cover }] },
+    title: article.title,
+    description,
+    openGraph: {
+      title: article.title,
+      description,
+      url,
+      type: "article",
+      publishedTime: article.date,
+      authors: ["Desnine Studio"],
+      images: [{ url: article.cover }],
+    },
     alternates: { canonical: url },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description,
+      images: [article.cover],
+    },
   };
 })();
 
@@ -30,9 +46,24 @@ export default function Page() {
   const article = ARTICLES.find((a) => a.slug === SLUG);
   if (!article) notFound();
   const related = ARTICLES.filter((a) => a.slug !== SLUG).slice(0, 3);
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.date,
+    image: `${siteConfig.url}${article.cover}`,
+    mainEntityOfPage: `${siteConfig.url}${article.href}`,
+    author: { "@type": "Organization", name: "Desnine Studio", url: siteConfig.url },
+    publisher: { "@type": "Organization", name: "Desnine Studio", url: siteConfig.url },
+  };
 
   return (
     <main className="w-full text-foreground bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c") }}
+      />
       <header className="relative w-full overflow-hidden">
         <div className="relative h-[240px] md:h-[320px]">
           <Image src={article.cover} alt={article.title} fill className="object-cover" priority />
