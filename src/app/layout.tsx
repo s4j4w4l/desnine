@@ -183,11 +183,10 @@ export default function RootLayout({
             `,
           }}
         />
-        <Script
-          id="ahrefs-analytics"
+        <script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="V393YxyNANF+UhKs/20Imw"
-          strategy="afterInteractive"
+          async
         />
         <Script
           id="schema-organization"
