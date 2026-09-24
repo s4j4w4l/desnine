@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Biotasup Brand Identity | Desnine Studio",
-    description: "Biotasup branding and packaging by Desnine Studio, a multi-disciplinary, independent design studio.",
+    description: "bBiotasup branding and packaging by Desnine Studio, a multi-disciplinary, independent design studio.",
     images: ["/biotasups/biota-01.jpg"],
   },
 };
